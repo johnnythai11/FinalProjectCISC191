@@ -1,7 +1,7 @@
 
 public class EnemyChicken {
 
-	// Fields
+	//  Fields
 	
 	private int maxHealth;
 	private int currentHealth;
