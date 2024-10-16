@@ -32,7 +32,8 @@ public abstract class PlayerChicken
 	private int damageOfChicken;
 	private int defenseOfChicken;
 	private int boneBalance = 1000;
-	// private Human playerHuman;
+	private Human playerHuman = new Human();
+	private Inventory playerInventory = new Inventory();
 
 	PlayerChicken()
 	{
