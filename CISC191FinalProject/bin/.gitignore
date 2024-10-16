@@ -1,6 +1,13 @@
 /main.class
 /Spawner.class
 /Combat.class
-/enemyChicken.class
 /Store.class
 /EnemyChicken.class
+/items.class
+/human.class
+/tankChicken.class
+/meleeChicken.class
+/Human.class
+/Items.class
+/MeleeChicken.class
+
