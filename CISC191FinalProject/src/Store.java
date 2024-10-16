@@ -5,16 +5,8 @@ public class Store {
 	/**
 	 * I don't know you tell me
 	 */
-	public void updateItems()
+	public void buyItem(//PlayerChicken thePLayer)
 	{
-		
-	}
-
-	/**
-	 * I don't know you tell me
-	 */
-	public void buyItem()
-	{
-		
+		//int balance = thePlayer.getBoneBalance();
 	}
 }
