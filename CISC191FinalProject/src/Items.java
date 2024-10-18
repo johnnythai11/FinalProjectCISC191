@@ -40,15 +40,89 @@ public class Items
 //		}
 //	}
 	
-	public Items(int attackStat, int defenseStat, int healthStat, int price, String itemName)
+	public Items(int attackStat, int defenseStat, int healthStat, String itemName)
 	{
-		this.attackStat  = attackStat;
-		this.defenseStat = defenseStat;
-		this.healthStat = healthStat;
+		this.attackStat  = attackStat + 10;
+		this.defenseStat = defenseStat + 10;
+		this.healthStat = healthStat + 10;
 		this.itemName = itemName;
-		this.price = price;
+		setPrice();
 	}
 
+	//BASICALLy checks wihch stat isnt 0, then sets price = to tier
+	public void setPrice()
+	{
+		int number = 0;
+		if (attackStat > 0)
+		{
+			number = attackStat - 10;
+			switch(number) {
+			
+			case 1:
+				price = 3;
+				break;
+			case 2:
+				price = 5;
+				break;
+			case 3:
+				price = 8;
+				break;
+			case 4:
+				price = 12;
+				break;
+			case 5:
+				price = 17;
+				break;		
+			}
+		}
+		
+		if (defenseStat > 0)
+		{
+			number = healthStat - 10;
+			switch(number) {
+			
+			case 1:
+				price = 3;
+				break;
+			case 2:
+				price = 5;
+				break;
+			case 3:
+				price = 8;
+				break;
+			case 4:
+				price = 12;
+				break;
+			case 5:
+				price = 17;
+				break;		
+			}
+		}
+		if (healthStat > 0)
+		{
+			number = healthStat - 10;
+			switch(number) {
+			
+			case 1:
+				price = 3;
+				break;
+			case 2:
+				price = 5;
+				break;
+			case 3:
+				price = 8;
+				break;
+			case 4:
+				price = 12;
+				break;
+			case 5:
+				price = 17;
+				break;		
+			}
+		}
+	}
+	
+	
 	public String getItemName()
 	{
 		return itemName;

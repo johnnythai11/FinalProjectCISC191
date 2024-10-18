@@ -7,7 +7,7 @@ public class SpecialItems
 		
 		Helmet(int healthStat)
 		{
-			super(0,0,healthStat + 10,("Helmet of +" + healthStat));
+			super(0,0,healthStat,("Helmet of +" + healthStat));
 		}
 	}
 	
@@ -17,7 +17,7 @@ public class SpecialItems
 		
 		Chestplate(int defenseStat)
 		{
-			super(0,defenseStat + 10,0,("Chestplate of +" + defenseStat));
+			super(0,defenseStat,0,("Chestplate of +" + defenseStat));
 		}
 	}
 	public static class Claws extends Items
@@ -26,7 +26,7 @@ public class SpecialItems
 		
 		Claws(int attackStat)
 		{
-			super(attackStat + 10,0,0,("Claws of +" + attackStat));
+			super(attackStat,0,0,("Claws of +" + attackStat));
 		}
 	} // ok
 	public static class Staff extends Items
@@ -35,7 +35,7 @@ public class SpecialItems
 		
 		Staff(int attackStat)
 		{
-			super(attackStat + 10,0,0,("Staff of +" + attackStat));
+			super(attackStat,0,0,("Staff of +" + attackStat));
 		}
 	}
 	public static class Shield extends Items
@@ -44,7 +44,7 @@ public class SpecialItems
 		
 		Shield(int defenseStat)
 		{
-			super(0,defenseStat + 10, 0 ,("Shield of +" + defenseStat));
+			super(0,defenseStat, 0 ,("Shield of +" + defenseStat));
 		}
 	}
 
