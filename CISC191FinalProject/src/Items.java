@@ -18,26 +18,35 @@ public class Items
 	final int priceOfStaff = 100;
 	final int priceOfShield = 100;
 
-	public Items(int statType, int statValue, String itemName, String itemType)
+//	public Items(int statType, int statValue, String itemName, String itemType)
+//	{
+//		this.itemName = itemName;
+//		this.itemType = itemType;
+//
+//		switch (statType) // If statType is 1 it is attack, 2 is defense, 3 is
+//							// healthStat
+//		{
+//			case 1:
+//				this.attackStat = statType;
+//				break;
+//
+//			case 2:
+//				this.defenseStat = statType;
+//				break;
+//
+//			case 3:
+//				this.healthStat = statType;
+//				break;
+//		}
+//	}
+	
+	public Items(int attackStat, int defenseStat, int healthStat, int price, String itemName)
 	{
+		this.attackStat  = attackStat;
+		this.defenseStat = defenseStat;
+		this.healthStat = healthStat;
 		this.itemName = itemName;
-		this.itemType = itemType;
-
-		switch (statType) // If statType is 1 it is attack, 2 is defense, 3 is
-							// healthStat
-		{
-			case 1:
-				this.attackStat = statType;
-				break;
-
-			case 2:
-				this.defenseStat = statType;
-				break;
-
-			case 3:
-				this.healthStat = statType;
-				break;
-		}
+		this.price = price;
 	}
 
 	public String getItemName()
