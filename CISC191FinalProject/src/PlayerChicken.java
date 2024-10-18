@@ -89,7 +89,29 @@ public abstract class PlayerChicken
 	{
 		this.boneBalance = boneBalance;
 	}
-
+	public void takeDamage(int incomingDamage)
+	{
+		// Checks if damage is greater than total defence, and defence is > 0
+		if ((incomingDamage > defenseOfChicken) && (defenseOfChicken > 0))
+		{
+			defenseOfChicken = 0;
+		}
+		// Else if defence is not broken it decreases defence
+		else if (defenseOfChicken != 0)
+		{
+			defenseOfChicken = defenseOfChicken - incomingDamage;
+		}
+		//finally if there is no defence, decrease current health
+		else
+		{
+			healthOfChicken = healthOfChicken - incomingDamage;
+			if (healthOfChicken < 0) // If the health is less than 0 set to 0
+			{
+				healthOfChicken = 0;
+			}
+		}
+		
+	}
 	public abstract boolean wearClawEquiment();
 	
 	public abstract boolean wearBodyArmorEquipment();
