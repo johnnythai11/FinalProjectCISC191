@@ -1,12 +1,14 @@
+import java.lang.reflect.Array;
 
 public class Human 
 {
-	int level = 1; 
-	int statBoostHealth = 0;
-	int statBoostAttack = 0;
-	int statBoostDefense = 0;
-	int boostHungerBar = 50;
-	PlayerChicken chickenLevel;
+	private Array[][] mapLocationOfHuman = {};
+	private int level = 1; 
+	private int statBoostHealth = 0;
+	private int statBoostAttack = 0;
+	private int statBoostDefense = 0;
+	private int boostHungerBar = 50;
+	private PlayerChicken chickenLevel;
 	
 
 	public Human()
@@ -14,7 +16,17 @@ public class Human
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getLevel()
+	public Array[][] getHumanLocation()
+	{
+		return mapLocationOfHuman;
+	}
+	
+	public void setHumanLocation()
+	{
+		
+	}
+	
+	public int getHumanLevel()
 	{
 		return level;
 	}
@@ -27,7 +39,7 @@ public class Human
 	 * chicken level 31-40 will be assigned level 4 human
 	 * chicken level 41-50 will be assigned level 5 human
 	 */
-	public void setLevel()
+	public void setHumanLevel()
 	{
 		if (chickenLevel.getLevel() < 11 && chickenLevel.getLevel() > 0)
 		{
