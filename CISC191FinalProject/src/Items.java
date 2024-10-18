@@ -6,7 +6,8 @@ public class Items
 	private int attackStat;
 	private int defenseStat;
 	private int healthStat;
-
+	private int price;
+	
 	final int priceOfWood = 3;
 	final int priceOfBronze = 5;
 	final int priceOfCopper = 8;
@@ -87,6 +88,11 @@ public class Items
 	public void setHealthStat(int healthStat)
 	{
 		this.healthStat = healthStat;
+	}
+
+	public int getPrice() {
+		
+		return this.price;
 	}
 
 	

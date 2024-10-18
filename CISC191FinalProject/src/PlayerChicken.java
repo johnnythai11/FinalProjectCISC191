@@ -29,7 +29,7 @@ public abstract class PlayerChicken
 {
 	private int levelOfChicken = 1;
 	private int healthOfChicken;
-	private int damageOfChicken;
+	private int currentHealthOfChicken;
 	private int defenseOfChicken;
 	private int boneBalance = 1000;
 	private Human playerHuman = new Human();
@@ -60,14 +60,14 @@ public abstract class PlayerChicken
 		this.healthOfChicken = healthOfChicken;
 	}
 
-	public int getChickenDamage()
+	public int getCurrentChickenHealth()
 	{
-		return damageOfChicken;
+		return currentHealthOfChicken;
 	}
 
-	public void setChickenDamage(int damageOfChicken)
+	public void setCurrentChickenHealth(int damageOfChicken)
 	{
-		this.damageOfChicken = damageOfChicken;
+		this.currentHealthOfChicken = damageOfChicken;
 	}
 
 	public int getDefense()
