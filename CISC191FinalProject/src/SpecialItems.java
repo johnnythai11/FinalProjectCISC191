@@ -28,7 +28,7 @@ public class SpecialItems
 		{
 			super(attackStat + 10,0,0,("Claws of +" + attackStat));
 		}
-	}
+	} // ok
 	public static class Staff extends Items
 	{
 
