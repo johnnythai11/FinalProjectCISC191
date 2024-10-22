@@ -27,39 +27,43 @@
  */
 public abstract class PlayerChicken
 {
-	private int levelOfChicken = 1;
+	private int levelOfChicken;
 	private int healthOfChicken;
-	//private int currentHealthOfChicken;
 	private int defenseOfChicken;
+	private int baseDamage;
 	private int boneBalance = 1000;
-<<<<<<< Updated upstream
-	private Human playerHuman = new Human();
-	private Inventory playerInventory = new Inventory();
-=======
-	//private Human playerHuman = new Human();
-	//private Inventory playerInventory;
->>>>>>> Stashed changes
 
-	PlayerChicken()
+	//private Human playerHuman;
+	//private Inventory playerInventory;
+
+
+
+	/*
+	 * Constructor to create the Chicken class with the level input
+	 * @Parameters int level
+	 */
+	public PlayerChicken()
 	{
-//		setLevel(level);
+//		setLevel(levelOfChicken);
 //		getLevel();
-//		
-//		setHealth(level);
+//
+//		setHealth(levelOfChicken);
 //		getHealth();
-//		setAttack(level);
+//
+//		setAttack(levelOfChicken);
 //		getAttack();
-//		setDefense(level);
+//
+//		setDefense(levelOfChicken);
 //		getDefense();
-		
 
 	}
-	
+
+
 	@Override
 	public String toString()
 	{
 		return "Level: " + getLevel() + " ";
-		}
+	}
 	/*
 	 * Gets the level of the PlayerChicken
 	 */
@@ -113,51 +117,50 @@ public abstract class PlayerChicken
 	{
 		this.boneBalance = boneBalance;
 	}
-	
-//	public void takeDamage(int incomingDamage)
-//	{
-//		// Checks if damage is greater than total defence, and defence is > 0
-//		if ((incomingDamage > defenseOfChicken) && (defenseOfChicken > 0))
-//		{
-//			defenseOfChicken = 0;
-//		}
-//		// Else if defence is not broken it decreases defence
-//		else if (defenseOfChicken != 0)
-//		{
-//			defenseOfChicken = defenseOfChicken - incomingDamage;
-//		}
-//		//finally if there is no defence, decrease current health
-//		else
-//		{
-//			healthOfChicken = healthOfChicken - incomingDamage;
-//			if (healthOfChicken < 0) // If the health is less than 0 set to 0
-//			{
-//				healthOfChicken = 0;
-//			}
-//		}
-//		
-//   }
+
+	public void takeDamage(int incomingDamage)
+	{
+		// Checks if damage is greater than total defense, and defense is > 0
+		if ((incomingDamage > defenseOfChicken) && (defenseOfChicken > 0))
+		{
+			defenseOfChicken = 0;
+		}
+		// Else if defense is not broken it decreases defense
+		else if (defenseOfChicken != 0)
+		{
+			defenseOfChicken = defenseOfChicken - incomingDamage;
+		}
+		//finally if there is no defense, decrease current health
+		else
+		{
+			healthOfChicken = healthOfChicken - incomingDamage;
+			if (healthOfChicken < 0) // If the health is less than 0 set to 0
+			{
+				healthOfChicken = 0;
+			}
+		}
+
+	}
 	public abstract boolean wearClawEquiment();
 	public abstract boolean wearBodyArmorEquipment();
 	public abstract boolean wearSpecialEquiment();
-	
+
 	public abstract int buyFromStore();
 	public abstract int sellToStore();
-	
+
 	public abstract boolean adoptHuman();
-	
+
 	public abstract void setInventory();
 	public abstract boolean checkInventory();
-	
-<<<<<<< Updated upstream
-=======
+
+
 	public abstract int getBaseDamage();
 	public abstract int getBaseHealth();
 	public abstract int getBaseDefense();
-	
 
-	
-	
->>>>>>> Stashed changes
+
+
+
+
 
 }

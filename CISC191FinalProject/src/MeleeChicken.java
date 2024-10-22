@@ -1,12 +1,10 @@
 
 public class MeleeChicken extends PlayerChicken
 {
-<<<<<<< Updated upstream
-=======
+
 	
 	private int levelOfChicken;
 	private int baseHealth;
-	//private int currentHealthOfChicken;
 	private int baseDefense;
 	private int baseDamage;
 	private int boneBalance;
@@ -15,75 +13,25 @@ public class MeleeChicken extends PlayerChicken
 	//private Inventory playerInventory;
 	
 	/*
-	 * Creating a MeleeChicken constructor to set the base stats of the player
-	 * @parameters int levelOfChicken
+	 * Creating a MeleeChicken constructor to set the base stat of the player
+	 * @parameters integer levelOfChicken
 	 */
->>>>>>> Stashed changes
 
-	public MeleeChicken()
+
+	public MeleeChicken(int levelOfChicken)
 	{
 		// TODO Auto-generated constructor stub
-<<<<<<< Updated upstream
-	}
-
-	@Override
-	public boolean wearClawEquiment()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean wearBodyArmorEquipment()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public int buyFromStore()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int sellToStore()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean adoptHuman()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean wearSpecialEquiment()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void setInventory()
-	{
-		// TODO Auto-generated method stub
-=======
 		this.levelOfChicken = levelOfChicken;
 		
 		baseDamage = (levelOfChicken-1)*2 +8;
 		baseHealth = (levelOfChicken-1)*2 + 20;
 		baseDefense = (levelOfChicken-1)*2 + 10;
-		hungerBar = 50;
+		hungerBar = 20;
 		boneBalance = 1000;
->>>>>>> Stashed changes
-		
-		
+
 	}
+
+
 	
 	@Override
 	public String toString()
@@ -94,8 +42,7 @@ public class MeleeChicken extends PlayerChicken
 				"Hunger Bar: " + hungerBar + "\n" +
 				"Bone Balance: " + boneBalance + "\n";
 	}
-<<<<<<< Updated upstream
-=======
+
 	
 	@Override
 	public int getBaseDamage()
@@ -179,13 +126,4 @@ public class MeleeChicken extends PlayerChicken
 	}
 	
 	
->>>>>>> Stashed changes
-
-	@Override
-	public boolean checkInventory()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 }

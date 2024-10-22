@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 /**
  * Lead Author(s):
  * 
@@ -28,18 +28,7 @@
  */
 import java.util.ArrayList; 
 
-public class Inventory
-{
-	private ArrayList<Items> inventoryArea;
 
-	Inventory()
-	{
-
-	}
-
-=======
-
-import java.util.ArrayList;
 
 public class Inventory extends Items
 {
@@ -57,22 +46,19 @@ public class Inventory extends Items
 	 * Gets all Items in the inventory
 	 * @Return ArrayList<Items>
 	 */
->>>>>>> Stashed changes
+
 	public ArrayList<Items> getInventory()
 	{
 		return this.inventoryArea;
 	}
-<<<<<<< Updated upstream
-	public void addItemToInventory(Items item) {
-		inventoryArea.add(item);
-	}
-=======
+
 
 	/*
 	 * Adds items to the ArrayList<Items>
 	 * @Parameters Items item
 	 */
-	public void addItemToInventory(Items item) {
+	public void addItemToInventory(Items item) 
+	{
 		inventoryArea.add(item);
 	}
 
@@ -88,5 +74,5 @@ public class Inventory extends Items
 		inventoryList.addItemToInventory(item5);
 		System.out.println(inventoryList.getInventory());
 	}
->>>>>>> Stashed changes
 }
+

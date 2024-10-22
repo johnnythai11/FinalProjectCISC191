@@ -12,64 +12,52 @@ public class Store extends Items
 	private Items item = new Items(typeOfArmor,tierOfArmor);
 
 	/**
-<<<<<<< Updated upstream
-	 * I don't know you tell me
-=======
 	 * Constructor to create a Store with the randomly generated items
->>>>>>> Stashed changes
 	 */
 	Store()
 	{
 		generateStock();
 	}
-	
+
+
 	/*
 	 * Prints out the item in the store
-	 * @Return String itemName, int randInt1 
+	 * @Return String itemName, integer randInt1 
 	 */
 	@Override 
 	public String toString()
 	{
-//		if (randInt2 == 0)
-//		{
+
 		item.setPrice(typeOfArmor, tierOfArmor);
 
 		return "Type of gear: " + itemName + "\n" +
-				"Gear slot number: "  + typeOfArmor + "\n" +
+		"Gear slot number: "  + typeOfArmor + "\n" +
 		"number: " + tierOfArmor +"\n" +  
-				"Price: " + item.getPrice() +
-				"\n"  ;
+		"Price: " + item.getPrice() +
+		"\n"  ;
 	}
+
 
 	public void buyItem(PlayerChicken player, Items item)
 	{
 		balance = player.getBoneBalance();
-	    price = item.getPrice();
+		price = item.getPrice();
 	}
 
 	public void generateStock() 
 	{
 
 		Random rand = new Random();
-		
-<<<<<<< Updated upstream
-		
-		for (int i = 1; i < 6; i ++) 
-		{
-			Stock.add(new SpecialItems.Helmet(i));
-			Stock.add(new SpecialItems.Chestplate(i));
-			Stock.add(new SpecialItems.Staff(i));
-			Stock.add(new SpecialItems.Shield(i));
-			Stock.add(new SpecialItems.Claws(i));
-=======
+
+
+
+
 		typeOfArmor = rand.nextInt(3) + 0;
 		tierOfArmor = rand.nextInt(5) + 0;
-		
+
 		if (typeOfArmor == 0)
 		{
 			itemName = "Heart";
-			
->>>>>>> Stashed changes
 		}
 
 		if (typeOfArmor == 1)
@@ -166,7 +154,7 @@ public class Store extends Items
 				break;
 		}
 	}
-	
+
 	public static void main(String args[])
 	{
 		Store test = new Store();

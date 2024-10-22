@@ -1,147 +1,20 @@
 
 public class Items
 {
-<<<<<<< Updated upstream
-	private String itemName;
-	private String itemType;
-	private int attackStat;
-	private int defenseStat;
-	private int healthStat;
-=======
+
 
 	private String itemName;
 	private String itemType;
-
 	private int attackStat;
 	private int defenseStat;
 	private int healthStat;
 	private int itemTier;
 	private int typeOfArmor;
->>>>>>> Stashed changes
 	private int price;
 	private int healingStat;
 
-//	final int priceOfWood = 3;
-//	final int priceOfBronze = 5;
-//	final int priceOfCopper = 8;
-//	final int priceOfIron = 12;
-//	final int priceOfDiamond = 17;
-//
-//	final int priceOfHelmet = 100;
-//	final int priceOfStaff = 100;
-//	final int priceOfShield = 100;
 
-<<<<<<< Updated upstream
-	final int priceOfHelmet = 100;
-	final int priceOfStaff = 100;
-	final int priceOfShield = 100;
 
-//	public Items(int statType, int statValue, String itemName, String itemType)
-//	{
-//		this.itemName = itemName;
-//		this.itemType = itemType;
-//
-//		switch (statType) // If statType is 1 it is attack, 2 is defense, 3 is
-//							// healthStat
-//		{
-//			case 1:
-//				this.attackStat = statType;
-//				break;
-//
-//			case 2:
-//				this.defenseStat = statType;
-//				break;
-//
-//			case 3:
-//				this.healthStat = statType;
-//				break;
-//		}
-//	}
-	
-	public Items(int attackStat, int defenseStat, int healthStat, String itemName)
-	{
-		this.attackStat  = attackStat + 10;
-		this.defenseStat = defenseStat + 10;
-		this.healthStat = healthStat + 10;
-		this.itemName = itemName;
-		setPrice();
-	}
-
-	//BASICALLy checks wihch stat isnt 0, then sets price = to tier
-	public void setPrice()
-	{
-		int number = 0;
-		if (attackStat > 0)
-		{
-			number = attackStat - 10;
-			switch(number) {
-			
-			case 1:
-				price = 3;
-				break;
-			case 2:
-				price = 5;
-				break;
-			case 3:
-				price = 8;
-				break;
-			case 4:
-				price = 12;
-				break;
-			case 5:
-				price = 17;
-				break;		
-			}
-		}
-		
-		if (defenseStat > 0)
-		{
-			number = healthStat - 10;
-			switch(number) {
-			
-			case 1:
-				price = 3;
-				break;
-			case 2:
-				price = 5;
-				break;
-			case 3:
-				price = 8;
-				break;
-			case 4:
-				price = 12;
-				break;
-			case 5:
-				price = 17;
-				break;		
-			}
-		}
-		if (healthStat > 0)
-		{
-			number = healthStat - 10;
-			switch(number) {
-			
-			case 1:
-				price = 3;
-				break;
-			case 2:
-				price = 5;
-				break;
-			case 3:
-				price = 8;
-				break;
-			case 4:
-				price = 12;
-				break;
-			case 5:
-				price = 17;
-				break;		
-			}
-		}
-	}
-	
-	
-=======
 	final int priceOfHeart = 10;
 	
 
@@ -289,55 +162,136 @@ public class Items
 	 */
 	public void setPrice(int typeOfArmor, int itemTier)
 	{
-
-		if (itemTier > 0 && itemTier < 6 && typeOfArmor == 2 || typeOfArmor == 3)
-		{
-
-			switch(itemTier) {
-
-				case 1:
-					this.price = 3;
-					break;
-				case 2:
-					this.price = 5;
-					break;
-				case 3:
-					this.price = 8;
-					break;
-				case 4:
-					this.price = 12;
-					break;
-				case 5:
-					this.price = 17;
-					break;		
-			}
 		
-			if (typeOfArmor == 0)
-			{
-				this.price = 10;
-			}
-
-			if (typeOfArmor == 1)
-			{
-				this.price = 100;
-			}
-			if (typeOfArmor == 2 && itemTier == 0)
-			{
-				this.price = 100;
-			}
-			if (typeOfArmor == 3 && itemTier == 0)
-			{
-				this.price = 100;
-			}
+		if (typeOfArmor == 0)
+		{
+			itemName = "Heart";
+			price = 100;
 			
+		}
+
+		if (typeOfArmor == 1)
+		{
+			itemName = "Helmet";
+			price = 100;
+		}
+		if (typeOfArmor == 2 && itemTier == 0)
+		{
+			itemName = "Sheild";
+			price = 100;
+		}
+		if (typeOfArmor == 3 && itemTier == 0)
+		{
+			itemName = "Staff";
+			price = 100;
+		}
+
+		if (typeOfArmor == 2 && itemTier == 1)
+		{
+			itemName = "Wood ChestPlate";
+			price = 3;
+		}
+		if (typeOfArmor == 2 && itemTier == 2)
+		{
+			itemName = "Bronze ChestPlate";
+			price = 5;
+		}
+
+		if (typeOfArmor == 2 && itemTier == 3)
+		{
+			itemName = "Copper ChestPlate";
+			price = 8;
+		}
+
+		if (typeOfArmor == 2 && itemTier == 4)
+		{
+			itemName = "Iron ChestPlate";
+			price = 12;
+		}
+
+		if (typeOfArmor == 2 && itemTier == 5)
+		{
+			itemName = "Diamond ChestPlate";
+			price = 17;
+		}
+
+		if (typeOfArmor == 3 && itemTier == 1)
+		{
+			itemName = "Wood Claw";
+			price = 3;
+		}
+		if (typeOfArmor == 3 && itemTier == 2)
+		{
+			itemName = "Bronze Claw";
+			price = 5;
+		}
+
+		if (typeOfArmor == 3 && itemTier == 3)
+		{
+			itemName = "Copper Claw";
+			price = 8;
+		}
+
+		if (typeOfArmor == 3 && itemTier == 4)
+		{
+			itemName = "Iron Claw";
+			price = 12;
+		}
+
+		if (typeOfArmor == 3 && itemTier == 5)
+		{
+			itemName = "Diamond Claw";
+			price = 17;
+		}
+
+//		if (itemTier > 0 && itemTier < 6 && typeOfArmor == 2 || typeOfArmor == 3)
+//		{
+//
+//			switch(itemTier) {
+//
+//				case 1:
+//					this.price = 3;
+//					break;
+//				case 2:
+//					this.price = 5;
+//					break;
+//				case 3:
+//					this.price = 8;
+//					break;
+//				case 4:
+//					this.price = 12;
+//					break;
+//				case 5:
+//					this.price = 17;
+//					break;		
+//			}
+//		
+//			if (typeOfArmor == 0)
+//			{
+//				this.price = 10;
+//			}
+//
+//			if (typeOfArmor == 1)
+//			{
+//				this.price = 100;
+//			}
+//			if (typeOfArmor == 2 && itemTier == 0)
+//			{
+//				this.price = 100;
+//			}
+//			if (typeOfArmor == 3 && itemTier == 0)
+//			{
+//				this.price = 100;
+//			}
+//			
 
 
 		}
-	}	
+	
 
 
 
->>>>>>> Stashed changes
+
 	public String getItemName()
 	{
 		return itemName;
@@ -396,9 +350,7 @@ public class Items
 		return this.price;
 	}
 
-<<<<<<< Updated upstream
-	
-=======
+
 		public static void main(String args[])
 		{
 			
@@ -412,6 +364,6 @@ public class Items
 
 
 
->>>>>>> Stashed changes
+
 
 }

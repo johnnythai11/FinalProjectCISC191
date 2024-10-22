@@ -1,22 +1,16 @@
 
-<<<<<<< Updated upstream
-public class tankChicken extends PlayerChicken
-{
 
-	public tankChicken()
-=======
 
 public class TankChicken extends PlayerChicken
 
 {
 
-	private int levelOfChicken = 1;
+	private int levelOfChicken;
 	private int baseHealth;
-	private int currentHealthOfChicken;
 	private int baseDefense;
 	private int baseDamage;
 	private int boneBalance = 1000;
-	//private Human playerHuman = new Human(1);
+	private int hungerBar;
 	private Inventory playerInventory;
 	
 	/*
@@ -25,10 +19,43 @@ public class TankChicken extends PlayerChicken
 	 * @Parameter int levelOfChicken
 	 */
 	public TankChicken(int levelOfChicken)
->>>>>>> Stashed changes
+
 	{
 		// TODO Auto-generated constructor stub
+		this.levelOfChicken = levelOfChicken;
+		baseDamage = (levelOfChicken-1)*2 +5;
+		baseHealth = (levelOfChicken-1)*2 + 35;
+		baseDefense = (levelOfChicken-1)*2 + 15;
+		
+		hungerBar = 20;
+		boneBalance = 1000;
+
 	}
+
+
+
+	@Override
+	public int getBaseDamage()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getBaseHealth()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getBaseDefense()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
 
 	@Override
 	public boolean wearClawEquiment()
@@ -37,61 +64,7 @@ public class TankChicken extends PlayerChicken
 		return false;
 	}
 
-	@Override
-	public boolean wearBodyArmorEquipment()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
 
-	@Override
-	public int buyFromStore()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int sellToStore()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean adoptHuman()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean wearSpecialEquiment()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void setInventory()
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean checkInventory()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean wearClawEquiment()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public boolean wearBodyArmorEquipment()
@@ -100,26 +73,7 @@ public class TankChicken extends PlayerChicken
 		return false;
 	}
 
-	@Override
-	public int buyFromStore()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
-	@Override
-	public int sellToStore()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean adoptHuman()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public boolean wearSpecialEquiment()
@@ -128,6 +82,35 @@ public class TankChicken extends PlayerChicken
 		return false;
 	}
 
+
+
+	@Override
+	public int buyFromStore()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
+	@Override
+	public int sellToStore()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+
+	@Override
+	public boolean adoptHuman()
+	{
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
 	@Override
 	public void setInventory()
 	{
@@ -135,11 +118,17 @@ public class TankChicken extends PlayerChicken
 		
 	}
 
+
+
 	@Override
 	public boolean checkInventory()
 	{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+
+
+
 
 }

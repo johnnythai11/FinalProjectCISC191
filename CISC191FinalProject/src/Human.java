@@ -2,26 +2,15 @@ import java.lang.reflect.Array;
 
 public class Human 
 {
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 	private Array[][] mapLocationOfHuman = {};
-	private int level = 1; 
+	private int level; 
 	private int statBoostHealth = 0;
 	private int statBoostAttack = 0;
 	private int statBoostDefense = 0;
 	private int boostHungerBar = 50;
 	private PlayerChicken chickenLevel;
-<<<<<<< Updated upstream
-	
 
-	public Human()
-	{
-		// TODO Auto-generated constructor stub
-	}
-	
-=======
 
 
 	/*
@@ -42,31 +31,22 @@ public class Human
 
 
 
->>>>>>> Stashed changes
+
 	public Array[][] getHumanLocation()
 	{
 		return mapLocationOfHuman;
 	}
-<<<<<<< Updated upstream
-	
-=======
 
 	/*
 	 * Human will be on the left side of the player chicken
 	 */
->>>>>>> Stashed changes
 	public void setHumanLocation()
 	{
 
 	}
-<<<<<<< Updated upstream
+
 	
-	public int getHumanLevel()
-	{
-		return level;
-	}
 	
-=======
 
 	/*
 	 * gets the level of the human for the PlayerChicken
@@ -84,7 +64,7 @@ public class Human
 		level = x;
 	}
 
->>>>>>> Stashed changes
+
 	/*
 	 * human level is dependent on the chicken Level
 	 * chicken level 1-10 will be assigned level 1 human
@@ -93,56 +73,30 @@ public class Human
 	 * chicken level 31-40 will be assigned level 4 human
 	 * chicken level 41-50 will be assigned level 5 human
 	 */
-	public void setHumanLevel()
+	public void setHumanLevel(int level)
 	{
-		if (chickenLevel.getLevel() < 11 && chickenLevel.getLevel() > 0)
+		if (level > 0 && level < 6)
 		{
-<<<<<<< Updated upstream
-			level = 1;
-=======
-			this.level = levelOfHuman;
->>>>>>> Stashed changes
-		}
-		else if (chickenLevel.getLevel() < 21 && chickenLevel.getLevel() > 10)
-		{
-<<<<<<< Updated upstream
-			level = 2;
-		}
-		else if (chickenLevel.getLevel() < 31 && chickenLevel.getLevel() > 20)
-		{
-			level = 3;
+			this.level = level;
 		}
 		
-		else if (chickenLevel.getLevel() < 41 && chickenLevel.getLevel() > 30)
-		{
-			level = 4;
-		}
-		else if (chickenLevel.getLevel() < 51 && chickenLevel.getLevel() > 40)
-		{
-			level = 5;
-		}
+		this.level = 1;
 		
 		
 	}
-	
-=======
-			this.level = 1;
-		}
 
 
-
-	}
 
 	/*
 	 * Gets the hunger bar boost stat which  is 50 for the PlayerChicken
 	 * @Return int boostHungerBar;
 	 */
->>>>>>> Stashed changes
+
 	public int getGainHungerBar()
 	{
 		return boostHungerBar;
 	}
-<<<<<<< Updated upstream
+
 	
 	/*
 	 * level 1-5 human will fill hunger bar
@@ -152,7 +106,7 @@ public class Human
 		boostHungerBar = x;
 	}
 	
-=======
+
 
 	//	/*
 	//	 * level 1-5 human will fill hunger bar
@@ -162,7 +116,7 @@ public class Human
 	//		boostHungerBar = 50;
 	//	}
 
->>>>>>> Stashed changes
+
 	public double getAttackBoost()
 	{
 		return statBoostAttack;
@@ -181,17 +135,16 @@ public class Human
 	{
 		statBoostAttack = level*2 - 2;
 	}
-<<<<<<< Updated upstream
+
 	
-	public double getDefenseBoost()
-=======
+
 
 	/*
 	 * Gets the defense boost stat of the human 
 	 * @return int statBoostDefense
 	 */
 	public int getDefenseBoost()
->>>>>>> Stashed changes
+
 	{
 		return statBoostDefense;
 
@@ -211,7 +164,7 @@ public class Human
 		{
 			statBoostDefense = level*2 - 2;
 		}
-<<<<<<< Updated upstream
+
 	}
 	
 	public double getHealthBoost()
@@ -224,11 +177,11 @@ public class Human
 	{
 		statBoostHealth = x;
 	}
-=======
 
 
-	}
+
+	
 
 
->>>>>>> Stashed changes
+
 }

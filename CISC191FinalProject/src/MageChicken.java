@@ -25,24 +25,28 @@
  */
 public class MageChicken extends PlayerChicken
 {
-<<<<<<< Updated upstream
-=======
+
 	
-	private int levelOfChicken = 1;
+	private int levelOfChicken;
 	private int baseHealth;
-	private int currentHealthOfChicken;
 	private int baseDefense;
 	private int baseDamage;
 	private int boneBalance = 1000;
-	//private Human playerHuman = new Human();
+	private int hungerBar;
 	private Inventory playerInventory;
+	
 	
 	public MageChicken(int levelOfChicken)
 	{
 		// TODO Auto-generated constructor stub
+		this.levelOfChicken = levelOfChicken;
 		baseDamage = (levelOfChicken-1)*2 +10;
 		baseHealth = (levelOfChicken-1)*2 + 15;
 		baseDefense = (levelOfChicken-1)*2 + 5;
+		
+		hungerBar = 20;
+		boneBalance = 1000;
+
 		
 	}
 	
@@ -63,7 +67,7 @@ public class MageChicken extends PlayerChicken
 	{
 		return baseDefense;
 	}
->>>>>>> Stashed changes
+
 
 	@Override
 	public boolean wearClawEquiment()
@@ -120,5 +124,6 @@ public class MageChicken extends PlayerChicken
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 
 }

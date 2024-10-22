@@ -1,12 +1,9 @@
 
 public class Combat {
 
-<<<<<<< Updated upstream
+
 	PlayerChicken player;
 	EnemyChicken enemy;
-	
-=======
-
 	int attackDamage;
 	int enemyHealth;
 	int playerHealth;
@@ -27,19 +24,6 @@ public class Combat {
 		return attackDamage;
 	}
 
->>>>>>> Stashed changes
-
-	public int basicAttack()
-	{
-		int tempHealth = enemy.getHealth() - player.getChickenDamage();
-		 
-	}
-<<<<<<< Updated upstream
-	
-	public void takeDamageForEnemy()
-	{
-		
-=======
 
 	/*
 	 * Calculates the damage taken for the player base on enemy's attack damage
@@ -61,11 +45,10 @@ public class Combat {
 		return playerHealth;
 	}
 
-
 	public static void main(String args[])
 	{
 
->>>>>>> Stashed changes
+
 	}
 
 }
