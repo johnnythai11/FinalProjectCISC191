@@ -1,30 +1,20 @@
 /**
- * Lead Author(s):
- * 
- * @author Full name; student ID
- * @author Full name; student ID
- *         <<Add additional lead authors here>>
- *
- *         Other Contributors:
- *         Full name; student ID or contact information if not in class
- *         <<Add additional contributors (mentors, tutors, friends) here, with
- *         contact information>>
- *
- *         References:
- *         Morelli, R., & Walde, R. (2016).
- *         Java, Java, Java: Object-Oriented Problem Solving
- *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
- *
- *         <<Add more references here>>
- *
- *         Version: number or date
- *         2024-10-16
- *         jacobwiemann
- */
+* Lead Author(s):
+* @author Full name: Johnny Thai
+* @author Full name: Jacob Wiemann
+* @author Full name: Daniel Soto
+*
+* Other Contributors: none
+*
+* References:
+* Morelli, R., & Walde, R. (2016).
+* Java, Java, Java: Object-Oriented Problem Solving
+* https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+*
+* Version: 2024-10-16
+* 
+*/
 
-/**
- * 
- */
 public abstract class PlayerChicken
 {
 	private int levelOfChicken;

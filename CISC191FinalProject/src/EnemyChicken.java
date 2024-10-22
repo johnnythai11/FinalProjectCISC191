@@ -1,13 +1,29 @@
 
+/**
+* Lead Author(s):
+* @author Full name: Johnny Thai
+* @author Full name: Jacob Wiemann
+* @author Full name: Daniel Soto
+*
+* Other Contributors: none
+*
+* References:
+* Morelli, R., & Walde, R. (2016).
+* Java, Java, Java: Object-Oriented Problem Solving
+* https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+*
+* Version: 2024-10-16
+* 
+*/
 public class EnemyChicken {
 
 	//  Fields
-	
 	private int maxHealth;
-	private int currentHealth;
+	private int attack;
 	private int levelOfChicken;
-	private int defence;
-	
+	private int defense;
+	private int level;
+
 	//Constructors
 	/**
 	 * Constructs an enemyChicken
@@ -18,25 +34,35 @@ public class EnemyChicken {
 	{
 		levelOfChicken = level;
 		maxHealth = (int)(level * 0.5) + 10;
-		currentHealth = (int)(level * 0.5) + 10;
-		defence = (int)(level * 0.5) + 10;
-		
+		attack = (int)(level * 0.5) + 10;
+		defense = (int)(level * 0.5) + 10;
+
 	}
-	
+
 	/**
 	 * Constructs a chicken with random level, health equal to 20 times the level
 	 */
 	EnemyChicken()
 	{
-		int level = (int)(Math.random() * 50); 
-		levelOfChicken = level +1;
+		level = (int)(Math.random() * 50); 
+		levelOfChicken = level;
 		maxHealth = (int)(level * 0.5) + 10;
-		currentHealth = (int)(level * 0.5) + 10;
-		defence = (int)(level * 0.5) + 10;
+		attack = (int)(level * 0.5) + 10;
+		defense = (int)(level * 0.5) + 10;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Level of Enemy: " + level + "\n" +
+				"Health: " + maxHealth + "\n" + 
+				"Attack Damage: " + attack + "\n" +
+				"Defense: " + defense;
+
 	}
 	/**
-	 * Return's a damage number dependant on the level
-	 * @return <int>
+	 * Return's a damage number dependent on the level
+	 * @return integer
 	 */
 	public int doDamage()
 	{
@@ -48,28 +74,28 @@ public class EnemyChicken {
 	 */
 	public void takeDamage(int incomingDamage)
 	{
-		// Checks if damage is greater than total defence, and defence is > 0
-		if ((incomingDamage > defence) && (defence > 0))
+		// Checks if damage is greater than total defense, and defense is > 0
+		if ((incomingDamage > defense) && (defense > 0))
 		{
-			defence = 0;
+			defense = 0;
 		}
-		// Else if defence is not broken it decreases defence
-		else if (defence != 0)
+		// Else if defense is not broken it decreases defense
+		else if (defense != 0)
 		{
-			defence = defence - incomingDamage;
+			defense = defense - incomingDamage;
 		}
-		//finally if there is no defence, decrease current health
+		//finally if there is no defense, decrease current health
 		else
 		{
-			currentHealth = currentHealth - incomingDamage;
-			if (currentHealth < 0) // If the health is less than 0 set to 0
+			maxHealth = maxHealth - incomingDamage;
+			if (maxHealth < 0) // If the health is less than 0 set to 0
 			{
-				currentHealth = 0;
+				maxHealth = 0;
 			}
 		}
-		
+
 	}
-	
+
 	// Getters And Setters
 	/**
 	 * Setter Method for <maxHealth>
@@ -88,23 +114,7 @@ public class EnemyChicken {
 		return maxHealth;
 	}
 
-	/**
-	 * Setter Method for <currentHealth>
-	 * @param currentHealth Set <currentHealth>
-	 */
-	public void setCurrentHealth(int currentHealth)
-	{
-		this.currentHealth = currentHealth;
-	}
 
-	/**
-	 * 
-	 * @return <currentHealth>
-	 */
-	public int getCurrentHealth()
-	{
-		return currentHealth;
-	}
 	/**
 	 * 
 	 * @param level Set <level>
@@ -113,7 +123,7 @@ public class EnemyChicken {
 	{
 		levelOfChicken = level;
 	}
-	
+
 	/**
 	 * 
 	 * @return <levelOfChicken>
@@ -121,5 +131,12 @@ public class EnemyChicken {
 	public int getLevelOfChicken()
 	{
 		return levelOfChicken;
+	}
+
+	public static void main(String args[])
+	{
+//		EnemyChicken level = new EnemyChicken();
+//		System.out.println(level.toString());
+
 	}
 }

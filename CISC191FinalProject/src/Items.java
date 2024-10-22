@@ -1,3 +1,19 @@
+/**
+* Lead Author(s):
+* @author Full name: Johnny Thai
+* @author Full name: Jacob Wiemann
+* @author Full name: Daniel Soto
+*
+* Other Contributors: none
+*
+* References:
+* Morelli, R., & Walde, R. (2016).
+* Java, Java, Java: Object-Oriented Problem Solving
+* https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+*
+* Version: 2024-10-16
+* 
+*/
 
 public class Items
 {
@@ -243,48 +259,6 @@ public class Items
 			itemName = "Diamond Claw";
 			price = 17;
 		}
-
-//		if (itemTier > 0 && itemTier < 6 && typeOfArmor == 2 || typeOfArmor == 3)
-//		{
-//
-//			switch(itemTier) {
-//
-//				case 1:
-//					this.price = 3;
-//					break;
-//				case 2:
-//					this.price = 5;
-//					break;
-//				case 3:
-//					this.price = 8;
-//					break;
-//				case 4:
-//					this.price = 12;
-//					break;
-//				case 5:
-//					this.price = 17;
-//					break;		
-//			}
-//		
-//			if (typeOfArmor == 0)
-//			{
-//				this.price = 10;
-//			}
-//
-//			if (typeOfArmor == 1)
-//			{
-//				this.price = 100;
-//			}
-//			if (typeOfArmor == 2 && itemTier == 0)
-//			{
-//				this.price = 100;
-//			}
-//			if (typeOfArmor == 3 && itemTier == 0)
-//			{
-//				this.price = 100;
-//			}
-//			
-
 
 		}
 	
