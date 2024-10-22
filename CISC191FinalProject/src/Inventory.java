@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /**
  * Lead Author(s):
  * 
@@ -36,11 +37,56 @@ public class Inventory
 
 	}
 
+=======
+
+import java.util.ArrayList;
+
+public class Inventory extends Items
+{
+	private ArrayList<Items> inventoryArea = new ArrayList<>();
+	/*
+	 * Constructor to add the items to the inventory
+	 * @Parameters Items item
+	 */
+	Inventory(Items item)
+	{
+		addItemToInventory(item);
+		getInventory();
+	}
+	/*
+	 * Gets all Items in the inventory
+	 * @Return ArrayList<Items>
+	 */
+>>>>>>> Stashed changes
 	public ArrayList<Items> getInventory()
 	{
 		return this.inventoryArea;
 	}
+<<<<<<< Updated upstream
 	public void addItemToInventory(Items item) {
 		inventoryArea.add(item);
 	}
+=======
+
+	/*
+	 * Adds items to the ArrayList<Items>
+	 * @Parameters Items item
+	 */
+	public void addItemToInventory(Items item) {
+		inventoryArea.add(item);
+	}
+
+	public static void main(String[] args)
+	{
+		Items item2 = new Items(1,1);
+		Items item3 = new Items(2,2);
+		Items item4 = new Items(1,1);
+		Items item5 = new Items(2,2);
+		Inventory inventoryList = new Inventory(item2);
+		inventoryList.addItemToInventory(item3);
+		inventoryList.addItemToInventory(item4);
+		inventoryList.addItemToInventory(item5);
+		System.out.println(inventoryList.getInventory());
+	}
+>>>>>>> Stashed changes
 }

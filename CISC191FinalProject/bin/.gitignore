@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /main.class
 /Spawner.class
 /Combat.class
@@ -22,3 +23,13 @@
 /SpecialItems$Claws.class
 /SpecialItems$Staff.class
 /SpecialItems$Shield.class
+=======
+/TankChicken.class
+/Inventory.class
+/SpecialItems$Chestplate.class
+/SpecialItems$Claws.class
+/SpecialItems$Heart.class
+/SpecialItems$Helmet.class
+/SpecialItems$Shield.class
+/SpecialItems$Staff.class
+>>>>>>> Stashed changes
