@@ -22,7 +22,7 @@ public class Combat {
 	EnemyChicken enemy;
 	int attackDamage;
 	int enemyHealth;
-	int playerHealth;
+	
 
 	/*
 	 * sets the attack damage of the type of the player dependent on the item worn
@@ -47,11 +47,37 @@ public class Combat {
 	 * @returns playerHealth of the player
 	 */
 
-	public int takeDamageForPlayer(PlayerChicken player, EnemyChicken enemy)
+	public static int takeDamageForPlayer(PlayerChicken player, EnemyChicken enemy)
 	{
+		//enemy.getLevelOfChicken();
+		
+		
+		if ((enemy.doDamage() > player.getBaseDefense()) && (player.getBaseDefense() > 0))
+		{
+			
+			player.setDefense(0);
+		}
+		// Else if defense is not broken it decreases defense
+		else if (player.getBaseDefense() != 0)
+		{
+			int defense = player.getBaseDefense();
+			
+			defense = defense - enemy.doDamage();
+			
+		}
+		//finally if there is no defense, decrease current health
+		else
+		{
+			maxHealth = maxHealth - incomingDamage;
+			if (maxHealth < 0) // If the health is less than 0 set to 0
+			{
+				maxHealth = 0;
+			}
+		}
+		
 		if(player.getBaseHealth() != 0);
 		{
-			playerHealth = enemy.doDamage() - player.getBaseHealth();
+			player.g = ( player.getBaseDefense() + player.getBaseHealth()) - enemy.doDamage();
 		}
 
 		if (player.getBaseHealth() <= 0)
@@ -63,6 +89,12 @@ public class Combat {
 
 	public static void main(String args[])
 	{
+		
+		PlayerChicken player1 = new MeleeChicken(3);
+		EnemyChicken enemy1 = new EnemyChicken();
+		System.out.println(player1);
+		System.out.println(enemy1);
+		System.out.println(takeDamageForPlayer(player1, enemy1));
 
 
 	}

@@ -20,6 +20,7 @@ public class MeleeChicken extends PlayerChicken
 
 	
 	private int levelOfChicken;
+	private int currentHealth;
 	private int baseHealth;
 	private int baseDefense;
 	private int baseDamage;
@@ -40,7 +41,10 @@ public class MeleeChicken extends PlayerChicken
 		this.levelOfChicken = levelOfChicken;
 		
 		baseDamage = (levelOfChicken-1)*2 +8;
+		
+		currentHealth = (levelOfChicken-1)*2 + 20;
 		baseHealth = (levelOfChicken-1)*2 + 20;
+		
 		baseDefense = (levelOfChicken-1)*2 + 10;
 		hungerBar = 20;
 		boneBalance = 1000;
@@ -55,6 +59,7 @@ public class MeleeChicken extends PlayerChicken
 		return "Level of Chicken: " + levelOfChicken + "\n" +
 				"Attack Stat: " + baseDamage + "\n" +
 				"Defense Stat: " + baseDefense + "\n" +
+				"Health Stat: " + baseHealth + "\n" +
 				"Hunger Bar: " + hungerBar + "\n" +
 				"Bone Balance: " + boneBalance + "\n";
 	}
