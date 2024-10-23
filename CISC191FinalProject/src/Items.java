@@ -28,7 +28,7 @@ public class Items
 	private int typeOfArmor;
 	private int price;
 	private int healingStat;
-
+	private int inventoryIndex;
 
 
 	final int priceOfHeart = 10;
@@ -315,8 +315,12 @@ public class Items
 	{
 		this.healthStat = healthStat;
 	}
-	
-
+	public int getInventoryIndex() {
+		return this.inventoryIndex;
+	}
+	public void setInventoryIndex(int index) {
+		this.inventoryIndex = index;
+	}
 
 	public int getPrice() {
 		

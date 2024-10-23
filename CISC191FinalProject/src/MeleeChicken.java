@@ -92,20 +92,10 @@ public class MeleeChicken extends PlayerChicken
 		return false;
 	}
 
-	@Override
-	public int buyFromStore()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
+	
 
-	@Override
-	public int sellToStore()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
+	
 	@Override
 	public boolean adoptHuman()
 	{
