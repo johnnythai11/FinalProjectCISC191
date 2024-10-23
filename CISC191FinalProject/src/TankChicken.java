@@ -84,21 +84,7 @@ public class TankChicken extends PlayerChicken
 
 
 
-	@Override
-	public int buyFromStore()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
-
-
-	@Override
-	public int sellToStore()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 
 

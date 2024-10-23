@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
 * Lead Author(s):
 * @author Full name: Johnny Thai
@@ -22,9 +24,8 @@ public abstract class PlayerChicken
 	private int defenseOfChicken;
 	private int baseDamage;
 	private int boneBalance = 1000;
-
+	private Inventory inventory = new Inventory();
 	//private Human playerHuman;
-	//private Inventory playerInventory;
 
 
 
@@ -135,8 +136,19 @@ public abstract class PlayerChicken
 	public abstract boolean wearBodyArmorEquipment();
 	public abstract boolean wearSpecialEquiment();
 
-	public abstract int buyFromStore();
-	public abstract int sellToStore();
+	public boolean buyFromStore(Items item) {
+		int itemPrice = item.getPrice();
+		if(itemPrice > boneBalance) {
+			inventory.addItemToInventory(item);
+			return true;
+		} else {
+			//not enough money
+			return false;
+		}
+	}
+	public boolean sellToStore(Items item) {
+		return true;
+	}
 
 	public abstract boolean adoptHuman();
 

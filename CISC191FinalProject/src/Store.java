@@ -154,6 +154,9 @@ public class Store extends Items
 				break;
 		}
 	}
+	public ArrayList<Items> getStock () {
+		return this.Stock;
+	}
 
 	public static void main(String args[])
 	{
