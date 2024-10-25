@@ -31,8 +31,8 @@ public class MageChicken extends PlayerChicken
 	
 	
 	/*
-	 * Constructor to create the MageChicken with its base stats of Attack, Defense, Health, BoneBalance, and hungerBar
-	 * @parameters integer levelOfChicken
+	 * Constructor to create the MageChicken with its base status of Attack, Defense, Health, BoneBalance, and hungerBar
+	 * @parameters integer levelOfChicken 
 	 */
 	public MageChicken(int levelOfChicken)
 	{
