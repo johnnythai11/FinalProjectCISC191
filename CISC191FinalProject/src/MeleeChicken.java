@@ -30,11 +30,9 @@ public class MeleeChicken extends PlayerChicken
 	//private Inventory playerInventory;
 	
 	/*
-	 * Creating a MeleeChicken constructor to set the base stat of the player
+	 * Constructor to create the MeleeChicken with its base stats of Attack, Defense, Health, BoneBalance, and hungerBar
 	 * @parameters integer levelOfChicken
 	 */
-
-
 	public MeleeChicken(int levelOfChicken)
 	{
 		// TODO Auto-generated constructor stub
@@ -46,6 +44,7 @@ public class MeleeChicken extends PlayerChicken
 		baseHealth = (levelOfChicken-1)*2 + 20;
 		
 		baseDefense = (levelOfChicken-1)*2 + 10;
+		
 		hungerBar = 20;
 		boneBalance = 1000;
 
@@ -59,16 +58,18 @@ public class MeleeChicken extends PlayerChicken
 		return "Level of Chicken: " + levelOfChicken + "\n" +
 				"Attack Stat: " + baseDamage + "\n" +
 				"Defense Stat: " + baseDefense + "\n" +
-				"Health Stat: " + baseHealth + "\n" +
+				"Health Stat: " + currentHealth + "\n" +
 				"Hunger Bar: " + hungerBar + "\n" +
 				"Bone Balance: " + boneBalance + "\n";
 	}
 
+
 	
 	@Override
-	public int getBaseDamage()
+	public int getLevel()
 	{
-		return baseDamage;
+
+		return levelOfChicken;
 	}
 	
 	@Override
@@ -78,73 +79,52 @@ public class MeleeChicken extends PlayerChicken
 	}
 	
 	@Override
+	public int getCurrentHealth()
+	{
+		return currentHealth;
+	}
+	
+	@Override
+	public int getBaseDamage()
+	{
+		return baseDamage;
+	}
+	
+
+	@Override
 	public int getBaseDefense()
 	{
 		return baseDefense;
 	}
-
-	@Override
-	public boolean wearClawEquiment()
+	
+	@Override 
+	public int getBoneBalance()
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return boneBalance;
+	}
+	
+	@Override
+	public int getHungerBar()
+	{
+		return hungerBar;
 	}
 
-	@Override
-	public boolean wearBodyArmorEquipment()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
 
-	@Override
-	public int buyFromStore()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int sellToStore()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean adoptHuman()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean wearSpecialEquiment()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void setInventory()
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean checkInventory()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
 	public static void main(String args[])
 	{
 		PlayerChicken melee = new MeleeChicken(2);
 		
-		System.out.println(melee.toString());
+		//System.out.println(melee.toString());
+		System.out.println(melee);
 	}
+
+
+
+
+
+
+
 	
 	
 }

@@ -20,102 +20,86 @@ public class MageChicken extends PlayerChicken
 
 	
 	private int levelOfChicken;
+	private int currentHealth;
 	private int baseHealth;
 	private int baseDefense;
 	private int baseDamage;
-	private int boneBalance = 1000;
+	private int boneBalance;
 	private int hungerBar;
-	private Inventory playerInventory;
 	
 	
+	/*
+	 * Constructor to create the MageChicken with its base stats of Attack, Defense, Health, BoneBalance, and hungerBar
+	 * @parameters integer levelOfChicken
+	 */
 	public MageChicken(int levelOfChicken)
 	{
-		// TODO Auto-generated constructor stub
+		
 		this.levelOfChicken = levelOfChicken;
 		baseDamage = (levelOfChicken-1)*2 +10;
+		currentHealth = (levelOfChicken-1)*2 + 15;
 		baseHealth = (levelOfChicken-1)*2 + 15;
 		baseDefense = (levelOfChicken-1)*2 + 5;
-		
 		hungerBar = 20;
 		boneBalance = 1000;
 
-		
 	}
-	
+
 	@Override
-	public int getBaseDamage()
+	public String toString()
 	{
-		return baseDamage;
+		return "Level of Chicken: " + levelOfChicken + "\n" +
+				"Attack Stat: " + baseDamage + "\n" +
+				"Defense Stat: " + baseDefense + "\n" +
+				"Health Stat: " + currentHealth + "\n" +
+				"Hunger Bar: " + hungerBar + "\n" +
+				"Bone Balance: " + boneBalance + "\n";
 	}
-	
+
+
+
+	@Override
+	public int getLevel()
+	{
+
+		return levelOfChicken;
+	}
+
 	@Override
 	public int getBaseHealth()
 	{
 		return baseHealth;
 	}
-	
+
+	@Override
+	public int getCurrentHealth()
+	{
+		return currentHealth;
+	}
+
+	@Override
+	public int getBaseDamage()
+	{
+		return baseDamage;
+	}
+
+
 	@Override
 	public int getBaseDefense()
 	{
 		return baseDefense;
 	}
 
-
-	@Override
-	public boolean wearClawEquiment()
+	@Override 
+	public int getBoneBalance()
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return boneBalance;
 	}
 
 	@Override
-	public boolean wearBodyArmorEquipment()
+	public int getHungerBar()
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return hungerBar;
 	}
-
-	@Override
-	public int buyFromStore()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int sellToStore()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean adoptHuman()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean wearSpecialEquiment()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void setInventory()
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean checkInventory()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 
 }

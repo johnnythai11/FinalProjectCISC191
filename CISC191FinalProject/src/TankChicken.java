@@ -1,4 +1,19 @@
-
+/**
+* Lead Author(s):
+* @author Full name: Johnny Thai
+* @author Full name: Jacob Wiemann
+* @author Full name: Daniel Soto
+*
+* Other Contributors: none
+*
+* References:
+* Morelli, R., & Walde, R. (2016).
+* Java, Java, Java: Object-Oriented Problem Solving
+* https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+*
+* Version: 2024-10-16
+* 
+*/
 
 
 public class TankChicken extends PlayerChicken
@@ -6,125 +21,93 @@ public class TankChicken extends PlayerChicken
 {
 
 	private int levelOfChicken;
+	private int currentHealth;
 	private int baseHealth;
 	private int baseDefense;
 	private int baseDamage;
-	private int boneBalance = 1000;
+	private int boneBalance;
 	private int hungerBar;
-	private Inventory playerInventory;
-	
+	//private Inventory playerInventory;
+
 	/*
-	 * Constructor to create the TankChicken with the attack, health, and defense of the 
-	 * TankChicken
-	 * @Parameter int levelOfChicken
+	 * Constructor to create the TankChicken with its base stats of Attack, Defense, Health, BoneBalance, and hungerBar
+	 * @parameters integer levelOfChicken
 	 */
 	public TankChicken(int levelOfChicken)
 
 	{
 		// TODO Auto-generated constructor stub
+
+
 		this.levelOfChicken = levelOfChicken;
+
 		baseDamage = (levelOfChicken-1)*2 +5;
+
+		currentHealth = (levelOfChicken-1)*2 + 35;
 		baseHealth = (levelOfChicken-1)*2 + 35;
+
 		baseDefense = (levelOfChicken-1)*2 + 15;
-		
+
 		hungerBar = 20;
 		boneBalance = 1000;
 
 	}
-
-
-
+	
 	@Override
-	public int getBaseDamage()
+	public String toString()
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return "Level of Chicken: " + levelOfChicken + "\n" +
+				"Attack Stat: " + baseDamage + "\n" +
+				"Defense Stat: " + baseDefense + "\n" +
+				"Health Stat: " + currentHealth + "\n" +
+				"Hunger Bar: " + hungerBar + "\n" +
+				"Bone Balance: " + boneBalance + "\n";
 	}
 
+
+	
+	@Override
+	public int getLevel()
+	{
+
+		return levelOfChicken;
+	}
+	
 	@Override
 	public int getBaseHealth()
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return baseHealth;
 	}
+	
+	@Override
+	public int getCurrentHealth()
+	{
+		return currentHealth;
+	}
+	
+	@Override
+	public int getBaseDamage()
+	{
+		return baseDamage;
+	}
+	
 
 	@Override
 	public int getBaseDefense()
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return baseDefense;
 	}
-
-
-
-	@Override
-	public boolean wearClawEquiment()
+	
+	@Override 
+	public int getBoneBalance()
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return boneBalance;
 	}
-
-
-
+	
 	@Override
-	public boolean wearBodyArmorEquipment()
+	public int getHungerBar()
 	{
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-
-	@Override
-	public boolean wearSpecialEquiment()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-
-	@Override
-	public int buyFromStore()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-
-	@Override
-	public int sellToStore()
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-
-	@Override
-	public boolean adoptHuman()
-	{
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-
-	@Override
-	public void setInventory()
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public boolean checkInventory()
-	{
-		// TODO Auto-generated method stub
-		return false;
+		return hungerBar;
 	}
 
 
