@@ -17,7 +17,7 @@
  * 
  */
 import java.util.ArrayList;
-
+//i
 public class Inventory extends Items
 {
 	private Items[][] inventory = new Items[4][3];
