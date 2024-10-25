@@ -96,6 +96,14 @@ public class EnemyChicken {
 
 	}
 
+	
+	public static EnemyChicken generateChicken()
+	{
+		
+		return new EnemyChicken();
+	}
+	
+	
 	// Getters And Setters
 	/**
 	 * Setter Method for <maxHealth>
