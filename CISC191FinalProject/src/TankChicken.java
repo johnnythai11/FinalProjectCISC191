@@ -32,7 +32,7 @@ public class TankChicken extends PlayerChicken
 	private Equipment playerEquipment;
 
 	/*
-	 * Constructor to create the TankChicken with its base stats of Attack, Defense, Health, BoneBalance, and hungerBar
+	 * Constructor to create the TankChicken with its base status of Attack, Defense, Health, BoneBalance, and hungerBar
 	 * @parameters integer levelOfChicken
 	 */
 	public TankChicken(int levelOfChicken)

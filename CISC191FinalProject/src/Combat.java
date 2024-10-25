@@ -36,7 +36,7 @@ public class Combat {
 		return attackDamage;
 	}
 	
-	//
+
 	/*
 	 * Calculates the damage taken for the player base on enemy's attack damage
 	 * @parameters PlayerChicken, EnemyChicken, item of the player
