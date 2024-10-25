@@ -27,7 +27,9 @@ public class TankChicken extends PlayerChicken
 	private int baseDamage;
 	private int boneBalance;
 	private int hungerBar;
-	//private Inventory playerInventory;
+	
+	private Inventory playerInventory;
+	private Equipment playerEquipment;
 
 	/*
 	 * Constructor to create the TankChicken with its base stats of Attack, Defense, Health, BoneBalance, and hungerBar
@@ -37,6 +39,9 @@ public class TankChicken extends PlayerChicken
 
 	{
 		// TODO Auto-generated constructor stub
+		
+		playerInventory = new Inventory();
+		playerEquipment = new Equipment();
 
 
 		this.levelOfChicken = levelOfChicken;
@@ -51,6 +56,39 @@ public class TankChicken extends PlayerChicken
 		hungerBar = 20;
 		boneBalance = 1000;
 
+	}
+	
+	@Override
+	public void equipEquipmentItem(int indexX, int indexY)
+	{
+		Items inputItem = playerInventory.getItem(indexX, indexY);
+		switch(inputItem.getItemType()) {
+			
+			case 0:
+				playerEquipment.equipEquipmentItem(inputItem,0);
+			case 1:
+				playerEquipment.equipEquipmentItem(inputItem,1);
+			case 2:
+				if(inputItem.getItemTier() != 0)
+				{
+				playerEquipment.equipEquipmentItem(inputItem,2);
+				}
+				else
+				{
+					System.out.println("Can't equip, not right class");
+				}
+				
+			case 3:
+				if(inputItem.getItemTier() != 0)
+				{
+				playerEquipment.equipEquipmentItem(inputItem,3);
+				}
+				else
+				{
+					System.out.println("Can't equip, not right class");
+				}
+				
+		}
 	}
 	
 	@Override

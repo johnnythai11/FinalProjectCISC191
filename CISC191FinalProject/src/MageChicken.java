@@ -26,6 +26,8 @@ public class MageChicken extends PlayerChicken
 	private int baseDamage;
 	private int boneBalance;
 	private int hungerBar;
+	private Inventory playerInventory;
+	private Equipment playerEquipment;
 	
 	
 	/*
@@ -35,6 +37,10 @@ public class MageChicken extends PlayerChicken
 	public MageChicken(int levelOfChicken)
 	{
 		
+		playerInventory = new Inventory();
+		playerEquipment = new Equipment();
+		
+		
 		this.levelOfChicken = levelOfChicken;
 		baseDamage = (levelOfChicken-1)*2 +10;
 		currentHealth = (levelOfChicken-1)*2 + 15;
@@ -43,6 +49,33 @@ public class MageChicken extends PlayerChicken
 		hungerBar = 20;
 		boneBalance = 1000;
 
+	}
+	
+	@Override
+	public void equipEquipmentItem(int indexX, int indexY)
+	{
+		Items inputItem = playerInventory.getItem(indexX, indexY);
+		switch(inputItem.getItemType()) {
+			
+			case 0:
+				playerEquipment.equipEquipmentItem(inputItem,0);
+			case 1:
+				System.out.println("Can't equip, not right class");
+			case 2:
+				if(inputItem.getItemTier() != 0)
+				{
+					playerEquipment.equipEquipmentItem(inputItem,2);
+				}
+				else
+				{
+					System.out.println("Can't equip, not right class");
+				}
+			case 3:
+			
+				playerEquipment.equipEquipmentItem(inputItem,3);
+			
+				
+		}
 	}
 
 	@Override

@@ -30,11 +30,8 @@ public class Combat {
 	public static int basicAttack(PlayerChicken player, Items playeritem)
 	{
 
-		int attackStat = playeritem.getAttackStat();
-		int baseDamage = player.getBaseDamage();
-		int attackDamage;
 
-		attackDamage = attackStat + baseDamage;
+		int attackDamage = playeritem.getAttackStat() + player.getBaseDamage();
 
 		return attackDamage;
 	}
@@ -103,10 +100,6 @@ public class Combat {
 		}
 		return currentHealth;
 	}
-
-
-
-
 
 
 	public static void main(String args[])

@@ -1,140 +1,95 @@
 /**
-* Lead Author(s):
-* @author Full name: Johnny Thai
-* @author Full name: Jacob Wiemann
-* @author Full name: Daniel Soto
-*
-* Other Contributors: none
-*
-* References:
-* Morelli, R., & Walde, R. (2016).
-* Java, Java, Java: Object-Oriented Problem Solving
-* https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
-*
-* Version: 2024-10-16
-* 
-*/
+ * Lead Author(s):
+ * @author Full name: Johnny Thai
+ * @author Full name: Jacob Wiemann
+ * @author Full name: Daniel Soto
+ *
+ * Other Contributors: none
+ *
+ * References:
+ * Morelli, R., & Walde, R. (2016).
+ * Java, Java, Java: Object-Oriented Problem Solving
+ * https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+ *
+ * Version: 2024-10-16
+ * 
+ */
 
-
-import java.lang.reflect.Array;
 
 public class Human 
 {
 
-	private Array[][] mapLocationOfHuman = {};
 	private int level; 
-	private int statBoostHealth = 0;
-	private int statBoostAttack = 0;
-	private int statBoostDefense = 0;
-	private int boostHungerBar = 50;
-	private PlayerChicken chickenLevel;
-
-
-
+	private int statBoostHealth;
+	private int statBoostAttack;
+	private int statBoostDefense;
+	private int boostHungerBar;
+	
 	/*
-	 * Constructor for a Human with all the boost stats Attack, Defense, hungerBarBoost, 
-	 * level of the human
-	 * @Parameter int level
+	 * Constructor for a Human with all the boost status of Attack, Defense, hungerBarBoost, 
+	 * chicken level 1-10 will be able to get level 1 human boost Attack by 0, Defense by 0
+	 * chicken level 11-20 will be able to get level 2 human boost Attack by 2, Defense by 0
+	 * chicken level 21-30 will be able to get level 3 human boost Attack by 4, Defense by 0
+	 * chicken level 31-40 will be able to get level 4 human boost Attack by 6, Defense by 6
+	 * chicken level 41-50 will be able to get level 5 human boost Attack by 8, Defense by 8
+	 * @Parameter integer level 
 	 */
 	public Human(int level)
 	{
-		
-		this.getDefenseBoost();
-		this.getAttackBoost();
-		this.setHumanLevel(level);
-		this.getHumanLevel();
-		this.getGainHungerBar();
-	}
-
-
-
-
-
-	public Array[][] getHumanLocation()
-	{
-		return mapLocationOfHuman;
-	}
-
-	/*
-	 * Human will be on the left side of the player chicken
-	 */
-	public void setHumanLocation()
-	{
+		if(level < 4 && level > 0)
+		{
+			this.level = level;			
+			statBoostAttack = level*2 - 2;
+			boostHungerBar = 20;
+		}
+		else if (level > 3 && level < 6)
+		{
+			statBoostDefense = level*2 - 2;	
+			statBoostAttack = level*2 - 2;
+			boostHungerBar = 20;
+		}
+		else 
+		{
+			this.level = 1;
+			statBoostDefense = level*2 - 2;	
+			statBoostAttack = level*2 - 2;
+			boostHungerBar = 20;	
+		}
 
 	}
-
 	
-	
+	@Override
+	public String toString()
+	{
+		return "defense: " + statBoostDefense + 
+				" attack: " + statBoostAttack + 
+				" hunger: " + boostHungerBar + "\n";
+	}
+
 
 	/*
 	 * gets the level of the human for the PlayerChicken
 	 * @Return Level
 	 */
 	public int getHumanLevel()
-
 	{
 		return level;
 	}
 
-
-	public void setLevel(int x)
-	{
-		level = x;
-	}
-
-
 	/*
-	 * human level is dependent on the chicken Level
-	 * chicken level 1-10 will be assigned level 1 human
-	 * chicken level 11-20 will be assigned level 2 human
-	 * chicken level 21-30 will be assigned level 3 human
-	 * chicken level 31-40 will be assigned level 4 human
-	 * chicken level 41-50 will be assigned level 5 human
-	 */
-	public void setHumanLevel(int level)
-	{
-		if (level > 0 && level < 6)
-		{
-			this.level = level;
-		}
-		
-		this.level = 1;
-		
-		
-	}
-
-
-
-	/*
-	 * Gets the hunger bar boost stat which  is 50 for the PlayerChicken
-	 * @Return int boostHungerBar;
+	 * Gets the hunger bar boost status which  is 20 for the PlayerChicken
+	 * @Return integer boostHungerBar;
 	 */
 
 	public int getGainHungerBar()
 	{
 		return boostHungerBar;
 	}
-
 	
 	/*
-	 * level 1-5 human will fill hunger bar
+	 * Gets the attack boost status of the human 
+	 * @return integer statBoostAttack
 	 */
-	public void setGainHungerBar(int x)
-	{
-		boostHungerBar = x;
-	}
-	
-
-
-	//	/*
-	//	 * level 1-5 human will fill hunger bar
-	//	 */
-	//	public void setGainHungerBar()
-	//	{
-	//		boostHungerBar = 50;
-	//	}
-
-
 	public double getAttackBoost()
 	{
 		return statBoostAttack;
@@ -142,24 +97,8 @@ public class Human
 	}
 
 	/*
-	 * level 1 human will boost playerChicken attack by 0
-	 * level 2 human will boost playerChicken attack by 2
-	 * level 3 human will boost playerChicken attack by 4
-	 * level 4 human will boost playerChicken attack by 6
-	 * level 5 human will boost playerChicken attack by 8
-	 * @parameters int level
-	 */
-	public void setAttackBoost()
-	{
-		statBoostAttack = level*2 - 2;
-	}
-
-	
-
-
-	/*
-	 * Gets the defense boost stat of the human 
-	 * @return int statBoostDefense
+	 * Gets the defense boost status of the human 
+	 * @return integer statBoostDefense
 	 */
 	public int getDefenseBoost()
 
@@ -167,38 +106,22 @@ public class Human
 		return statBoostDefense;
 
 	}
-
-	/*
-	 * level 1 human will boost playerChicken defense by 0
-	 * level 2 human will boost playerChicken defense by 0
-	 * level 3 human will boost playerChicken defense by 0
-	 * level 4 human will boost playerChicken defense by 6
-	 * level 5 human will boost playerChicken defense by 8
-	 * 
-	 */
-	public void setDefenseBoost()
-	{
-		if (level > 3)
-		{
-			statBoostDefense = level*2 - 2;
-		}
-
-	}
 	
-	public double getHealthBoost()
+	/*
+	 * Gets the health boost status of the human
+	 * @return integer statBoostDefense
+	 */
+	public int getHealthBoost()
 	{
 		return statBoostHealth;
-		
+
 	}
 	
-	public void setHealthBoost(int x)
+	public static void main (String args[])
 	{
-		statBoostHealth = x;
+		Human n = new Human(4);
+		System.out.println(n);
 	}
-
-
-
-	
 
 
 

@@ -22,7 +22,7 @@ public abstract class PlayerChicken
 
 	/*
 	 * Constructor to create the Chicken class with the level input
-	 * @Parameters int level
+	 * @Parameters integer level
 	 */
 	public PlayerChicken()
 	{
@@ -36,6 +36,8 @@ public abstract class PlayerChicken
 	public abstract int getBaseDefense();
 	public abstract int getHungerBar();
 	public abstract int getBoneBalance();
+	
+	public abstract void equipEquipmentItem(int indexX, int indexY);
 
 
 

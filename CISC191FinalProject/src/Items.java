@@ -1,19 +1,19 @@
 /**
-* Lead Author(s):
-* @author Full name: Johnny Thai
-* @author Full name: Jacob Wiemann
-* @author Full name: Daniel Soto
-*
-* Other Contributors: none
-*
-* References:
-* Morelli, R., & Walde, R. (2016).
-* Java, Java, Java: Object-Oriented Problem Solving
-* https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
-*
-* Version: 2024-10-16
-* 
-*/
+ * Lead Author(s):
+ * @author Full name: Johnny Thai
+ * @author Full name: Jacob Wiemann
+ * @author Full name: Daniel Soto
+ *
+ * Other Contributors: none
+ *
+ * References:
+ * Morelli, R., & Walde, R. (2016).
+ * Java, Java, Java: Object-Oriented Problem Solving
+ * https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+ *
+ * Version: 2024-10-16
+ * 
+ */
 
 public class Items
 {
@@ -32,7 +32,7 @@ public class Items
 
 
 	final int priceOfHeart = 10;
-	
+
 
 
 
@@ -47,7 +47,7 @@ public class Items
 	}
 	public Items()
 	{
-		
+
 	}
 
 
@@ -63,7 +63,6 @@ public class Items
 		{
 			this.typeOfArmor = typeOfArmor;
 			itemTier = 0;
-			//this.price = 10;
 			healingOfHeart();
 			itemName = "Heart";
 		}
@@ -83,25 +82,25 @@ public class Items
 			this.defenseStat = itemTier;
 			if (itemTier == 1)
 			{
-			itemName = "Wood ChestPlate";
+				itemName = "Wood ChestPlate";
 			}
 			if (itemTier == 2)
 			{
-			itemName = "Bronze ChestPlate";
+				itemName = "Bronze ChestPlate";
 			}
 			if (itemTier == 3)
 			{
-			itemName = "Copper ChestPlate";
+				itemName = "Copper ChestPlate";
 			}
 			if (itemTier == 4)
 			{
-			itemName = "Iron ChestPlate";
+				itemName = "Iron ChestPlate";
 			}
 			if (itemTier == 5)
 			{
-			itemName = "Diamond ChestPlate";
+				itemName = "Diamond ChestPlate";
 			}
-			
+
 		}
 		//for the Shield special item
 		if (typeOfArmor == 2 && itemTier == 0)
@@ -119,23 +118,23 @@ public class Items
 			this.attackStat = itemTier;
 			if (itemTier == 1)
 			{
-			itemName = "Wood Claw";
+				itemName = "Wood Claw";
 			}
 			if (itemTier == 2)
 			{
-			itemName = "Bronze Claw";
+				itemName = "Bronze Claw";
 			}
 			if (itemTier == 3)
 			{
-			itemName = "Copper Claw";
+				itemName = "Copper Claw";
 			}
 			if (itemTier == 4)
 			{
-			itemName = "Iron Claw";
+				itemName = "Iron Claw";
 			}
 			if (itemTier == 5)
 			{
-			itemName = "Diamond Claw";
+				itemName = "Diamond Claw";
 			}
 		}
 		//for the Staff special item
@@ -146,10 +145,10 @@ public class Items
 			this.attackStat = 10;
 			//this.price = 100;
 		} 
-			this.typeOfArmor = typeOfArmor;
-			this.itemTier = itemTier;
-			//this.itemName = itemName;
-			setPrice(typeOfArmor, itemTier);
+		this.typeOfArmor = typeOfArmor;
+		this.itemTier = itemTier;
+		//this.itemName = itemName;
+		setPrice(typeOfArmor, itemTier);
 	}
 
 	/*
@@ -178,12 +177,12 @@ public class Items
 	 */
 	public void setPrice(int typeOfArmor, int itemTier)
 	{
-		
+
 		if (typeOfArmor == 0)
 		{
 			itemName = "Heart";
 			price = 100;
-			
+
 		}
 
 		if (typeOfArmor == 1)
@@ -260,8 +259,18 @@ public class Items
 			price = 17;
 		}
 
-		}
+	}
 	
+	public int getItemTier()
+	{
+		return itemTier;
+	}
+	
+	public void setItemTier(int itemTier)
+	{
+		this.itemTier = itemTier;
+	}
+
 
 
 
@@ -276,14 +285,14 @@ public class Items
 		this.itemName = itemName;
 	}
 
-	public String getItemType()
+	public int getItemType()
 	{
-		return itemType;
+		return typeOfArmor;
 	}
 
-	public void setItemType(String itemType)
+	public void setItemType(int typeOfArmor)
 	{
-		this.itemType = itemType;
+		this.typeOfArmor = typeOfArmor;
 	}
 
 	public int getAttackStat()
@@ -315,26 +324,26 @@ public class Items
 	{
 		this.healthStat = healthStat;
 	}
-	
+
 
 
 	public int getPrice() {
-		
+
 
 		return this.price;
 	}
 
 
-		public static void main(String args[])
-		{
-			
-			Items woodClawStat = new Items(2,3);
-			Items item1 = new Items(2,5);
-			
-			System.out.println(woodClawStat.toString());
-			System.out.println(item1.toString());
+	public static void main(String args[])
+	{
 
-		}
+		Items woodClawStat = new Items(2,3);
+		Items item1 = new Items(2,5);
+
+		System.out.println(woodClawStat.toString());
+		System.out.println(item1.toString());
+
+	}
 
 
 

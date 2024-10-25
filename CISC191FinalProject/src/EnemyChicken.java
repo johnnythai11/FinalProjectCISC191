@@ -1,4 +1,5 @@
 
+
 /**
 * Lead Author(s):
 * @author Full name: Johnny Thai
@@ -96,6 +97,18 @@ public class EnemyChicken {
 
 	}
 
+	public int getDefense()
+	{
+		return defense;
+	}
+	//generates random chicken
+	public static EnemyChicken generateChicken()
+	{
+		
+		return new EnemyChicken();
+	}
+	
+	
 	// Getters And Setters
 	/**
 	 * Setter Method for <maxHealth>
