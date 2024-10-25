@@ -17,11 +17,11 @@
  * 
  */
 import java.util.ArrayList;
-
+//i
 public class Inventory extends Items
 {
 	private Items[][] inventory = new Items[4][3];
-	private ArrayList<Items> inventoryArea = new ArrayList<>();
+	
 
 	/*
 	 * Constructor to add the items to the inventory
@@ -42,9 +42,9 @@ public class Inventory extends Items
 	 * @Return ArrayList<Items>
 	 */
 
-	public ArrayList<Items> getInventory()
+	public Items[][] getInventory()
 	{
-		return this.inventoryArea;
+		return this.inventory;
 	}
 
 	/*
