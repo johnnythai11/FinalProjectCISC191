@@ -5,14 +5,14 @@
  * @author Full name: Jacob Wiemann
  * @author Full name: Daniel Soto
  *
- *         Other Contributors: none
+ * Other Contributors: none
  *
- *         References:
- *         Morelli, R., & Walde, R. (2016).
- *         Java, Java, Java: Object-Oriented Problem Solving
- *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+ * References:
+ * Morelli, R., & Walde, R. (2016).
+ * Java, Java, Java: Object-Oriented Problem Solving
+ * https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
  *
- *         Version: 2024-10-16
+ * Version: 2024-10-16
  * 
  */
 
@@ -20,7 +20,6 @@
 public class Inventory extends Items
 {
     private Items[][] inventory = new Items[4][3];
-    
 
     /*
      * Constructor to add the items to the inventory

@@ -26,6 +26,7 @@ public class MeleeChicken extends PlayerChicken
 	private int baseDamage;
 	private int boneBalance;
 	private int hungerBar;
+	private int expBar;
 	private Inventory playerInventory;
 	private Equipment playerEquipment;
 	
@@ -47,8 +48,17 @@ public class MeleeChicken extends PlayerChicken
 		baseDefense = (levelOfChicken-1)*2 + 10;
 		hungerBar = 20;
 		boneBalance = 1000;
+		expBar = 100 + (levelOfChicken-1)*50;
 
 	}
+	
+	@Override
+	public int expBar()
+	{
+
+		return expBar;
+	}
+	
 	
 	
 	@Override
@@ -140,6 +150,7 @@ public class MeleeChicken extends PlayerChicken
 	public static void main(String args[])
 	{
 		PlayerChicken melee = new MeleeChicken(2);
+		
 		
 		//System.out.println(melee.toString());
 		System.out.println(melee);

@@ -1,5 +1,3 @@
-
-
 /**
 * Lead Author(s):
 * @author Full name: Johnny Thai
@@ -16,6 +14,9 @@
 * Version: 2024-10-16
 * 
 */
+
+import java.util.*;
+
 public class EnemyChicken {
 
 	//  Fields
@@ -24,6 +25,8 @@ public class EnemyChicken {
 	private int levelOfChicken;
 	private int defense;
 	private int level;
+	private int expGiven;
+	private int boneToken;
 
 	//Constructors
 	/**
@@ -37,11 +40,14 @@ public class EnemyChicken {
 		maxHealth = (int)(level * 0.5) + 10;
 		attack = (int)(level * 0.5) + 10;
 		defense = (int)(level * 0.5) + 10;
+		expGiven = level;
+		Random r = new Random();
+		boneToken = r.nextInt(4) + 3;
 
 	}
 
 	/**
-	 * Constructs a chicken with random level, health equal to 20 times the level
+	 * Constructs a chicken with random level
 	 */
 	EnemyChicken()
 	{
@@ -50,6 +56,20 @@ public class EnemyChicken {
 		maxHealth = (int)(level * 0.5) + 10;
 		attack = (int)(level * 0.5) + 10;
 		defense = (int)(level * 0.5) + 10;
+		
+		expGiven = level;
+		Random r = new Random();
+		boneToken = r.nextInt(10) + 1;
+	}
+	
+	public int getExpGiven()
+	{
+		return expGiven;
+	}
+	
+	public int getBoneToken()
+	{
+		return boneToken;
 	}
 
 	@Override
@@ -58,7 +78,9 @@ public class EnemyChicken {
 		return "Level of Enemy: " + level + "\n" +
 				"Health: " + maxHealth + "\n" + 
 				"Attack Damage: " + attack + "\n" +
-				"Defense: " + defense;
+				"Defense: " + defense + "\n" +
+				"Exp Given: " + expGiven + "\n" + 
+				"Bone Token: " + boneToken;
 
 	}
 	/**
@@ -148,8 +170,8 @@ public class EnemyChicken {
 
 	public static void main(String args[])
 	{
-//		EnemyChicken level = new EnemyChicken();
-//		System.out.println(level.toString());
+		EnemyChicken level = new EnemyChicken();
+		System.out.println(level.toString());
 
 	}
 }

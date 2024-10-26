@@ -15,7 +15,6 @@
 * 
 */
 
-
 public class TankChicken extends PlayerChicken
 
 {
@@ -27,7 +26,7 @@ public class TankChicken extends PlayerChicken
 	private int baseDamage;
 	private int boneBalance;
 	private int hungerBar;
-	
+	private int expBar;
 	private Inventory playerInventory;
 	private Equipment playerEquipment;
 
@@ -38,26 +37,31 @@ public class TankChicken extends PlayerChicken
 	public TankChicken(int levelOfChicken)
 
 	{
-		// TODO Auto-generated constructor stub
 		
 		playerInventory = new Inventory();
 		playerEquipment = new Equipment();
 
 
 		this.levelOfChicken = levelOfChicken;
-
 		baseDamage = (levelOfChicken-1)*2 +5;
-
 		currentHealth = (levelOfChicken-1)*2 + 35;
 		baseHealth = (levelOfChicken-1)*2 + 35;
-
 		baseDefense = (levelOfChicken-1)*2 + 15;
-
 		hungerBar = 20;
 		boneBalance = 1000;
+		expBar = 100 + (levelOfChicken-1)*50;
+	    
 
 	}
 	
+	@Override
+	public int expBar()
+	{
+
+		return expBar;
+	}
+	
+
 	@Override
 	public void equipEquipmentItem(int indexX, int indexY)
 	{
@@ -99,7 +103,8 @@ public class TankChicken extends PlayerChicken
 				"Defense Stat: " + baseDefense + "\n" +
 				"Health Stat: " + currentHealth + "\n" +
 				"Hunger Bar: " + hungerBar + "\n" +
-				"Bone Balance: " + boneBalance + "\n";
+				"Bone Balance: " + boneBalance + "\n" +
+				"EXP Bar: " + expBar;
 	}
 
 
@@ -146,6 +151,14 @@ public class TankChicken extends PlayerChicken
 	public int getHungerBar()
 	{
 		return hungerBar;
+	}
+	
+	public static void main(String args[])
+	
+	{
+		PlayerChicken tank = new TankChicken(49);
+		
+		System.out.println(tank);
 	}
 
 

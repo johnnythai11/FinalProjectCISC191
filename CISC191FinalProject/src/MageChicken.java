@@ -26,6 +26,7 @@ public class MageChicken extends PlayerChicken
 	private int baseDamage;
 	private int boneBalance;
 	private int hungerBar;
+	private int expBar;
 	private Inventory playerInventory;
 	private Equipment playerEquipment;
 	
@@ -48,8 +49,17 @@ public class MageChicken extends PlayerChicken
 		baseDefense = (levelOfChicken-1)*2 + 5;
 		hungerBar = 20;
 		boneBalance = 1000;
+		expBar = 100 + (levelOfChicken-1)*50;
 
 	}
+	
+	@Override
+	public int expBar()
+	{
+
+		return expBar;
+	}
+	
 	
 	@Override
 	public void equipEquipmentItem(int indexX, int indexY)
