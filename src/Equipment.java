@@ -40,7 +40,7 @@ public class Equipment
 	public void equipEquipmentItem(Items item, int index) {
 		
 		switch(item.getItemType()) {
-			case 1: 
+			case 0: 
 				int baseHealth = player.getBaseHealth();
 				player.setBaseHealth(baseHealth + 10);
 				break;
