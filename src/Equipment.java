@@ -18,12 +18,15 @@
 
 public class Equipment
 {
+	PlayerChicken player;
 	private Items[] EquippedItemArray = new Items[4];
 
 	Equipment()
 	{
 
 	}
+	
+	// 0 = Heart, 1 = Head, 2 = Body, 3 = Feet
 	Equipment(Items item1, Items item2, Items item3, Items item4){
 		this.EquippedItemArray[0] = item1;
 		this.EquippedItemArray[1] = item2;
@@ -35,6 +38,13 @@ public class Equipment
 		return this.EquippedItemArray;
 	}
 	public void equipEquipmentItem(Items item, int index) {
+		
+		switch(item.getItemType()) {
+			case 1: 
+				int baseHealth = player.getBaseHealth();
+				player.setBaseHealth(baseHealth + 10);
+				break;
+		}
 		this.EquippedItemArray[index] = item;
 	}
 }

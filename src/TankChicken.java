@@ -147,7 +147,11 @@ public class TankChicken extends PlayerChicken
 	{
 		return hungerBar;
 	}
-
+	@Override
+	public void setBaseHealth(int health)
+	{
+		this.baseHealth = health;
+	}
 
 
 

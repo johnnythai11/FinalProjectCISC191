@@ -20,7 +20,6 @@ public class Items
 
 
 	private String itemName;
-	private String itemType;
 	private int attackStat;
 	private int defenseStat;
 	private int healthStat;

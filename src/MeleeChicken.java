@@ -144,6 +144,10 @@ public class MeleeChicken extends PlayerChicken
 		//System.out.println(melee.toString());
 		System.out.println(melee);
 	}
-
+	@Override
+	public void setBaseHealth(int health)
+	{
+		this.baseHealth = health;
+	}
 	
 }
