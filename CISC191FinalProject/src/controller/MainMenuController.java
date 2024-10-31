@@ -1,5 +1,7 @@
 package controller;
 
+import javax.swing.JFrame;
+
 /**
  * Lead Author(s):
  * @author Full name: Johnny Thai
@@ -17,12 +19,18 @@ package controller;
  * 
  */
 
+
 public class MainMenuController
 {
+	
 
 	public MainMenuController()
 	{
 		// TODO Auto-generated constructor stub
+
 	}
 
+	
 }
+
+

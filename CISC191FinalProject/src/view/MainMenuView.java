@@ -1,5 +1,10 @@
 package view;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import controller.MainMenuController;
+
 /**
  * Lead Author(s):
  * @author Full name: Johnny Thai
@@ -19,10 +24,33 @@ package view;
 
 public class MainMenuView
 {
+	
+	private JFrame window;
+	private JButton newGame;
+	private JButton howToPlay;
 
 	public MainMenuView()
 	{
 		// TODO Auto-generated constructor stub
 	}
+	
+	public JFrame window()
+	{
+		window = new JFrame();
+		window.setSize(750,750);
+		window.setVisible(true);
+		window.setLayout(null);
+		
+		
+
+		return window;
+	}
+
+	public static void main(String args[])
+	{
+		MainMenuView gamePlay = new MainMenuView();
+		gamePlay.window();
+	}
+
 
 }
