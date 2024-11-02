@@ -93,7 +93,7 @@ public class HowToPlayScreenView extends JFrame
 
 
 
-
+		//reads the file
 		File file = new File("HowToPlay.txt");
 
 		try (Scanner reading = new Scanner(file))
