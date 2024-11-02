@@ -33,7 +33,6 @@ public abstract class PlayerChicken
 	
 
 	public abstract int expBar();
-
 	public abstract int getLevel();
 	public abstract int getBaseDamage();
 	public abstract int getBaseHealth();
@@ -42,7 +41,6 @@ public abstract class PlayerChicken
 	public abstract int getHungerBar();
 	public abstract int getBoneBalance();
 	public abstract void setBaseHealth(int health);
-	
 	public abstract void equipEquipmentItem(int indexX, int indexY);
 
 

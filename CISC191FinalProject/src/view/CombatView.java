@@ -1,4 +1,6 @@
 package view;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  * Lead Author(s):
@@ -17,12 +19,37 @@ package view;
  * 
  */
 
-public class CombatView
+
+
+public class CombatView extends JFrame
 {
 
-	public CombatView()
+	final int SCREEN_WIDTH = 1500;
+	final int SCREEN_HEIGHT = 1000;
+	JPanel mainPanel;
+
+	CombatView()
 	{
-		// TODO Auto-generated constructor stub
+		super("Chicken Fighter");
+		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
+		setResizable(false);
+		mainPanel = new JPanel();
+		mainPanel.setLayout(null);
+		setPanels();
+		add(mainPanel);
+		setVisible(true);
+	}
+
+	private void setPanels()
+	{
+
+	}
+
+
+	public static void main(String args[])
+	{
+		CombatView fightScreen = new CombatView();
 	}
 
 }
