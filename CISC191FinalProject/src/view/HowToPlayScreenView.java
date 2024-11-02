@@ -47,6 +47,9 @@ public class HowToPlayScreenView extends JFrame
 	JPanel instructionPanel;
 	File HowtoPlay;
 
+	/*
+	 * Constructor for screen
+	 */
 	HowToPlayScreenView()
 	{
 		super("Chicken Fighter Instructions");
