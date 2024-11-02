@@ -48,7 +48,7 @@ public class HowToPlayScreenView extends JFrame
 	File HowtoPlay;
 
 	/*
-	 * Constructor for screen
+	 * Constructor for screen view
 	 */
 	HowToPlayScreenView()
 	{
