@@ -62,7 +62,9 @@ public class HowToPlayScreenView extends JFrame
 		add(mainPanel);
 		setVisible(true);
 	}
-
+	/*
+	 * sets the button and JTextField
+	 */
 	private void setPanels() 
 	{
 
@@ -89,35 +91,35 @@ public class HowToPlayScreenView extends JFrame
 
 		instructionScroll.setWheelScrollingEnabled(true);
 
-		
-		
-		
+
+
+
 		File file = new File("HowToPlay.txt");
-      
+
 		try (Scanner reading = new Scanner(file))
-				
+
 		{
-			
+
 			System.out.println("File Found");
 			String line;
-			
+
 			while (reading.hasNext()) 
 			{
 				line = reading.nextLine();
 				instructions = new JTextArea(line + "\n");
-//				instructionPanel = new JPanel();
-//				instructionPanel.setLayout(null);
-//				instructionPanel.setSize(instructions_WIDTH ,instructions_HEIGHT);
-//				instructionPanel.setVisible(true);
-//				instructionPanel.setBackground(Color.BLUE);
-				
+				//				instructionPanel = new JPanel();
+				//				instructionPanel.setLayout(null);
+				//				instructionPanel.setSize(instructions_WIDTH ,instructions_HEIGHT);
+				//				instructionPanel.setVisible(true);
+				//				instructionPanel.setBackground(Color.BLUE);
+
 				instructions.setSize(instructions_WIDTH ,instructions_HEIGHT);
 				instructions.setVisible(true);
 				instructions.setEditable(false);
 				instructionScroll.add(instructions);
 				instructionScroll.setVisible(true);
 				//instructionPanel.add(instructionScroll);
-	
+
 				System.out.println(line);
 			}
 		}
@@ -127,7 +129,7 @@ public class HowToPlayScreenView extends JFrame
 			e.printStackTrace();
 		}
 
-	
+
 
 		mainPanel.add(instructionScroll);
 		mainPanel.setVisible(true);
