@@ -1,1 +1,4 @@
 Instruction
+To play the game 
+Hit the attack button to fight the NPC chicken 
+Each kill will grant a random of 4-6 bone

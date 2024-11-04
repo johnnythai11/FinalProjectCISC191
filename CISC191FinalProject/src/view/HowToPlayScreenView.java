@@ -1,19 +1,13 @@
 package view;
-import java.awt.Color;
-import java.io.BufferedReader;
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Scanner;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 /**
  * Lead Author(s):
@@ -41,6 +35,7 @@ public class HowToPlayScreenView extends JFrame
 	final int SCREEN_HEIGHT = 1000;
 
 	JPanel mainPanel;
+	JFrame mainFrame;
 	JButton backToMainMenu;
 	JTextArea instructions;
 	JScrollPane instructionScroll;
@@ -56,8 +51,10 @@ public class HowToPlayScreenView extends JFrame
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
 		setResizable(false);
+		
 		mainPanel = new JPanel();
 		mainPanel.setLayout(null);
+		mainPanel.setLocation(900, 1000);
 		setPanels();
 		add(mainPanel);
 		setVisible(true);
@@ -88,39 +85,30 @@ public class HowToPlayScreenView extends JFrame
 		instructionScroll.setSize(instructions_WIDTH,instructions_HEIGHT);
 		instructionScroll.setBounds(offsetWidthOfinstructions,offsetHeightOfinstructions,instructions_WIDTH,instructions_HEIGHT);
 		instructionScroll.setVisible(true);
-
 		instructionScroll.setWheelScrollingEnabled(true);
 
 
 
 		//reads the file
 		File file = new File("HowToPlay.txt");
+		instructions = new JTextArea();
 
 		try (Scanner reading = new Scanner(file))
 
 		{
 
 			System.out.println("File Found");
-			String line;
+		
 
 			while (reading.hasNext()) 
 			{
-				line = reading.nextLine();
-				instructions = new JTextArea(line + "\n");
-				//				instructionPanel = new JPanel();
-				//				instructionPanel.setLayout(null);
-				//				instructionPanel.setSize(instructions_WIDTH ,instructions_HEIGHT);
-				//				instructionPanel.setVisible(true);
-				//				instructionPanel.setBackground(Color.BLUE);
-
+				String line2 = reading.nextLine();
+				instructions.append(line2 +"\n");
+				instructions.setLineWrap(true);
 				instructions.setSize(instructions_WIDTH ,instructions_HEIGHT);
 				instructions.setVisible(true);
 				instructions.setEditable(false);
-				instructionScroll.add(instructions);
-				instructionScroll.setVisible(true);
-				//instructionPanel.add(instructionScroll);
-
-				System.out.println(line);
+				System.out.println(line2);
 			}
 		}
 		catch (FileNotFoundException e)
@@ -128,12 +116,10 @@ public class HowToPlayScreenView extends JFrame
 			System.out.println("not Found");
 			e.printStackTrace();
 		}
-
-
-
+		instructionScroll.add(instructions);
+		instructionScroll.setVisible(true);
 		mainPanel.add(instructionScroll);
 		mainPanel.setVisible(true);
-
 	}
 
 
