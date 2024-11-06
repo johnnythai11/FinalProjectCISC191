@@ -51,7 +51,7 @@ public class HowToPlayScreenView extends JFrame
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
 		setResizable(false);
-		
+
 		mainPanel = new JPanel();
 		mainPanel.setLayout(null);
 		mainPanel.setLocation(900, 1000);
@@ -83,7 +83,9 @@ public class HowToPlayScreenView extends JFrame
 		int offsetHeightOfinstructions = ((SCREEN_HEIGHT - instructions_HEIGHT)) - verticalOffset2;
 		instructionScroll = new JScrollPane();
 		instructionScroll.setSize(instructions_WIDTH,instructions_HEIGHT);
+
 		instructionScroll.setBounds(offsetWidthOfinstructions,offsetHeightOfinstructions,instructions_WIDTH,instructions_HEIGHT);
+		instructionScroll.setOpaque(true);
 		instructionScroll.setVisible(true);
 		instructionScroll.setWheelScrollingEnabled(true);
 
@@ -92,13 +94,16 @@ public class HowToPlayScreenView extends JFrame
 		//reads the file
 		File file = new File("HowToPlay.txt");
 		instructions = new JTextArea();
+		instructions.setOpaque(true);
+		instructions.setVisible(true);
+
 
 		try (Scanner reading = new Scanner(file))
 
 		{
 
 			System.out.println("File Found");
-		
+
 
 			while (reading.hasNext()) 
 			{
@@ -106,6 +111,7 @@ public class HowToPlayScreenView extends JFrame
 				instructions.append(line2 +"\n");
 				instructions.setLineWrap(true);
 				instructions.setSize(instructions_WIDTH ,instructions_HEIGHT);
+				instructions.setOpaque(true);
 				instructions.setVisible(true);
 				instructions.setEditable(false);
 				System.out.println(line2);
@@ -118,7 +124,7 @@ public class HowToPlayScreenView extends JFrame
 		}
 		instructionScroll.add(instructions);
 		instructionScroll.setVisible(true);
-		mainPanel.add(instructionScroll);
+		mainPanel.add(instructions);
 		mainPanel.setVisible(true);
 	}
 

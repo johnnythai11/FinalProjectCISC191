@@ -44,13 +44,13 @@ public class CombatView extends JFrame
 	JButton specialAttack;
 	JButton retreat;
 	JButton store;
-	
+
 	JPanel characterPanel;
 	JPanel enemyPanel;
-	
+
 	JTextField characterInfo;
 	JTextField enemyInfo;
-	
+
 	static PlayerChicken player = null;
 	static EnemyChicken enemy = null;
 
@@ -111,30 +111,30 @@ public class CombatView extends JFrame
 
 	private void setPanels()
 	{
-		
+
 		characterPanel = new JPanel();
 		characterPanel.setSize(660,400);
 		characterPanel.setLocation(0,10);
 		characterPanel.setBackground(Color.BLUE);
-		
+
 		enemyPanel = new JPanel();
 		enemyPanel.setSize(660,400);
 		enemyPanel.setLocation(840,10);
 		enemyPanel.setBackground(Color.BLUE);
-		
+
 		JTextArea characterInfo = new JTextArea(1,5);
 		Font info = new Font("Times New Roman", Font.BOLD, 45);
 		characterInfo.setFont(info);
-	    characterInfo.append("Health: " + player.getCurrentHealth() + "\n");
-	    characterInfo.append("Defense: " + player.getBaseDefense() + "\n");
-	    characterInfo.append("Attack: " + player.getBaseDamage() + "\n");
-	    characterInfo.append("Balance: " + player.getBoneBalance() + "\n");
-	    characterInfo.setEditable(false);
+		characterInfo.append("Health: " + player.getCurrentHealth() + "\n");
+		characterInfo.append("Defense: " + player.getBaseDefense() + "\n");
+		characterInfo.append("Attack: " + player.getBaseDamage() + "\n");
+		characterInfo.append("Balance: " + player.getBoneBalance() + "\n");
+		characterInfo.setEditable(false);
 		characterInfo.setSize(660,400);
 		characterInfo.setLocation(0,440);
-		
+
 		JTextArea enemyInfo = new JTextArea(1,5);
-		
+
 		enemyInfo.setFont(info);
 		enemyInfo.append("Health: " + enemy.getMaxHealth() + "\n");
 		enemyInfo.append("Defense: " + enemy.getDefense() + "\n");
@@ -142,13 +142,13 @@ public class CombatView extends JFrame
 		enemyInfo.setEditable(false);
 		enemyInfo.setSize(660,400);
 		enemyInfo.setLocation(840,440);
-		
-		
+
+
 		mainPanel.add(characterPanel);
 		mainPanel.add(enemyPanel);
 		mainPanel.add(characterInfo);
 		mainPanel.add(enemyInfo);
-		
+
 
 	}
 
@@ -157,8 +157,9 @@ public class CombatView extends JFrame
 	{
 		player = new MeleeChicken(4);
 		enemy = new EnemyChicken();
+
 		CombatView fightScreen = new CombatView();
-		
+
 	}
 
 }
