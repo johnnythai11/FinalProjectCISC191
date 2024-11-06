@@ -104,6 +104,31 @@ public class MeleeChicken extends PlayerChicken
 				"Hunger Bar: " + hungerBar + "\n" +
 				"Bone Balance: " + boneBalance + "\n";
 	}
+	
+	@Override
+	public String toStringSave()
+	{
+		/*
+		 * Order of data:
+		 * Level
+		 * Attack statistic
+		 * defense statistic
+		 * health statistic
+		 * hunger bar
+		 * bone balance
+		 * exp bar
+		 */
+		
+		
+		return "{" + levelOfChicken +
+				"," + baseDamage + 
+				"," + baseDefense + 
+				"," + currentHealth + 
+				"," + hungerBar + 
+				"," + boneBalance + 
+				"," + expBar + "}";
+	}
+
 	@Override
 	public int getLevel()
 	{

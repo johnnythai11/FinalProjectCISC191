@@ -110,7 +110,29 @@ public class TankChicken extends PlayerChicken
 				"Bone Balance: " + boneBalance + "\n" +
 				"EXP Bar: " + expBar;
 	}
-
+	@Override
+	public String toStringSave()
+	{
+		/*
+		 * Order of data:
+		 * Level
+		 * Attack statistic
+		 * defense statistic
+		 * health statistic
+		 * hunger bar
+		 * bone balance
+		 * exp bar
+		 */
+		
+		
+		return "{" + levelOfChicken +
+				"," + baseDamage + 
+				"," + baseDefense + 
+				"," + currentHealth + 
+				"," + hungerBar + 
+				"," + boneBalance + 
+				"," + expBar + "}";
+	}
 
 
 	@Override

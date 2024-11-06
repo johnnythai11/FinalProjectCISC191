@@ -44,5 +44,9 @@ public abstract class PlayerChicken
 	public abstract void equipEquipmentItem(int indexX, int indexY);
 
 
+	public abstract String toStringSave();
+	
+
+
 
 }

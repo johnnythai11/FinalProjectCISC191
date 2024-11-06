@@ -168,6 +168,27 @@ public class Items
 				"Heart Heals: " + healingStat + "\n";
 	}
 
+	public String toStringSave()
+	{
+		/*
+		 * Order of Data:
+		 * item tier
+		 * item name
+		 * price
+		 * attack statistic
+		 * defense statistic
+		 * health statistic
+		 * healing statistic
+		 */
+		return "{" + itemTier +
+				"," + itemName + 
+				"," + price + 
+				"," + attackStat + 
+				","+ defenseStat + 
+				"," + healthStat + 
+				"," + healingStat + "}";
+	}
+	
 	/*
 	 * checks if tier of the item is between 1-5, then sets price = to tier
 	 * tier 1 = 3 bones
@@ -324,8 +345,7 @@ public class Items
 
 		return this.price;
 	}
-
-
+	
 	public static void main(String args[])
 	{
 

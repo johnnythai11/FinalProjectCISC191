@@ -105,5 +105,21 @@ public class Inventory extends Items
 		inventoryList.addItemToInventory(item5);
 		System.out.println(inventoryList.getInventory());
 	}
+	
+	public String toStringSave() {
+		
+		StringBuilder builder = new StringBuilder();
+		builder.append("{");
+		for (int i = 0; i < inventory.length; i++)
+		{
+			for (int j = 0; j < inventory[i].length; j++)
+			{
+				builder.append("[(" + i + "," + j + ")");
+				builder.append(inventory[i][j].toString() + "],");
+			}
+		}
+		builder.append("}");
+		return builder.toString();
+	}
 }
 
