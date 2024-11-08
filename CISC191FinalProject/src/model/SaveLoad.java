@@ -1,30 +1,18 @@
 package model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
-public class SaveLoad
-{
+public class SaveLoad {
 	private PlayerChicken player;
 	private Inventory inventory;
 	private Equipment equipment;
 	private Human human;
 
-	/*
-	 * public abstract int expBar();
-	 * public abstract int getLevel();
-	 * public abstract int getBaseDamage();
-	 * public abstract int getBaseHealth();
-	 * public abstract int getCurrentHealth();
-	 * public abstract int getBaseDefense();
-	 * public abstract int getHungerBar();
-	 * public abstract int getBoneBalance();
-	 * public abstract void setBaseHealth(int health);
-	 * public abstract void equipEquipmentItem(int indexX, int indexY);
-	 */
-
-	public boolean save()
-	{
+	public boolean save() {
 
 		StringBuilder builder = new StringBuilder();
 		builder.append("ChickenFighterSave:");
@@ -33,11 +21,46 @@ public class SaveLoad
 		builder.append(equipment.toStringSave());
 		builder.append(human.toStringSave());
 		try {
-		PrintWriter print = new PrintWriter("ChickenFigtherSave.txt");
-		String saveToString = builder.toString();
-		print.println(saveToString);
-		print.close();
-		} catch (IOException e) {}
+			PrintWriter print = new PrintWriter("ChickenFighterSave.txt");
+			String saveToString = builder.toString();
+			print.println(saveToString);
+			print.close();
+		} catch (IOException e) {
+		}
 		return true;
+	}
+
+	public static void load() {
+		File file = new File("ChickenFighterSave.txt");
+		Scanner reader;
+		try {
+			reader = new Scanner(file);
+			if (reader.hasNextLine()) {
+				String data = reader.nextLine();
+				System.out.println(data);
+				reader.close();
+				// player 
+				// inventory
+				// equipment 
+				// human
+				
+				
+				
+				
+				
+				
+				
+			} else {
+				System.out.println("no data");
+				reader.close();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String args[]) {
+		load();
 	}
 }
