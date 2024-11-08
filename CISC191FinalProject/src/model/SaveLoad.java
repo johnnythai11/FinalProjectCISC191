@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.regex.*;
 
 public class SaveLoad {
 	private PlayerChicken player;
@@ -17,8 +18,11 @@ public class SaveLoad {
 		StringBuilder builder = new StringBuilder();
 		builder.append("ChickenFighterSave:");
 		builder.append(player.toStringSave());
+		builder.append(",");
 		builder.append(inventory.toStringSave());
+		builder.append(",");
 		builder.append(equipment.toStringSave());
+		builder.append(",");
 		builder.append(human.toStringSave());
 		try {
 			PrintWriter print = new PrintWriter("ChickenFighterSave.txt");
@@ -39,10 +43,16 @@ public class SaveLoad {
 				String data = reader.nextLine();
 				System.out.println(data);
 				reader.close();
-				// player 
-				// inventory
-				// equipment 
-				// human
+				Pattern p1 = Pattern.compile("/{.*?}/gm");
+				Matcher m = p1.matcher(data);
+				
+				String playerChickenData = m.group(1);
+				Pattern playerPattern = Pattern.compile("/\\d+/gm");
+				Matcher playerMatch = playerPattern.matcher(playerChickenData);
+				
+				String inventoryData = m.group(2);
+				String equipmentData = m.group(3);
+				String humanData = m.group(4);
 				
 				
 				

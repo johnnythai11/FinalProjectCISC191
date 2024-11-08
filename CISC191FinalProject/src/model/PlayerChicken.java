@@ -31,7 +31,6 @@ public abstract class PlayerChicken
 
 	}
 	
-
 	public abstract int expBar();
 	public abstract int getLevel();
 	public abstract int getBaseDamage();
