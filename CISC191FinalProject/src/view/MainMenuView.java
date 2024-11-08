@@ -23,6 +23,8 @@ import controller.MainMenuController;
  */
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 public class MainMenuView extends JFrame {
@@ -64,6 +66,9 @@ public class MainMenuView extends JFrame {
 
 		charecterSelectScreenButton = new JButton("Charecter Selection");
 		howToPlayButton = new JButton("How To Play");
+		
+		charecterSelectScreenButton.addActionListener(new CharacterSelectListener());
+		howToPlayButton.addActionListener(new HowToPlayListener());
 
 		charecterSelectScreenButton.setBounds(offsetLengthChar,offsetHeightChar,BUTTON_WIDTH,BUTTON_HEIGHT);
 		howToPlayButton.setBounds(offsetLengthHow, offsetHeightHow, BUTTON_WIDTH, BUTTON_HEIGHT);
@@ -77,5 +82,29 @@ public class MainMenuView extends JFrame {
 	{
 		new MainMenuView();
 
+	}
+	
+	private class CharacterSelectListener implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			new CharacterSelectionView();
+			dispose();
+		}
+		
+	}
+	
+	private class HowToPlayListener implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			new HowToPlayScreenView();
+			dispose();
+		}
+		
 	}
 }

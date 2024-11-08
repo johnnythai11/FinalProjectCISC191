@@ -77,7 +77,9 @@ public class Equipment
 		builder.append("{");
 		for (int i = 0; i < equippedItemArray.length; i++)
 		{
+			builder.append("[");
 			builder.append(equippedItemArray[i].toString());
+			builder.append("]");
 		}
 		builder.append("}");
 		return builder.toString();

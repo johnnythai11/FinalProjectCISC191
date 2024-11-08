@@ -180,13 +180,13 @@ public class Items
 		 * health statistic
 		 * healing statistic
 		 */
-		return "{" + itemTier +
+		return itemTier +
 				"," + itemName + 
 				"," + price + 
 				"," + attackStat + 
 				","+ defenseStat + 
 				"," + healthStat + 
-				"," + healingStat + "}";
+				"," + healingStat;
 	}
 	
 	/*
