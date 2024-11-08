@@ -1,12 +1,14 @@
 **************Instructions**************
 Description of the Game:
 You are playing as a chicken and your goal is to level up by 
-winning fights with NPC chickens. NPC chickens will be from level 1-50. 
-They will give exp dependent on the level they are. For example, level 1 NPC 
-chicken will give 1 exp and level 50 will give 50 Exp. For you to level up 
+winning fights with NPC chickens. 
+NPC chickens will be from level 1-50. 
+They will give exp dependent on the level they are. 
+For example, level 1 NPC chicken will give 1 exp 
+and level 50 will give 50 Exp. For you to level up 
 from level 1 to 2 you will need to gain 100 exp and then every level after 
-that exp will increase by 50 percent of the previous exp bar of the last 
-level. As you level up, you will need to find a human to adopt and feed you. 
+that exp will increase by 50 per Level 
+As you level up, you be assigned a human to boost your stats. 
 The human will also boost your attack and defense dependent on the human 
 level from 1-5. When you kill the NPC chickens, you will be given a random 
 number of bones from 3-6. You will be able to use the bones to buy certain 
@@ -42,14 +44,55 @@ Base Attack:  8
 Click the attack button to fight the NPC Chicken.
 Click the Special Attack button when you have the special equipment on to fight the NPC Chicken.
 Click the Store button if you need to buy items in the store.
+Click the inventory button to view your inventory and you will be able to equip the items.
 
+-----------------------------------------------------------------------------------------------------------------
 The Store will randomly generate 20 items.
-
 Items:
 
-Special Items:
+There are 5 tiers of gear to correspond with the level of the chicken.
+Armor Tier 1 will be wood gear- provides 1 Defense for the chicken. (level 1-10)
+Armor Tier 2 will be bronze gear – provides 2 Defense for the chicken. (level 11-20)
+Armor Tier 3 will be copper gear- provides 3 Defense for the chicken. (level 21-30)
+Armor Tier 4 will be iron gear- provides 4 Defense for the chicken. (level 31-40)
+Armor Tier 5 will be diamond gear- provides 5 Defense for the chicken. (level 41-50)
 
-The Store will only reset if you 
+
+Claw Tier 1 will be wood gear- provides 1 Attack for the chicken. (level 1-10)
+Claw Tier 2 will be bronze gear – provides 2 Attack for the chicken. (level 11-20)
+Claw Tier 3 will be copper gear- provides 3 Attack for the chicken. (level 21-30)
+Claw Tier 4 will be iron gear- provides 4 Attack for the chicken. (level 31-40)
+Claw Tier 5 will be diamond gear- provides 5 Attack for the chicken. (level 41-50)
+
+Special Items: (Specific for the different classes) NO TIERS
+
+Helmet (Tanks only at level 10) – Plus 10 health and adds special ability Headbutt makes the
+opponent confused higher chance of missing the attack. This item will increase the health by 5
+for every 10 levels up from level 10.
+Staff (Mage only at level 10) – Plus 10 attack and adds special ability Wind Surge stuns the
+opponent for 2 attacks. This item will increase the attack by 5 for every 10 levels up from level
+10.
+Shield (Melee only at level 10) – Plus 10 Defense and adds a special ability Boomerang hits the
+enemy that is 3 blocks away will deal 5 damage. This item will increase the defense by 5 for
+every 10 levels up from level 10.
+
+Cost of items:
+
+All Wood gear 3 bones
+All Bronze gear 5 bones
+All copper gear 8 bones
+All iron gear 12 bones
+All diamond gear 17 bones
+
+
+Helmet (Tanks only at level 10) 100 bones
+Staff (Mage only at level 10) 100 bones
+Shield (Melee only at level 10) 100 bones
+
+Heart (heals player 10 health) 10 bones
+
+The Store will only reset if you buy the items.
+-------------------------------------------------------------------------------------------------------------------
 When you level up there will be a certain level Human assigned to you.
 
  	 * chicken level 1-10 will be able to get level 1 human boost Attack by 0, Defense by 0
@@ -58,4 +101,4 @@ When you level up there will be a certain level Human assigned to you.
 	 * chicken level 31-40 will be able to get level 4 human boost Attack by 6, Defense by 6
 	 * chicken level 41-50 will be able to get level 5 human boost Attack by 8, Defense by 8
 	 
-Each kill will grant a random of 4-6 bone
+Each kill will grant a random of 4-6 bone also Exp

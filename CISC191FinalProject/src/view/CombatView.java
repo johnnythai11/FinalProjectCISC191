@@ -37,22 +37,22 @@ public class CombatView extends JFrame
 	final int SCREEN_WIDTH = 1500;
 	final int SCREEN_HEIGHT = 1000;
 
-	JPanel mainPanel;
+	private JPanel mainPanel;
 
-	JButton inventory;
-	JButton attack;
-	JButton specialAttack;
-	JButton retreat;
-	JButton store;
+	private JButton inventory;
+	private JButton attack;
+	private JButton specialAttack;
+	private JButton retreat;
+	private JButton store;
 
-	JPanel characterPanel;
-	JPanel enemyPanel;
+	private JPanel characterPanel;
+	private JPanel enemyPanel;
 
-	JTextField characterInfo;
-	JTextField enemyInfo;
+	private JTextField characterInfo;
+	private JTextField enemyInfo;
 
-	static PlayerChicken player = null;
-	static EnemyChicken enemy = null;
+	static PlayerChicken player;
+	static EnemyChicken enemy;
 
 	CombatView()
 	{
@@ -155,7 +155,7 @@ public class CombatView extends JFrame
 
 	public static void main(String args[])
 	{
-		player = new MeleeChicken(4);
+		player = new MeleeChicken(1);
 		enemy = new EnemyChicken();
 
 		CombatView fightScreen = new CombatView();
