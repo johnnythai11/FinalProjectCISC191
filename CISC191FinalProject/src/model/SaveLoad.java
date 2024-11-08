@@ -3,7 +3,7 @@ package model;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class Save
+public class SaveLoad
 {
 	private PlayerChicken player;
 	private Inventory inventory;
