@@ -46,10 +46,6 @@ public class SaveLoad {
 				
 				
 				
-				
-				
-				
-				
 			} else {
 				System.out.println("no data");
 				reader.close();

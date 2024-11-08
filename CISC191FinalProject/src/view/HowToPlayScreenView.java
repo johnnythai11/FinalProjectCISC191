@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -76,6 +78,7 @@ public class HowToPlayScreenView extends JFrame
 		int offsetHeightOfButton = ((SCREEN_HEIGHT - BUTTON_HEIGHT)) - verticalOffset;
 		backToMainMenu = new JButton("Back To Main Menu");
 		backToMainMenu.setBounds(offsetWidthOfButton,offsetHeightOfButton,BUTTON_WIDTH,BUTTON_HEIGHT);
+		backToMainMenu.addActionListener(new MainMenuListener());
 		mainPanel.add(backToMainMenu);
 
 		int verticalOffset2 = 325;
@@ -134,4 +137,17 @@ public class HowToPlayScreenView extends JFrame
 		HowToPlayScreenView fightScreen = new HowToPlayScreenView();
 	}
 
+	private class MainMenuListener implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			new MainMenuView();
+			dispose();
+		}
+		
+	}
+	
+	
 }
