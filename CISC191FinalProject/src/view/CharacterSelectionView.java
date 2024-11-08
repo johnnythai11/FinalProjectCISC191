@@ -47,13 +47,11 @@ public class CharacterSelectionView extends JFrame
 		confirmButton = new JButton("Confirm");
 		statField = new JLabel();
 
-
 		statField.setText("Daniel is 5'5\" ");
 		statField.setOpaque(true);
 		statField.setBackground(Color.RED);
 		characterIcon.setBackground(Color.black);
 		characterIcon.setOpaque(true);
-
 
 		characterIcon.setBounds(25, 25, 250, 250);
 		mage.setBounds(25,290,250,50);

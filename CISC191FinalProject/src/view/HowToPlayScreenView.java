@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -31,16 +33,12 @@ import javax.swing.JTextArea;
 public class HowToPlayScreenView extends JFrame
 {
 
-	final int SCREEN_WIDTH = 900;
+	final int SCREEN_WIDTH = 1000;
 	final int SCREEN_HEIGHT = 1000;
-
-	JPanel mainPanel;
-	JFrame mainFrame;
-	JButton backToMainMenu;
-	JTextArea instructions;
-	JScrollPane instructionScroll;
-	JPanel instructionPanel;
-	File HowtoPlay;
+	private JPanel mainPanel;
+	private JButton backToMainMenu;
+	private JTextArea instructions= new JTextArea();
+	private JScrollPane instructionScroll= new JScrollPane(instructions);
 
 	/*
 	 * Constructor for how to play screen
@@ -67,36 +65,23 @@ public class HowToPlayScreenView extends JFrame
 
 		final int BUTTON_WIDTH = 150;
 		final int BUTTON_HEIGHT = 50;
-
-		final int instructions_WIDTH = 700;
+		final int instructions_WIDTH = 750;
 		final int instructions_HEIGHT = 650;
-
 		int verticalOffset = 75;
 		int offsetWidthOfButton = ((SCREEN_WIDTH - BUTTON_WIDTH) / 2);
 		int offsetHeightOfButton = ((SCREEN_HEIGHT - BUTTON_HEIGHT)) - verticalOffset;
 		backToMainMenu = new JButton("Back To Main Menu");
 		backToMainMenu.setBounds(offsetWidthOfButton,offsetHeightOfButton,BUTTON_WIDTH,BUTTON_HEIGHT);
 		mainPanel.add(backToMainMenu);
-
 		int verticalOffset2 = 325;
 		int offsetWidthOfinstructions = ((SCREEN_WIDTH - instructions_WIDTH) / 2);
 		int offsetHeightOfinstructions = ((SCREEN_HEIGHT - instructions_HEIGHT)) - verticalOffset2;
-		instructionScroll = new JScrollPane();
 		instructionScroll.setSize(instructions_WIDTH,instructions_HEIGHT);
-
 		instructionScroll.setBounds(offsetWidthOfinstructions,offsetHeightOfinstructions,instructions_WIDTH,instructions_HEIGHT);
-		instructionScroll.setOpaque(true);
-		instructionScroll.setVisible(true);
-		instructionScroll.setWheelScrollingEnabled(true);
-
-
 
 		//reads the file
 		File file = new File("HowToPlay.txt");
-		instructions = new JTextArea();
-		instructions.setOpaque(true);
-		instructions.setVisible(true);
-
+		
 
 		try (Scanner reading = new Scanner(file))
 
@@ -107,27 +92,26 @@ public class HowToPlayScreenView extends JFrame
 
 			while (reading.hasNext()) 
 			{
-				String line2 = reading.nextLine();
-				instructions.append(line2 +"\n");
-				instructions.setLineWrap(true);
-				instructions.setSize(instructions_WIDTH ,instructions_HEIGHT);
-				instructions.setOpaque(true);
+				String line = reading.nextLine();
+				instructions.append(line +"\n");
+				instructions.setSize(instructions_WIDTH,instructions_HEIGHT);
 				instructions.setVisible(true);
 				instructions.setEditable(false);
-				System.out.println(line2);
+				instructionScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+				instructionScroll.setWheelScrollingEnabled(true);
+				instructionScroll.setVisible(true);	
 			}
 		}
+		
 		catch (FileNotFoundException e)
 		{
 			System.out.println("not Found");
 			e.printStackTrace();
 		}
-		instructionScroll.add(instructions);
-		instructionScroll.setVisible(true);
-		mainPanel.add(instructions);
-		mainPanel.setVisible(true);
-	}
 
+		mainPanel.add(instructionScroll);
+		mainPanel.setVisible(true);
+		}
 
 	public static void main(String args[])
 	{
