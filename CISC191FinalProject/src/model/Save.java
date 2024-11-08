@@ -36,7 +36,7 @@ public class Save
 		PrintWriter print = new PrintWriter("ChickenFigtherSave.txt");
 		String saveToString = builder.toString();
 		print.println(saveToString);
-		
+		print.close();
 		} catch (IOException e) {}
 		return true;
 	}
