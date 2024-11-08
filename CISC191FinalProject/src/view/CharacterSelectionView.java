@@ -47,7 +47,7 @@ public class CharacterSelectionView extends JFrame
 		confirmButton = new JButton("Confirm");
 		statField = new JLabel();
 
-		statField.setText("Daniel is 5'5\" ");
+		statField.setText(" ");
 		statField.setOpaque(true);
 		statField.setBackground(Color.RED);
 		characterIcon.setBackground(Color.black);
