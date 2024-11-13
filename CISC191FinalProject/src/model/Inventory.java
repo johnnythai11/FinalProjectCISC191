@@ -122,4 +122,3 @@ public class Inventory extends Items
 		return builder.toString();
 	}
 }
-

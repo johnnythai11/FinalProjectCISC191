@@ -1,7 +1,7 @@
 package view;
 
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -112,6 +112,18 @@ public class HowToPlayScreenView extends JFrame
 		mainPanel.add(instructionScroll);
 		mainPanel.setVisible(true);
 		}
+	
+	private class MainMenuListener implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			new MainMenuView();
+			dispose();
+		}
+		
+	}
 
 	public static void main(String args[])
 	{

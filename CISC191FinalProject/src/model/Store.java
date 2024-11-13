@@ -21,7 +21,7 @@ import java.util.Random;
 
 public class Store extends Items
 {
-	private Items[][] Stock = new Items[4][5];
+	private Items[] Stock = new Items[20];
 	private String itemName;
 	private int typeOfArmor;
 	private int tierOfArmor;
@@ -29,7 +29,7 @@ public class Store extends Items
 	/**
 	 * Constructor to create a Store with the randomly generated items
 	 */
-	Store()
+	public Store()
 	{
 		generateStock();
 
@@ -45,10 +45,10 @@ public class Store extends Items
 	{
 		StringBuilder myString = new StringBuilder();
 		for (int row = 0; row< Stock.length; row ++)
-			for(int col = 0; col < Stock[row].length; col++)
-			{
-				myString.append(Stock[row][col] + "\n");
-			}
+		{
+			myString.append(Stock[row] + "\n");	
+		}
+			
 		return myString.toString();
 
 
@@ -64,8 +64,7 @@ public class Store extends Items
 
 		for (int row = 0; row < Stock.length; row++)
 		{
-			for(int col = 0; col < Stock[row].length; col++)
-			{
+			
 				typeOfArmor = rand.nextInt(4) + 0;
 				//System.out.println("Type of Armor: " + typeOfArmor);
 				tierOfArmor = rand.nextInt(6) + 0;
@@ -141,36 +140,41 @@ public class Store extends Items
 				{
 					case 0: 
 						Items myItem1 = new Items(typeOfArmor, tierOfArmor);
-						Stock[row][col] = myItem1;
+						Stock[row] = myItem1;
 						break;
 
 					case 1:
 						Items myItem2 = new Items(typeOfArmor, tierOfArmor);
-						Stock[row][col] = myItem2;
+						Stock[row] = myItem2;
 						break;
 
 					case 2: 
 						Items myItem3 = new Items(typeOfArmor, tierOfArmor);
-						Stock[row][col] = myItem3;
+						Stock[row] = myItem3;
 						break;
 
 					case 3: 
 						Items myItem4 = new Items(typeOfArmor, tierOfArmor);
-						Stock[row][col] = myItem4;
+						Stock[row] = myItem4;
 						break;
 
 					case 4:
 						Items myItem5 = new Items(typeOfArmor, tierOfArmor);
-						Stock[row][col] = myItem5;
+						Stock[row] = myItem5;
 						break;
 
 					case 5:
 						Items myItem6 = new Items(typeOfArmor, tierOfArmor);
-						Stock[row][col] = myItem6;
+						Stock[row] = myItem6;
 						break;
 				}
 			}
 		}
+	
+	
+	public Items getItem(int index)
+	{
+		return Stock[index];
 	}
 
 	public static void main(String args[])

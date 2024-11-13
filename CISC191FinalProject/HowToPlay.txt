@@ -1,104 +1,82 @@
-**************Instructions**************
-Description of the Game:
-You are playing as a chicken and your goal is to level up by 
-winning fights with NPC chickens. 
-NPC chickens will be from level 1-50. 
-They will give exp dependent on the level they are. 
-For example, level 1 NPC chicken will give 1 exp 
-and level 50 will give 50 Exp. For you to level up 
-from level 1 to 2 you will need to gain 100 exp and then every level after 
-that exp will increase by 50 per Level 
-As you level up, you be assigned a human to boost your stats. 
-The human will also boost your attack and defense dependent on the human 
-level from 1-5. When you kill the NPC chickens, you will be given a random 
-number of bones from 3-6. You will be able to use the bones to buy certain 
-items in the store. 
-The store will sell 
-Armor, Claw from 
-wood, bronze, copper, iron, and diamond and 
-special items of Helmet, Staff, and Shield. 
-The helmet can only be worn by tanks. 
-The staff can only be worn by mage. 
-The shield can only be worn by melee.
+*************************** INSTRUCTIONS ***************************
 
-To play the game:
-Click on Select Characters:
-Then click on confirm to enter the game.
-There will be different classes:
+**Game Description:**
+You play as a chicken aiming to level up by winning battles against NPC chickens. NPC chickens range from levels 1-50, and each gives experience (EXP) based on its level (e.g., level 1 NPCs give 1 EXP, level 50 gives 50 EXP). To level up from level 1 to 2, you'll need 100 EXP; each subsequent level requires 50 more EXP than the last. 
 
-______Mage______
-Base Health:  15
-Base Defense: 5
-Base Attack:  10
+As you level up, a human character will assist you, boosting your attack and defense based on their level (1-5). After defeating NPC chickens, you’ll earn a random number of bones (3-6), which you can spend on items in the store.
 
-______Tank_______
-Base Health:  35
-Base Defense: 15
-Base Attack:  5 
+**Store Inventory:**
+The store offers armor and claws crafted from wood, bronze, copper, iron, and diamond. Additionally, special items like Helmets, Staffs, and Shields are available for specific classes:
+- **Helmet:** Tanks only
+- **Staff:** Mages only
+- **Shield:** Melee fighters only
 
-______Melee______
-Base Health:  20
-Base Defense: 10
-Base Attack:  8
- 
-Click the attack button to fight the NPC Chicken.
-Click the Special Attack button when you have the special equipment on to fight the NPC Chicken.
-Click the Store button if you need to buy items in the store.
-Click the inventory button to view your inventory and you will be able to equip the items.
+**How to Play:**
+1. **Select Characters**: Pick your character, then confirm to start.
+2. **Classes**:
+   - **Mage**
+      - Base Health: 15
+      - Base Defense: 5
+      - Base Attack: 10
+   - **Tank**
+      - Base Health: 35
+      - Base Defense: 15
+      - Base Attack: 5
+   - **Melee**
+      - Base Health: 20
+      - Base Defense: 10
+      - Base Attack: 8
+3. **Battle Commands**:
+   - Click **Attack** to fight the NPC Chicken.
+   - Use **Special Attack** if you have special equipment.
+   - Access **Store** to buy items.
+   - Open **Inventory** to view and equip items.
 
------------------------------------------------------------------------------------------------------------------
-The Store will randomly generate 20 items.
-Items:
+**--------------------------------------------------------------**
 
-There are 5 tiers of gear to correspond with the level of the chicken.
-Armor Tier 1 will be wood gear- provides 1 Defense for the chicken. (level 1-10)
-Armor Tier 2 will be bronze gear – provides 2 Defense for the chicken. (level 11-20)
-Armor Tier 3 will be copper gear- provides 3 Defense for the chicken. (level 21-30)
-Armor Tier 4 will be iron gear- provides 4 Defense for the chicken. (level 31-40)
-Armor Tier 5 will be diamond gear- provides 5 Defense for the chicken. (level 41-50)
+**Store Details:**
+The store generates 20 random items each refresh.
 
+**Items:**
+1. **Armor Tiers**:
+   - **Tier 1 (Wood)**: +1 Defense (Levels 1-10)
+   - **Tier 2 (Bronze)**: +2 Defense (Levels 11-20)
+   - **Tier 3 (Copper)**: +3 Defense (Levels 21-30)
+   - **Tier 4 (Iron)**: +4 Defense (Levels 31-40)
+   - **Tier 5 (Diamond)**: +5 Defense (Levels 41-50)
 
-Claw Tier 1 will be wood gear- provides 1 Attack for the chicken. (level 1-10)
-Claw Tier 2 will be bronze gear – provides 2 Attack for the chicken. (level 11-20)
-Claw Tier 3 will be copper gear- provides 3 Attack for the chicken. (level 21-30)
-Claw Tier 4 will be iron gear- provides 4 Attack for the chicken. (level 31-40)
-Claw Tier 5 will be diamond gear- provides 5 Attack for the chicken. (level 41-50)
+2. **Claw Tiers**:
+   - **Tier 1 (Wood)**: +1 Attack (Levels 1-10)
+   - **Tier 2 (Bronze)**: +2 Attack (Levels 11-20)
+   - **Tier 3 (Copper)**: +3 Attack (Levels 21-30)
+   - **Tier 4 (Iron)**: +4 Attack (Levels 31-40)
+   - **Tier 5 (Diamond)**: +5 Attack (Levels 41-50)
 
-Special Items: (Specific for the different classes) NO TIERS
+3. **Special Items (No Tiers)**:
+   - **Helmet (Tank Only)** - Requires level 10: +10 Health and **Headbutt** ability (increases enemy miss chance). Gains +5 Health per 10 levels.
+   - **Staff (Mage Only)** - Requires level 10: +10 Attack and **Wind Surge** ability (stuns enemy for 2 attacks). Gains +5 Attack per 10 levels.
+   - **Shield (Melee Only)** - Requires level 10: +10 Defense and **Boomerang** ability (hits distant enemy for 5 damage). Gains +5 Defense per 10 levels.
 
-Helmet (Tanks only at level 10) – Plus 10 health and adds special ability Headbutt makes the
-opponent confused higher chance of missing the attack. This item will increase the health by 5
-for every 10 levels up from level 10.
-Staff (Mage only at level 10) – Plus 10 attack and adds special ability Wind Surge stuns the
-opponent for 2 attacks. This item will increase the attack by 5 for every 10 levels up from level
-10.
-Shield (Melee only at level 10) – Plus 10 Defense and adds a special ability Boomerang hits the
-enemy that is 3 blocks away will deal 5 damage. This item will increase the defense by 5 for
-every 10 levels up from level 10.
+**Item Costs**:
+- Wood Gear: 3 bones
+- Bronze Gear: 5 bones
+- Copper Gear: 8 bones
+- Iron Gear: 12 bones
+- Diamond Gear: 17 bones
+- Special Items (Helmet, Staff, Shield): 100 bones each
+- Heart (Heals +10 Health): 10 bones
 
-Cost of items:
+*Note*: The store only refreshes after an item is purchased.
 
-All Wood gear 3 bones
-All Bronze gear 5 bones
-All copper gear 8 bones
-All iron gear 12 bones
-All diamond gear 17 bones
+**--------------------------------------------------------------**
 
+**Human Level Boosts**:
+- **Chicken Levels 1-10**: Human Level 1 (No boost)
+- **Chicken Levels 11-20**: Human Level 2 (+2 Attack)
+- **Chicken Levels 21-30**: Human Level 3 (+4 Attack)
+- **Chicken Levels 31-40**: Human Level 4 (+6 Attack, +6 Defense)
+- **Chicken Levels 41-50**: Human Level 5 (+8 Attack, +8 Defense)
 
-Helmet (Tanks only at level 10) 100 bones
-Staff (Mage only at level 10) 100 bones
-Shield (Melee only at level 10) 100 bones
+*Each kill grants 4-6 bones and experience points.*
 
-Heart (heals player 10 health) 10 bones
-
-The Store will only reset if you buy the items.
--------------------------------------------------------------------------------------------------------------------
-When you level up there will be a certain level Human assigned to you.
-
- 	 * chicken level 1-10 will be able to get level 1 human boost Attack by 0, Defense by 0
-	 * chicken level 11-20 will be able to get level 2 human boost Attack by 2, Defense by 0
-	 * chicken level 21-30 will be able to get level 3 human boost Attack by 4, Defense by 0
-	 * chicken level 31-40 will be able to get level 4 human boost Attack by 6, Defense by 6
-	 * chicken level 41-50 will be able to get level 5 human boost Attack by 8, Defense by 8
-	 
-Each kill will grant a random of 4-6 bone also Exp
+*******************************************************************

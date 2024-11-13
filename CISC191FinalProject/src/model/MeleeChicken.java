@@ -75,10 +75,13 @@ public class MeleeChicken extends PlayerChicken
 			
 			case 0:
 				playerEquipment.equipEquipmentItem(inputItem,0);
+				break;
 			case 1:
 				System.out.println("Can't equip, not right class");
+				break;
 			case 2:
 				playerEquipment.equipEquipmentItem(inputItem,2);
+				break;
 			case 3:
 				if(inputItem.getItemTier() != 0)
 				{
@@ -88,11 +91,72 @@ public class MeleeChicken extends PlayerChicken
 				{
 					System.out.println("Can't equip, not right class");
 				}
+				break;
 				
 		}
 	}
+	
+	
+	
+	public void takeDamage(int enemyDamage)
+	{
+		
+		if ((enemyDamage > baseDefense) && baseDefense > 0)
+		{
+			baseDefense = 0;
+		}
+		// Else if defense is not broken it decreases defense
+		else if (baseDefense != 0)
+		{
+			baseDefense = baseDefense - enemyDamage;
+		}
+		//finally if there is no defense, decrease current health
+		else if (baseDefense == 0 && currentHealth != 0 && currentHealth > 0)
+		{
+			currentHealth = currentHealth - enemyDamage;
+		}
+		
+		if (currentHealth <= 0)
+		{
+			currentHealth = 0;
+		}
+	}
+	
+	@Override
+	public void setBalance(int newBalance)
+	{
+		boneBalance = newBalance;
+	}
+	
+	public void resetPlayer()
+	{
+		updateDamage();
+		updateDefense();
+		updateHealth();
+	}
+	
+	public int dealDamage()
+	{
+		updateDamage();
+		return baseDamage;
+	}
 
-
+	public void updateHealth()
+	{
+		baseHealth = (levelOfChicken-1)*2 + 20 + (heartCounter * 10);
+		currentHealth = baseHealth;
+	}
+	
+	public void updateDefense()
+	{
+		baseDefense = (levelOfChicken-1)*2 + 10 + playerEquipment.getItemStat(2);
+	}
+	
+	public void updateDamage()
+	{
+		baseDamage = (levelOfChicken-1)*2 +8 + playerEquipment.getItemStat(3);
+	}
+	
 	
 	@Override
 	public String toString()

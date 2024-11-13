@@ -43,12 +43,12 @@ public class Combat {
 	 * @parameters PlayerChicken, EnemyChicken, item of the player
 	 * @returns playerHealth of the player
 	 */
-	public static int takeDamageForPlayer(PlayerChicken player, EnemyChicken enemy , Items item)
+	public static int takeDamageForPlayer(PlayerChicken player, EnemyChicken enemy)
 	{
 
 
-		int health = player.getBaseHealth() + item.getHealthStat();
-		int defense = player.getBaseDefense() + item.getDefenseStat();
+		int health = player.getBaseHealth();
+		int defense = player.getBaseDefense();
 		int enemyDamage = enemy.doDamage();
 
 		int currentHealth = health;
@@ -75,13 +75,13 @@ public class Combat {
 	 * @parameters PlayerChicken, EnemyChicken
 	 * @returns enemyHealth of the enemy
 	 */
-	public static int takeDamageForEnemy(PlayerChicken player, EnemyChicken enemy, Items item)
+	public static int takeDamageForEnemy(PlayerChicken player, EnemyChicken enemy)
 	{
 
 
 		int health = enemy.getMaxHealth();
 		int defense = enemy.getDefense();
-		int playerDamage = player.getBaseDamage() + item.getAttackStat();
+		int playerDamage = player.getBaseDamage();
 
 		int currentHealth = health;
 
@@ -101,6 +101,30 @@ public class Combat {
 		}
 		return currentHealth;
 	}
+	
+	
+	public static int attackCombatRound(PlayerChicken player, EnemyChicken enemy)
+	{
+		int playerDamage = player.dealDamage();
+		int enemyDamage = enemy.doDamage();
+		
+		enemy.takeDamage(playerDamage);
+		player.takeDamage(enemyDamage);
+		
+		if (player.getCurrentHealth() <= 0)
+		{
+			return 1;
+		}
+		else if (enemy.getMaxHealth() <= 0)
+		{
+			return 2;
+		}
+		else
+		{
+			return 0;
+		}
+		
+	}
 
 
 	public static void main(String args[])
@@ -110,11 +134,14 @@ public class Combat {
 		EnemyChicken enemy1 = new EnemyChicken();
 		Items wood = new Items(3,5);
 		int x = basicAttack(player1, wood);
-		int c = takeDamageForPlayer(player1, enemy1, wood);
-		takeDamageForEnemy(player1, enemy1, wood);
+		int c = takeDamageForPlayer(player1, enemy1);
+		//takeDamageForEnemy(player1, enemy1);
 		System.out.println("Current Health: "+ c);
 		System.out.println("basic Attack: "+ x);
 
 	}
+	
+	
+	
 
 }

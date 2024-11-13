@@ -30,7 +30,15 @@ public abstract class PlayerChicken
 	{
 
 	}
+	public static int heartCounter;
 	
+	public abstract void setBalance(int balance);
+	public abstract void updateHealth();
+	public abstract void resetPlayer();
+	public abstract void takeDamage(int enemyDamage);
+	public abstract int dealDamage();
+	public abstract void updateDamage();
+	public abstract void updateDefense();
 	public abstract int expBar();
 	public abstract int getLevel();
 	public abstract int getBaseDamage();

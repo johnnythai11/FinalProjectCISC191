@@ -33,9 +33,9 @@ public class Equipment
 	/*
 	 * Equipment for the player with 4 item slots
 	 * 0 = Heart
-	 * 1 = Head
-	 * 2 = Body
-	 * 3 = Feet
+	 * 1 = Head (Defence)
+	 * 2 = Body (Defence)
+	 * 3 = Feet (Weapon)
 	 */
 	Equipment(Items item1, Items item2, Items item3, Items item4)
 	{
@@ -60,15 +60,31 @@ public class Equipment
 	public void equipEquipmentItem(Items item, int index)
 	{
 
-		switch (item.getItemType())
+		if (item.getItemType() == 0)
 		{
-			case 0:
-				int baseHealth = player.getBaseHealth();
-				player.setBaseHealth(baseHealth + 10);
-				break;
+			player.heartCounter += 1;
+			player.updateHealth();
 		}
+		else {
 		this.equippedItemArray[index] = item;
-
+		}
+	}
+	
+	public int getItemStat(int index)
+	{
+		if (equippedItemArray[index] != null) {
+		switch(index) {
+			case 1:
+				return equippedItemArray[index].getDefenseStat();
+			case 2: 
+				return equippedItemArray[index].getDefenseStat();
+			case 3:
+				return equippedItemArray[index].getAttackStat();
+			default:
+				return 0;
+		}
+		}
+		return 0;
 	}
 
 	public String toStringSave()
@@ -77,9 +93,7 @@ public class Equipment
 		builder.append("{");
 		for (int i = 0; i < equippedItemArray.length; i++)
 		{
-			builder.append("[");
 			builder.append(equippedItemArray[i].toString());
-			builder.append("]");
 		}
 		builder.append("}");
 		return builder.toString();
