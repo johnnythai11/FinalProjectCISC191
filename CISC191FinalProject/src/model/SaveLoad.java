@@ -1,9 +1,6 @@
 package model;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Scanner;
 import java.util.regex.*;
 
@@ -33,7 +30,7 @@ public class SaveLoad {
 		}
 		return true;
 	}
-
+	
 	public static void load() {
 		File file = new File("ChickenFighterSave.txt");
 		Scanner reader;
@@ -54,6 +51,11 @@ public class SaveLoad {
 				String equipmentData = m.group(3);
 				String humanData = m.group(4);
 				
+				System.out.println();
+				System.out.println(inventoryData);
+				System.out.println(equipmentData);
+				System.out.println(humanData);
+
 				
 				
 			} else {
@@ -63,6 +65,35 @@ public class SaveLoad {
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+	
+	public void binarySave() {
+		try
+		{
+			FileOutputStream fstream = new FileOutputStream("ChickenFighterSave.dat");
+			ObjectOutputStream oos = new ObjectOutputStream(fstream);
+			oos.writeObject(player);
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void binaryLoad() {
+		try 
+		{
+		FileInputStream fileIn = new FileInputStream("ChickenFighterSave.dat");
+        ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+        Object obj = objectIn.readObject();
+        PlayerChicken p = (PlayerChicken) obj;
+		}
+		catch (IOException | ClassNotFoundException e)
+		{
+		
 		}
 	}
 
