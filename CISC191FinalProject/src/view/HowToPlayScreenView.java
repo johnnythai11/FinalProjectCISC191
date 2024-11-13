@@ -34,7 +34,7 @@ public class HowToPlayScreenView extends JFrame
 {
 
 	final int SCREEN_WIDTH = 1000;
-	final int SCREEN_HEIGHT = 1000;
+	final int SCREEN_HEIGHT = 800;
 	private JPanel mainPanel;
 	private JButton backToMainMenu;
 	private JTextArea instructions= new JTextArea();
@@ -52,7 +52,7 @@ public class HowToPlayScreenView extends JFrame
 
 		mainPanel = new JPanel();
 		mainPanel.setLayout(null);
-		mainPanel.setLocation(900, 1000);
+		mainPanel.setLocation(900, 100);
 		setPanels();
 		add(mainPanel);
 		setVisible(true);
@@ -66,12 +66,13 @@ public class HowToPlayScreenView extends JFrame
 		final int BUTTON_WIDTH = 150;
 		final int BUTTON_HEIGHT = 50;
 		final int instructions_WIDTH = 750;
-		final int instructions_HEIGHT = 650;
-		int verticalOffset = 75;
+		final int instructions_HEIGHT = 450;
+		int verticalOffset = 100;
 		int offsetWidthOfButton = ((SCREEN_WIDTH - BUTTON_WIDTH) / 2);
 		int offsetHeightOfButton = ((SCREEN_HEIGHT - BUTTON_HEIGHT)) - verticalOffset;
 		backToMainMenu = new JButton("Back To Main Menu");
 		backToMainMenu.setBounds(offsetWidthOfButton,offsetHeightOfButton,BUTTON_WIDTH,BUTTON_HEIGHT);
+		backToMainMenu.addActionListener(new MainMenuListener());
 		mainPanel.add(backToMainMenu);
 		int verticalOffset2 = 325;
 		int offsetWidthOfinstructions = ((SCREEN_WIDTH - instructions_WIDTH) / 2);
@@ -119,6 +120,7 @@ public class HowToPlayScreenView extends JFrame
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
+			System.out.println("pp");
 			new MainMenuView();
 			dispose();
 		}

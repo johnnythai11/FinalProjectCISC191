@@ -159,6 +159,7 @@ public class InventoryView extends JFrame
 	{
 		//closeShopButton.setBounds((int)(panelLengthWidth * 4.5),(int) (panelLengthWidth * 4.5), (int) (panelLengthWidth * 1.5), 25);
 		closeShopButton.setBounds(450,650,100,50);
+		closeShopButton.addActionListener(null);
 		add(closeShopButton);
 	}
 

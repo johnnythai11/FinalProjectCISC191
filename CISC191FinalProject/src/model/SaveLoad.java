@@ -83,7 +83,7 @@ public class SaveLoad {
 		
 	}
 
-	public void binaryLoad() {
+	public static void binaryLoad() {
 		try 
 		{
 		FileInputStream fileIn = new FileInputStream("ChickenFighterSave.dat");
