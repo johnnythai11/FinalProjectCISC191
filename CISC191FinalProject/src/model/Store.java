@@ -172,9 +172,9 @@ public class Store extends Items
 		}
 	
 	
-	public Items getItem(int index)
+	public Items getItem(int i)
 	{
-		return Stock[index];
+		return Stock[i];
 	}
 
 	public static void main(String args[])
@@ -184,5 +184,8 @@ public class Store extends Items
 		System.out.println(test);
 
 	}
+
+
+
 }
 

@@ -32,7 +32,7 @@ public abstract class PlayerChicken
 	}
 	public static int heartCounter;
 	
-	public abstract void setBalance(int balance);
+	public abstract void setBalance(int newBalance);
 	public abstract void updateHealth();
 	public abstract void resetPlayer();
 	public abstract void takeDamage(int enemyDamage);

@@ -42,9 +42,7 @@ public class CharacterSelectionView extends JFrame
 		setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 		setResizable(false);
 		super.setLayout(null);
-
 		setElements();
-
 		setVisible(true);
 	}
 
@@ -142,14 +140,7 @@ public class CharacterSelectionView extends JFrame
 					new CombatView(setSelection);
 					dispose();
 					break;
-			}
-				
-			
-			
-
-		}
-		
-
-		
+			}			
+		}		
 	}
 }

@@ -40,8 +40,6 @@ public class MainMenuView extends JFrame {
 	MainMenuView()
 	{
 
-
-
 		super("Main Menu");
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
