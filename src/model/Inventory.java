@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
  * Lead Author(s):
  * 
@@ -21,12 +23,9 @@ package model;
 
 public class Inventory extends Items
 {
-	private Items[][] inventory = new Items[4][3];
+	private ArrayList<Items> inventory = new ArrayList<Items>();
 
-	Inventory()
-	{
-
-	}
+	Inventory(){}
 
 
 	/*
@@ -35,7 +34,7 @@ public class Inventory extends Items
 	 */
 	Inventory(Items item)
 	{
-		addItemToInventory(item);
+		inventory.add(item);
 		getInventory();
 	}
 
@@ -43,37 +42,57 @@ public class Inventory extends Items
 	 * Gets all Items in the inventory
 	 * @Return ArrayList<Items>
 	 */
-	public Items[][] getInventory()
+	public ArrayList<Items> getInventory()
 	{
-		return this.inventory;
+		return inventory;
 	}
 
 	/*
 	 * Adds items to the ArrayList<Items>
 	 * @Parameters Items item
 	 */
-	public boolean addItemToInventory(Items item)
+	public void addItemToInventory(Items item)
 	{
-		for (int i = 0; i < inventory.length; i++)
+		if (inventory.size() <= 16)
 		{
-			for (int j = 0; j < inventory[i].length; j++)
-			{
-				if (inventory[i][j] == null) {
-					inventory [i][j] = item;
-					return true;
-				}
-			}
+			inventory.add(item);
+		}
+	}
+
+	public boolean itemExist(int index)
+	{
+		try
+		{
+			
+		
+		if (inventory.get(index) != null)
+		{
+			return true;
+		}
+		return false;
+		}
+		catch (Exception e)
+		{
+			return false;
+		}
+	}
+	
+	public boolean roomExist()
+	{
+		if (this.inventory.size() <= 16)
+		{
+			return true;
 		}
 		return false;
 	}
-
+	
 	/*
 	 * Removes the items from the inventory
 	 * @Parameters int row, int column
 	 */
-	public void removeItemFromInventory(int row, int column)
+	public void removeItemFromInventory(int index)
 	{
-		inventory[row][column] = null;
+		inventory.remove(index);
 	}
 
 	/*
@@ -81,29 +100,16 @@ public class Inventory extends Items
 	 * @Parameter int indexX, int indexY
 	 * @Returns Items
 	 */ 
-	public Items getItem(int indexX, int indexY)
+	public Items getItem(int index)
 	{
-		if( inventory[indexX][indexY] != null)
+		if (inventory.get(index) != null)
 		{
-			return inventory[indexX][indexY];
+			return inventory.get(index);
 		}
-		else 
-		{
-			return null;
-		}
+		//raise error or smthing
+		return null;
 	}
 
-	public static void main(String[] args)
-	{
-		Items item2 = new Items(1, 1);
-		Items item3 = new Items(2, 2);
-		Items item4 = new Items(1, 1);
-		Items item5 = new Items(2, 2);
-		Inventory inventoryList = new Inventory(item2);
-		inventoryList.addItemToInventory(item3);
-		inventoryList.addItemToInventory(item4);
-		inventoryList.addItemToInventory(item5);
-		System.out.println(inventoryList.getInventory());
-	}
+
 }
 

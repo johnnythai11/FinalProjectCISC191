@@ -28,7 +28,7 @@ public class TankChicken extends PlayerChicken
 	private int boneBalance;
 	private int hungerBar;
 	private int expBar;
-	private Inventory playerInventory;
+	public Inventory playerInventory;
 	private Equipment playerEquipment;
 
 	/*
@@ -39,7 +39,7 @@ public class TankChicken extends PlayerChicken
 
 	{
 
-		playerInventory = new Inventory();
+
 		playerEquipment = new Equipment();
 
 
@@ -67,15 +67,17 @@ public class TankChicken extends PlayerChicken
 	 * @parameter int indexX, int indexY
 	 */
 	@Override
-	public void equipEquipmentItem(int indexX, int indexY)
+	public void equipEquipmentItem(int index)
 	{
-		Items inputItem = playerInventory.getItem(indexX, indexY);
+		Items inputItem = playerInventory.getItem(index);
 		switch(inputItem.getItemType()) {
 
 			case 0:
 				playerEquipment.equipEquipmentItem(inputItem,0);
+				break;
 			case 1:
 				playerEquipment.equipEquipmentItem(inputItem,1);
+				break;
 			case 2:
 				if(inputItem.getItemTier() != 0)
 				{
@@ -85,6 +87,7 @@ public class TankChicken extends PlayerChicken
 				{
 					System.out.println("Can't equip, not right class");
 				}
+				break;
 
 			case 3:
 				if(inputItem.getItemTier() != 0)
@@ -95,8 +98,16 @@ public class TankChicken extends PlayerChicken
 				{
 					System.out.println("Can't equip, not right class");
 				}
+				break;
 
 		}
+	}
+	
+	
+	@Override
+	public void setBalance(int newBalance)
+	{
+		boneBalance = newBalance;
 	}
 
 	@Override
@@ -110,9 +121,85 @@ public class TankChicken extends PlayerChicken
 				"Bone Balance: " + boneBalance + "\n" +
 				"EXP Bar: " + expBar;
 	}
+	@Override
+	public String toStringSave()
+	{
+		/*
+		 * Order of data:
+		 * Level
+		 * Attack statistic
+		 * defense statistic
+		 * health statistic
+		 * hunger bar
+		 * bone balance
+		 * exp bar
+		 */
+		
+		
+		return "{" + levelOfChicken +
+				"," + baseDamage + 
+				"," + baseDefense + 
+				"," + currentHealth + 
+				"," + hungerBar + 
+				"," + boneBalance + 
+				"," + expBar + "}";
+	}
 
+	public void resetPlayer()
+	{
+		updateDamage();
+		updateDefense();
+		updateHealth();
+	}
+	
+	public int dealDamage()
+	{
+		updateDamage();
+		return baseDamage;
+	}
 
-
+	public void updateHealth()
+	{
+		baseHealth = (levelOfChicken-1)*2 + 35 + (heartCounter * 10);
+		currentHealth = baseHealth;
+	}
+	
+	public void updateDefense()
+	{
+		baseDefense = (levelOfChicken-1)*2 + 15 + playerEquipment.getItemStat(2) + playerEquipment.getItemStat(1);
+	}
+	
+	public void updateDamage()
+	{
+		baseDamage = (levelOfChicken-1)*2 +5 + playerEquipment.getItemStat(3);
+	}
+	
+	
+	public void takeDamage(int enemyDamage)
+	{
+		
+		if ((enemyDamage > baseDefense) && baseDefense > 0)
+		{
+			baseDefense = 0;
+		}
+		// Else if defense is not broken it decreases defense
+		else if (baseDefense != 0)
+		{
+			baseDefense = baseDefense - enemyDamage;
+		}
+		//finally if there is no defense, decrease current health
+		else if (baseDefense == 0 && currentHealth != 0 && currentHealth > 0)
+		{
+			currentHealth = currentHealth - enemyDamage;
+		}
+		
+		if (currentHealth <= 0)
+		{
+			currentHealth = 0;
+		}
+	}
+	
+	
 	@Override
 	public int getLevel()
 	{

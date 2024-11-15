@@ -34,7 +34,7 @@ public class EnemyChicken {
 	 * @param level Input the level of the generated chicken
 	 * @param health Input the health of the generated chicken
 	 */
-	EnemyChicken(int level)
+	public EnemyChicken(int level)
 	{
 		levelOfChicken = level;
 		maxHealth = (int)(level * 0.5) + 10;
@@ -49,7 +49,7 @@ public class EnemyChicken {
 	/**
 	 * Constructs a chicken with random level
 	 */
-	EnemyChicken()
+	public EnemyChicken()
 	{
 		level = (int)(Math.random() * 50); 
 		levelOfChicken = level;
@@ -80,6 +80,10 @@ public class EnemyChicken {
 	public void setLevelOfChicken(int level)
 	{
 		levelOfChicken = level;
+	}
+	public int getAttack()
+	{
+		return attack;
 	}
 	
 	public int getExpGiven()

@@ -28,13 +28,10 @@ public class MeleeChicken extends PlayerChicken
 	private int baseDamage;
 	private int boneBalance;
 	private int hungerBar;
-<<<<<<<< HEAD:src/model/MeleeChicken.java
 
 	private int expBar;
 
-========
->>>>>>>> 20cdbe5cf097e81cc378ac631bc67ea1110f89aa:src/MeleeChicken.java
-	private Inventory playerInventory;
+	public Inventory playerInventory;
 	private Equipment playerEquipment;
 	
 	/*
@@ -45,7 +42,7 @@ public class MeleeChicken extends PlayerChicken
 	{
 
 		
-		playerInventory = new Inventory();
+
 		playerEquipment = new Equipment();
 		
 		this.levelOfChicken = levelOfChicken;
@@ -57,32 +54,6 @@ public class MeleeChicken extends PlayerChicken
 		boneBalance = 1000;
 		expBar = 100 + (levelOfChicken-1)*50;
 
-	}
-	
-	
-	@Override
-	public void equipEquipmentItem(int indexX, int indexY)
-	{
-		Items inputItem = playerInventory.getItem(indexX, indexY);
-		switch(inputItem.getItemType()) {
-			
-			case 0:
-				playerEquipment.equipEquipmentItem(inputItem,0);
-			case 1:
-				System.out.println("Can't equip, not right class");
-			case 2:
-				playerEquipment.equipEquipmentItem(inputItem,2);
-			case 3:
-				if(inputItem.getItemTier() != 0)
-				{
-				playerEquipment.equipEquipmentItem(inputItem,3);
-				}
-				else
-				{
-					System.out.println("Can't equip, not right class");
-				}
-				
-		}
 	}
 
 	@Override
@@ -97,17 +68,20 @@ public class MeleeChicken extends PlayerChicken
 	 * @parameter int indexX, int indexY
 	 */
 	@Override
-	public void equipEquipmentItem(int indexX, int indexY)
+	public void equipEquipmentItem(int index)
 	{
-		Items inputItem = playerInventory.getItem(indexX, indexY);
+		Items inputItem = playerInventory.getItem(index);
 		switch(inputItem.getItemType()) {
 			
 			case 0:
 				playerEquipment.equipEquipmentItem(inputItem,0);
+				break;
 			case 1:
 				System.out.println("Can't equip, not right class");
+				break;
 			case 2:
 				playerEquipment.equipEquipmentItem(inputItem,2);
+				break;
 			case 3:
 				if(inputItem.getItemTier() != 0)
 				{
@@ -117,11 +91,72 @@ public class MeleeChicken extends PlayerChicken
 				{
 					System.out.println("Can't equip, not right class");
 				}
+				break;
 				
 		}
 	}
+	
+	
+	
+	public void takeDamage(int enemyDamage)
+	{
+		
+		if ((enemyDamage > baseDefense) && baseDefense > 0)
+		{
+			baseDefense = 0;
+		}
+		// Else if defense is not broken it decreases defense
+		else if (baseDefense != 0)
+		{
+			baseDefense = baseDefense - enemyDamage;
+		}
+		//finally if there is no defense, decrease current health
+		else if (baseDefense == 0 && currentHealth != 0 && currentHealth > 0)
+		{
+			currentHealth = currentHealth - enemyDamage;
+		}
+		
+		if (currentHealth <= 0)
+		{
+			currentHealth = 0;
+		}
+	}
+	
+	@Override
+	public void setBalance(int newBalance)
+	{
+		boneBalance = newBalance;
+	}
+	
+	public void resetPlayer()
+	{
+		updateDamage();
+		updateDefense();
+		updateHealth();
+	}
+	
+	public int dealDamage()
+	{
+		updateDamage();
+		return baseDamage;
+	}
 
-
+	public void updateHealth()
+	{
+		baseHealth = (levelOfChicken-1)*2 + 20 + (heartCounter * 10);
+		currentHealth = baseHealth;
+	}
+	
+	public void updateDefense()
+	{
+		baseDefense = (levelOfChicken-1)*2 + 10 + playerEquipment.getItemStat(2);
+	}
+	
+	public void updateDamage()
+	{
+		baseDamage = (levelOfChicken-1)*2 +8 + playerEquipment.getItemStat(3);
+	}
+	
 	
 	@Override
 	public String toString()
@@ -133,12 +168,31 @@ public class MeleeChicken extends PlayerChicken
 				"Hunger Bar: " + hungerBar + "\n" +
 				"Bone Balance: " + boneBalance + "\n";
 	}
-<<<<<<<< HEAD:src/model/MeleeChicken.java
-========
-
-
 	
->>>>>>>> 20cdbe5cf097e81cc378ac631bc67ea1110f89aa:src/MeleeChicken.java
+	@Override
+	public String toStringSave()
+	{
+		/*
+		 * Order of data:
+		 * Level
+		 * Attack statistic
+		 * defense statistic
+		 * health statistic
+		 * hunger bar
+		 * bone balance
+		 * exp bar
+		 */
+		
+		
+		return "{" + levelOfChicken +
+				"," + baseDamage + 
+				"," + baseDefense + 
+				"," + currentHealth + 
+				"," + hungerBar + 
+				"," + boneBalance + 
+				"," + expBar + "}";
+	}
+
 	@Override
 	public int getLevel()
 	{
@@ -161,32 +215,14 @@ public class MeleeChicken extends PlayerChicken
 		return baseDamage;
 	}
 	@Override
-	public int getCurrentHealth()
-	{
-		return currentHealth;
-	}
-	
-	@Override
-	public int getBaseDamage()
-	{
-		return baseDamage;
-	}
-	
-
-	@Override
 	public int getBaseDefense()
 	{
 		return baseDefense;
 	}
-<<<<<<<< HEAD:src/model/MeleeChicken.java
-========
-	
->>>>>>>> 20cdbe5cf097e81cc378ac631bc67ea1110f89aa:src/MeleeChicken.java
 	@Override 
 	public int getBoneBalance()
 	{
 		return boneBalance;
-<<<<<<<< HEAD:src/model/MeleeChicken.java
 	}
 	@Override
 	public int getHungerBar()
@@ -199,38 +235,14 @@ public class MeleeChicken extends PlayerChicken
 		this.baseHealth = health;
 		
 	}
-========
-	}
-	
-	@Override
-	public int getHungerBar()
-	{
-		return hungerBar;
-	}
-
-
->>>>>>>> 20cdbe5cf097e81cc378ac631bc67ea1110f89aa:src/MeleeChicken.java
 	
 	public static void main(String args[])
 	{
 		PlayerChicken melee = new MeleeChicken(2);
-<<<<<<<< HEAD:src/model/MeleeChicken.java
 		System.out.println(melee.toString());
 		System.out.println(melee);
 	
 	}
-========
-		
-		//System.out.println(melee.toString());
-		System.out.println(melee);
-	}
-	@Override
-	public void setBaseHealth(int health)
-	{
-		this.baseHealth = health;
-	}
-	
->>>>>>>> 20cdbe5cf097e81cc378ac631bc67ea1110f89aa:src/MeleeChicken.java
 }
 
 	

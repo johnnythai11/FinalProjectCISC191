@@ -1,19 +1,15 @@
 package view;
-import java.awt.Color;
-import java.io.BufferedReader;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Scanner;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 /**
  * Lead Author(s):
@@ -37,18 +33,15 @@ import javax.swing.JTextField;
 public class HowToPlayScreenView extends JFrame
 {
 
-	final int SCREEN_WIDTH = 900;
-	final int SCREEN_HEIGHT = 1000;
-
-	JPanel mainPanel;
-	JButton backToMainMenu;
-	JTextArea instructions;
-	JScrollPane instructionScroll;
-	JPanel instructionPanel;
-	File HowtoPlay;
+	final int SCREEN_WIDTH = 1000;
+	final int SCREEN_HEIGHT = 800;
+	private JPanel mainPanel;
+	private JButton backToMainMenu;
+	private JTextArea instructions= new JTextArea();
+	private JScrollPane instructionScroll= new JScrollPane(instructions);
 
 	/*
-	 * Constructor for screen view
+	 * Constructor for how to play screen
 	 */
 	HowToPlayScreenView()
 	{
@@ -56,8 +49,10 @@ public class HowToPlayScreenView extends JFrame
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
 		setResizable(false);
+
 		mainPanel = new JPanel();
 		mainPanel.setLayout(null);
+		mainPanel.setLocation(900, 100);
 		setPanels();
 		add(mainPanel);
 		setVisible(true);
@@ -70,72 +65,66 @@ public class HowToPlayScreenView extends JFrame
 
 		final int BUTTON_WIDTH = 150;
 		final int BUTTON_HEIGHT = 50;
-
-		final int instructions_WIDTH = 700;
-		final int instructions_HEIGHT = 650;
-
-		int verticalOffset = 75;
+		final int instructions_WIDTH = 750;
+		final int instructions_HEIGHT = 450;
+		int verticalOffset = 100;
 		int offsetWidthOfButton = ((SCREEN_WIDTH - BUTTON_WIDTH) / 2);
 		int offsetHeightOfButton = ((SCREEN_HEIGHT - BUTTON_HEIGHT)) - verticalOffset;
 		backToMainMenu = new JButton("Back To Main Menu");
 		backToMainMenu.setBounds(offsetWidthOfButton,offsetHeightOfButton,BUTTON_WIDTH,BUTTON_HEIGHT);
+		backToMainMenu.addActionListener(new MainMenuListener());
 		mainPanel.add(backToMainMenu);
-
 		int verticalOffset2 = 325;
 		int offsetWidthOfinstructions = ((SCREEN_WIDTH - instructions_WIDTH) / 2);
 		int offsetHeightOfinstructions = ((SCREEN_HEIGHT - instructions_HEIGHT)) - verticalOffset2;
-		instructionScroll = new JScrollPane();
 		instructionScroll.setSize(instructions_WIDTH,instructions_HEIGHT);
 		instructionScroll.setBounds(offsetWidthOfinstructions,offsetHeightOfinstructions,instructions_WIDTH,instructions_HEIGHT);
-		instructionScroll.setVisible(true);
-
-		instructionScroll.setWheelScrollingEnabled(true);
-
-
 
 		//reads the file
 		File file = new File("HowToPlay.txt");
+		
 
 		try (Scanner reading = new Scanner(file))
 
 		{
 
 			System.out.println("File Found");
-			String line;
+
 
 			while (reading.hasNext()) 
 			{
-				line = reading.nextLine();
-				instructions = new JTextArea(line + "\n");
-				//				instructionPanel = new JPanel();
-				//				instructionPanel.setLayout(null);
-				//				instructionPanel.setSize(instructions_WIDTH ,instructions_HEIGHT);
-				//				instructionPanel.setVisible(true);
-				//				instructionPanel.setBackground(Color.BLUE);
-
-				instructions.setSize(instructions_WIDTH ,instructions_HEIGHT);
+				String line = reading.nextLine();
+				instructions.append(line +"\n");
+				instructions.setSize(instructions_WIDTH,instructions_HEIGHT);
 				instructions.setVisible(true);
 				instructions.setEditable(false);
-				instructionScroll.add(instructions);
-				instructionScroll.setVisible(true);
-				//instructionPanel.add(instructionScroll);
-
-				System.out.println(line);
+				instructionScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+				instructionScroll.setWheelScrollingEnabled(true);
+				instructionScroll.setVisible(true);	
 			}
 		}
+		
 		catch (FileNotFoundException e)
 		{
 			System.out.println("not Found");
 			e.printStackTrace();
 		}
 
-
-
 		mainPanel.add(instructionScroll);
 		mainPanel.setVisible(true);
+		}
+	
+	private class MainMenuListener implements ActionListener
+	{
 
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			new MainMenuView();
+			dispose();
+		}
+		
 	}
-
 
 	public static void main(String args[])
 	{

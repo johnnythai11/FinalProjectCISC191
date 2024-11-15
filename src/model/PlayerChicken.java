@@ -22,6 +22,8 @@ public abstract class PlayerChicken
 
 
 
+	
+
 	/*
 	 * Constructor to create the Chicken class with the level input
 	 * @Parameters integer level
@@ -30,8 +32,16 @@ public abstract class PlayerChicken
 	{
 
 	}
+	public static int heartCounter;
+	public Inventory playerInventory = new Inventory();
 	
-
+	public abstract void setBalance(int balance);
+	public abstract void updateHealth();
+	public abstract void resetPlayer();
+	public abstract void takeDamage(int enemyDamage);
+	public abstract int dealDamage();
+	public abstract void updateDamage();
+	public abstract void updateDefense();
 	public abstract int expBar();
 	public abstract int getLevel();
 	public abstract int getBaseDamage();
@@ -41,7 +51,11 @@ public abstract class PlayerChicken
 	public abstract int getHungerBar();
 	public abstract int getBoneBalance();
 	public abstract void setBaseHealth(int health);
-	public abstract void equipEquipmentItem(int indexX, int indexY);
+	public abstract void equipEquipmentItem(int index);
+
+
+	public abstract String toStringSave();
+	
 
 
 

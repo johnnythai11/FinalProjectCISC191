@@ -1,12 +1,3 @@
-/Combat.class
-/EnemyChicken.class
-/Equipment.class
-/Human.class
-/Inventory.class
-/Items.class
-/MageChicken.class
-/MeleeChicken.class
-/PlayerChicken.class
-/Store.class
-/TankChicken.class
-/main.class
+/controller/
+/model/
+/view/

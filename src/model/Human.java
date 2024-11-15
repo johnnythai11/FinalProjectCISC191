@@ -67,6 +67,12 @@ public class Human
 				" attack: " + statBoostAttack + 
 				" hunger: " + boostHungerBar + "\n";
 	}
+	public String toStringSave()
+	{
+		return "{" + statBoostDefense + 
+				"," + statBoostAttack + 
+				"," + boostHungerBar + "}";
+	}
 
 
 	/*

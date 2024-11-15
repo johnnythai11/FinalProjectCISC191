@@ -148,11 +148,7 @@ public class Items
 		} 
 		this.typeOfArmor = typeOfArmor;
 		this.itemTier = itemTier;
-<<<<<<<< HEAD:src/model/Items.java
 		
-========
-		//this.itemName = itemName;
->>>>>>>> 20cdbe5cf097e81cc378ac631bc67ea1110f89aa:src/Items.java
 		setPrice(typeOfArmor, itemTier);
 	}
 
@@ -172,6 +168,27 @@ public class Items
 				"Heart Heals: " + healingStat + "\n";
 	}
 
+	public String toStringSave()
+	{
+		/*
+		 * Order of Data:
+		 * item tier
+		 * item name
+		 * price
+		 * attack statistic
+		 * defense statistic
+		 * health statistic
+		 * healing statistic
+		 */
+		return "{" + itemTier +
+				"," + itemName + 
+				"," + price + 
+				"," + attackStat + 
+				","+ defenseStat + 
+				"," + healthStat + 
+				"," + healingStat + "}";
+	}
+	
 	/*
 	 * checks if tier of the item is between 1-5, then sets price = to tier
 	 * tier 1 = 3 bones
@@ -187,10 +204,6 @@ public class Items
 		{
 			itemName = "Heart";
 			price = 100;
-<<<<<<<< HEAD:src/model/Items.java
-========
-
->>>>>>>> 20cdbe5cf097e81cc378ac631bc67ea1110f89aa:src/Items.java
 		}
 
 		if (typeOfArmor == 1)
@@ -268,29 +281,12 @@ public class Items
 		}
 
 	}
-<<<<<<<< HEAD:src/model/Items.java
 	
 	public int getItemTier()
 	{
 		return itemTier;
 	}
 	
-========
-	
-	public int getItemTier()
-	{
-		return itemTier;
-	}
-	
-	public void setItemTier(int itemTier)
-	{
-		this.itemTier = itemTier;
-	}
-
-
-
-
->>>>>>>> 20cdbe5cf097e81cc378ac631bc67ea1110f89aa:src/Items.java
 
 	public String getItemName()
 	{
@@ -349,8 +345,7 @@ public class Items
 
 		return this.price;
 	}
-
-
+	
 	public static void main(String args[])
 	{
 
