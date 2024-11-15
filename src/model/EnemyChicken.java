@@ -28,7 +28,8 @@ public class EnemyChicken {
 	private int level;
 	private int expGiven;
 	private int boneToken;
-
+	private PlayerChicken player;
+	
 	/**
 	 * Constructs an enemyChicken
 	 * @param level Input the level of the generated chicken
@@ -51,6 +52,7 @@ public class EnemyChicken {
 	 */
 	public EnemyChicken()
 	{
+		//level = (int)(Math.random() * playerLevel + 5); 
 		level = (int)(Math.random() * 50); 
 		levelOfChicken = level;
 		maxHealth = (int)(level * 0.5) + 10;
