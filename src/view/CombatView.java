@@ -73,15 +73,15 @@ public class CombatView extends JFrame
 
 		if (selection == 1)
 		{
-			player = new MageChicken(1);
+			player = new MageChicken(40);
 		}
 		else if (selection == 2)
 		{
-			player = new TankChicken(1);
+			player = new TankChicken(40);
 		}
 		else if (selection == 3)
 		{
-			player = new MeleeChicken(1);
+			player = new MeleeChicken(40);
 		}
 
 		enemy = new EnemyChicken();
@@ -182,6 +182,7 @@ public class CombatView extends JFrame
 		characterInfo.append("Defense: " + player.getBaseDefense() + "\n");
 		characterInfo.append("Attack: " + player.getBaseDamage() + "\n");
 		characterInfo.append("Balance: " + player.getBoneBalance() + "\n");
+		//characterInfo.append("Exp: " + player.getExp() + "\n");
 		characterInfo.setEditable(false);
 		characterInfo.setSize(660, 400);
 		characterInfo.setLocation(0, 440);
@@ -192,6 +193,7 @@ public class CombatView extends JFrame
 		enemyInfo.append("Health: " + enemy.getMaxHealth() + "\n");
 		enemyInfo.append("Defense: " + enemy.getDefense() + "\n");
 		enemyInfo.append("Attack: " + enemy.getAttack() + "\n");
+		enemyInfo.append("Exp Given when killed: " + enemy.getExpGiven());
 		enemyInfo.setEditable(false);
 		enemyInfo.setSize(660, 400);
 		enemyInfo.setLocation(840, 440);
@@ -208,12 +210,18 @@ public class CombatView extends JFrame
 		enemyInfo.setText("");
 		enemyInfo.setText("Health: " + enemy.getMaxHealth() + "\n"
 				+ "Defense: " + enemy.getDefense() + "\n" + "Attack: "
-				+ enemy.getAttack() + "\n");
-		
+				+ enemy.getAttack() + "\n"  + "Exp Given when killed: " + enemy.getExpGiven());
+
 		characterInfo.setText("");
-		characterInfo.setText("Health: " + player.getCurrentHealth() + "\n" + "Defense: " + player.getBaseDefense() + "\n" + "Attack: " + player.getBaseDamage() + "\n" + "Balance: " + player.getBoneBalance() + "\n" );
+		//characterInfo.append("Exp: " + player.getExp());
+		characterInfo.setText("Health: " + player.getCurrentHealth() + "\n" + 
+				"Defense: " + player.getBaseDefense() + "\n" + 
+				"Attack: " + player.getBaseDamage() + "\n" + 
+				"Balance: " + player.getBoneBalance() + "\n" +
+				"Level: " + player.getLevel() + "\n" + 
+				"Exp needed to levelup: " + player.getExp() );
 	}
-	
+
 	public void closeGui()
 	{
 		if (myStore != null)
@@ -259,7 +267,7 @@ public class CombatView extends JFrame
 				} else if (result == 2) { // WHAT YOU WANT TO HAPPEN WHEN THE ENEMY IS KILLED
 					enemy = null;
 					enemy = new EnemyChicken();
-					player.resetPlayer();
+					//player.resetPlayer();
 					player.setBalance(player.getBoneBalance()+ enemy.getBoneToken());
 					player.addExp(enemy.getExpGiven());
 					player.levelUp(); // Checks if you can level up

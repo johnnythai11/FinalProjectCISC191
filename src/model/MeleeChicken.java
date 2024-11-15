@@ -35,6 +35,8 @@ public class MeleeChicken extends PlayerChicken
 	public Inventory playerInventory;
 	private Equipment playerEquipment;
 	
+	private EnemyChicken enemyChicken;
+	
 	/*
 	 * Constructor to create the MeleeChicken with its base stats of Attack, Defense, Health, BoneBalance, and hungerBar
 	 * @parameters integer levelOfChicken
@@ -61,6 +63,7 @@ public class MeleeChicken extends PlayerChicken
 	@Override
 	public int expBar()
 	{
+		//int newExp = this.expBar - enemyChicken.getExpGiven();
 
 		return expBar;
 	}
@@ -250,6 +253,13 @@ public class MeleeChicken extends PlayerChicken
 	public void addExp(int exp) {
 		this.currentExp = exp;
 	}
+	
+	@Override
+	public int getExp()
+	{
+		
+		return this.currentExp;
+	}
 
 	@Override
 	public void levelUp() {
@@ -257,7 +267,7 @@ public class MeleeChicken extends PlayerChicken
 		int xpBar = 100 + (level-1)*50;
 		int currentXp = this.currentExp;
 		if(currentXp >= xpBar) {
-			levelOfChicken++;
+			level++;
 			resetPlayer();
 		}
 	}

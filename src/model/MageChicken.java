@@ -262,4 +262,11 @@ public class MageChicken extends PlayerChicken
 		}
 	}
 
+	@Override
+	public int getExp()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

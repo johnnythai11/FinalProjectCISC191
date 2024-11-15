@@ -54,6 +54,8 @@ public abstract class PlayerChicken
 	public abstract int getBoneBalance();
 	public abstract void setBaseHealth(int health);
 	public abstract void equipEquipmentItem(int index);
+	
+	public abstract int getExp();
 
 
 	public abstract String toStringSave();

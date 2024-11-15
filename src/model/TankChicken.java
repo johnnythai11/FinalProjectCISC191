@@ -276,6 +276,13 @@ public class TankChicken extends PlayerChicken
 		}
 	}
 
+	@Override
+	public int getExp()
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 
 
