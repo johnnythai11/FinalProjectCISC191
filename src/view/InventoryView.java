@@ -185,6 +185,7 @@ public class InventoryView extends JFrame
 	private class InventoryListener implements ActionListener
 	{
 
+		//doo doo
 		boolean itemExists = false;
 		@Override
 		public void actionPerformed(ActionEvent e) {
