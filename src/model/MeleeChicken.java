@@ -28,6 +28,7 @@ public class MeleeChicken extends PlayerChicken
 	private int baseDamage;
 	private int boneBalance;
 	private int hungerBar;
+	private int currentExp;
 
 	private int expBar;
 
@@ -53,6 +54,7 @@ public class MeleeChicken extends PlayerChicken
 		hungerBar = 20;
 		boneBalance = 1000;
 		expBar = 100 + (levelOfChicken-1)*50;
+		currentExp = 0;
 
 	}
 
