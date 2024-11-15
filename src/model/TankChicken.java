@@ -28,6 +28,7 @@ public class TankChicken extends PlayerChicken
 	private int boneBalance;
 	private int hungerBar;
 	private int expBar;
+	private int currentExp;
 	public Inventory playerInventory;
 	private Equipment playerEquipment;
 
@@ -257,6 +258,22 @@ public class TankChicken extends PlayerChicken
 		PlayerChicken tank = new TankChicken(49);
 
 		System.out.println(tank);
+	}
+
+	@Override
+	public void addExp(int exp) {
+		this.currentExp = exp;
+	}
+
+	@Override
+	public void levelUp() {
+		int level = this.levelOfChicken;
+		int xpBar = 100 + (level-1)*50;
+		int currentXp = this.currentExp;
+		if(currentXp >= xpBar) {
+			levelOfChicken++;
+			resetPlayer();
+		}
 	}
 
 

@@ -253,6 +253,18 @@ public class CombatView extends JFrame
 				closeGui();
 				int result = Combat.attackCombatRound(player, enemy);
 				System.out.println(result);
+				if(result == 1 ) { // WHAT HAPPENS WHEN YOU DIE
+					new MainMenuView();
+					dispose();
+				} else if (result == 2) { // WHAT YOU WANT TO HAPPEN WHEN THE ENEMY IS KILLED
+					enemy = null;
+					enemy = new EnemyChicken();
+					player.resetPlayer();
+					player.setBalance(player.getBoneBalance()+ enemy.getBoneToken());
+					player.addExp(enemy.getExpGiven());
+					player.levelUp(); // Checks if you can level up
+				}
+					
 				updateInfo();
 			}
 			else if(e.getSource() == specialAttack)

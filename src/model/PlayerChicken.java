@@ -35,7 +35,7 @@ public abstract class PlayerChicken
 	public static int heartCounter;
 	public Inventory playerInventory = new Inventory();
 	
-	public abstract void addExp();
+	public abstract void addExp(int exp);
 	public abstract void levelUp();
 	public abstract void setBalance(int balance);
 	public abstract void updateHealth();

@@ -29,6 +29,7 @@ public class MageChicken extends PlayerChicken
 	private int boneBalance;
 	private int hungerBar;
 	private int expBar;
+	private int currentExp;
 	public Inventory playerInventory;
 	private Equipment playerEquipment;
 	
@@ -199,6 +200,7 @@ public class MageChicken extends PlayerChicken
 
 		return levelOfChicken;
 	}
+	
 
 	@Override
 	public int getBaseHealth()
@@ -242,6 +244,22 @@ public class MageChicken extends PlayerChicken
 	{
 		this.baseHealth = health;
 		
+	}
+
+	@Override
+	public void addExp(int exp) {
+		this.currentExp = exp;
+	}
+
+	@Override
+	public void levelUp() {
+		int level = this.levelOfChicken;
+		int xpBar = 100 + (level-1)*50;
+		int currentXp = this.currentExp;
+		if(currentXp >= xpBar) {
+			levelOfChicken++;
+			resetPlayer();
+		}
 	}
 
 }

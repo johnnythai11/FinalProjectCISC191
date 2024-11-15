@@ -245,6 +245,22 @@ public class MeleeChicken extends PlayerChicken
 		System.out.println(melee);
 	
 	}
+
+	@Override
+	public void addExp(int exp) {
+		this.currentExp = exp;
+	}
+
+	@Override
+	public void levelUp() {
+		int level = this.levelOfChicken;
+		int xpBar = 100 + (level-1)*50;
+		int currentXp = this.currentExp;
+		if(currentXp >= xpBar) {
+			levelOfChicken++;
+			resetPlayer();
+		}
+	}
 }
 
 	
