@@ -233,7 +233,7 @@ public class CombatView extends JFrame
 	public void updateInfo()
 	{
 		enemyInfo.setText("");
-		enemyInfo.setText("Health: " + enemy.getMaxHealth() + "\n"
+		enemyInfo.setText("Level: " + enemy.getLevelOfChicken() + "\n" + "Health: " + enemy.getMaxHealth() + "\n"
 				+ "Defense: " + enemy.getDefense() + "\n" + "Attack: "
 				+ enemy.getAttack() + "\n"  + "Exp Given when killed: " + enemy.getExpGiven());
 
@@ -293,7 +293,7 @@ public class CombatView extends JFrame
 					dispose();
 				} else if (result == 2) { // WHAT YOU WANT TO HAPPEN WHEN THE ENEMY IS KILLED
 					enemy = null;
-					enemy = new EnemyChicken(1);
+					enemy = new EnemyChicken();
 					
 					player.setBalance(player.getBoneBalance()+ enemy.getBoneToken());
 					player.addExp(enemy.getExpGiven());
@@ -309,7 +309,6 @@ public class CombatView extends JFrame
 				
 					}
 				
-				player.resetPlayer();
 				updateInfo();
 			}
 	

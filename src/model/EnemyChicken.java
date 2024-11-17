@@ -41,7 +41,7 @@ public class EnemyChicken {
 		maxHealth = (int)(level * 0.5) + 10;
 		attack = (int)(level * 0.5) + 10;
 		defense = (int)(level * 0.5) + 10;
-		expGiven = level + 500;
+		expGiven = level;
 		Random r = new Random();
 		boneToken = r.nextInt(4) + 3;
 
@@ -58,7 +58,7 @@ public class EnemyChicken {
 		maxHealth = (int)(level * 0.5) + 10;
 		attack = (int)(level * 0.5) + 10;
 		defense = (int)(level * 0.5) + 10;	
-		expGiven = level + 500;
+		expGiven = level;
 		Random r = new Random();
 		boneToken = r.nextInt(10) + 1;
 	}
