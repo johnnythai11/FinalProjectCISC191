@@ -32,6 +32,10 @@ public class MageChicken extends PlayerChicken
 	private int currentExp;
 	public Inventory playerInventory;
 	private Equipment playerEquipment;
+	private Human humanBoost;
+	private int attackBoost;
+	private int defenseBoost;
+	
 	
 	
 	/*
@@ -40,15 +44,47 @@ public class MageChicken extends PlayerChicken
 	 */
 	public MageChicken(int levelOfChicken)
 	{
-	
 		playerEquipment = new Equipment();
+		this.levelOfChicken = levelOfChicken;	
+		if (1<= this.levelOfChicken && this.levelOfChicken <= 10)
+		{
+			humanBoost = new Human(1);
+			attackBoost = humanBoost.getAttackBoost();
+			defenseBoost = humanBoost.getDefenseBoost();
+			
+		}
+		else if (11<= this.levelOfChicken && this.levelOfChicken <= 20)
+		{
+			humanBoost = new Human(2);
+			attackBoost = humanBoost.getAttackBoost();
+			defenseBoost = humanBoost.getDefenseBoost();
+			
+		}
+		else if (21<= this.levelOfChicken && this.levelOfChicken <= 30)
+		{
+			humanBoost = new Human(3);
+			attackBoost = humanBoost.getAttackBoost();
+			defenseBoost = humanBoost.getDefenseBoost();
+			
+		}
+		else if (31<= this.levelOfChicken && this.levelOfChicken <= 40)
+		{
+			humanBoost = new Human(4);
+			attackBoost = humanBoost.getAttackBoost();
+			defenseBoost = humanBoost.getDefenseBoost();
+			
+		}
+		else if (41<= this.levelOfChicken)
+		{
+			humanBoost = new Human(5);
+			attackBoost = humanBoost.getAttackBoost();
+			defenseBoost = humanBoost.getDefenseBoost();
 		
-		
-		this.levelOfChicken = levelOfChicken;
-		baseDamage = (levelOfChicken-1)*2 +10;
+		}
+		baseDamage = (levelOfChicken-1)*2 +10 + attackBoost;
 		currentHealth = (levelOfChicken-1)*2 + 15;
 		baseHealth = (levelOfChicken-1)*2 + 15;
-		baseDefense = (levelOfChicken-1)*2 + 5;
+		baseDefense = (levelOfChicken-1)*2 + 5 + defenseBoost;
 		hungerBar = 20;
 		boneBalance = 1000;
 		expBar = 100 + (levelOfChicken-1)*50;
@@ -137,6 +173,7 @@ public class MageChicken extends PlayerChicken
 		updateDamage();
 		updateDefense();
 		updateHealth();
+		updateExpNeeded();
 	}
 	
 	
@@ -193,6 +230,11 @@ public class MageChicken extends PlayerChicken
 		baseDamage = (levelOfChicken-1)*2 +10 + playerEquipment.getItemStat(3);
 	}
 	
+	public void updateExpNeeded()
+	{
+		expBar = 100 + (levelOfChicken-1)*50;
+	}
+	
 	
 	@Override
 	public int getLevel()
@@ -246,27 +288,31 @@ public class MageChicken extends PlayerChicken
 		
 	}
 
+
 	@Override
 	public void addExp(int exp) {
 		this.currentExp = exp;
 	}
 
 	@Override
-	public void levelUp() {
-		int level = this.levelOfChicken;
-		int xpBar = 100 + (level-1)*50;
-		int currentXp = this.currentExp;
-		if(currentXp >= xpBar) {
-			levelOfChicken++;
-			resetPlayer();
-		}
+	public int getCurrentExpGained()
+	{
+		return this.currentExp;
 	}
 
 	@Override
 	public int getExp()
 	{
-		// TODO Auto-generated method stub
-		return 0;
+
+		return this.expBar;
+	}
+
+	@Override
+	public void levelUp() {
+
+		levelOfChicken++;
+		resetPlayer();
+
 	}
 
 }

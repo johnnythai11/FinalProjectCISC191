@@ -101,16 +101,16 @@ public class Combat {
 		}
 		return currentHealth;
 	}
-	
-	
+
+
 	public static int attackCombatRound(PlayerChicken player, EnemyChicken enemy)
 	{
 		int playerDamage = player.dealDamage();
 		int enemyDamage = enemy.doDamage();
-		
+
 		enemy.takeDamage(playerDamage);
 		player.takeDamage(enemyDamage);
-		
+
 		if (player.getCurrentHealth() <= 0)
 		{
 			return 1;
@@ -123,7 +123,7 @@ public class Combat {
 		{
 			return 0;
 		}
-		
+
 	}
 
 
@@ -140,8 +140,8 @@ public class Combat {
 		System.out.println("basic Attack: "+ x);
 
 	}
-	
-	
-	
+
+
+
 
 }

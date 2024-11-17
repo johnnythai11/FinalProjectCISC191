@@ -34,7 +34,6 @@ public abstract class PlayerChicken
 	}
 	public static int heartCounter;
 	public Inventory playerInventory = new Inventory();
-	
 	public abstract void addExp(int exp);
 	public abstract void levelUp();
 	public abstract void setBalance(int balance);
@@ -44,6 +43,7 @@ public abstract class PlayerChicken
 	public abstract int dealDamage();
 	public abstract void updateDamage();
 	public abstract void updateDefense();
+	public abstract void updateExpNeeded();
 	public abstract int expBar();
 	public abstract int getLevel();
 	public abstract int getBaseDamage();
@@ -53,14 +53,9 @@ public abstract class PlayerChicken
 	public abstract int getHungerBar();
 	public abstract int getBoneBalance();
 	public abstract void setBaseHealth(int health);
-	public abstract void equipEquipmentItem(int index);
-	
+	public abstract void equipEquipmentItem(int index);	
 	public abstract int getExp();
-
-
 	public abstract String toStringSave();
+	public abstract int getCurrentExpGained();
 	
-
-
-
 }

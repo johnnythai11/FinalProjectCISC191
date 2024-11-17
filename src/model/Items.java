@@ -28,12 +28,7 @@ public class Items
 	private int typeOfArmor;
 	private int price;
 	private int healingStat;
-
-
-
 	final int priceOfHeart = 10;
-
-
 
 
 	public int priceOfHeart()

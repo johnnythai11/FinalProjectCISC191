@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 
 import model.Combat;
 import model.EnemyChicken;
+import model.Human;
 import model.MageChicken;
 import model.PlayerChicken;
 import model.TankChicken;
@@ -59,10 +60,14 @@ public class CombatView extends JFrame
 	public JTextArea characterInfo;
 	private JTextArea enemyInfo;
 
-	static PlayerChicken player;
-	static EnemyChicken enemy;
+	public static PlayerChicken player;
+	public static EnemyChicken enemy;
 
 	private Font info;
+	
+	private int experienceCounter;
+	private JTextArea characterPanelText;
+	
 
 	CombatView(int selection)
 	{
@@ -73,15 +78,15 @@ public class CombatView extends JFrame
 
 		if (selection == 1)
 		{
-			player = new MageChicken(40);
+			player = new MageChicken(1);
 		}
 		else if (selection == 2)
 		{
-			player = new TankChicken(40);
+			player = new TankChicken(1);
 		}
 		else if (selection == 3)
 		{
-			player = new MeleeChicken(40);
+			player = new MeleeChicken(1);
 		}
 
 		enemy = new EnemyChicken();
@@ -159,15 +164,33 @@ public class CombatView extends JFrame
 
 		if (player instanceof MageChicken)
 		{
+			info = new Font("Times New Roman", Font.BOLD, 45);
 			characterPanel.setBackground(Color.blue);
+			characterPanelText = new JTextArea();
+			characterPanelText.append("Mage Chicken");
+			characterPanelText.setEditable(false);
+			characterPanelText.setFont(info);
+			characterPanel.add(characterPanelText);
 		}
 		else if (player instanceof TankChicken)
 		{
-			characterPanel.setBackground(Color.magenta);
+			info = new Font("Times New Roman", Font.BOLD, 45);
+			characterPanel.setBackground(Color.green);
+			characterPanelText = new JTextArea();
+			characterPanelText.append("Tank Chicken");
+			characterPanelText.setEditable(false);
+			characterPanelText.setFont(info);
+			characterPanel.add(characterPanelText);
 		}
 		else if (player instanceof MeleeChicken)
 		{
+			info = new Font("Times New Roman", Font.BOLD, 45);
 			characterPanel.setBackground(Color.red);
+			characterPanelText = new JTextArea();
+			characterPanelText.append("Melee Chicken");
+			characterPanelText.setEditable(false);
+			characterPanelText.setFont(info);
+			characterPanel.add(characterPanelText);
 		}
 
 		enemyPanel = new JPanel();
@@ -182,7 +205,8 @@ public class CombatView extends JFrame
 		characterInfo.append("Defense: " + player.getBaseDefense() + "\n");
 		characterInfo.append("Attack: " + player.getBaseDamage() + "\n");
 		characterInfo.append("Balance: " + player.getBoneBalance() + "\n");
-		//characterInfo.append("Exp: " + player.getExp() + "\n");
+		characterInfo.append("Level: " + player.getLevel() + "\n");
+		characterInfo.append("Exp needed to levelup: " + player.expBar() );
 		characterInfo.setEditable(false);
 		characterInfo.setSize(660, 400);
 		characterInfo.setLocation(0, 440);
@@ -190,6 +214,7 @@ public class CombatView extends JFrame
 		enemyInfo = new JTextArea(1, 5);
 
 		enemyInfo.setFont(info);
+		enemyInfo.append("Level: " + enemy.getLevelOfChicken() + "\n");
 		enemyInfo.append("Health: " + enemy.getMaxHealth() + "\n");
 		enemyInfo.append("Defense: " + enemy.getDefense() + "\n");
 		enemyInfo.append("Attack: " + enemy.getAttack() + "\n");
@@ -219,11 +244,12 @@ public class CombatView extends JFrame
 				"Attack: " + player.getBaseDamage() + "\n" + 
 				"Balance: " + player.getBoneBalance() + "\n" +
 				"Level: " + player.getLevel() + "\n" + 
-				"Exp needed to levelup: " + player.getExp() );
+				"Exp gained: " + experienceCounter + "\n" +
+				"Exp needed to levelup: " + player.expBar() );
 	}
 
 	public void closeGui()
-	{
+	{ 
 		if (myStore != null)
 		{
 			myStore.dispose();
@@ -244,6 +270,7 @@ public class CombatView extends JFrame
 			closeGui();
 			enemy = null;
 			enemy = new EnemyChicken();
+			
 			player.resetPlayer();
 			updateInfo();
 		}
@@ -266,15 +293,26 @@ public class CombatView extends JFrame
 					dispose();
 				} else if (result == 2) { // WHAT YOU WANT TO HAPPEN WHEN THE ENEMY IS KILLED
 					enemy = null;
-					enemy = new EnemyChicken();
-					//player.resetPlayer();
+					enemy = new EnemyChicken(1);
+					
 					player.setBalance(player.getBoneBalance()+ enemy.getBoneToken());
 					player.addExp(enemy.getExpGiven());
+					experienceCounter = experienceCounter + player.getCurrentExpGained();
+					if (player.getExp() <= experienceCounter)
+					{
 					player.levelUp(); // Checks if you can level up
-				}
 					
+					experienceCounter = 0;//when the player levels up the experience Counter resets to 0
+					}
+		
+				
+				
+					}
+				
+				player.resetPlayer();
 				updateInfo();
 			}
+	
 			else if(e.getSource() == specialAttack)
 			{
 				closeGui();
@@ -309,6 +347,7 @@ public class CombatView extends JFrame
 		}
 		
 	}
+	
 	//
 	// public static void main(String args[])
 	// {

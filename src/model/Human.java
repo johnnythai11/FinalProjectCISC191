@@ -22,7 +22,6 @@ public class Human
 {
 
 	private int level; 
-	private int statBoostHealth;
 	private int statBoostAttack;
 	private int statBoostDefense;
 	private int boostHungerBar;
@@ -98,7 +97,7 @@ public class Human
 	 * Gets the attack boost status of the human 
 	 * @return integer statBoostAttack
 	 */
-	public double getAttackBoost()
+	public int getAttackBoost()
 	{
 		return statBoostAttack;
 
@@ -115,15 +114,7 @@ public class Human
 
 	}
 	
-	/*
-	 * Gets the health boost status of the human
-	 * @return integer statBoostDefense
-	 */
-	public int getHealthBoost()
-	{
-		return statBoostHealth;
 
-	}
 	
 	public static void main (String args[])
 	{

@@ -78,8 +78,8 @@ public class StoreView extends JFrame {
 		// Populates the array with JLabels, Sets them blue, and aligns them
 		for (int i = 0; i < theLabels.length; i++) {
 			// For each "slot" in the array, create JPanel
-			theLabels[i] = new JLabel("Insert Icon");
-			theLabels[i].setBackground(Color.BLUE);
+			theLabels[i] = new JLabel(" " + String.valueOf(myStore.getItem(i).getItemName()));
+			theLabels[i].setBackground(Color.white);
 			theLabels[i].setOpaque(true);
 			// amountPerRow changes amountPerRow
 			if (xOffset > (panelLengthWidth * amountPerRow)) {

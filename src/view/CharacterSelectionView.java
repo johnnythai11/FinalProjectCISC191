@@ -34,6 +34,7 @@ public class CharacterSelectionView extends JFrame
 	private JLabel characterIcon, statField;
 	private JButton mage, tank, melee, confirmButton;
 	private int setSelection = 0;
+	
 
 	CharacterSelectionView()
 	{
@@ -96,19 +97,22 @@ public class CharacterSelectionView extends JFrame
 		{
 			if (e.getSource() == mage)
 			{
-				System.out.println("I'm A-Maging ba dum tiss");
+				
+				statField.setText("I'm A-Maging ba dum tiss");
 				characterIcon.setBackground(Color.blue);
 				setSelection = 1;
 			}
 			else if (e.getSource() == tank)
 			{
-				System.out.println("M1A2 Abrams");
-				characterIcon.setBackground(Color.magenta);
+				
+				statField.setText("M1A2 Abrams");
+				characterIcon.setBackground(Color.green);
 				setSelection = 2;
 			}
 			else if (e.getSource() == melee)
 			{
-				System.out.println("Oi there you got a lisence for that stabbin?");
+			
+				statField.setText("Oi there you got a lisence for that stabbin?");
 				characterIcon.setBackground(Color.red);
 				setSelection = 3;
 			}

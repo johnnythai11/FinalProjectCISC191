@@ -1,20 +1,20 @@
 
 /**
-* Lead Author(s):
-* @author Full name: Johnny Thai
-* @author Full name: Jacob Wiemann
-* @author Full name: Daniel Soto
-*
-* Other Contributors: none
-*
-* References:
-* Morelli, R., & Walde, R. (2016).
-* Java, Java, Java: Object-Oriented Problem Solving
-* https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
-*
-* Version: 2024-10-16
-* 
-*/
+ * Lead Author(s):
+ * @author Full name: Johnny Thai
+ * @author Full name: Jacob Wiemann
+ * @author Full name: Daniel Soto
+ *
+ * Other Contributors: none
+ *
+ * References:
+ * Morelli, R., & Walde, R. (2016).
+ * Java, Java, Java: Object-Oriented Problem Solving
+ * https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+ *
+ * Version: 2024-10-16
+ * 
+ */
 package model;
 import java.util.Random;
 
@@ -28,8 +28,8 @@ public class EnemyChicken {
 	private int level;
 	private int expGiven;
 	private int boneToken;
-	private PlayerChicken player;
 	
+
 	/**
 	 * Constructs an enemyChicken
 	 * @param level Input the level of the generated chicken
@@ -41,7 +41,7 @@ public class EnemyChicken {
 		maxHealth = (int)(level * 0.5) + 10;
 		attack = (int)(level * 0.5) + 10;
 		defense = (int)(level * 0.5) + 10;
-		expGiven = level;
+		expGiven = level + 500;
 		Random r = new Random();
 		boneToken = r.nextInt(4) + 3;
 
@@ -58,11 +58,11 @@ public class EnemyChicken {
 		maxHealth = (int)(level * 0.5) + 10;
 		attack = (int)(level * 0.5) + 10;
 		defense = (int)(level * 0.5) + 10;	
-		expGiven = level;
+		expGiven = level + 500;
 		Random r = new Random();
 		boneToken = r.nextInt(10) + 1;
 	}
-	
+
 	@Override
 	public String toString()
 	{
@@ -73,12 +73,12 @@ public class EnemyChicken {
 				"Exp Given: " + expGiven + "\n" + 
 				"Bone Token: " + boneToken;
 	}
-	
+
 	public void setMaxHealth(int health)
 	{
 		maxHealth = health;
 	}
-	
+
 	public void setLevelOfChicken(int level)
 	{
 		levelOfChicken = level;
@@ -87,17 +87,17 @@ public class EnemyChicken {
 	{
 		return attack;
 	}
-	
+
 	public int getExpGiven()
 	{
 		return expGiven;
 	}
-	
+
 	public int getBoneToken()
 	{
 		return boneToken;
 	}
-	
+
 	public int getDefense()
 	{
 		return defense;
@@ -107,13 +107,13 @@ public class EnemyChicken {
 	{
 		return levelOfChicken;
 	}
-	
+
 	public int getMaxHealth()
 	{
 		return maxHealth;
 	}
-	
-	
+
+
 
 	/**
 	 * Return's a damage number dependent on the level
@@ -123,7 +123,7 @@ public class EnemyChicken {
 	{
 		return (int)(levelOfChicken * 0.5) + 10;
 	}
-	
+
 	/**
 	 * Calculate incoming damage for the chicken
 	 * @param incomingDamage Damage incoming to the chicken
@@ -150,7 +150,7 @@ public class EnemyChicken {
 			}
 		}
 	}
-	
+
 	/*
 	 * Method that randomly create an enemyChicken 
 	 * @Returns EnemyChicken
@@ -159,7 +159,7 @@ public class EnemyChicken {
 	{
 		return new EnemyChicken();
 	}
-	
+
 
 	public static void main(String args[])
 	{
