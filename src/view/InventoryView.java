@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 
 import model.Equipment;
 import model.Items;
+import model.PlayerChicken;
 
 
 /**
@@ -32,7 +33,7 @@ import model.Items;
 
 public class InventoryView extends JFrame
 {
-	
+	private PlayerChicken player;
 	private Items item0;
 	private Items item1;
 	private Items item2;
@@ -215,6 +216,7 @@ public class InventoryView extends JFrame
 						System.out.println("ITEM 0");
 						//add item to MISC Slot
 						playerSlots.equipEquipmentItem(item, 0);
+						
 
 					}
 					else if(e.getSource() == additemButtons[i] && itemType == 1)
@@ -222,19 +224,23 @@ public class InventoryView extends JFrame
 						System.out.println("ITEM 1");
 						//add item to Head Slot
 						playerSlots.equipEquipmentItem(item, 1);
+						
 					}
 					else if(e.getSource() == additemButtons[i] && itemType == 2)
 					{
 						System.out.println("ITEM 2");
 						//add item to Body Slot
 						playerSlots.equipEquipmentItem(item, 2);
+						
 					}
 					else if(e.getSource() == additemButtons[i] && itemType == 3)
 					{
 						System.out.println("ITEM 3");
 						//add item to Feet Slot
 						playerSlots.equipEquipmentItem(item, 3);
+					
 					}
+					player.resetPlayer();
 				
 				}
 			}
