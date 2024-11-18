@@ -17,10 +17,11 @@ package model;
 * 
 */
 
-public abstract class PlayerChicken
+public abstract class PlayerChicken implements java.io.Serializable
 {
 
 
+private static final long serialVersionUID = 1L;
 public PlayerChicken player;
 	
 
@@ -57,5 +58,7 @@ public PlayerChicken player;
 	public abstract int getExp();
 	public abstract String toStringSave();
 	public abstract int getCurrentExpGained();
-	
+	public abstract int getExperienceCounter();
+	public abstract void addExperienceCounter(int add);
+	public abstract void setExperienceCounter(int add);
 }

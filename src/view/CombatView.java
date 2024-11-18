@@ -66,20 +66,37 @@ public class CombatView extends JFrame
 
 	private Font info;
 	
-	private int experienceCounter;
+	private int expCount;
 	private JTextArea characterPanelText;
-	
+	private int classType;
 
+	public CombatView(PlayerChicken player){
+		super("Chicken Fighter");
+		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.player = player;
+		setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+		setResizable(false);
+		enemy = new EnemyChicken();
+
+		mainPanel = new JPanel();
+		mainPanel.setLayout(null);
+		setButtons();
+		setPanels();
+		add(mainPanel);
+		setVisible(true);
+	}
+	
 	CombatView(int selection)
 	{
 		super("Chicken Fighter");
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.classType = selection;
 		setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 		setResizable(false);
 
 		if (selection == 1)
 		{
-			player = new MageChicken(1);
+			player = new MageChicken(50);
 		}
 		else if (selection == 2)
 		{
@@ -254,7 +271,7 @@ public class CombatView extends JFrame
 				"Attack: " + player.getBaseDamage() + "\n" + 
 				"Balance: " + player.getBoneBalance() + "\n" +
 				"Level: " + player.getLevel() + "\n" + 
-				"Exp gained: " + experienceCounter + "\n" +
+				"Exp gained: " + expCount + "\n" +
 				"Exp needed to levelup: " + player.expBar() );
 	}
 
@@ -304,15 +321,16 @@ public class CombatView extends JFrame
 				} else if (result == 2) { // WHAT YOU WANT TO HAPPEN WHEN THE ENEMY IS KILLED
 					enemy = null;
 					enemy = new EnemyChicken();
-					
+					System.out.println(player.getExperienceCounter());
 					player.setBalance(player.getBoneBalance()+ enemy.getBoneToken());
-					player.addExp(enemy.getExpGiven());
-					experienceCounter = experienceCounter + player.getCurrentExpGained();
-					if (player.getExp() <= experienceCounter)
+					player.addExp(enemy.getExpGiven());// sets exp from the enemy that was killed
+					player.addExperienceCounter(enemy.getExpGiven());
+					expCount = player.getExperienceCounter();
+					if (player.getExp() <= player.getExperienceCounter())
 					{
 					player.levelUp(); // Checks if you can level up
-					
-					experienceCounter = 0;//when the player levels up the experience Counter resets to 0
+					System.out.println("levelup");
+					//player.setExperienceCounter(0);//when the player levels up the experience Counter resets to 0
 					}
 		
 				
@@ -362,8 +380,9 @@ public class CombatView extends JFrame
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			System.out.println(player.getExperienceCounter());
 			SaveLoad saveLoad = new SaveLoad();
-			saveLoad.binarySave();
+			saveLoad.binarySave(player);
 			
 		}
 		

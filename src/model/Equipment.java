@@ -19,7 +19,7 @@ import view.CombatView;
  * 
  */
 
-public class Equipment
+public class Equipment implements java.io.Serializable
 {
 
     PlayerChicken player;

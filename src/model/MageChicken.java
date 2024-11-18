@@ -35,7 +35,8 @@ public class MageChicken extends PlayerChicken
 	private Human humanBoost;
 	private int attackBoost;
 	private int defenseBoost;
-	
+	private int experienceCounter;
+
 	
 	
 	/*
@@ -314,5 +315,16 @@ public class MageChicken extends PlayerChicken
 		resetPlayer();
 
 	}
-
+	@Override
+	public int getExperienceCounter() {
+		return this.experienceCounter;
+	}
+	@Override
+	public void addExperienceCounter (int add) {
+		this.experienceCounter = this.experienceCounter + add;
+	}
+	@Override
+	public void setExperienceCounter (int add) {
+		this.experienceCounter = add;
+	}
 }

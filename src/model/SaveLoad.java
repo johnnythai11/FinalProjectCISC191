@@ -4,8 +4,13 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.regex.*;
 
+import view.CombatView;
+
 public class SaveLoad {
 	private PlayerChicken player;
+	private MageChicken mage;
+	private MeleeChicken melee;
+	private TankChicken tank;
 	private Inventory inventory;
 	private Equipment equipment;
 	private Human human;
@@ -68,13 +73,26 @@ public class SaveLoad {
 		}
 	}
 	
-	public void binarySave() {
+	public void binarySave(PlayerChicken object) {
 		try
 		{
 			FileOutputStream fstream = new FileOutputStream("ChickenFighterSave.dat");
 			ObjectOutputStream oos = new ObjectOutputStream(fstream);
-			oos.writeObject(player);
-			System.out.println(player);
+//			if (type == 1)
+//			{
+//				System.out.println("out");
+//				oos.writeObject(mage);
+//			}
+//			else if (type == 2)
+//			{
+//				oos.writeObject(tank);
+//			}
+//			else if (type == 3)
+//			{
+//				oos.writeObject(melee);
+//			}
+			oos.writeObject(object);
+			oos.close();
 		}
 		catch (IOException e)
 		{
@@ -91,6 +109,7 @@ public class SaveLoad {
         ObjectInputStream objectIn = new ObjectInputStream(fileIn);
         Object obj = objectIn.readObject();
         PlayerChicken p = (PlayerChicken) obj;
+        new CombatView(p);
 		}
 		catch (IOException | ClassNotFoundException e)
 		{

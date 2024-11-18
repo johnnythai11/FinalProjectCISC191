@@ -32,6 +32,7 @@ public class MeleeChicken extends PlayerChicken
 	private int attackBoost;
 	private int defenseBoost;
 	private int expBar;
+	private int experienceCounter;
 
 	public Inventory playerInventory;
 	private Equipment playerEquipment;
@@ -316,6 +317,18 @@ public class MeleeChicken extends PlayerChicken
 		//System.out.println(melee.toString());
 		System.out.println(melee);
 
+	}
+	@Override
+	public int getExperienceCounter() {
+		return this.experienceCounter;
+	}
+	@Override
+	public void addExperienceCounter (int add) {
+		this.experienceCounter = this.experienceCounter + add;
+	}
+	@Override
+	public void setExperienceCounter (int add) {
+		this.experienceCounter = add;
 	}
 }
 

@@ -18,7 +18,7 @@ package model;
  */
 
 
-public class Human 
+public class Human implements java.io.Serializable
 {
 
 	private int level; 

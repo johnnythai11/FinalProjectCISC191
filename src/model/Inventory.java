@@ -21,7 +21,7 @@ import java.util.ArrayList;
  */
 
 
-public class Inventory extends Items
+public class Inventory extends Items implements java.io.Serializable
 {
 	private ArrayList<Items> inventory = new ArrayList<Items>();
 

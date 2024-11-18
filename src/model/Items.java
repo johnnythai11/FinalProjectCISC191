@@ -17,7 +17,7 @@ package model;
  * 
  */
 
-public class Items
+public class Items implements java.io.Serializable
 {
 
 	private String itemName;
