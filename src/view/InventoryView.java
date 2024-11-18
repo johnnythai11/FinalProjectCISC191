@@ -195,53 +195,18 @@ public class InventoryView extends JFrame
 	private class InventoryListenerEquipItems implements ActionListener 
 	{
 
-		boolean itemExists = false;
-		int itemType;
+	
+	
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			for (int i = 0; i < additemButtons.length; i++)
 			{
 
-				itemExists = CombatView.player.playerInventory.itemExist(i);
-				
-				if (itemExists)
+				//itemExists = CombatView.player.playerInventory.itemExist(i);
+				if (e.getSource() == additemButtons[i])
 				{
-				
-					itemType = CombatView.player.playerInventory.getItem(i).getItemType();
-					Items item =  CombatView.player.playerInventory.getItem(i);
-					Equipment playerSlots = new Equipment(item0, item1, item2, item3);
-					//PlayerChicken player;
-					if (e.getSource() == additemButtons[i] && itemType == 0 ) 
-					{	
-						System.out.println("ITEM 0");
-						//add item to MISC Slot
-						playerSlots.equipEquipmentItem(item, 0);
-						
-
-					}
-					else if(e.getSource() == additemButtons[i] && itemType == 1)
-					{
-						System.out.println("ITEM 1");
-						//add item to Head Slot
-						playerSlots.equipEquipmentItem(item, 1);
-						
-					}
-					else if(e.getSource() == additemButtons[i] && itemType == 2)
-					{
-						System.out.println("ITEM 2");
-						//add item to Body Slot
-						playerSlots.equipEquipmentItem(item, 2);
-						
-					}
-					else if(e.getSource() == additemButtons[i] && itemType == 3)
-					{
-						System.out.println("ITEM 3");
-						//add item to Feet Slot
-						playerSlots.equipEquipmentItem(item, 3);
-					
-					}
+					CombatView.player.equipEquipmentItem(i);
 					CombatView.player.resetPlayer();
-				
 				}
 			}
 		}
