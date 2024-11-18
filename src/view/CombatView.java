@@ -18,7 +18,7 @@ import model.MageChicken;
 import model.PlayerChicken;
 import model.TankChicken;
 import model.MeleeChicken;
-
+import model.SaveLoad;
 /**
  * Lead Author(s):
  * 
@@ -53,6 +53,7 @@ public class CombatView extends JFrame
 	private JButton specialAttack;
 	private JButton retreat;
 	private JButton store;
+	private JButton save;
 
 	private JPanel characterPanel;
 	private JPanel enemyPanel;
@@ -125,18 +126,24 @@ public class CombatView extends JFrame
 		int offsetLengthStore = ((SCREEN_WIDTH - BUTTON_WIDTH) / 2);
 		int offsetHeightStore = ((SCREEN_HEIGHT - BUTTON_HEIGHT) / 5)
 				+ 7 * verticalOffset;
+		
+		int offsetLengthSave = ((SCREEN_WIDTH - BUTTON_WIDTH) / 2);
+		int offsetHeightSave = ((SCREEN_HEIGHT - BUTTON_HEIGHT) / 5)
+				+ 9 * verticalOffset;
 
 		inventory = new JButton("Inventory");
 		attack = new JButton("Attack");
 		specialAttack = new JButton("Special Attack");
 		retreat = new JButton("Retreat");
 		store = new JButton("Store");
-
+		save = new JButton("Save");
+		
 		retreat.addActionListener(new RetreatListener());
 		attack.addActionListener(new AttackListener());
 		store.addActionListener(new StoreListener());
 		inventory.addActionListener(new InventoryListener());
-
+		save.addActionListener(new SaveListener());
+		
 		inventory.setBounds(offsetLengthInventory, offsetHeightInventory,
 				BUTTON_WIDTH, BUTTON_HEIGHT);
 		attack.setBounds(offsetLengthAttack, offsetHeightAttack, BUTTON_WIDTH,
@@ -147,12 +154,15 @@ public class CombatView extends JFrame
 				BUTTON_WIDTH, BUTTON_HEIGHT);
 		store.setBounds(offsetLengthStore, offsetHeightStore, BUTTON_WIDTH,
 				BUTTON_HEIGHT);
+		save.setBounds(offsetLengthSave, offsetHeightSave, BUTTON_WIDTH,
+				BUTTON_HEIGHT);
 
 		mainPanel.add(inventory);
 		mainPanel.add(attack);
 		mainPanel.add(specialAttack);
 		mainPanel.add(retreat);
 		mainPanel.add(store);
+		mainPanel.add(save);
 	}
 
 	private void setPanels()
@@ -343,6 +353,18 @@ public class CombatView extends JFrame
 		{
 			closeGui();
 			playerInventory = new InventoryView();
+		}
+		
+	}
+	
+	private class SaveListener implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			SaveLoad saveLoad = new SaveLoad();
+			saveLoad.binarySave();
+			
 		}
 		
 	}

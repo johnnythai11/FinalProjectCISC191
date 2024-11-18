@@ -74,6 +74,7 @@ public class SaveLoad {
 			FileOutputStream fstream = new FileOutputStream("ChickenFighterSave.dat");
 			ObjectOutputStream oos = new ObjectOutputStream(fstream);
 			oos.writeObject(player);
+			System.out.println(player);
 		}
 		catch (IOException e)
 		{
@@ -95,9 +96,5 @@ public class SaveLoad {
 		{
 		
 		}
-	}
-
-	public static void main(String args[]) {
-		load();
 	}
 }
