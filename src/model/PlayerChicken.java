@@ -33,6 +33,8 @@ public PlayerChicken player;
 	{
 
 	}
+	
+	public abstract boolean isItemEquipped(int index);
 	public static int heartCounter;
 	public Inventory playerInventory = new Inventory();
 	public abstract void addExp(int exp);

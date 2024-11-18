@@ -1,5 +1,7 @@
 package model;
 
+import view.CombatView;
+
 /**
  * Lead Author(s):
  * @author Full name: Johnny Thai
@@ -34,7 +36,7 @@ public class MeleeChicken extends PlayerChicken
 	private int expBar;
 	private int experienceCounter;
 
-	public Inventory playerInventory;
+	
 	private Equipment playerEquipment;
 	private Human humanBoost;
 	
@@ -111,7 +113,7 @@ public class MeleeChicken extends PlayerChicken
 	@Override
 	public void equipEquipmentItem(int index)
 	{
-		Items inputItem = playerInventory.getItem(index);
+		Items inputItem = CombatView.player.playerInventory.getItem(index);
 		switch(inputItem.getItemType()) {
 
 			case 0:
@@ -218,6 +220,12 @@ public class MeleeChicken extends PlayerChicken
 				"defenseBoost for chicken: " + defenseBoost + "\n";
 	}
 
+	
+	public boolean isItemEquipped(int index)
+	{
+		return playerEquipment.isItemEquipped(index);
+	}
+	
 	@Override
 	public String toStringSave()
 	{
