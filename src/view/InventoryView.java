@@ -16,23 +16,22 @@ import model.PlayerChicken;
 
 /**
  * Lead Author(s):
+ * 
  * @author Full name: Johnny Thai
  * @author Full name: Jacob Wiemann
  * @author Full name: Daniel Soto
  *
  * Other Contributors: none
+ *         Other Contributors: none
  *
- * References:
- * Morelli, R., & Walde, R. (2016).
- * Java, Java, Java: Object-Oriented Problem Solving
- * https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+ *         References: Morelli, R., & Walde, R. (2016). Java, Java, Java:
+ *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
  *
- * Version: 2024-10-16
+ *         Version: 2024-10-16
  * 
  */
 
-public class InventoryView extends JFrame
-{
+public class InventoryView extends JFrame {
 	private PlayerChicken player;
 	private Items item0;
 	private Items item1;
@@ -45,73 +44,66 @@ public class InventoryView extends JFrame
 	private JLabel[] itemSlotsText = new JLabel[20];
 	private JButton closeShopButton = new JButton("Exit");
 
-	// Margins around the top and left side of screen, margins between each panel X, Y
+	// Margins around the top and left side of screen, margins between each panel X,
+	// Y
 	private final int margins = 30, betweenMarginsY = 90, betweenmarginsX = 10;
 
-
-	// Changes lenght, width of the panels and the relating variables that depend on it
+	// Changes lenght, width of the panels and the relating variables that depend on
+	// it
 	private final int panelLengthWidth = 100;
 
-	//amount of Jpanels per row
+	// amount of Jpanels per row
 	private final int amountPerRow = 9;
 
-
 	final int SCREEN_WIDTH = 1100, SCREEN_HEIGHT = 800;
-	public InventoryView()
-	{
+
+	public InventoryView() {
 		super("Inventory/Equipment");
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
+		setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 		setResizable(false);
 		super.setLayout(null);
 		setInventorySlots(itemSlots);
-		
+
 		setInventoryButtons(additemButtons, itemSlotsText, removeItemButton);
 		setCloseButton();
 		update();
 		setVisible(true);
 	}
 
-
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
 		new InventoryView();
 	}
 
 	// Sets the Inventory Panels
-	private void setInventorySlots(JLabel[] theLabels)
-	{
-		// offsets to be used later, DO NOT CHANGE 
+	private void setInventorySlots(JLabel[] theLabels) {
+		// offsets to be used later, DO NOT CHANGE
 		int yOffset = 0, xOffset = 0;
 
 		// Populates the array with JLabels, Sets them blue, and aligns them
-		for (int i = 0; i < theLabels.length; i++)
-		{
-			//For each "slot" in the array, create JPanel
+		for (int i = 0; i < theLabels.length; i++) {
+			// For each "slot" in the array, create JPanel
 			theLabels[i] = new JLabel("Insert Icon");
 			theLabels[i].setBackground(Color.white);
 			theLabels[i].setOpaque(true);
 			// amountPerRow changes amountPerRow
-			if (xOffset > (panelLengthWidth * amountPerRow))
-			{
+			if (xOffset > (panelLengthWidth * amountPerRow)) {
 				xOffset = 0;
 				yOffset = yOffset + panelLengthWidth + margins + betweenMarginsY;
 			}
-			theLabels[i].setBounds(xOffset + margins, yOffset + margins, panelLengthWidth , panelLengthWidth );
+			theLabels[i].setBounds(xOffset + margins, yOffset + margins, panelLengthWidth, panelLengthWidth);
 			add(theLabels[i]);
-			xOffset = xOffset + panelLengthWidth + margins + betweenmarginsX;	
+			xOffset = xOffset + panelLengthWidth + margins + betweenmarginsX;
 		}
 	}
 
-	//sets the Stock Buttons
-	private void setInventoryButtons(JButton[] theButtons, JLabel[] theText, JButton[] removeButtons)
-	{
-		// offsets to be used later, DO NOT CHANGE 
+	// sets the Stock Buttons
+	private void setInventoryButtons(JButton[] theButtons, JLabel[] theText, JButton[] removeButtons) {
+		// offsets to be used later, DO NOT CHANGE
 		int yOffset = 100, xOffset = 0;
-		for (int i = 0; i < theButtons.length; i ++)
-		{
+		for (int i = 0; i < theButtons.length; i++) {
 
-			switch(i) {
+			switch (i) {
 			case 16:
 				theButtons[i] = new JButton("Unequip"); // MISC
 				theText[i] = new JLabel();
@@ -137,68 +129,61 @@ public class InventoryView extends JFrame
 				theText[i] = new JLabel();
 				theText[i].setText("Item name");
 			}
-			
+
 			removeButtons[i] = new JButton("Delete");
 			theText[i].setOpaque(true);
-			
-			if (xOffset > (panelLengthWidth * amountPerRow))
-			{
+
+			if (xOffset > (panelLengthWidth * amountPerRow)) {
 				xOffset = 0;
 				yOffset = yOffset + panelLengthWidth + margins + betweenMarginsY;
 			}
 
 			theButtons[i].addActionListener(new InventoryListenerEquipItems());
-			theButtons[i].setBounds(xOffset + margins, yOffset + margins + 10, panelLengthWidth , 25);
-			theText[i].setBounds(xOffset + margins, yOffset + margins -120, panelLengthWidth , 25);
-			removeButtons[i].setBounds(xOffset + margins, yOffset + margins +40, panelLengthWidth , 25);
+			theButtons[i].setBounds(xOffset + margins, yOffset + margins + 10, panelLengthWidth, 25);
+			theText[i].setBounds(xOffset + margins, yOffset + margins - 120, panelLengthWidth, 25);
+			removeButtons[i].setBounds(xOffset + margins, yOffset + margins + 40, panelLengthWidth, 25);
 			add(removeButtons[i]);
-			add(theButtons[i]);	
+			add(theButtons[i]);
 			add(theText[i]);
-			xOffset = xOffset + panelLengthWidth + margins + betweenmarginsX;	
+			xOffset = xOffset + panelLengthWidth + margins + betweenmarginsX;
 		}
 	}
 
-	private void setCloseButton()
-	{
-		//closeShopButton.setBounds((int)(panelLengthWidth * 4.5),(int) (panelLengthWidth * 4.5), (int) (panelLengthWidth * 1.5), 25);
-		closeShopButton.setBounds(450,650,100,50);
+	private void setCloseButton() {
+		// closeShopButton.setBounds((int)(panelLengthWidth * 4.5),(int)
+		// (panelLengthWidth * 4.5), (int) (panelLengthWidth * 1.5), 25);
+		closeShopButton.setBounds(450, 650, 100, 50);
 		closeShopButton.addActionListener(new CloseButtonListener());
 		add(closeShopButton);
 	}
-	
-	private void update()
-	{
-		for ( int i = 0; i < 16; i ++)
-		{
-			if (!CombatView.player.playerInventory.itemExist(i))
-			{
+
+	private void update() {
+		for (int i = 0; i < 16; i++) {
+			if (!CombatView.player.playerInventory.itemExist(i)) {
 				itemSlotsText[i].setVisible(false);
-				additemButtons[i].setVisible(false);	
+				additemButtons[i].setVisible(false);
 				removeItemButton[i].setVisible(false);
 				itemSlots[i].setVisible(false);
 				additemButtons[i].setEnabled(false);
 				removeItemButton[i].setEnabled(false);
-	
-			}
-			else
-			{
+
+			} else {
 				itemSlotsText[i].setVisible(true);
 				additemButtons[i].setVisible(true);
 				removeItemButton[i].setVisible(true);
 				itemSlots[i].setVisible(true);
 				additemButtons[i].setEnabled(true);
 				removeItemButton[i].setEnabled(true);
-				
+
 				itemSlotsText[i].setText(CombatView.player.playerInventory.getItem(i).getItemName());
 			}
 		}
-		
-		
-		
+
 	}
-	
+
 	private class InventoryListenerEquipItems implements ActionListener 
-	{
+	{	
+	
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Integer removeItemLater = null;
@@ -217,6 +202,12 @@ public class InventoryView extends JFrame
 						CombatView.player.resetPlayer();
 						update(); // this <----------
 					}
+
+				//itemExists = CombatView.player.playerInventory.itemExist(i);
+				if (e.getSource() == additemButtons[i])
+				{
+					CombatView.player.equipEquipmentItem(i);
+					CombatView.player.resetPlayer();
 				}
 				
 			}
@@ -227,15 +218,18 @@ public class InventoryView extends JFrame
 
 	}
 
+	}
 
 	
 	
 	private class CloseButtonListener implements ActionListener
 	{
+	
 		public void actionPerformed(ActionEvent e)
 		{
 			dispose();
 		}
 	}
+	
 
 }
