@@ -37,11 +37,7 @@ public PlayerChicken player;
 	public abstract void addExp(int exp);
 	public abstract void levelUp();
 	public abstract void setBalance(int balance);
-	public void updateHealth()
-	{
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void updateHealth();
 	public abstract void resetPlayer();
 	public abstract void takeDamage(int enemyDamage);
 	public abstract int dealDamage();

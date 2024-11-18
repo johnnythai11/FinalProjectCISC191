@@ -240,7 +240,7 @@ public class InventoryView extends JFrame
 						playerSlots.equipEquipmentItem(item, 3);
 					
 					}
-					player.resetPlayer();
+					CombatView.player.resetPlayer();
 				
 				}
 			}
