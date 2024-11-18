@@ -90,9 +90,9 @@ public class Inventory extends Items
 	 * Removes the items from the inventory
 	 * @Parameters int row, int column
 	 */
-	public void removeItemFromInventory(int index)
+	public void removeItemFromInventory(Items item)
 	{
-		inventory.remove(index);
+		inventory.remove(item);
 	}
 
 	/*
@@ -107,6 +107,7 @@ public class Inventory extends Items
 			return inventory.get(index);
 		}
 		//raise error or smthing
+		System.out.println("bruhv this code is shit");
 		return null;
 	}
 

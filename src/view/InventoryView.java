@@ -147,6 +147,7 @@ public class InventoryView extends JFrame
 				yOffset = yOffset + panelLengthWidth + margins + betweenMarginsY;
 			}
 
+			theButtons[i].addActionListener(new InventoryListenerEquipItems());
 			theButtons[i].setBounds(xOffset + margins, yOffset + margins + 10, panelLengthWidth , 25);
 			theText[i].setBounds(xOffset + margins, yOffset + margins -120, panelLengthWidth , 25);
 			removeButtons[i].setBounds(xOffset + margins, yOffset + margins +40, panelLengthWidth , 25);
@@ -161,6 +162,7 @@ public class InventoryView extends JFrame
 	{
 		//closeShopButton.setBounds((int)(panelLengthWidth * 4.5),(int) (panelLengthWidth * 4.5), (int) (panelLengthWidth * 1.5), 25);
 		closeShopButton.setBounds(450,650,100,50);
+		closeShopButton.addActionListener(new CloseButtonListener());
 		add(closeShopButton);
 	}
 	
@@ -174,15 +176,18 @@ public class InventoryView extends JFrame
 				additemButtons[i].setVisible(false);	
 				removeItemButton[i].setVisible(false);
 				itemSlots[i].setVisible(false);
+				additemButtons[i].setEnabled(false);
+				removeItemButton[i].setEnabled(false);
 	
 			}
 			else
 			{
 				itemSlotsText[i].setVisible(true);
-				additemButtons[i].addActionListener(new InventoryListenerEquipItems());
 				additemButtons[i].setVisible(true);
 				removeItemButton[i].setVisible(true);
 				itemSlots[i].setVisible(true);
+				additemButtons[i].setEnabled(true);
+				removeItemButton[i].setEnabled(true);
 				
 				itemSlotsText[i].setText(CombatView.player.playerInventory.getItem(i).getItemName());
 			}
@@ -194,60 +199,43 @@ public class InventoryView extends JFrame
 	
 	private class InventoryListenerEquipItems implements ActionListener 
 	{
-
-		boolean itemExists = false;
-		int itemType;
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			Integer removeItemLater = null;
+			Integer index = null;
 			for (int i = 0; i < additemButtons.length; i++)
 			{
 
-				itemExists = CombatView.player.playerInventory.itemExist(i);
-				
-				if (itemExists)
+				if (e.getSource() == additemButtons[i])
 				{
-				
-					itemType = CombatView.player.playerInventory.getItem(i).getItemType();
-					Items item =  CombatView.player.playerInventory.getItem(i);
-					Equipment playerSlots = new Equipment(item0, item1, item2, item3);
-					//PlayerChicken player;
-					if (e.getSource() == additemButtons[i] && itemType == 0 ) 
-					{	
-						System.out.println("ITEM 0");
-						//add item to MISC Slot
-						playerSlots.equipEquipmentItem(item, 0);
-						
-
-					}
-					else if(e.getSource() == additemButtons[i] && itemType == 1)
-					{
-						System.out.println("ITEM 1");
-						//add item to Head Slot
-						playerSlots.equipEquipmentItem(item, 1);
-						
-					}
-					else if(e.getSource() == additemButtons[i] && itemType == 2)
-					{
-						System.out.println("ITEM 2");
-						//add item to Body Slot
-						playerSlots.equipEquipmentItem(item, 2);
-						
-					}
-					else if(e.getSource() == additemButtons[i] && itemType == 3)
-					{
-						System.out.println("ITEM 3");
-						//add item to Feet Slot
-						playerSlots.equipEquipmentItem(item, 3);
+					index = CombatView.player.playerInventory.getItem(i).getItemType();
 					
+					if (!CombatView.player.isItemEquipped(index))
+					{
+						CombatView.player.equipEquipmentItem(i);
+						CombatView.player.playerInventory.removeItemFromInventory(CombatView.player.playerInventory.getItem(i));
+						CombatView.player.resetPlayer();
+						update(); // this <----------
 					}
-					player.resetPlayer();
-				
 				}
+				
 			}
+
+
 		}
+		
 
 	}
 
 
+	
+	
+	private class CloseButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			dispose();
+		}
+	}
 
 }

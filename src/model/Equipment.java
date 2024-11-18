@@ -1,5 +1,6 @@
 package model;
 import model.PlayerChicken;
+import view.CombatView;
 /**
  * Lead Author(s):
  * 
@@ -63,13 +64,30 @@ public class Equipment
 		if (item.getItemType() == 0)
 		{
 
-			player.heartCounter += 1;
-			player.updateHealth();
+			CombatView.player.heartCounter += 1;
+			CombatView.player.updateHealth();
 			System.out.println("this does not work cannot invoke \"model.PlayerChicken.updateHealth()\" because \"this.player\" is null");	
 		}
 		else {
 			
 		this.equippedItemArray[index] = item;
+		}
+	}
+	
+	
+	public boolean isItemEquipped(int index)
+	{
+		try {
+		if (equippedItemArray[index] != null)
+		{
+			return true;
+		}
+		return false;
+		}
+		catch (Exception e)
+		{
+			System.out.println("i made a mistake oopsies");
+			return false;
 		}
 	}
 	

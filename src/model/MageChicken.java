@@ -1,5 +1,7 @@
 package model;
 
+import view.CombatView;
+
 /**
 * Lead Author(s):
 * @author Full name: Johnny Thai
@@ -30,7 +32,7 @@ public class MageChicken extends PlayerChicken
 	private int hungerBar;
 	private int expBar;
 	private int currentExp;
-	public Inventory playerInventory;
+	
 	private Equipment playerEquipment;
 	private Human humanBoost;
 	private int attackBoost;
@@ -105,7 +107,7 @@ public class MageChicken extends PlayerChicken
 	@Override
 	public void equipEquipmentItem(int index)
 	{
-		Items inputItem = playerInventory.getItem(index);
+		Items inputItem = CombatView.player.playerInventory.getItem(index);
 		switch(inputItem.getItemType()) {
 			
 			case 0:
@@ -133,6 +135,11 @@ public class MageChicken extends PlayerChicken
 		}
 	}
 
+	
+	public boolean isItemEquipped(int index)
+	{
+		return playerEquipment.isItemEquipped(index);
+	}
 	@Override
 	public String toString()
 	{
