@@ -7,8 +7,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+
+
+import model.Equipment;
+import model.Items;
+
 
 /**
  * Lead Author(s):
@@ -29,9 +32,13 @@ import javax.swing.JTextField;
 
 public class InventoryView extends JFrame
 {
+	
+	private Items item0;
+	private Items item1;
+	private Items item2;
+	private Items item3;
 
 	private JLabel[] itemSlots = new JLabel[20];
-	//private JLabel[] itemNames = new JLabel[20];
 	private JButton[] removeItemButton = new JButton[20];
 	private JButton[] additemButtons = new JButton[20];
 	private JLabel[] itemSlotsText = new JLabel[20];
@@ -57,6 +64,7 @@ public class InventoryView extends JFrame
 		setResizable(false);
 		super.setLayout(null);
 		setInventorySlots(itemSlots);
+		
 		setInventoryButtons(additemButtons, itemSlotsText, removeItemButton);
 		setCloseButton();
 		update();
@@ -80,7 +88,7 @@ public class InventoryView extends JFrame
 		{
 			//For each "slot" in the array, create JPanel
 			theLabels[i] = new JLabel("Insert Icon");
-			theLabels[i].setBackground(Color.BLUE);
+			theLabels[i].setBackground(Color.white);
 			theLabels[i].setOpaque(true);
 			// amountPerRow changes amountPerRow
 			if (xOffset > (panelLengthWidth * amountPerRow))
@@ -170,7 +178,8 @@ public class InventoryView extends JFrame
 			else
 			{
 				itemSlotsText[i].setVisible(true);
-				additemButtons[i].setVisible(true);	
+				additemButtons[i].addActionListener(new InventoryListenerEquipItems());
+				additemButtons[i].setVisible(true);
 				removeItemButton[i].setVisible(true);
 				itemSlots[i].setVisible(true);
 				
@@ -182,27 +191,57 @@ public class InventoryView extends JFrame
 		
 	}
 	
-	private class InventoryListener implements ActionListener
+	private class InventoryListenerEquipItems implements ActionListener 
 	{
 
-		//doo doo
 		boolean itemExists = false;
+		int itemType;
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			for (int i = 0; i < additemButtons.length; i++)
 			{
-				if (e.getSource() == additemButtons[i])
+
+				itemExists = CombatView.player.playerInventory.itemExist(i);
+				
+				if (itemExists)
 				{
-					
-					itemExists = CombatView.player.playerInventory.itemExist(i);
-					if (itemExists)
-					{
-						//do  something ig
+				
+					itemType = CombatView.player.playerInventory.getItem(i).getItemType();
+					Items item =  CombatView.player.playerInventory.getItem(i);
+					Equipment playerSlots = new Equipment(item0, item1, item2, item3);
+					//PlayerChicken player;
+					if (e.getSource() == additemButtons[i] && itemType == 0 ) 
+					{	
+						System.out.println("ITEM 0");
+						//add item to MISC Slot
+						playerSlots.equipEquipmentItem(item, 0);
+
 					}
+					else if(e.getSource() == additemButtons[i] && itemType == 1)
+					{
+						System.out.println("ITEM 1");
+						//add item to Head Slot
+						playerSlots.equipEquipmentItem(item, 1);
+					}
+					else if(e.getSource() == additemButtons[i] && itemType == 2)
+					{
+						System.out.println("ITEM 2");
+						//add item to Body Slot
+						playerSlots.equipEquipmentItem(item, 2);
+					}
+					else if(e.getSource() == additemButtons[i] && itemType == 3)
+					{
+						System.out.println("ITEM 3");
+						//add item to Feet Slot
+						playerSlots.equipEquipmentItem(item, 3);
+					}
+				
 				}
 			}
 		}
-		
+
 	}
+
+
 
 }

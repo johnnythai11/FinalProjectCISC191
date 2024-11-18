@@ -1,5 +1,5 @@
 package model;
-
+import model.PlayerChicken;
 /**
  * Lead Author(s):
  * 
@@ -21,7 +21,7 @@ package model;
 public class Equipment
 {
 
-	PlayerChicken player;
+    PlayerChicken player;
 
 	private Items[] equippedItemArray = new Items[4];
 
@@ -37,7 +37,7 @@ public class Equipment
 	 * 2 = Body (Defence)
 	 * 3 = Feet (Weapon)
 	 */
-	Equipment(Items item1, Items item2, Items item3, Items item4)
+	public Equipment(Items item1, Items item2, Items item3, Items item4)
 	{
 		this.equippedItemArray[0] = item1;
 		this.equippedItemArray[1] = item2;
@@ -62,10 +62,13 @@ public class Equipment
 
 		if (item.getItemType() == 0)
 		{
+
 			player.heartCounter += 1;
 			player.updateHealth();
+			System.out.println("this does not work cannot invoke \"model.PlayerChicken.updateHealth()\" because \"this.player\" is null");	
 		}
 		else {
+			
 		this.equippedItemArray[index] = item;
 		}
 	}

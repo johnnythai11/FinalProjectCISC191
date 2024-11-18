@@ -36,6 +36,8 @@ public class MeleeChicken extends PlayerChicken
 	public Inventory playerInventory;
 	private Equipment playerEquipment;
 	private Human humanBoost;
+	
+	public PlayerChicken player;
 
 
 

@@ -35,7 +35,7 @@ public class TankChicken extends PlayerChicken
 	private int attackBoost;
 	private int defenseBoost;
 	
-
+	public PlayerChicken player;
 	/*
 	 * Constructor to create the TankChicken with its base status of Attack, Defense, Health, BoneBalance, and hungerBar
 	 * @parameters integer levelOfChicken

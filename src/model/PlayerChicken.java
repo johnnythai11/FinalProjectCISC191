@@ -21,7 +21,7 @@ public abstract class PlayerChicken
 {
 
 
-
+public PlayerChicken player;
 	
 
 	/*
@@ -37,7 +37,11 @@ public abstract class PlayerChicken
 	public abstract void addExp(int exp);
 	public abstract void levelUp();
 	public abstract void setBalance(int balance);
-	public abstract void updateHealth();
+	public void updateHealth()
+	{
+		// TODO Auto-generated method stub
+		
+	}
 	public abstract void resetPlayer();
 	public abstract void takeDamage(int enemyDamage);
 	public abstract int dealDamage();
