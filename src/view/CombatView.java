@@ -77,6 +77,7 @@ public class CombatView extends JFrame
 		setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 		setResizable(false);
 		enemy = new EnemyChicken();
+		expCount = player.getExperienceCounter();
 
 		mainPanel = new JPanel();
 		mainPanel.setLayout(null);
