@@ -30,11 +30,7 @@ import model.PlayerChicken;
  */
 
 public class InventoryView extends JFrame {
-	private PlayerChicken player;
-	private Items item0;
-	private Items item1;
-	private Items item2;
-	private Items item3;
+
 
 	private JLabel[] itemSlots = new JLabel[20];
 	private JButton[] removeItemButton = new JButton[20];

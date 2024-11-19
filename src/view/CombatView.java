@@ -47,7 +47,7 @@ public class CombatView extends JFrame
 
 	private StoreView myStore;
 	private InventoryView playerInventory;
-	
+
 	private JButton inventory;
 	private JButton attack;
 	private JButton specialAttack;
@@ -65,7 +65,7 @@ public class CombatView extends JFrame
 	public static EnemyChicken enemy;
 
 	private Font info;
-	
+
 	private int expCount;
 	private JTextArea characterPanelText;
 	private int classType;
@@ -77,7 +77,6 @@ public class CombatView extends JFrame
 		setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 		setResizable(false);
 		enemy = new EnemyChicken();
-		expCount = player.getExperienceCounter();
 
 		mainPanel = new JPanel();
 		mainPanel.setLayout(null);
@@ -86,7 +85,7 @@ public class CombatView extends JFrame
 		add(mainPanel);
 		setVisible(true);
 	}
-	
+
 	CombatView(int selection)
 	{
 		super("Chicken Fighter");
@@ -144,7 +143,7 @@ public class CombatView extends JFrame
 		int offsetLengthStore = ((SCREEN_WIDTH - BUTTON_WIDTH) / 2);
 		int offsetHeightStore = ((SCREEN_HEIGHT - BUTTON_HEIGHT) / 5)
 				+ 7 * verticalOffset;
-		
+
 		int offsetLengthSave = ((SCREEN_WIDTH - BUTTON_WIDTH) / 2);
 		int offsetHeightSave = ((SCREEN_HEIGHT - BUTTON_HEIGHT) / 5)
 				+ 9 * verticalOffset;
@@ -155,13 +154,13 @@ public class CombatView extends JFrame
 		retreat = new JButton("Retreat");
 		store = new JButton("Store");
 		save = new JButton("Save");
-		
+
 		retreat.addActionListener(new RetreatListener());
 		attack.addActionListener(new AttackListener());
 		store.addActionListener(new StoreListener());
 		inventory.addActionListener(new InventoryListener());
 		save.addActionListener(new SaveListener());
-		
+
 		inventory.setBounds(offsetLengthInventory, offsetHeightInventory,
 				BUTTON_WIDTH, BUTTON_HEIGHT);
 		attack.setBounds(offsetLengthAttack, offsetHeightAttack, BUTTON_WIDTH,
@@ -234,6 +233,7 @@ public class CombatView extends JFrame
 		characterInfo.append("Attack: " + player.getBaseDamage() + "\n");
 		characterInfo.append("Balance: " + player.getBoneBalance() + "\n");
 		characterInfo.append("Level: " + player.getLevel() + "\n");
+		characterInfo.append("Exp Gained: " + player.getExperienceCounter() + "\n");
 		characterInfo.append("Exp needed to levelup: " + player.expBar() );
 		characterInfo.setEditable(false);
 		characterInfo.setSize(660, 400);
@@ -257,7 +257,7 @@ public class CombatView extends JFrame
 		mainPanel.add(enemyInfo);
 
 	}
-	
+
 	public void updateInfo()
 	{
 		enemyInfo.setText("");
@@ -282,7 +282,7 @@ public class CombatView extends JFrame
 		{
 			myStore.dispose();
 		}
-		
+
 		if (playerInventory != null)
 		{
 			playerInventory.dispose();
@@ -298,7 +298,7 @@ public class CombatView extends JFrame
 			closeGui();
 			enemy = null;
 			enemy = new EnemyChicken();
-			
+
 			player.resetPlayer();
 			updateInfo();
 		}
@@ -325,33 +325,31 @@ public class CombatView extends JFrame
 					enemy = new EnemyChicken();
 					System.out.println("when enemy dies:" + player.getExperienceCounter());
 					player.setBalance(player.getBoneBalance()+ enemy.getBoneToken());
-					//player.addExp(enemy.getExpGiven());// sets exp from the enemy that was killed
-					//player.addExperienceCounter(enemy.getExpGiven());
 					player.getExperienceCounter();
 					if (player.getExp() <= player.getExperienceCounter())
 					{
-					player.levelUp(); // Checks if you can level up
-					System.out.println("levelup");
-					//player.setExperienceCounter(0);//when the player levels up the experience Counter resets to 0
+						player.levelUp(); // Checks if you can level up
+						System.out.println("levelup");
+
 					}
-		
-				
-				
-					}
-				
+
+
+
+				}
+
 				updateInfo();
 			}
-	
+
 			else if(e.getSource() == specialAttack)
 			{
 				closeGui();
 				System.out.println("not implemented yet");
 			}
-			
+
 		}
 
 	}
-	
+
 	private class StoreListener implements ActionListener
 	{
 
@@ -360,9 +358,9 @@ public class CombatView extends JFrame
 		{
 			closeGui();
 			myStore = new StoreView();
-		
+
 		}
-		
+
 	}
 
 	private class InventoryListener implements ActionListener
@@ -374,9 +372,9 @@ public class CombatView extends JFrame
 			closeGui();
 			playerInventory = new InventoryView();
 		}
-		
+
 	}
-	
+
 	private class SaveListener implements ActionListener
 	{
 
@@ -385,11 +383,11 @@ public class CombatView extends JFrame
 			System.out.println(player.getExperienceCounter());
 			SaveLoad saveLoad = new SaveLoad();
 			saveLoad.binarySave(player);
-			
+
 		}
-		
+
 	}
-	
+
 
 
 }
