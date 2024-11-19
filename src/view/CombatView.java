@@ -233,7 +233,7 @@ public class CombatView extends JFrame
 		characterInfo.append("Attack: " + player.getBaseDamage() + "\n");
 		characterInfo.append("Balance: " + player.getBoneBalance() + "\n");
 		characterInfo.append("Level: " + player.getLevel() + "\n");
-		characterInfo.append("Exp Gained: " + player.getExperienceCounter() + "\n");
+		characterInfo.append("Exp gained: " + player.getExperienceCounter() + "\n");
 		characterInfo.append("Exp needed to levelup: " + player.expBar() );
 		characterInfo.setEditable(false);
 		characterInfo.setSize(660, 400);
