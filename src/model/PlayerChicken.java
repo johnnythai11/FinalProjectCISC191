@@ -59,6 +59,7 @@ public PlayerChicken player;
 	public abstract void equipEquipmentItem(int index);	
 	public abstract int getExp();
 	public abstract String toStringSave();
+    public int experienceCounter;
 	public abstract int getCurrentExpGained();
 	public abstract int getExperienceCounter();
 	public abstract void addExperienceCounter(int add);

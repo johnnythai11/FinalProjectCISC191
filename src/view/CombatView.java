@@ -271,7 +271,7 @@ public class CombatView extends JFrame
 				"Attack: " + player.getBaseDamage() + "\n" + 
 				"Balance: " + player.getBoneBalance() + "\n" +
 				"Level: " + player.getLevel() + "\n" + 
-				"Exp gained: " + expCount + "\n" +
+				"Exp gained: " + player.getExperienceCounter() + "\n" +
 				"Exp needed to levelup: " + player.expBar() );
 	}
 
@@ -319,13 +319,14 @@ public class CombatView extends JFrame
 					new MainMenuView();
 					dispose();
 				} else if (result == 2) { // WHAT YOU WANT TO HAPPEN WHEN THE ENEMY IS KILLED
+					player.addExperienceCounter(enemy.getExpGiven());
 					enemy = null;
 					enemy = new EnemyChicken();
-					System.out.println(player.getExperienceCounter());
+					System.out.println("when enemy dies:" + player.getExperienceCounter());
 					player.setBalance(player.getBoneBalance()+ enemy.getBoneToken());
-					player.addExp(enemy.getExpGiven());// sets exp from the enemy that was killed
-					player.addExperienceCounter(enemy.getExpGiven());
-					expCount = player.getExperienceCounter();
+					//player.addExp(enemy.getExpGiven());// sets exp from the enemy that was killed
+					//player.addExperienceCounter(enemy.getExpGiven());
+					player.getExperienceCounter();
 					if (player.getExp() <= player.getExperienceCounter())
 					{
 					player.levelUp(); // Checks if you can level up
@@ -388,14 +389,6 @@ public class CombatView extends JFrame
 		
 	}
 	
-	//
-	// public static void main(String args[])
-	// {
-	// player = new MeleeChicken(4);
-	// enemy = new EnemyChicken();
-	//
-	// CombatView fightScreen = new CombatView();
-	//
-	// }
+
 
 }

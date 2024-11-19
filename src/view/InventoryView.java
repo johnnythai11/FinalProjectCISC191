@@ -184,7 +184,7 @@ public class InventoryView extends JFrame {
 	
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			Integer removeItemLater = null;
+			//Integer removeItemLater = null;
 			Integer index = null;
 			for (int i = 0; i < additemButtons.length; i++)
 			{
@@ -202,11 +202,7 @@ public class InventoryView extends JFrame {
 					}
 
 				//itemExists = CombatView.player.playerInventory.itemExist(i);
-				if (e.getSource() == additemButtons[i])
-				{
-					CombatView.player.equipEquipmentItem(i);
-					CombatView.player.resetPlayer();
-				}
+			
 				
 			}
 
