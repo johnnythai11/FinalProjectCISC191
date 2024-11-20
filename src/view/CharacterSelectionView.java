@@ -78,11 +78,6 @@ public class CharacterSelectionView extends JFrame
 		add(statField);
 		add(characterIcon);
 	}
-
-	public static void main(String[] args)
-	{
-		new CharacterSelectionView();
-	}
 	
 	private class RPGListener implements ActionListener
 	{

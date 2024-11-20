@@ -63,16 +63,7 @@ public class EnemyChicken {
 		boneToken = r.nextInt(10) + 1;
 	}
 
-	@Override
-	public String toString()
-	{
-		return "Level of Enemy: " + level + "\n" +
-				"Health: " + maxHealth + "\n" + 
-				"Attack Damage: " + attack + "\n" +
-				"Defense: " + defense + "\n" +
-				"Exp Given: " + expGiven + "\n" + 
-				"Bone Token: " + boneToken;
-	}
+	
 
 	public void setMaxHealth(int health)
 	{
@@ -158,13 +149,5 @@ public class EnemyChicken {
 	public static EnemyChicken generateChicken()
 	{
 		return new EnemyChicken();
-	}
-
-
-	public static void main(String args[])
-	{
-		EnemyChicken level = new EnemyChicken();
-		System.out.println(level.toString());
-
 	}
 }

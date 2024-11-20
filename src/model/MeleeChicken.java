@@ -4,24 +4,24 @@ import view.CombatView;
 
 /**
  * Lead Author(s):
+ * 
  * @author Full name: Johnny Thai
  * @author Full name: Jacob Wiemann
  * @author Full name: Daniel Soto
  *
- * Other Contributors: none
+ *         Other Contributors: none
  *
- * References:
- * Morelli, R., & Walde, R. (2016).
- * Java, Java, Java: Object-Oriented Problem Solving
- * https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+ *         References:
+ *         Morelli, R., & Walde, R. (2016).
+ *         Java, Java, Java: Object-Oriented Problem Solving
+ *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
  *
- * Version: 2024-10-16
+ *         Version: 2024-10-16
  * 
  */
 
 public class MeleeChicken extends PlayerChicken
 {
-
 
 	private int levelOfChicken;
 	private int currentHealth;
@@ -36,52 +36,48 @@ public class MeleeChicken extends PlayerChicken
 	private int expBar;
 	private int experienceCounter;
 
-	
 	private Equipment playerEquipment;
 	private Human humanBoost;
-	
+
 	public PlayerChicken player;
 
-
-
-
-
 	/*
-	 * Constructor to create the MeleeChicken with its base stats of Attack, Defense, Health, BoneBalance, and hungerBar
+	 * Constructor to create the MeleeChicken with its base stats of Attack,
+	 * Defense, Health, BoneBalance, and hungerBar
 	 * @parameters integer levelOfChicken
 	 */
 	public MeleeChicken(int levelOfChicken)
 	{
-		this.levelOfChicken = levelOfChicken;	
-		if (1<= this.levelOfChicken && this.levelOfChicken <= 10)
+		this.levelOfChicken = levelOfChicken;
+		if (1 <= this.levelOfChicken && this.levelOfChicken <= 10)
 		{
 			humanBoost = new Human(1);
 			attackBoost = humanBoost.getAttackBoost();
 			defenseBoost = humanBoost.getDefenseBoost();
 
 		}
-		else if (11<= this.levelOfChicken && this.levelOfChicken <= 20)
+		else if (11 <= this.levelOfChicken && this.levelOfChicken <= 20)
 		{
 			humanBoost = new Human(2);
 			attackBoost = humanBoost.getAttackBoost();
 			defenseBoost = humanBoost.getDefenseBoost();
 
 		}
-		else if (21<= this.levelOfChicken && this.levelOfChicken <= 30)
+		else if (21 <= this.levelOfChicken && this.levelOfChicken <= 30)
 		{
 			humanBoost = new Human(3);
 			attackBoost = humanBoost.getAttackBoost();
 			defenseBoost = humanBoost.getDefenseBoost();
 
 		}
-		else if (31<= this.levelOfChicken && this.levelOfChicken <= 40)
+		else if (31 <= this.levelOfChicken && this.levelOfChicken <= 40)
 		{
 			humanBoost = new Human(4);
 			attackBoost = humanBoost.getAttackBoost();
 			defenseBoost = humanBoost.getDefenseBoost();
 
 		}
-		else if (41<= this.levelOfChicken)
+		else if (41 <= this.levelOfChicken)
 		{
 			humanBoost = new Human(5);
 			attackBoost = humanBoost.getAttackBoost();
@@ -89,13 +85,13 @@ public class MeleeChicken extends PlayerChicken
 
 		}
 		playerEquipment = new Equipment();
-		baseDamage = (levelOfChicken-1)*2 +8 + attackBoost;
-		currentHealth = (levelOfChicken-1)*2 + 20;
-		baseHealth = (levelOfChicken-1)*2 + 20;
-		baseDefense = (levelOfChicken-1)*2 + 10 + defenseBoost;
+		baseDamage = (levelOfChicken - 1) * 2 + 8 + attackBoost;
+		currentHealth = (levelOfChicken - 1) * 2 + 20;
+		baseHealth = (levelOfChicken - 1) * 2 + 20;
+		baseDefense = (levelOfChicken - 1) * 2 + 10 + defenseBoost;
 		hungerBar = 20;
 		boneBalance = 1000;
-		expBar = 100 + (levelOfChicken-1)*50;
+		expBar = 100 + (levelOfChicken - 1) * 50;
 		currentExp = 0;
 	}
 
@@ -114,21 +110,22 @@ public class MeleeChicken extends PlayerChicken
 	public void equipEquipmentItem(int index)
 	{
 		Items inputItem = CombatView.player.playerInventory.getItem(index);
-		switch(inputItem.getItemType()) {
+		switch (inputItem.getItemType())
+		{
 
 			case 0:
-				playerEquipment.equipEquipmentItem(inputItem,0);
+				playerEquipment.equipEquipmentItem(inputItem, 0);
 				break;
 			case 1:
 				System.out.println("Can't equip, not right class");
 				break;
 			case 2:
-				playerEquipment.equipEquipmentItem(inputItem,2);
+				playerEquipment.equipEquipmentItem(inputItem, 2);
 				break;
 			case 3:
-				if(inputItem.getItemTier() != 0)
+				if (inputItem.getItemTier() != 0)
 				{
-					playerEquipment.equipEquipmentItem(inputItem,3);
+					playerEquipment.equipEquipmentItem(inputItem, 3);
 				}
 				else
 				{
@@ -138,8 +135,6 @@ public class MeleeChicken extends PlayerChicken
 
 		}
 	}
-
-
 
 	public void takeDamage(int enemyDamage)
 	{
@@ -153,7 +148,7 @@ public class MeleeChicken extends PlayerChicken
 		{
 			baseDefense = baseDefense - enemyDamage;
 		}
-		//finally if there is no defense, decrease current health
+		// finally if there is no defense, decrease current health
 		else if (baseDefense == 0 && currentHealth != 0 && currentHealth > 0)
 		{
 			currentHealth = currentHealth - enemyDamage;
@@ -187,67 +182,30 @@ public class MeleeChicken extends PlayerChicken
 
 	public void updateHealth()
 	{
-		baseHealth = (levelOfChicken-1)*2 + 20 + (heartCounter * 10) ;
+		baseHealth = (levelOfChicken - 1) * 2 + 20 + (heartCounter * 10);
 		currentHealth = baseHealth;
 	}
 
 	public void updateDefense()
 	{
-		baseDefense = (levelOfChicken-1)*2 + 10 + playerEquipment.getItemStat(2) + defenseBoost;
+		baseDefense = (levelOfChicken - 1) * 2 + 10
+				+ playerEquipment.getItemStat(2) + defenseBoost;
 	}
 
 	public void updateDamage()
 	{
-		baseDamage = (levelOfChicken-1)*2 +8 + playerEquipment.getItemStat(3) + attackBoost;
+		baseDamage = (levelOfChicken - 1) * 2 + 8
+				+ playerEquipment.getItemStat(3) + attackBoost;
 	}
 
 	public void updateExpNeeded()
 	{
-		expBar = 100 + (levelOfChicken-1)*50;
+		expBar = 100 + (levelOfChicken - 1) * 50;
 	}
 
-
-	@Override
-	public String toString()
-	{
-		return "Level of Chicken: " + levelOfChicken + "\n" +
-				"Attack Stat: " + baseDamage + "\n" +
-				"Defense Stat: " + baseDefense + "\n" +
-				"Health Stat: " + currentHealth + "\n" +
-				"Hunger Bar: " + hungerBar + "\n" +
-				"Bone Balance: " + boneBalance + "\n" +
-				"attackBoost for chicken: " + attackBoost + "\n" + 
-				"defenseBoost for chicken: " + defenseBoost + "\n";
-	}
-
-	
 	public boolean isItemEquipped(int index)
 	{
 		return playerEquipment.isItemEquipped(index);
-	}
-	
-	@Override
-	public String toStringSave()
-	{
-		/*
-		 * Order of data:
-		 * Level
-		 * Attack statistic
-		 * defense statistic
-		 * health statistic
-		 * hunger bar
-		 * bone balance
-		 * exp bar
-		 */
-
-
-		return "{" + levelOfChicken +
-				"," + baseDamage + 
-				"," + baseDefense + 
-				"," + currentHealth + 
-				"," + hungerBar + 
-				"," + boneBalance + 
-				"," + expBar + "}";
 	}
 
 	@Override
@@ -256,36 +214,43 @@ public class MeleeChicken extends PlayerChicken
 
 		return levelOfChicken;
 	}
+
 	@Override
 	public int getBaseHealth()
 	{
 		return baseHealth;
 	}
+
 	@Override
 	public int getCurrentHealth()
 	{
 		return currentHealth;
 	}
+
 	@Override
 	public int getBaseDamage()
 	{
 		return baseDamage;
 	}
+
 	@Override
 	public int getBaseDefense()
 	{
 		return baseDefense;
 	}
-	@Override 
+
+	@Override
 	public int getBoneBalance()
 	{
 		return boneBalance;
 	}
+
 	@Override
 	public int getHungerBar()
 	{
 		return hungerBar;
 	}
+
 	@Override
 	public void setBaseHealth(int health)
 	{
@@ -293,9 +258,9 @@ public class MeleeChicken extends PlayerChicken
 
 	}
 
-
 	@Override
-	public void addExp(int exp) {
+	public void addExp(int exp)
+	{
 		this.currentExp = exp;
 	}
 
@@ -313,36 +278,37 @@ public class MeleeChicken extends PlayerChicken
 	}
 
 	@Override
-	public void levelUp() {
+	public void levelUp()
+	{
 
 		levelOfChicken++;
 		resetPlayer();
 
 	}
+
 	public static void main(String args[])
 	{
 		PlayerChicken melee = new MeleeChicken(42);
-		//System.out.println(melee.toString());
+		// System.out.println(melee.toString());
 		System.out.println(melee);
 
 	}
+
 	@Override
-	public int getExperienceCounter() {
+	public int getExperienceCounter()
+	{
 		return this.experienceCounter;
 	}
+
 	@Override
-	public void addExperienceCounter (int add) {
+	public void addExperienceCounter(int add)
+	{
 		this.experienceCounter = this.experienceCounter + add;
 	}
+
 	@Override
-	public void setExperienceCounter (int add) {
+	public void setExperienceCounter(int add)
+	{
 		this.experienceCounter = add;
 	}
 }
-
-
-
-
-
-
-

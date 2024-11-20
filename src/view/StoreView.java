@@ -62,10 +62,6 @@ public class StoreView extends JFrame {
 		setVisible(true);
 	}
 
-	public static void main(String[] args) {
-		new StoreView();
-	}
-
 	// Sets the stock Panels
 	private void setStockSlots(JLabel[] theLabels) {
 		// offsets to be used later, DO NOT CHANGE

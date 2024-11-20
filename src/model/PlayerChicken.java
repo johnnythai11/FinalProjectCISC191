@@ -58,7 +58,6 @@ public PlayerChicken player;
 	public abstract void setBaseHealth(int health);
 	public abstract void equipEquipmentItem(int index);	
 	public abstract int getExp();
-	public abstract String toStringSave();
     public int experienceCounter;
 	public abstract int getCurrentExpGained();
 	public abstract int getExperienceCounter();

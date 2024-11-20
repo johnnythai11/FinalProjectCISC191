@@ -105,16 +105,4 @@ public class Equipment implements java.io.Serializable
 		}
 		return 0;
 	}
-
-	public String toStringSave()
-	{
-		StringBuilder builder = new StringBuilder();
-		builder.append("{");
-		for (int i = 0; i < equippedItemArray.length; i++)
-		{
-			builder.append(equippedItemArray[i].toString());
-		}
-		builder.append("}");
-		return builder.toString();
-	}
 }

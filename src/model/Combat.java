@@ -125,23 +125,4 @@ public class Combat {
 		}
 
 	}
-
-
-	public static void main(String args[])
-	{
-
-		PlayerChicken player1 = new MeleeChicken(1);
-		EnemyChicken enemy1 = new EnemyChicken();
-		Items wood = new Items(3,5);
-		int x = basicAttack(player1, wood);
-		int c = takeDamageForPlayer(player1, enemy1);
-		//takeDamageForEnemy(player1, enemy1);
-		System.out.println("Current Health: "+ c);
-		System.out.println("basic Attack: "+ x);
-
-	}
-
-
-
-
 }

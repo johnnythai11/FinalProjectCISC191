@@ -125,10 +125,4 @@ public class HowToPlayScreenView extends JFrame
 		}
 		
 	}
-
-	public static void main(String args[])
-	{
-		HowToPlayScreenView fightScreen = new HowToPlayScreenView();
-	}
-
 }

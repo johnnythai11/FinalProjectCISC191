@@ -141,40 +141,6 @@ public class MageChicken extends PlayerChicken
 	{
 		return playerEquipment.isItemEquipped(index);
 	}
-	@Override
-	public String toString()
-	{
-		return "Level of Chicken: " + levelOfChicken + "\n" +
-				"Attack Stat: " + baseDamage + "\n" +
-				"Defense Stat: " + baseDefense + "\n" +
-				"Health Stat: " + currentHealth + "\n" +
-				"Hunger Bar: " + hungerBar + "\n" +
-				"Bone Balance: " + boneBalance + "\n";
-	}
-
-	@Override
-	public String toStringSave()
-	{
-		/*
-		 * Order of data:
-		 * Level
-		 * Attack statistic
-		 * defense statistic
-		 * health statistic
-		 * hunger bar
-		 * bone balance
-		 * exp bar
-		 */
-		
-		
-		return "{" + levelOfChicken +
-				"," + baseDamage + 
-				"," + baseDefense + 
-				"," + currentHealth + 
-				"," + hungerBar + 
-				"," + boneBalance + 
-				"," + expBar + "}";
-	}
 	
 	public void resetPlayer()
 	{

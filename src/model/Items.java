@@ -148,43 +148,6 @@ public class Items implements java.io.Serializable
 	}
 
 	/*
-	 * Method to print out the stats of the items
-	 * @Return int itemTier, String itemName, int attackStat, int defenseStat, int healthStat
-	 */
-	@Override
-	public String toString()
-	{
-		return "Tier of item: " + itemTier + " " + "\n" +
-				"Name: " + itemName + " " + "\n" +
-				"Price Of item: " + price + "\n" +
-				"Attack Stat: " + attackStat + " " + "\n" +
-				"Defense Stat: "+ defenseStat + " " + "\n" +
-				"Health Stat: " + healthStat + "\n" +
-				"Heart Heals: " + healingStat + "\n";
-	}
-
-	public String toStringSave()
-	{
-		/*
-		 * Order of Data:
-		 * item tier
-		 * item name
-		 * price
-		 * attack statistic
-		 * defense statistic
-		 * health statistic
-		 * healing statistic
-		 */
-		return "{" + itemTier +
-				"," + itemName + 
-				"," + price + 
-				"," + attackStat + 
-				","+ defenseStat + 
-				"," + healthStat + 
-				"," + healingStat + "}";
-	}
-	
-	/*
 	 * checks if tier of the item is between 1-5, then sets price = to tier
 	 * tier 1 = 3 bones
 	 * tier 2 = 5 bones
@@ -340,20 +303,4 @@ public class Items implements java.io.Serializable
 
 		return this.price;
 	}
-	
-	public static void main(String args[])
-	{
-
-		Items woodClawStat = new Items(2,3);
-		Items item1 = new Items(2,5);
-
-		System.out.println(woodClawStat.toString());
-		System.out.println(item1.toString());
-
-	}
-
-
-
-
-
 }
