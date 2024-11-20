@@ -16,17 +16,13 @@
  */
 
 package view;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
 import model.Store;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.*;
 
 public class StoreView extends JFrame {
@@ -55,8 +51,8 @@ public class StoreView extends JFrame {
 		setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 		setResizable(false);
 		super.setLayout(null);
-		
-		
+
+
 		alreadyBoughtList = new ArrayList<Integer>();
 
 		setStockSlots(itemSlots);
@@ -105,7 +101,7 @@ public class StoreView extends JFrame {
 
 			theButtons[i].setBounds(xOffset + margins, yOffset + margins + 10, panelLengthWidth, 25);
 			theButtons[i].addActionListener(new BuyListener());
-			
+
 			add(theButtons[i]);
 			xOffset = xOffset + panelLengthWidth + margins + betweenmarginsX;
 		}
@@ -138,7 +134,7 @@ public class StoreView extends JFrame {
 
 	}
 
-	
+
 	//Readable Code, i swear
 	// Basically goes through the item button list, checks which one made the event, 
 	//then checks if the player has enough balance to buy the item, also prevents buying the same item multiple times

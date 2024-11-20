@@ -21,12 +21,7 @@ package view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
-
-import model.MageChicken;
-import model.MeleeChicken;
-import model.TankChicken;
 
 public class CharacterSelectionView extends JFrame
 {
@@ -115,18 +110,12 @@ public class CharacterSelectionView extends JFrame
 				statField.setText("Oi there you got a lisence for that stabbin?");
 				characterIcon.setBackground(Color.red);
 				setSelection = 3;
-			}
-			
-		}
-		
-		
+			}	
+		}	
 	}
 	
 	private class ContinueListener implements ActionListener
 	{
-
-
-		
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
@@ -147,13 +136,7 @@ public class CharacterSelectionView extends JFrame
 					dispose();
 					break;
 			}
-				
-			
-			
-
 		}
-		
 
-		
 	}
 }

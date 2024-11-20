@@ -30,11 +30,7 @@ import model.PlayerChicken;
  */
 
 public class InventoryView extends JFrame {
-	private PlayerChicken player;
-	private Items item0;
-	private Items item1;
-	private Items item2;
-	private Items item3;
+
 
 	private JLabel[] itemSlots = new JLabel[20];
 	private JButton[] removeItemButton = new JButton[20];
@@ -102,30 +98,30 @@ public class InventoryView extends JFrame {
 		for (int i = 0; i < theButtons.length; i++) {
 
 			switch (i) {
-			case 16:
-				theButtons[i] = new JButton("Unequip"); // MISC
-				theText[i] = new JLabel();
-				theText[i].setText("Misc");
-				break;
-			case 17:
-				theButtons[i] = new JButton("Unequip"); // Head
-				theText[i] = new JLabel();
-				theText[i].setText("Head");
-				break;
-			case 18:
-				theButtons[i] = new JButton("Unequip"); // body
-				theText[i] = new JLabel();
-				theText[i].setText("Body");
-				break;
-			case 19:
-				theButtons[i] = new JButton("Unequip"); // claw
-				theText[i] = new JLabel();
-				theText[i].setText("Claw");
-				break;
-			default:
-				theButtons[i] = new JButton("Equip");
-				theText[i] = new JLabel();
-				theText[i].setText("Item name");
+				case 16:
+					theButtons[i] = new JButton("Unequip"); // MISC
+					theText[i] = new JLabel();
+					theText[i].setText("Misc");
+					break;
+				case 17:
+					theButtons[i] = new JButton("Unequip"); // Head
+					theText[i] = new JLabel();
+					theText[i].setText("Head");
+					break;
+				case 18:
+					theButtons[i] = new JButton("Unequip"); // body
+					theText[i] = new JLabel();
+					theText[i].setText("Body");
+					break;
+				case 19:
+					theButtons[i] = new JButton("Unequip"); // claw
+					theText[i] = new JLabel();
+					theText[i].setText("Claw");
+					break;
+				default:
+					theButtons[i] = new JButton("Equip");
+					theText[i] = new JLabel();
+					theText[i].setText("Item name");
 			}
 
 			removeButtons[i] = new JButton("Delete");
@@ -181,10 +177,10 @@ public class InventoryView extends JFrame {
 
 	private class InventoryListenerEquipItems implements ActionListener 
 	{	
-	
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			Integer removeItemLater = null;
+			//Integer removeItemLater = null;
 			Integer index = null;
 			for (int i = 0; i < additemButtons.length; i++)
 			{
@@ -192,7 +188,7 @@ public class InventoryView extends JFrame {
 				if (e.getSource() == additemButtons[i])
 				{
 					index = CombatView.player.playerInventory.getItem(i).getItemType();
-					
+
 					if (!CombatView.player.isItemEquipped(index))
 					{
 						CombatView.player.equipEquipmentItem(i);
@@ -201,33 +197,29 @@ public class InventoryView extends JFrame {
 						update(); // this <----------
 					}
 
-				//itemExists = CombatView.player.playerInventory.itemExist(i);
-				if (e.getSource() == additemButtons[i])
-				{
-					CombatView.player.equipEquipmentItem(i);
-					CombatView.player.resetPlayer();
+					//itemExists = CombatView.player.playerInventory.itemExist(i);
+
+
 				}
-				
+
+
 			}
 
 
 		}
-		
 
 	}
 
-	}
 
-	
-	
+
 	private class CloseButtonListener implements ActionListener
 	{
-	
+
 		public void actionPerformed(ActionEvent e)
 		{
 			dispose();
 		}
 	}
-	
+
 
 }
