@@ -27,7 +27,7 @@ public PlayerChicken player;
 
 	/*
 	 * Constructor to create the Chicken class with the level input
-	 * @Parameters integer level
+	 * @Parameters integer level hi
 	 */
 	public PlayerChicken()
 	{
