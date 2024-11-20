@@ -230,12 +230,12 @@ public class MageChicken extends PlayerChicken
 
 	public void updateDefense()
 	{
-		baseDefense = (levelOfChicken-1)*2 + 5 + playerEquipment.getItemStat(2);
+		baseDefense = (levelOfChicken-1)*2 + 5 + playerEquipment.getItemStat(2) + defenseBoost;
 	}
 	
 	public void updateDamage()
 	{
-		baseDamage = (levelOfChicken-1)*2 +10 + playerEquipment.getItemStat(3);
+		baseDamage = (levelOfChicken-1)*2 +10 + playerEquipment.getItemStat(3) + attackBoost;
 	}
 	
 	public void updateExpNeeded()
