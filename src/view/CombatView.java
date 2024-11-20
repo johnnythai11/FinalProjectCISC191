@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 
 import model.Combat;
 import model.EnemyChicken;
+import model.Equipment;
 import model.Human;
 import model.MageChicken;
 import model.PlayerChicken;
@@ -62,7 +63,7 @@ public class CombatView extends JFrame
 	private JTextArea enemyInfo;
 
 	public static PlayerChicken player;
-	
+	public Equipment equip;
 	public static EnemyChicken enemy;
 
 	private Font info;
@@ -336,7 +337,7 @@ public class CombatView extends JFrame
 				updateInfo();
 			}
 
-			else if(e.getSource() == specialAttack)
+			else if(e.getSource() == specialAttack && equip.hasSpecialItem())
 			{	
 				closeGui();
 				int result = Combat.attackCombatRound(player, enemy);
@@ -356,25 +357,27 @@ public class CombatView extends JFrame
 						player.levelUp(); // Checks if you can level up
 						System.out.println("levelup");
 					}
+					System.out.println("no special item cant aattack");
+				}
+
 			}
 
 		}
-
 	}
 
-	private class StoreListener implements ActionListener
-	{
-
-		@Override
-		public void actionPerformed(ActionEvent e)
+		private class StoreListener implements ActionListener
 		{
-			closeGui();
-			myStore = new StoreView();
+
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				closeGui();
+				myStore = new StoreView();
+
+			}
 
 		}
-
-	}
-
+	
 	private class InventoryListener implements ActionListener
 	{
 
@@ -403,3 +406,4 @@ public class CombatView extends JFrame
 
 
 }
+
