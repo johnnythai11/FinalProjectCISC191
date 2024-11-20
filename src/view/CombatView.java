@@ -96,15 +96,15 @@ public class CombatView extends JFrame
 
 		if (selection == 1)
 		{
-			player = new MageChicken(50);
+			player = new MageChicken(1);
 		}
 		else if (selection == 2)
 		{
-			player = new TankChicken(1);
+			player = new TankChicken(50);
 		}
 		else if (selection == 3)
 		{
-			player = new MeleeChicken(1);
+			player = new MeleeChicken(50);
 		}
 
 		enemy = new EnemyChicken();
@@ -330,20 +330,31 @@ public class CombatView extends JFrame
 					{
 						player.levelUp(); // Checks if you can level up
 						System.out.println("levelup");
-
 					}
-
-
-
 				}
-
 				updateInfo();
 			}
 
-			else if(e.getSource() == specialAttack)
-			{
+			else if(e.getSource() == specialAttack && player.hasSpecialItem())
+			{	
 				closeGui();
-				System.out.println("not implemented yet");
+				int result = Combat.attackCombatRound(player, enemy);
+				System.out.println(result);
+				if(result == 1 ) { // WHAT HAPPENS WHEN YOU DIE
+					new MainMenuView();
+					dispose();
+				} else if (result == 2) { // WHAT YOU WANT TO HAPPEN WHEN THE ENEMY IS KILLED
+					player.addExperienceCounter(enemy.getExpGiven());
+					enemy = null;
+					enemy = new EnemyChicken();
+					System.out.println("when enemy dies:" + player.getExperienceCounter());
+					player.setBalance(player.getBoneBalance()+ enemy.getBoneToken());
+					player.getExperienceCounter();
+					if (player.getExp() <= player.getExperienceCounter())
+					{
+						player.levelUp(); // Checks if you can level up
+						System.out.println("levelup");
+					}
 			}
 
 		}

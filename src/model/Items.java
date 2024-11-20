@@ -164,7 +164,7 @@ public class Items implements java.io.Serializable
 			price = 100;
 		}
 
-		if (typeOfArmor == 1)
+		if (typeOfArmor == 1 && itemTier == 0)
 		{
 			itemName = "Helmet";
 			price = 100;
