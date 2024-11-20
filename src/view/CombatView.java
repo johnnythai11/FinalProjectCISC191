@@ -19,7 +19,6 @@ import model.PlayerChicken;
 import model.TankChicken;
 import model.MeleeChicken;
 import model.SaveLoad;
-import model.Equipment;
 /**
  * Lead Author(s):
  * 
@@ -63,7 +62,7 @@ public class CombatView extends JFrame
 	private JTextArea enemyInfo;
 
 	public static PlayerChicken player;
-	public static Equipment equipment;
+	
 	public static EnemyChicken enemy;
 
 	private Font info;
@@ -337,7 +336,7 @@ public class CombatView extends JFrame
 				updateInfo();
 			}
 
-			else if(e.getSource() == specialAttack && player.hasSpecialItem())
+			else if(e.getSource() == specialAttack)
 			{	
 				closeGui();
 				int result = Combat.attackCombatRound(player, enemy);
