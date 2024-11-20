@@ -1,5 +1,7 @@
 package model;
+
 import view.CombatView;
+
 /**
  * Lead Author(s):
  * 
@@ -7,21 +9,21 @@ import view.CombatView;
  * @author Full name: Jacob Wiemann
  * @author Full name: Daniel Soto
  *
- * Other Contributors: none
+ *         Other Contributors: none
  *
- * References:
- * Morelli, R., & Walde, R. (2016).
- * Java, Java, Java: Object-Oriented Problem Solving
- * https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+ *         References:
+ *         Morelli, R., & Walde, R. (2016).
+ *         Java, Java, Java: Object-Oriented Problem Solving
+ *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
  *
- * Version: 2024-10-16
+ *         Version: 2024-10-16
  * 
  */
 
 public class Equipment implements java.io.Serializable
 {
 
-    PlayerChicken player;
+	PlayerChicken player;
 
 	private Items[] equippedItemArray = new Items[4];
 
@@ -66,21 +68,22 @@ public class Equipment implements java.io.Serializable
 			CombatView.player.heartCounter += 1;
 			CombatView.player.updateHealth();
 		}
-		else {
-			
-		this.equippedItemArray[index] = item;
+		else
+		{
+
+			this.equippedItemArray[index] = item;
 		}
 	}
-	
-	
+
 	public boolean isItemEquipped(int index)
 	{
-		try {
-		if (equippedItemArray[index] != null)
+		try
 		{
-			return true;
-		}
-		return false;
+			if (equippedItemArray[index] != null)
+			{
+				return true;
+			}
+			return false;
 		}
 		catch (Exception e)
 		{
@@ -88,21 +91,34 @@ public class Equipment implements java.io.Serializable
 			return false;
 		}
 	}
-	
+
 	public int getItemStat(int index)
 	{
-		if (equippedItemArray[index] != null) {
-		switch(index) {
-			case 1:
-				return equippedItemArray[index].getDefenseStat();
-			case 2: 
-				return equippedItemArray[index].getDefenseStat();
-			case 3:
-				return equippedItemArray[index].getAttackStat();
-			default:
-				return 0;
-		}
+		if (equippedItemArray[index] != null)
+		{
+			switch (index)
+			{
+				case 1:
+					return equippedItemArray[index].getDefenseStat();
+				case 2:
+					return equippedItemArray[index].getDefenseStat();
+				case 3:
+					return equippedItemArray[index].getAttackStat();
+				default:
+					return 0;
+			}
 		}
 		return 0;
+	}
+
+	public boolean hasSpecialItem()
+	{
+		for (int i = 0; i > equippedItemArray.length; i++)
+		{
+			if(equippedItemArray[i].getItemTier() == 0) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

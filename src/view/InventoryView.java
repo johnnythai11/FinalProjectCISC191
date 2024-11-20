@@ -65,10 +65,6 @@ public class InventoryView extends JFrame {
 		setVisible(true);
 	}
 
-	public static void main(String[] args) {
-		new InventoryView();
-	}
-
 	// Sets the Inventory Panels
 	private void setInventorySlots(JLabel[] theLabels) {
 		// offsets to be used later, DO NOT CHANGE
