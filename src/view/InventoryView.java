@@ -29,8 +29,8 @@ import model.PlayerChicken;
  * 
  */
 
-public class InventoryView extends JFrame {
-
+public class InventoryView extends JFrame
+{
 
 	private JLabel[] itemSlots = new JLabel[20];
 	private JButton[] removeItemButton = new JButton[20];
@@ -38,11 +38,13 @@ public class InventoryView extends JFrame {
 	private JLabel[] itemSlotsText = new JLabel[20];
 	private JButton closeShopButton = new JButton("Exit");
 
-	// Margins around the top and left side of screen, margins between each panel X,
+	// Margins around the top and left side of screen, margins between each
+	// panel X,
 	// Y
 	private final int margins = 30, betweenMarginsY = 90, betweenmarginsX = 10;
 
-	// Changes lenght, width of the panels and the relating variables that depend on
+	// Changes lenght, width of the panels and the relating variables that
+	// depend on
 	// it
 	private final int panelLengthWidth = 100;
 
@@ -51,7 +53,8 @@ public class InventoryView extends JFrame {
 
 	final int SCREEN_WIDTH = 1100, SCREEN_HEIGHT = 800;
 
-	public InventoryView() {
+	public InventoryView()
+	{
 		super("Inventory/Equipment");
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -66,34 +69,43 @@ public class InventoryView extends JFrame {
 	}
 
 	// Sets the Inventory Panels
-	private void setInventorySlots(JLabel[] theLabels) {
+	private void setInventorySlots(JLabel[] theLabels)
+	{
 		// offsets to be used later, DO NOT CHANGE
 		int yOffset = 0, xOffset = 0;
 
 		// Populates the array with JLabels, Sets them blue, and aligns them
-		for (int i = 0; i < theLabels.length; i++) {
+		for (int i = 0; i < theLabels.length; i++)
+		{
 			// For each "slot" in the array, create JPanel
 			theLabels[i] = new JLabel("Insert Icon");
 			theLabels[i].setBackground(Color.white);
 			theLabels[i].setOpaque(true);
 			// amountPerRow changes amountPerRow
-			if (xOffset > (panelLengthWidth * amountPerRow)) {
+			if (xOffset > (panelLengthWidth * amountPerRow))
+			{
 				xOffset = 0;
-				yOffset = yOffset + panelLengthWidth + margins + betweenMarginsY;
+				yOffset = yOffset + panelLengthWidth + margins
+						+ betweenMarginsY;
 			}
-			theLabels[i].setBounds(xOffset + margins, yOffset + margins, panelLengthWidth, panelLengthWidth);
+			theLabels[i].setBounds(xOffset + margins, yOffset + margins,
+					panelLengthWidth, panelLengthWidth);
 			add(theLabels[i]);
 			xOffset = xOffset + panelLengthWidth + margins + betweenmarginsX;
 		}
 	}
 
 	// sets the Stock Buttons
-	private void setInventoryButtons(JButton[] theButtons, JLabel[] theText, JButton[] removeButtons) {
+	private void setInventoryButtons(JButton[] theButtons, JLabel[] theText,
+			JButton[] removeButtons)
+	{
 		// offsets to be used later, DO NOT CHANGE
 		int yOffset = 100, xOffset = 0;
-		for (int i = 0; i < theButtons.length; i++) {
+		for (int i = 0; i < theButtons.length; i++)
+		{
 
-			switch (i) {
+			switch (i)
+			{
 				case 16:
 					theButtons[i] = new JButton("Unequip"); // MISC
 					theText[i] = new JLabel();
@@ -123,15 +135,20 @@ public class InventoryView extends JFrame {
 			removeButtons[i] = new JButton("Delete");
 			theText[i].setOpaque(true);
 
-			if (xOffset > (panelLengthWidth * amountPerRow)) {
+			if (xOffset > (panelLengthWidth * amountPerRow))
+			{
 				xOffset = 0;
-				yOffset = yOffset + panelLengthWidth + margins + betweenMarginsY;
+				yOffset = yOffset + panelLengthWidth + margins
+						+ betweenMarginsY;
 			}
 
 			theButtons[i].addActionListener(new InventoryListenerEquipItems());
-			theButtons[i].setBounds(xOffset + margins, yOffset + margins + 10, panelLengthWidth, 25);
-			theText[i].setBounds(xOffset + margins, yOffset + margins - 120, panelLengthWidth, 25);
-			removeButtons[i].setBounds(xOffset + margins, yOffset + margins + 40, panelLengthWidth, 25);
+			theButtons[i].setBounds(xOffset + margins, yOffset + margins + 10,
+					panelLengthWidth, 25);
+			theText[i].setBounds(xOffset + margins, yOffset + margins - 120,
+					panelLengthWidth, 25);
+			removeButtons[i].setBounds(xOffset + margins,
+					yOffset + margins + 40, panelLengthWidth, 25);
 			add(removeButtons[i]);
 			add(theButtons[i]);
 			add(theText[i]);
@@ -139,7 +156,8 @@ public class InventoryView extends JFrame {
 		}
 	}
 
-	private void setCloseButton() {
+	private void setCloseButton()
+	{
 		// closeShopButton.setBounds((int)(panelLengthWidth * 4.5),(int)
 		// (panelLengthWidth * 4.5), (int) (panelLengthWidth * 1.5), 25);
 		closeShopButton.setBounds(450, 650, 100, 50);
@@ -147,39 +165,51 @@ public class InventoryView extends JFrame {
 		add(closeShopButton);
 	}
 
-	private void update() {
-		for (int i = 0; i < 16; i++) {
-			if (!CombatView.player.playerInventory.itemExist(i)) { // No item
+	private void update()
+	{
+		for (int i = 0; i < 16; i++)
+		{
+			if (!CombatView.player.playerInventory.itemExist(i))
+			{ // No item
 				disable(i);
-			} else { // Found Item
+			}
+			else
+			{ // Found Item
 				enable(i);
-				itemSlotsText[i].setText(CombatView.player.playerInventory.getItem(i).getItemName());
+				itemSlotsText[i].setText(CombatView.player.playerInventory
+						.getItem(i).getItemName());
 			}
 		}
 		for (int index = 16; index < 20; index++)// Equipment Stuff
 		{
-			if (!CombatView.player.isItemEquipped(index- 16)) //offsets index to pull correctly from equipment
+			if (!CombatView.player.isItemEquipped(index - 16)) // offsets index
+																// to pull
+																// correctly
+																// from
+																// equipment
 			{
 				disable(index);
-				
-				if(index == 16) //special case for hearts
+
+				if (index == 16) // special case for hearts
 				{
 					enable(index);
-					itemSlotsText[index].setText("Hearts : " + CombatView.player.heartCounter);
-				
+					itemSlotsText[index].setText(
+							"Hearts : " + CombatView.player.heartCounter);
+
 				}
 			}
-		 else { // Found Equipped Item!
-			 enable(index);
+			else
+			{ // Found Equipped Item!
+				enable(index);
 
-			itemSlotsText[index].setText(CombatView.player.getEquippedItem(index- 16).getItemName());
+				itemSlotsText[index].setText(CombatView.player
+						.getEquippedItem(index - 16).getItemName());
+			}
 		}
-		}
-		
 
 	}
-	
-	private void enable (int index)
+
+	private void enable(int index)
 	{
 		itemSlotsText[index].setVisible(true);
 		additemButtons[index].setVisible(true);
@@ -189,7 +219,6 @@ public class InventoryView extends JFrame {
 		removeItemButton[index].setEnabled(true);
 	}
 
-	
 	private void disable(int index)
 	{
 		itemSlotsText[index].setVisible(false);
@@ -198,44 +227,46 @@ public class InventoryView extends JFrame {
 		itemSlots[index].setVisible(false);
 		additemButtons[index].setEnabled(false);
 		removeItemButton[index].setEnabled(false);
-		
+
 	}
-	private class InventoryListenerEquipItems implements ActionListener 
-	{	
+
+	private class InventoryListenerEquipItems implements ActionListener
+	{
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
-			//Integer removeItemLater = null;
+		public void actionPerformed(ActionEvent e)
+		{
+			// Integer removeItemLater = null;
 			Integer index = null;
 			for (int i = 0; i < additemButtons.length; i++)
 			{
 
 				if (e.getSource() == additemButtons[i])
 				{
-					index = CombatView.player.playerInventory.getItem(i).getItemType();
+					index = CombatView.player.playerInventory.getItem(i)
+							.getItemType();
 
 					if (!CombatView.player.isItemEquipped(index))
 					{
 						CombatView.player.equipEquipmentItem(i);
-						CombatView.player.playerInventory.removeItemFromInventory(CombatView.player.playerInventory.getItem(i));
+						CombatView.player.playerInventory
+								.removeItemFromInventory(
+										CombatView.player.playerInventory
+												.getItem(i));
 						CombatView.player.resetPlayer();
 						update(); // this <----------
 					}
 
-					//itemExists = CombatView.player.playerInventory.itemExist(i);
-
+					// itemExists =
+					// CombatView.player.playerInventory.itemExist(i);
 
 				}
 
-
 			}
-
 
 		}
 
 	}
-
-
 
 	private class CloseButtonListener implements ActionListener
 	{
@@ -245,6 +276,5 @@ public class InventoryView extends JFrame {
 			dispose();
 		}
 	}
-
 
 }
