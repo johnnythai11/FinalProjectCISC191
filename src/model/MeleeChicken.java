@@ -135,6 +135,11 @@ public class MeleeChicken extends PlayerChicken
 
 		}
 	}
+	
+	public Items getEquippedItem (int index)
+	{
+		return playerEquipment.getEquippedItem(index);
+	}
 
 	public void takeDamage(int enemyDamage)
 	{

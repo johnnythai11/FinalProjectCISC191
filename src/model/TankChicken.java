@@ -153,6 +153,11 @@ public class TankChicken extends PlayerChicken
 
 		}
 	}
+	
+	public Items getEquippedItem (int index)
+	{
+		return playerEquipment.getEquippedItem(index);
+	}
 
 	@Override
 	public void setBalance(int newBalance)

@@ -94,6 +94,10 @@ public class MageChicken extends PlayerChicken
 
 	}
 	
+	public Items getEquippedItem (int index)
+	{
+		return playerEquipment.getEquippedItem(index);
+	}
 	@Override
 	public int expBar()
 	{

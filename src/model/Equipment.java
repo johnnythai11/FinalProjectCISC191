@@ -87,7 +87,7 @@ public class Equipment implements java.io.Serializable
 		}
 		catch (Exception e)
 		{
-			System.out.println("i made a mistake oopsies");
+			System.out.println("Equipment : Item Not Found (Null, Intended)");
 			return false;
 		}
 	}
@@ -109,6 +109,19 @@ public class Equipment implements java.io.Serializable
 			}
 		}
 		return 0;
+	}
+	
+	public Items getEquippedItem(int index)
+	{
+		if(equippedItemArray[index] != null)
+		{
+			return equippedItemArray[index];
+		}
+		else
+		{
+			System.out.println("I got a null item : getEquippedItem");
+			return null;	
+		}
 	}
 
 	public boolean hasSpecialItem()

@@ -149,28 +149,57 @@ public class InventoryView extends JFrame {
 
 	private void update() {
 		for (int i = 0; i < 16; i++) {
-			if (!CombatView.player.playerInventory.itemExist(i)) {
-				itemSlotsText[i].setVisible(false);
-				additemButtons[i].setVisible(false);
-				removeItemButton[i].setVisible(false);
-				itemSlots[i].setVisible(false);
-				additemButtons[i].setEnabled(false);
-				removeItemButton[i].setEnabled(false);
-
-			} else {
-				itemSlotsText[i].setVisible(true);
-				additemButtons[i].setVisible(true);
-				removeItemButton[i].setVisible(true);
-				itemSlots[i].setVisible(true);
-				additemButtons[i].setEnabled(true);
-				removeItemButton[i].setEnabled(true);
-
+			if (!CombatView.player.playerInventory.itemExist(i)) { // No item
+				disable(i);
+			} else { // Found Item
+				enable(i);
 				itemSlotsText[i].setText(CombatView.player.playerInventory.getItem(i).getItemName());
 			}
 		}
+		for (int index = 16; index < 20; index++)// Equipment Stuff
+		{
+			if (!CombatView.player.isItemEquipped(index- 16)) //offsets index to pull correctly from equipment
+			{
+				disable(index);
+				
+				if(index == 16) //special case for hearts
+				{
+					enable(index);
+					itemSlotsText[index].setText("Hearts : " + CombatView.player.heartCounter);
+				
+				}
+			}
+		 else { // Found Equipped Item!
+			 enable(index);
+
+			itemSlotsText[index].setText(CombatView.player.getEquippedItem(index- 16).getItemName());
+		}
+		}
+		
 
 	}
+	
+	private void enable (int index)
+	{
+		itemSlotsText[index].setVisible(true);
+		additemButtons[index].setVisible(true);
+		removeItemButton[index].setVisible(true);
+		itemSlots[index].setVisible(true);
+		additemButtons[index].setEnabled(true);
+		removeItemButton[index].setEnabled(true);
+	}
 
+	
+	private void disable(int index)
+	{
+		itemSlotsText[index].setVisible(false);
+		additemButtons[index].setVisible(false);
+		removeItemButton[index].setVisible(false);
+		itemSlots[index].setVisible(false);
+		additemButtons[index].setEnabled(false);
+		removeItemButton[index].setEnabled(false);
+		
+	}
 	private class InventoryListenerEquipItems implements ActionListener 
 	{	
 
