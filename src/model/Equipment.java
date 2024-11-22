@@ -23,13 +23,21 @@ import view.CombatView;
 public class Equipment implements java.io.Serializable
 {
 
-	PlayerChicken player;
 
-	private Items[] equippedItemArray = new Items[4];
+	public  Items[] equippedItemArray = new Items[4];
+	private Items item1;
+	private Items item2;
+	private Items item3;
+	private Items item4;
+	private boolean statement;
 
-	Equipment()
+	public Equipment()
 	{
-
+//		this.item1 = this.equippedItemArray[0];
+//		this.item2 = this.equippedItemArray[1];
+//		this.item3 = this.equippedItemArray[2];
+//		this.item4 = this.equippedItemArray[3];
+		
 	}
 
 	/*
@@ -45,7 +53,6 @@ public class Equipment implements java.io.Serializable
 		this.equippedItemArray[1] = item2;
 		this.equippedItemArray[2] = item3;
 		this.equippedItemArray[3] = item4;
-
 	}
 
 	/*
@@ -126,12 +133,19 @@ public class Equipment implements java.io.Serializable
 
 	public boolean hasSpecialItem()
 	{
-		for (int i = 0; i > equippedItemArray.length; i++)
+		for (int i = 0; i < this.equippedItemArray.length; i++)
 		{
-			if(equippedItemArray[i].getItemTier() == 0) {
-				return true;
+			if(this.equippedItemArray[i].getItemTier() == 0) {
+				statement = true;
+			}
+			else
+			{
+				statement = false;
 			}
 		}
-		return false;
+		return statement;
+	
 	}
 }
+
+

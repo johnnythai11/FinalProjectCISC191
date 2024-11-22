@@ -67,7 +67,7 @@ public class Items implements java.io.Serializable
 			this.typeOfArmor = typeOfArmor;
 			this.healthStat  = 10;
 			this.itemTier = 0;
-			//this.price = 100;
+			this.price = 100;
 			itemName = "Helmet";
 		}
 
@@ -103,7 +103,7 @@ public class Items implements java.io.Serializable
 			this.itemTier = itemTier;
 			this.typeOfArmor = typeOfArmor;
 			this.defenseStat = 10;
-			//this.price = 100;
+			this.price = 100;
 			itemName = "Shield";
 		}
 
@@ -166,74 +166,87 @@ public class Items implements java.io.Serializable
 
 		if (typeOfArmor == 1 && itemTier == 0)
 		{
+			this.itemTier = 0;
 			itemName = "Helmet";
 			price = 100;
 		}
 		if (typeOfArmor == 2 && itemTier == 0)
 		{
+			this.itemTier = 0;
 			itemName = "Sheild";
 			price = 100;
 		}
 		if (typeOfArmor == 3 && itemTier == 0)
 		{
+			this.itemTier = 0;
 			itemName = "Staff";
 			price = 100;
 		}
 
 		if (typeOfArmor == 2 && itemTier == 1)
 		{
+			this.itemTier = 1;
 			itemName = "Wood ChestPlate";
 			price = 3;
 		}
 		if (typeOfArmor == 2 && itemTier == 2)
 		{
+			this.itemTier = 2;
 			itemName = "Bronze ChestPlate";
 			price = 5;
 		}
 
 		if (typeOfArmor == 2 && itemTier == 3)
 		{
+			this.itemTier = 3;
 			itemName = "Copper ChestPlate";
 			price = 8;
 		}
 
 		if (typeOfArmor == 2 && itemTier == 4)
 		{
+			this.itemTier = 4;
 			itemName = "Iron ChestPlate";
 			price = 12;
 		}
 
 		if (typeOfArmor == 2 && itemTier == 5)
 		{
+			this.itemTier = 5;
 			itemName = "Diamond ChestPlate";
 			price = 17;
 		}
 
 		if (typeOfArmor == 3 && itemTier == 1)
 		{
+			this.itemTier = 1;
 			itemName = "Wood Claw";
 			price = 3;
 		}
 		if (typeOfArmor == 3 && itemTier == 2)
 		{
+			this.itemTier = 2;
 			itemName = "Bronze Claw";
 			price = 5;
 		}
 
 		if (typeOfArmor == 3 && itemTier == 3)
 		{
+			this.itemTier = 3;
 			itemName = "Copper Claw";
 			price = 8;
 		}
 
 		if (typeOfArmor == 3 && itemTier == 4)
 		{
+			this.itemTier = 4;
 			itemName = "Iron Claw";
 			price = 12;
 		}
 
 		if (typeOfArmor == 3 && itemTier == 5)
 		{
+			this.itemTier = 5;
 			itemName = "Diamond Claw";
 			price = 17;
 		}
@@ -242,7 +255,7 @@ public class Items implements java.io.Serializable
 	
 	public int getItemTier()
 	{
-		return itemTier;
+		return this.itemTier;
 	}
 	
 
@@ -299,7 +312,6 @@ public class Items implements java.io.Serializable
 
 
 	public int getPrice() {
-
 
 		return this.price;
 	}

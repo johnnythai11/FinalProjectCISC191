@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 
 import model.Combat;
 import model.EnemyChicken;
+import model.Equipment;
 import model.Human;
 import model.MageChicken;
 import model.PlayerChicken;
@@ -47,7 +48,7 @@ public class CombatView extends JFrame
 	private JPanel mainPanel;
 
 	private StoreView myStore;
-	private InventoryView playerInventory;
+	public InventoryView playerInventory;
 
 	private JButton inventory;
 	private JButton attack;
@@ -59,12 +60,14 @@ public class CombatView extends JFrame
 	private JPanel characterPanel;
 	private JPanel enemyPanel;
 
-	public JTextArea characterInfo;
+	private JTextArea characterInfo;
 	private JTextArea enemyInfo;
 
 	public static PlayerChicken player;
+	private Equipment equip = new Equipment();
 
-	public static EnemyChicken enemy;
+
+	private static EnemyChicken enemy;
 
 	private Font info;
 
@@ -160,6 +163,7 @@ public class CombatView extends JFrame
 
 		retreat.addActionListener(new RetreatListener());
 		attack.addActionListener(new AttackListener());
+		specialAttack.addActionListener(new AttackListener());
 		store.addActionListener(new StoreListener());
 		inventory.addActionListener(new InventoryListener());
 		save.addActionListener(new SaveListener());
@@ -237,7 +241,7 @@ public class CombatView extends JFrame
 		characterInfo.append("Balance: " + player.getBoneBalance() + "\n");
 		characterInfo.append("Level: " + player.getLevel() + "\n");
 		characterInfo
-				.append("Exp gained: " + player.getExperienceCounter() + "\n");
+		.append("Exp gained: " + player.getExperienceCounter() + "\n");
 		characterInfo.append("Exp needed to levelup: " + player.expBar());
 		characterInfo.setEditable(false);
 		characterInfo.setSize(660, 400);
@@ -346,73 +350,85 @@ public class CombatView extends JFrame
 
 			else if (e.getSource() == specialAttack)
 			{
-				closeGui();
-				int result = Combat.attackCombatRound(player, enemy);
-				System.out.println(result);
-				if (result == 1)
-				{ // WHAT HAPPENS WHEN YOU DIE
-					new MainMenuView();
-					dispose();
-				}
-				else if (result == 2)
-				{ // WHAT YOU WANT TO HAPPEN WHEN THE ENEMY IS KILLED
-					player.addExperienceCounter(enemy.getExpGiven());
-					enemy = null;
-					enemy = new EnemyChicken();
-					System.out.println(
-							"when enemy dies:" + player.getExperienceCounter());
-					player.setBalance(
-							player.getBoneBalance() + enemy.getBoneToken());
-					player.getExperienceCounter();
-					if (player.getExp() <= player.getExperienceCounter())
-					{
-						player.levelUp(); // Checks if you can level up
-						System.out.println("levelup");
+	
+					if (equip.hasSpecialItem())//checks if special item is equipped
+					{		
+						closeGui();
+						int result = Combat.attackCombatRound(player, enemy);
+						System.out.println(result);
+						if (result == 1)
+						{ // WHAT HAPPENS WHEN YOU DIE
+							new MainMenuView();
+							dispose();
+						}
+						else if (result == 2)
+						{ // WHAT YOU WANT TO HAPPEN WHEN THE ENEMY IS KILLED
+							player.addExperienceCounter(enemy.getExpGiven());
+							enemy = null;
+							enemy = new EnemyChicken();
+							System.out.println(
+									"when enemy dies:" + player.getExperienceCounter());
+							player.setBalance(
+									player.getBoneBalance() + enemy.getBoneToken());
+							player.getExperienceCounter();
+							if (player.getExp() <= player.getExperienceCounter())
+							{
+								player.levelUp(); // Checks if you can level up
+								System.out.println("levelup");
+							}
+						}
+
 					}
-				}
+				
+					else 
+					{
+						System.out.println("CAN'T use special attack. NO special items equipped.");
+					}
+				
+					updateInfo();
 
 			}
 
 		}
 	}
 
-		private class StoreListener implements ActionListener
+	private class StoreListener implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e)
 		{
-
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				closeGui();
-				myStore = new StoreView();
-
-			}
-
-		}
-
-		private class InventoryListener implements ActionListener
-		{
-
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				closeGui();
-				playerInventory = new InventoryView();
-			}
-
-		}
-
-		private class SaveListener implements ActionListener
-		{
-
-			@Override
-			public void actionPerformed(ActionEvent e)
-			{
-				SaveLoad saveLoad = new SaveLoad();
-				saveLoad.binarySave(player);
-
-			}
+			closeGui();
+			myStore = new StoreView();
 
 		}
 
 	}
+
+	private class InventoryListener implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			closeGui();
+			playerInventory = new InventoryView();
+		}
+
+	}
+
+	private class SaveListener implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			SaveLoad saveLoad = new SaveLoad();
+			saveLoad.binarySave(player);
+
+		}
+
+	}
+
+}
 
