@@ -33,10 +33,6 @@ public class Equipment implements java.io.Serializable
 
 	public Equipment()
 	{
-		item1 = this.equippedItemArray[0];
-		item2 = this.equippedItemArray[1];
-		item3 = this.equippedItemArray[2];
-		item4 = this.equippedItemArray[3];
 		
 	}
 
@@ -130,10 +126,9 @@ public class Equipment implements java.io.Serializable
 			return null;	
 		}
 	}
-	public Items removeItemFromEquipment(int index)
+	public void removeItemFromEquipment(int index)
 	{
-	this.equippedItemArray[index-16] = null;
-		return this.equippedItemArray[index-16];
+		this.equippedItemArray[index] = null;
 	}
 	
 

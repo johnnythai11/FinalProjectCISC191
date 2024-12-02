@@ -110,31 +110,34 @@ public class MageChicken extends PlayerChicken
 	 * @parameter int indexX, int indexY
 	 */
 	@Override
-	public void equipEquipmentItem(int index)
+	public boolean equipEquipmentItem(int index)
 	{
 		Items inputItem = CombatView.player.playerInventory.getItem(index);
 		switch(inputItem.getItemType()) {
 			
 			case 0:
 				playerEquipment.equipEquipmentItem(inputItem,0);
-				break;
+				return true;
 			case 1:
 				System.out.println("Can't equip, not right class");
-				break;
+				return false;
 			case 2:
 				if(inputItem.getItemTier() != 0)
 				{
 					playerEquipment.equipEquipmentItem(inputItem,2);
+					return true;
 				}
 				else
 				{
 					System.out.println("Can't equip, not right class");
+					return false;
 				}
-				break;
 			case 3:
 			
 				playerEquipment.equipEquipmentItem(inputItem,3);
-				break;
+				return true;
+			default:
+				return false;
 			
 				
 		}
@@ -152,6 +155,11 @@ public class MageChicken extends PlayerChicken
 		updateDefense();
 		updateHealth();
 		updateExpNeeded();
+	}
+	
+	public void removeEquippedItem(int index)
+	{
+		playerEquipment.removeItemFromEquipment(index);
 	}
 	
 	
