@@ -34,10 +34,11 @@ public PlayerChicken player;
 
 	}
 	public abstract Items getEquippedItem(int index);
+	public abstract void removeEquippedItem(int index);
 	public abstract boolean isItemEquipped(int index);
 	public static int heartCounter;
 	public Inventory playerInventory = new Inventory();
-	public Equipment playerEquipment = new Equipment();
+
 	public abstract void addExp(int exp);
 	public abstract void levelUp();
 	public abstract void setBalance(int balance);
@@ -56,7 +57,7 @@ public PlayerChicken player;
 	public abstract int getBaseDefense();
 	public abstract int getBoneBalance();
 	public abstract void setBaseHealth(int health);
-	public abstract void equipEquipmentItem(int index);	
+	public abstract boolean equipEquipmentItem(int index);	
 	public abstract int getExp();
     public int experienceCounter;
 	public abstract int getCurrentExpGained();

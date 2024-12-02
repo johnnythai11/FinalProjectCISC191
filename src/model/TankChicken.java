@@ -99,6 +99,11 @@ public class TankChicken extends PlayerChicken
 		expBar = 100 + (levelOfChicken - 1) * 50;
 
 	}
+	
+	public void removeEquippedItem(int index)
+	{
+		playerEquipment.removeItemFromEquipment(index);
+	}
 
 	public boolean isItemEquipped(int index)
 	{
@@ -117,7 +122,7 @@ public class TankChicken extends PlayerChicken
 	 * @parameter int indexX, int indexY
 	 */
 	@Override
-	public void equipEquipmentItem(int index)
+	public boolean equipEquipmentItem(int index)
 	{
 		Items inputItem = CombatView.player.playerInventory.getItem(index);
 		switch (inputItem.getItemType())
@@ -125,31 +130,35 @@ public class TankChicken extends PlayerChicken
 
 			case 0:
 				playerEquipment.equipEquipmentItem(inputItem, 0);
-				break;
+				return true;
 			case 1:
 				playerEquipment.equipEquipmentItem(inputItem, 1);
-				break;
+				return true;
 			case 2:
 				if (inputItem.getItemTier() != 0)
 				{
 					playerEquipment.equipEquipmentItem(inputItem, 2);
+					return true;
 				}
 				else
 				{
 					System.out.println("Can't equip, not right class");
+					return false;
 				}
-				break;
 
 			case 3:
 				if (inputItem.getItemTier() != 0)
 				{
 					playerEquipment.equipEquipmentItem(inputItem, 3);
+					return true;
 				}
 				else
 				{
 					System.out.println("Can't equip, not right class");
+					return false;
 				}
-				break;
+			default:
+				return false;
 
 		}
 	}

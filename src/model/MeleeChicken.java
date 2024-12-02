@@ -107,7 +107,7 @@ public class MeleeChicken extends PlayerChicken
 	 * @parameter int indexX, int indexY
 	 */
 	@Override
-	public void equipEquipmentItem(int index)
+	public boolean equipEquipmentItem(int index)
 	{
 		Items inputItem = CombatView.player.playerInventory.getItem(index);
 		switch (inputItem.getItemType())
@@ -115,25 +115,33 @@ public class MeleeChicken extends PlayerChicken
 
 			case 0:
 				playerEquipment.equipEquipmentItem(inputItem, 0);
-				break;
+				return true;
 			case 1:
 				System.out.println("Can't equip, not right class");
-				break;
+				return false;
 			case 2:
 				playerEquipment.equipEquipmentItem(inputItem, 2);
-				break;
+				return true;
 			case 3:
 				if (inputItem.getItemTier() != 0)
 				{
 					playerEquipment.equipEquipmentItem(inputItem, 3);
+					return true;
 				}
 				else
 				{
 					System.out.println("Can't equip, not right class");
+					return false;
 				}
-				break;
+			default:
+				return false;
 
 		}
+	}
+	
+	public void removeEquippedItem(int index)
+	{
+		playerEquipment.removeItemFromEquipment(index);
 	}
 	
 	public Items getEquippedItem (int index)
