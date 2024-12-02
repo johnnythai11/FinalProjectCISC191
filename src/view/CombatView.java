@@ -333,6 +333,7 @@ public class CombatView extends JFrame
 				System.out.println(result);
 				if (result == 1)
 				{ // WHAT HAPPENS WHEN YOU DIE
+					new MessageBox("You Died!");
 					new MainMenuView();
 					dispose();
 				}
@@ -392,6 +393,7 @@ public class CombatView extends JFrame
 					int result = Combat.attackCombatRound(player, enemy);
 					if (result == 1)
 					{ // WHAT HAPPENS WHEN YOU DIE
+						new MessageBox("You Died!");
 						new MainMenuView();
 						dispose();
 					}
@@ -416,7 +418,7 @@ public class CombatView extends JFrame
 
 				else 
 				{
-					System.out.println("CAN'T use special attack. NO special items equipped.");
+					new MessageBox("Class unique item not equipped, can't special attack.");
 				}
 
 				updateInfo();

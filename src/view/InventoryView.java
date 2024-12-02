@@ -230,7 +230,8 @@ public class InventoryView extends JFrame {
 						}
 						else
 						{
-							//Make JOptionPane saying not right class to equip
+							System.out.println("Reach Messagebox");
+							new MessageBox("Not Right Class To Equip");
 						}
 						CombatView.player.resetPlayer();
 						update(); // this <----------
