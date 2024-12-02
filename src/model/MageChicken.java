@@ -160,6 +160,7 @@ public class MageChicken extends PlayerChicken
 	public void removeEquippedItem(int index)
 	{
 		playerEquipment.removeItemFromEquipment(index);
+		// test for pushing
 	}
 	
 	
