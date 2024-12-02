@@ -25,6 +25,7 @@ import javax.swing.*;
 
 public class CharacterSelectionView extends JFrame
 {
+	public static CombatView combatGUI;
 	final int SCREEN_WIDTH = 650, SCREEN_HEIGHT = 750;
 	private JLabel characterIcon, statField;
 	private JButton mage, tank, melee, confirmButton;
@@ -119,15 +120,15 @@ public class CharacterSelectionView extends JFrame
 				case 0:
 					break;
 				case 1:
-					new CombatView(setSelection);
+					combatGUI = new CombatView(setSelection);
 					dispose();
 					break;
 				case 2:
-					new CombatView(setSelection);
+					combatGUI = new CombatView(setSelection);
 					dispose();
 					break;
 				case 3:
-					new CombatView(setSelection);
+					combatGUI = new CombatView(setSelection);
 					dispose();
 					break;
 			}

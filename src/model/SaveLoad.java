@@ -2,6 +2,7 @@ package model;
 
 import java.io.*;
 
+import view.CharacterSelectionView;
 import view.CombatView;
 
 public class SaveLoad {
@@ -29,7 +30,7 @@ public class SaveLoad {
         ObjectInputStream objectIn = new ObjectInputStream(fileIn);
         Object obj = objectIn.readObject();
         PlayerChicken p = (PlayerChicken) obj;
-        new CombatView(p);
+        CharacterSelectionView.combatGUI = new CombatView(p);
 		}
 		catch (IOException | ClassNotFoundException e)
 		{

@@ -36,7 +36,7 @@ public PlayerChicken player;
 	public abstract Items getEquippedItem(int index);
 	public abstract void removeEquippedItem(int index);
 	public abstract boolean isItemEquipped(int index);
-	public static int heartCounter;
+	public int heartCounter;
 	public Inventory playerInventory = new Inventory();
 
 	public abstract void addExp(int exp);

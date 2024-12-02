@@ -187,6 +187,8 @@ public class InventoryView extends JFrame {
 				itemSlotsText[index].setText(CombatView.player.getEquippedItem(index - 16).getItemName());
 			}
 		}
+		
+		CharacterSelectionView.combatGUI.updateInfo();
 
 	}
 
@@ -227,11 +229,13 @@ public class InventoryView extends JFrame {
 						if (isEquipped) {
 						CombatView.player.playerInventory
 								.removeItemFromInventory(CombatView.player.playerInventory.getItem(i));
+						update();
 						}
 						else
 						{
 							System.out.println("Reach Messagebox");
 							new MessageBox("Not Right Class To Equip");
+							update();
 						}
 						CombatView.player.resetPlayer();
 						update(); // this <----------
