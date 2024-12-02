@@ -28,9 +28,9 @@ public class Inventory extends Items implements java.io.Serializable
 	Inventory(){}
 
 
-	/*
+	/**
 	 * Constructor to add the items to the inventory
-	 * @Parameters Items item
+	 * @param Items item
 	 */
 	Inventory(Items item)
 	{
@@ -38,18 +38,18 @@ public class Inventory extends Items implements java.io.Serializable
 		getInventory();
 	}
 
-	/*
+	/**
 	 * Gets all Items in the inventory
-	 * @Return ArrayList<Items>
+	 * @return ArrayList<Items>
 	 */
 	public ArrayList<Items> getInventory()
 	{
 		return inventory;
 	}
 
-	/*
+	/**
 	 * Adds items to the ArrayList<Items>
-	 * @Parameters Items item
+	 * @param Items item
 	 */
 	public void addItemToInventory(Items item)
 	{
@@ -58,7 +58,11 @@ public class Inventory extends Items implements java.io.Serializable
 			inventory.add(item);
 		}
 	}
-
+/**
+ * Checks if an item at an index exists in the inventory. Returns true if it is false if it doesnt.
+ * @param index
+ * @return boolean
+ */
 	public boolean itemExist(int index)
 	{
 		try
@@ -76,7 +80,10 @@ public class Inventory extends Items implements java.io.Serializable
 			return false;
 		}
 	}
-	
+	/**
+	 * Checks if there is room in the inventory for more items. True if more room. False if no room
+	 * @return boolean
+	 */
 	public boolean roomExist()
 	{
 		if (this.inventory.size() <= 16)
@@ -86,19 +93,19 @@ public class Inventory extends Items implements java.io.Serializable
 		return false;
 	}
 	
-	/*
+	/**
 	 * Removes the items from the inventory
-	 * @Parameters int row, int column
+	 * @param int row, int column
 	 */
 	public void removeItemFromInventory(Items item)
 	{
 		inventory.remove(item);
 	}
 
-	/*
+	/**
 	 * Gets the item from the inventory
-	 * @Parameter int indexX, int indexY
-	 * @Returns Items
+	 * @param int indexX, int indexY
+	 * @return Items
 	 */ 
 	public Items getItem(int index)
 	{

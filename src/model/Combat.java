@@ -22,10 +22,10 @@ public class Combat {
 	PlayerChicken player;
 	EnemyChicken enemy;
 
-	/*
+	/**
 	 * sets the attack damage of the type of the player dependent on the item worn
-	 * @parameters PlayerChicken, Items
-	 * @returns attackDamage of the player
+	 * @param PlayerChicken, Items
+	 * @return attackDamage of the player
 	 */
 
 	public static int basicAttack(PlayerChicken player, Items playeritem)
@@ -38,10 +38,10 @@ public class Combat {
 	}
 
 
-	/*
+	/**
 	 * Calculates the damage taken for the player base on enemy's attack damage
-	 * @parameters PlayerChicken, EnemyChicken, item of the player
-	 * @returns playerHealth of the player
+	 * @param PlayerChicken, EnemyChicken, item of the player
+	 * @return playerHealth of the player
 	 */
 	public static int takeDamageForPlayer(PlayerChicken player, EnemyChicken enemy)
 	{
@@ -70,10 +70,10 @@ public class Combat {
 		return currentHealth;
 	}
 
-	/*
+	/**
 	 * Calculates the damage taken for the enemy base on player's attack damage
-	 * @parameters PlayerChicken, EnemyChicken
-	 * @returns enemyHealth of the enemy
+	 * @param PlayerChicken, EnemyChicken
+	 * @return enemyHealth of the enemy
 	 */
 	public static int takeDamageForEnemy(PlayerChicken player, EnemyChicken enemy)
 	{
@@ -102,7 +102,10 @@ public class Combat {
 		return currentHealth;
 	}
 
-
+	/** Completes a full round of combat
+	 * @param player object, enemy object 
+	 * @return 1 if player died, 2 if enemy died, 0 if no one died
+	 */
 	public static int attackCombatRound(PlayerChicken player, EnemyChicken enemy)
 	{
 		int playerDamage = player.dealDamage();

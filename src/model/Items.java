@@ -30,30 +30,34 @@ public class Items implements java.io.Serializable
 	private int healingStat;
 	final int priceOfHeart = 10;
 
-
+/**
+ * Checks what the price of heart is
+ * @return int priceOfHeart
+ */
 	public int priceOfHeart()
 	{
 		return priceOfHeart;
 	}
+	/**
+	 * Checks how much healing the heart does
+	 * @return int healingStat
+	 */
 	public int healingOfHeart()
 	{
 		healingStat = 10;
 		return healingStat;
 	}
-	
+	/**
+	 * Empty Constructor for items
+	 */
 	public Items()
 	{
 		
 	}
-	
-	
-
-
-
-	/*
+	/**
 	 * Constructor for the items in the game based on attack, defense, and health stats
 	 * Type of Armor 1 for head, 2 for chest plate, 3 for feet
-	 * @Parameters int itemTier, int attackStat, int defenseStat, int healthStat, String itemName
+	 * @param int itemTier, int attackStat, int defenseStat, int healthStat, String itemName
 	 */
 	public Items(int typeOfArmor, int itemTier)
 	{
@@ -151,13 +155,14 @@ public class Items implements java.io.Serializable
 		setPrice(typeOfArmor, itemTier);
 	}
 
-	/*
+	/**
 	 * checks if tier of the item is between 1-5, then sets price = to tier
 	 * tier 1 = 3 bones
 	 * tier 2 = 5 bones
 	 * tier 3 = 8 bones
 	 * tier 4 = 12 bones
 	 * tier 5 = 17 bones
+	 * @param int typeOfArmor, int itemTier
 	 */
 	public void setPrice(int typeOfArmor, int itemTier)
 	{
@@ -256,65 +261,98 @@ public class Items implements java.io.Serializable
 		}
 
 	}
-	
+	/**
+	 * gets the tier of the item
+	 * @return int itemTier
+	 */
 	public int getItemTier()
 	{
 		return this.itemTier;
 	}
-	
-
+	/**
+	 * gets the name of the item
+	 * @return String itemName
+	 */
 	public String getItemName()
 	{
 		return itemName;
 	}
-
+/**
+ * sets the name of the item
+ * @param String itemName
+ */
 	public void setItemName(String itemName)
 	{
 		this.itemName = itemName;
 	}
-
+/**
+ * Gets the item type
+ * @return
+ */
 	public int getItemType()
 	{
 		return typeOfArmor;
 	}
-
+/**
+ * sets the type of armor
+ * @param typeOfArmor
+ */
 	public void setItemType(int typeOfArmor)
 	{
 		this.typeOfArmor = typeOfArmor;
 	}
-
+/**
+ * gets the attack stat of the item
+ * @return int attackStat
+ */
 	public int getAttackStat()
 	{
 		return attackStat;
 	}
-
+/**
+ * sets the attack stat 
+ * @param attackStat
+ */
 	public void setAttackStat(int attackStat)
 	{
 		this.attackStat = attackStat;
 	}
-
+/**
+ * gets the defense stat
+ * @return int defenseStat
+ */
 	public int getDefenseStat()
 	{
 		return defenseStat;
 	}
-
+/**
+ * sets the defense stat
+ * @param defenseStat
+ */
 	public void setDefenseStat(int defenseStat)
 	{
 		this.defenseStat = defenseStat;
 	}
-
+/**
+ * gets the health stat
+ * @return int healthStat
+ */
 	public int getHealthStat()
 	{
 		return healthStat;
 	}
-
+/**
+ * sets the health stat 
+ * @param healthStat
+ */
 	public void setHealthStat(int healthStat)
 	{
 		this.healthStat = healthStat;
 	}
-
-
-
+/**
+ * gets the price of the item
+ * @return int price
+ */
 	public int getPrice() {
 
 		return this.price;

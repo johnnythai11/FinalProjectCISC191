@@ -41,9 +41,9 @@ public class MageChicken extends PlayerChicken
 
 	
 	
-	/*
+	/**
 	 * Constructor to create the MageChicken with its base status of Attack, Defense, Health, BoneBalance, and hungerBar
-	 * @parameters integer levelOfChicken 
+	 * @param integer levelOfChicken 
 	 */
 	public MageChicken(int levelOfChicken)
 	{
@@ -93,11 +93,18 @@ public class MageChicken extends PlayerChicken
 		expBar = 100 + (levelOfChicken-1)*50;
 
 	}
-	
+	/** gets the equipped item at the given index
+	 * @param index
+	 * @return item
+	 */
 	public Items getEquippedItem (int index)
 	{
 		return playerEquipment.getEquippedItem(index);
 	}
+	/**
+	 * gets the exp bar
+	 * @return int
+	 */
 	@Override
 	public int expBar()
 	{
@@ -105,9 +112,9 @@ public class MageChicken extends PlayerChicken
 		return expBar;
 	}
 	
-	/*
+	/**
 	 * Equips the Items from the inventory
-	 * @parameter int indexX, int indexY
+	 * @param int indexX, int indexY
 	 */
 	@Override
 	public void equipEquipmentItem(int index)
@@ -140,12 +147,18 @@ public class MageChicken extends PlayerChicken
 		}
 	}
 
-	
+	/** 
+	 * checks if an is equipped at the given index
+	 * @param index
+	 * @return boolean
+	 */
 	public boolean isItemEquipped(int index)
 	{
 		return playerEquipment.isItemEquipped(index);
 	}
-	
+	/**
+	 * updates the players stats to new ones
+	 */
 	public void resetPlayer()
 	{
 		updateDamage();
@@ -155,13 +168,19 @@ public class MageChicken extends PlayerChicken
 	}
 	
 	
-	
+	/**
+	 * sets the bone balance to the given balance
+	 * @param int newBalance
+	 */
 	@Override
 	public void setBalance(int newBalance)
 	{
 		boneBalance = newBalance;
 	}
-	
+	/** 
+	 * Makes the player chicken take damage when the enemy attacks it
+	 * @param int enemyDamage
+	 */
 	public void takeDamage(int enemyDamage)
 	{
 		
@@ -185,35 +204,48 @@ public class MageChicken extends PlayerChicken
 			currentHealth = 0;
 		}
 	}
-	
+	/**
+	 * updates the chickens health 
+	 */
 	public void updateHealth()
 	{
 		baseHealth = (levelOfChicken-1)*2 + 15 + (heartCounter * 10);
 		currentHealth = baseHealth;
 	}
-	
+	/**
+	 * Makes the chicken take damage
+	 */
 	public int dealDamage()
 	{
 		updateDamage();
 		return baseDamage;
 	}
-
+/**
+ * Updates the chickens defense stat
+ */
 	public void updateDefense()
 	{
 		baseDefense = (levelOfChicken-1)*2 + 5 + playerEquipment.getItemStat(2) + defenseBoost;
 	}
-	
+	/**
+	 * updates the chickens damage stat
+	 */
 	public void updateDamage()
 	{
 		baseDamage = (levelOfChicken-1)*2 +10 + playerEquipment.getItemStat(3) + attackBoost;
 	}
-	
+	/**
+	 * updates the amount of exp needed to go to the next level
+	 */
 	public void updateExpNeeded()
 	{
 		expBar = 100 + (levelOfChicken-1)*50;
 	}
 	
-	
+	/**
+	 * gets the level of the player chicken
+	 * @retun int levelOfChicken
+	 */
 	@Override
 	public int getLevel()
 	{
@@ -221,44 +253,56 @@ public class MageChicken extends PlayerChicken
 		return levelOfChicken;
 	}
 	
-
+/**
+ * gets the base health of the player chicken
+ * @return int baseHealth
+ */
 	@Override
 	public int getBaseHealth()
 	{
 		return baseHealth;
 	}
-
+/**
+ * gets the current health of the player chicken
+ * @return int currentHealth
+ */
 	@Override
 	public int getCurrentHealth()
 	{
 		return currentHealth;
 	}
-
+/**
+ * gets the base damage of the player chicken
+ * @return int baseDamage
+ */
 	@Override
 	public int getBaseDamage()
 	{
 		return baseDamage;
 	}
 
-
+/**
+ * gets the base defense of the player chicken
+ * @return int baseDefense
+ */
 	@Override
 	public int getBaseDefense()
 	{
 		return baseDefense;
 	}
-
+/**
+ * gets the current bone balance of the player chicken
+ * @return int boneBalance
+ */
 	@Override 
 	public int getBoneBalance()
 	{
 		return boneBalance;
 	}
-
-	@Override
-	public int getHungerBar()
-	{
-		return hungerBar;
-	}
-	
+	/**
+	 * sets the base health of the player chicken
+	 * @param int health
+	 */
 	@Override
 	public void setBaseHealth(int health)
 	{
@@ -266,25 +310,33 @@ public class MageChicken extends PlayerChicken
 		
 	}
 
-
+/** adds exp to the player chickens exp bar
+ * @param int exp
+ */
 	@Override
 	public void addExp(int exp) {
 		this.currentExp = exp;
 	}
-
+/**
+ * @return int currentExp
+ */
 	@Override
 	public int getCurrentExpGained()
 	{
 		return this.currentExp;
 	}
-
+/**
+ * gets the exp bars
+ */
 	@Override
 	public int getExp()
 	{
 
 		return this.expBar;
 	}
-
+/**
+ *  increase the level of chicken by one
+ */
 	@Override
 	public void levelUp() {
 
@@ -292,14 +344,26 @@ public class MageChicken extends PlayerChicken
 		resetPlayer();
 
 	}
+	/**
+	 * gets the experienceCounter
+	 * @return int experienceCounter
+	 */
 	@Override
 	public int getExperienceCounter() {
 		return this.experienceCounter;
 	}
+	/**
+	 * adds exp to the counter
+	 * @param int add
+	 */
 	@Override
 	public void addExperienceCounter (int add) {
 		this.experienceCounter = this.experienceCounter + add;
 	}
+	/**
+	 * sets the exp counter
+	 * @param int add
+	 */
 	@Override
 	public void setExperienceCounter (int add) {
 		this.experienceCounter = add;

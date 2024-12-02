@@ -250,12 +250,7 @@ public class MeleeChicken extends PlayerChicken
 		return boneBalance;
 	}
 
-	@Override
-	public int getHungerBar()
-	{
-		return hungerBar;
-	}
-
+	
 	@Override
 	public void setBaseHealth(int health)
 	{

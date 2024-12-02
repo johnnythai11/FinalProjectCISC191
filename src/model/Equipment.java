@@ -30,7 +30,9 @@ public class Equipment implements java.io.Serializable
 	private Items item3;
 	private Items item4;
 	private boolean statement;
-
+/**
+ * Constructor for the equipment class. And it sets the indices of the equipment array
+ */
 	public Equipment()
 	{
 		item1 = this.equippedItemArray[0];
@@ -40,7 +42,7 @@ public class Equipment implements java.io.Serializable
 		
 	}
 
-	/*
+	/**
 	 * Equipment for the player with 4 item slots
 	 * 0 = Heart
 	 * 1 = Head (Defence)
@@ -55,16 +57,18 @@ public class Equipment implements java.io.Serializable
 		this.equippedItemArray[3] = item4;
 	}
 
-	/*
+	/**
 	 * Gets the Equipment from the item array
+	 * @return the equipment array
 	 */
 	public Items[] getEquipment()
 	{
 		return this.equippedItemArray;
 	}
 
-	/*
-	 * Adds the items to the equipement to its corresdonding index
+	/**
+	 * Adds the items to the equipment to its corresponding index
+	 * @param item, index
 	 */
 	public void equipEquipmentItem(Items item, int index)
 	{
@@ -81,7 +85,10 @@ public class Equipment implements java.io.Serializable
 			this.equippedItemArray[index] = item;
 		}
 	}
-
+/** Checks if an item is equipped at the given index
+ * @param index of array
+ * @return true if there is an item at the index given, false if there is not at item at the index given.
+ */
 	public boolean isItemEquipped(int index)
 	{
 		try
@@ -99,6 +106,11 @@ public class Equipment implements java.io.Serializable
 		}
 	}
 
+/**
+ * 	Returns the items stat at the given index if no item it returns 0
+ * @param index
+ * @return item, 0
+ */
 	public int getItemStat(int index)
 	{
 		if (equippedItemArray[index] != null)
@@ -117,7 +129,11 @@ public class Equipment implements java.io.Serializable
 		}
 		return 0;
 	}
-	
+	/**
+	 * returns the equipped item at the given index
+	 * @param index
+	 * @return item
+	 */
 	public Items getEquippedItem(int index)
 	{
 		if(equippedItemArray[index] != null)
@@ -130,6 +146,11 @@ public class Equipment implements java.io.Serializable
 			return null;	
 		}
 	}
+	/**
+	 * Removes an item from the array at the given index, and returns the item that was removed
+	 * @param index
+	 * @return item
+	 */
 	public Items removeItemFromEquipment(int index)
 	{
 	this.equippedItemArray[index-16] = null;

@@ -26,7 +26,7 @@ public class Human implements java.io.Serializable
 	private int statBoostDefense;
 	private int boostHungerBar;
 
-	/*
+	/**
 	 * Constructor for a Human with all the boost status of Attack, Defense,
 	 * hungerBarBoost,
 	 * chicken level 1-10 will be able to get level 1 human boost Attack by 0,
@@ -39,7 +39,7 @@ public class Human implements java.io.Serializable
 	 * Defense by 6
 	 * chicken level 41-50 will be able to get level 5 human boost Attack by 8,
 	 * Defense by 8
-	 * @Parameter integer level
+	 * @param integer level
 	 */
 	public Human(int level)
 	{
@@ -65,18 +65,18 @@ public class Human implements java.io.Serializable
 
 	}
 
-	/*
+	/**
 	 * gets the level of the human for the PlayerChicken
-	 * @Return Level
+	 * @return Level
 	 */
 	public int getHumanLevel()
 	{
 		return level;
 	}
 
-	/*
+	/**
 	 * Gets the hunger bar boost status which is 20 for the PlayerChicken
-	 * @Return integer boostHungerBar;
+	 * @return integer boostHungerBar;
 	 */
 
 	public int getGainHungerBar()
@@ -84,7 +84,7 @@ public class Human implements java.io.Serializable
 		return boostHungerBar;
 	}
 
-	/*
+	/**
 	 * Gets the attack boost status of the human
 	 * @return integer statBoostAttack
 	 */
@@ -94,7 +94,7 @@ public class Human implements java.io.Serializable
 
 	}
 
-	/*
+	/**
 	 * Gets the defense boost status of the human
 	 * @return integer statBoostDefense
 	 */

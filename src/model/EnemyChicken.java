@@ -63,41 +63,66 @@ public class EnemyChicken {
 	}
 
 	
-
+	/**
+	 * setter for maxHealth of enemy chicken
+	 * @param int health
+	 */
 	public void setMaxHealth(int health)
 	{
 		maxHealth = health;
 	}
 
+	/**
+	 * setter for level of enemy chicken
+	 * @param int level 
+	 */
 	public void setLevelOfChicken(int level)
 	{
 		levelOfChicken = level;
 	}
+	/** gets the attack stat of the enemy 
+	 * @return int attack stat
+	 */
 	public int getAttack()
 	{
 		return attack;
 	}
-
+/**
+ * returns the amount of exp given when the enemy is killed
+ * @return int of expGiven
+ */
 	public int getExpGiven()
 	{
 		return expGiven;
 	}
-
+/**
+ * gets the amount of bone tokens given when the enemy is killed
+ * @return int of boneToken
+ */
 	public int getBoneToken()
 	{
 		return boneToken;
 	}
-
+/**
+ * gets the defense stat of the enemy
+ * @return int defense
+ */
 	public int getDefense()
 	{
 		return defense;
 	}
-
+/**
+ * gets the level of enemy chicken
+ * @return int levelOfChicken
+ */
 	public int getLevelOfChicken()
 	{
 		return levelOfChicken;
 	}
-
+/**
+ * returns the max health of the enemy 
+ * @return int max health
+ */
 	public int getMaxHealth()
 	{
 		return maxHealth;
@@ -141,9 +166,9 @@ public class EnemyChicken {
 		}
 	}
 
-	/*
+	/**
 	 * Method that randomly create an enemyChicken 
-	 * @Returns EnemyChicken
+	 * @Return EnemyChicken
 	 */
 	public static EnemyChicken generateChicken()
 	{
