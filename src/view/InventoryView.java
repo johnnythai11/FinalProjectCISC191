@@ -8,9 +8,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import model.Equipment;
+
 import model.Items;
-import model.PlayerChicken;
+
 
 /**
  * Lead Author(s):
@@ -34,7 +34,7 @@ public class InventoryView extends JFrame
 
 	private JLabel[] itemSlots = new JLabel[20];
 	private JButton[] removeItemButton = new JButton[20];
-	private JButton[] additemButtons = new JButton[20];
+	private JButton[] addItemButtons = new JButton[20];
 	private JLabel[] itemSlotsText = new JLabel[20];
 	private JButton closeShopButton = new JButton("Exit");
 
@@ -61,8 +61,7 @@ public class InventoryView extends JFrame
 		setResizable(false);
 		super.setLayout(null);
 		setInventorySlots(itemSlots);
-
-		setInventoryButtons(additemButtons, itemSlotsText, removeItemButton);
+		setInventoryButtons(addItemButtons, itemSlotsText, removeItemButton);
 		setCloseButton();
 		update();
 		setVisible(true);
@@ -72,7 +71,8 @@ public class InventoryView extends JFrame
 	private void setInventorySlots(JLabel[] theLabels)
 	{
 		// offsets to be used later, DO NOT CHANGE
-		int yOffset = 0, xOffset = 0;
+		int yOffset = 0; 
+		int xOffset = 0;
 
 		// Populates the array with JLabels, Sets them blue, and aligns them
 		for (int i = 0; i < theLabels.length; i++)
@@ -81,29 +81,26 @@ public class InventoryView extends JFrame
 			theLabels[i] = new JLabel("Insert Icon");
 			theLabels[i].setBackground(Color.white);
 			theLabels[i].setOpaque(true);
+
 			// amountPerRow changes amountPerRow
 			if (xOffset > (panelLengthWidth * amountPerRow))
 			{
 				xOffset = 0;
-				yOffset = yOffset + panelLengthWidth + margins
-						+ betweenMarginsY;
+				yOffset = yOffset + panelLengthWidth + margins + betweenMarginsY;
 			}
-			theLabels[i].setBounds(xOffset + margins, yOffset + margins,
-					panelLengthWidth, panelLengthWidth);
+			theLabels[i].setBounds(xOffset + margins, yOffset + margins, panelLengthWidth, panelLengthWidth);
 			add(theLabels[i]);
 			xOffset = xOffset + panelLengthWidth + margins + betweenmarginsX;
 		}
 	}
 
 	// sets the Stock Buttons
-	private void setInventoryButtons(JButton[] theButtons, JLabel[] theText,
-			JButton[] removeButtons)
+	private void setInventoryButtons(JButton[] theButtons, JLabel[] theText, JButton[] removeButtons)
 	{
 		// offsets to be used later, DO NOT CHANGE
 		int yOffset = 100, xOffset = 0;
 		for (int i = 0; i < theButtons.length; i++)
 		{
-
 			switch (i)
 			{
 				case 16:
@@ -143,6 +140,7 @@ public class InventoryView extends JFrame
 			}
 
 			theButtons[i].addActionListener(new InventoryListenerEquipItems());
+			removeButtons[i].addActionListener(new RemoveItemsButton());
 			theButtons[i].setBounds(xOffset + margins, yOffset + margins + 10,
 					panelLengthWidth, 25);
 			theText[i].setBounds(xOffset + margins, yOffset + margins - 120,
@@ -158,8 +156,6 @@ public class InventoryView extends JFrame
 
 	private void setCloseButton()
 	{
-		// closeShopButton.setBounds((int)(panelLengthWidth * 4.5),(int)
-		// (panelLengthWidth * 4.5), (int) (panelLengthWidth * 1.5), 25);
 		closeShopButton.setBounds(450, 650, 100, 50);
 		closeShopButton.addActionListener(new CloseButtonListener());
 		add(closeShopButton);
@@ -183,10 +179,10 @@ public class InventoryView extends JFrame
 		for (int index = 16; index < 20; index++)// Equipment Stuff
 		{
 			if (!CombatView.player.isItemEquipped(index - 16)) // offsets index
-																// to pull
-																// correctly
-																// from
-																// equipment
+				// to pull
+				// correctly
+				// from
+				// equipment
 			{
 				disable(index);
 
@@ -212,20 +208,20 @@ public class InventoryView extends JFrame
 	private void enable(int index)
 	{
 		itemSlotsText[index].setVisible(true);
-		additemButtons[index].setVisible(true);
+		addItemButtons[index].setVisible(true);
 		removeItemButton[index].setVisible(true);
 		itemSlots[index].setVisible(true);
-		additemButtons[index].setEnabled(true);
+		addItemButtons[index].setEnabled(true);
 		removeItemButton[index].setEnabled(true);
 	}
 
 	private void disable(int index)
 	{
 		itemSlotsText[index].setVisible(false);
-		additemButtons[index].setVisible(false);
+		addItemButtons[index].setVisible(false);
 		removeItemButton[index].setVisible(false);
 		itemSlots[index].setVisible(false);
-		additemButtons[index].setEnabled(false);
+		addItemButtons[index].setEnabled(false);
 		removeItemButton[index].setEnabled(false);
 
 	}
@@ -238,39 +234,65 @@ public class InventoryView extends JFrame
 		{
 			// Integer removeItemLater = null;
 			Integer index = null;
-			for (int i = 0; i < additemButtons.length; i++)
+			for (int i = 0; i < addItemButtons.length; i++)
 			{
 
-				if (e.getSource() == additemButtons[i])
+				if (e.getSource() == addItemButtons[i])
 				{
-					index = CombatView.player.playerInventory.getItem(i)
-							.getItemType();
+					index = CombatView.player.playerInventory.getItem(i).getItemType();
 
 					if (!CombatView.player.isItemEquipped(index))
 					{
 						CombatView.player.equipEquipmentItem(i);
-						CombatView.player.playerInventory
-								.removeItemFromInventory(
-										CombatView.player.playerInventory
-												.getItem(i));
+						CombatView.player.playerInventory.removeItemFromInventory(CombatView.player.playerInventory.getItem(i));
 						CombatView.player.resetPlayer();
 						update(); // this <----------
 					}
 
 					// itemExists =
 					// CombatView.player.playerInventory.itemExist(i);
-
 				}
 
 			}
+		}
 
+
+
+	}
+	private class RemoveItemsButton implements ActionListener
+	{
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+
+			for (int i = 0; i < removeItemButton.length; i++)
+			{
+
+				if (e.getSource() == removeItemButton[i])
+				{
+					
+					if(i==16||i == 17 || i == 18|| i == 19 )
+					{
+					CombatView.player.playerEquipment.removeItemFromEquipment(i);
+					}
+					else 
+					System.out.println("item is removed from inventory.");
+					Items item = CombatView.player.playerInventory.getItem(i);
+					CombatView.player.playerInventory.removeItemFromInventory(item);
+					CombatView.player.resetPlayer();
+					update(); // this <----------
+
+				
+				}
+			}
 		}
 
 	}
 
+
 	private class CloseButtonListener implements ActionListener
 	{
-
+		@Override
 		public void actionPerformed(ActionEvent e)
 		{
 			dispose();

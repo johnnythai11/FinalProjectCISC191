@@ -15,6 +15,7 @@ import model.Combat;
 import model.EnemyChicken;
 import model.Equipment;
 import model.Human;
+import model.Items;
 import model.MageChicken;
 import model.PlayerChicken;
 import model.TankChicken;
@@ -64,7 +65,7 @@ public class CombatView extends JFrame
 	private JTextArea enemyInfo;
 
 	public static PlayerChicken player;
-	private Equipment equip = new Equipment();
+	//private Equipment equip = new Equipment();
 
 
 	private static EnemyChicken enemy;
@@ -74,6 +75,10 @@ public class CombatView extends JFrame
 	private int expCount;
 	private JTextArea characterPanelText;
 	private int classType;
+
+	private int ItemTierOfHead;
+	private int ItemTierOfBody;
+	private int ItemTierOfFeet;
 
 	public CombatView(PlayerChicken player)
 	{
@@ -90,6 +95,8 @@ public class CombatView extends JFrame
 		setPanels();
 		add(mainPanel);
 		setVisible(true);
+	
+
 	}
 
 	CombatView(int selection)
@@ -348,44 +355,71 @@ public class CombatView extends JFrame
 				updateInfo();
 			}
 
-			else if (e.getSource() == specialAttack)
+			else if (e.getSource() == specialAttack )
 			{
-	
-					if (equip.hasSpecialItem())//checks if special item is equipped
-					{		
-						closeGui();
-						int result = Combat.attackCombatRound(player, enemy);
-						System.out.println(result);
-						if (result == 1)
-						{ // WHAT HAPPENS WHEN YOU DIE
-							new MainMenuView();
-							dispose();
+				//Checks if the player has equipped the special item
+				if (player.getEquippedItem(1) != null)
+				{
+					ItemTierOfHead = player.getEquippedItem(1).getItemTier();
+				}
+				else
+				{
+		
+					ItemTierOfHead = -1;
+				}
+				//Checks if the player has equipped the special item
+				if (player.getEquippedItem(2) != null)
+				{
+					ItemTierOfBody = player.getEquippedItem(2).getItemTier();
+				}
+				else
+				{
+					ItemTierOfBody = -1;
+				}
+				//Checks if the player has equipped the special item
+				if (player.getEquippedItem(3) != null)
+				{
+					ItemTierOfFeet = player.getEquippedItem(3).getItemTier();
+					
+				}
+				else
+				{
+					ItemTierOfFeet = -1;
+				}
+				if (e.getSource() == specialAttack && ItemTierOfHead == 2 || ItemTierOfBody == 0 ||  ItemTierOfFeet == 0)
+				{
+					closeGui();
+					int result = Combat.attackCombatRound(player, enemy);
+					if (result == 1)
+					{ // WHAT HAPPENS WHEN YOU DIE
+						new MainMenuView();
+						dispose();
+					}
+					else if (result == 2)
+					{ // WHAT YOU WANT TO HAPPEN WHEN THE ENEMY IS KILLED
+						player.addExperienceCounter(enemy.getExpGiven());
+						enemy = null;
+						enemy = new EnemyChicken();
+						System.out.println(
+								"when enemy dies:" + player.getExperienceCounter());
+						player.setBalance(
+								player.getBoneBalance() + enemy.getBoneToken());
+						player.getExperienceCounter();
+						if (player.getExp() <= player.getExperienceCounter())
+						{
+							player.levelUp(); // Checks if you can level up
+							System.out.println("levelup");
 						}
-						else if (result == 2)
-						{ // WHAT YOU WANT TO HAPPEN WHEN THE ENEMY IS KILLED
-							player.addExperienceCounter(enemy.getExpGiven());
-							enemy = null;
-							enemy = new EnemyChicken();
-							System.out.println(
-									"when enemy dies:" + player.getExperienceCounter());
-							player.setBalance(
-									player.getBoneBalance() + enemy.getBoneToken());
-							player.getExperienceCounter();
-							if (player.getExp() <= player.getExperienceCounter())
-							{
-								player.levelUp(); // Checks if you can level up
-								System.out.println("levelup");
-							}
-						}
+					}
 
-					}
-				
-					else 
-					{
-						System.out.println("CAN'T use special attack. NO special items equipped.");
-					}
-				
-					updateInfo();
+				}
+
+				else 
+				{
+					System.out.println("CAN'T use special attack. NO special items equipped.");
+				}
+
+				updateInfo();
 
 			}
 

@@ -40,10 +40,14 @@ public class Items implements java.io.Serializable
 		healingStat = 10;
 		return healingStat;
 	}
+	
 	public Items()
 	{
-
+		
 	}
+	
+	
+
 
 
 	/*

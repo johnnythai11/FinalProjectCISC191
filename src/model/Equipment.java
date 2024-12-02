@@ -33,10 +33,10 @@ public class Equipment implements java.io.Serializable
 
 	public Equipment()
 	{
-//		this.item1 = this.equippedItemArray[0];
-//		this.item2 = this.equippedItemArray[1];
-//		this.item3 = this.equippedItemArray[2];
-//		this.item4 = this.equippedItemArray[3];
+		item1 = this.equippedItemArray[0];
+		item2 = this.equippedItemArray[1];
+		item3 = this.equippedItemArray[2];
+		item4 = this.equippedItemArray[3];
 		
 	}
 
@@ -126,26 +126,18 @@ public class Equipment implements java.io.Serializable
 		}
 		else
 		{
-			System.out.println("I got a null item : getEquippedItem");
+			System.out.println("I have no Items equipped.");
 			return null;	
 		}
 	}
-
-	public boolean hasSpecialItem()
+	public Items removeItemFromEquipment(int index)
 	{
-		for (int i = 0; i < this.equippedItemArray.length; i++)
-		{
-			if(this.equippedItemArray[i].getItemTier() == 0) {
-				statement = true;
-			}
-			else
-			{
-				statement = false;
-			}
-		}
-		return statement;
-	
+	this.equippedItemArray[index-16] = null;
+		return this.equippedItemArray[index-16];
 	}
+	
+
+	
 }
 
 
