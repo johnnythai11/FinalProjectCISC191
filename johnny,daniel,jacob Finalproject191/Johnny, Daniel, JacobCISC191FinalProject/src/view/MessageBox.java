@@ -23,7 +23,7 @@ public class MessageBox extends JOptionPane {
 
 	/**
 	 * Constructor to create the JOptionPane with a message
-	 * 
+	 * fsd
 	 * @param messageString
 	 */
 	public MessageBox(String messageString) {
