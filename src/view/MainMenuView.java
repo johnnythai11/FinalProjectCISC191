@@ -15,6 +15,7 @@
  * 
  */
 package view;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -30,13 +31,15 @@ public class MainMenuView extends JFrame {
 	private JPanel mainPanel;
 	final int SCREEN_WIDTH = 750, SCREEN_HEIGHT = 800;
 
-
-	MainMenuView()
-	{
+	/**
+	 * Constructor to create the main menu screen with the three buttons needed
+	 *
+	 */
+	public MainMenuView() {
 
 		super("Main Menu");
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(SCREEN_WIDTH,SCREEN_HEIGHT);
+		setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 		setResizable(false);
 		mainPanel = new JPanel();
 		mainPanel.setLayout(null);
@@ -45,8 +48,11 @@ public class MainMenuView extends JFrame {
 		setVisible(true);
 	}
 
-	private void setPanels()
-	{
+	/**
+	 * Sets all the buttons needed for the main menu screen
+	 * 
+	 */
+	private void setPanels() {
 		final int BUTTON_WIDTH = 150;
 		final int BUTTON_HEIGHT = 50;
 		int verticalOffset = 75;
@@ -56,7 +62,7 @@ public class MainMenuView extends JFrame {
 
 		int offsetHeightHow = ((SCREEN_HEIGHT - BUTTON_HEIGHT) / 2) + verticalOffset;
 
-		int offsetHeightLoad = ((SCREEN_HEIGHT - BUTTON_HEIGHT) / 2) + verticalOffset/18;
+		int offsetHeightLoad = ((SCREEN_HEIGHT - BUTTON_HEIGHT) / 2) + verticalOffset / 18;
 
 		charecterSelectScreenButton = new JButton("Charecter Selection");
 		howToPlayButton = new JButton("How To Play");
@@ -66,7 +72,7 @@ public class MainMenuView extends JFrame {
 		howToPlayButton.addActionListener(new HowToPlayListener());
 		loadButton.addActionListener(new LoadListener());
 
-		charecterSelectScreenButton.setBounds(offsetLength,offsetHeightChar,BUTTON_WIDTH,BUTTON_HEIGHT);
+		charecterSelectScreenButton.setBounds(offsetLength, offsetHeightChar, BUTTON_WIDTH, BUTTON_HEIGHT);
 		howToPlayButton.setBounds(offsetLength, offsetHeightHow, BUTTON_WIDTH, BUTTON_HEIGHT);
 		loadButton.setBounds(offsetLength, offsetHeightLoad, BUTTON_WIDTH, BUTTON_HEIGHT);
 
@@ -75,38 +81,43 @@ public class MainMenuView extends JFrame {
 		mainPanel.add(loadButton);
 	}
 
-	public static void main(String[] args)
-	{
-		new MainMenuView();
-	}
-
-	private class CharacterSelectListener implements ActionListener
-	{
+	/**
+	 * loads the character selection screen for the player to choose their 3 classes to play
+	 * 
+	 */
+	private class CharacterSelectListener implements ActionListener {
 		@Override
-		public void actionPerformed(ActionEvent e)
-		{
+		public void actionPerformed(ActionEvent e) {
 			new CharacterSelectionView();
 			dispose();
 		}
 	}
-
-	private class HowToPlayListener implements ActionListener
-	{
+	
+	/**
+	 * loads the how to play screen for the player to read the instructions 
+	 * 
+	 */
+	private class HowToPlayListener implements ActionListener {
 		@Override
-		public void actionPerformed(ActionEvent e)
-		{
+		public void actionPerformed(ActionEvent e) {
 			new HowToPlayScreenView();
 			dispose();
 		}
 
 	}
-	
-	private class LoadListener implements ActionListener
-	{
+
+	/**
+	 * loads the saved combat Screen with all the information needed
+	 * 
+	 */
+	private class LoadListener implements ActionListener {
 		@Override
-		public void actionPerformed(ActionEvent e)
-		{
+		public void actionPerformed(ActionEvent e) {
 			SaveLoad.binaryLoad();
 		}
+	}
+
+	public static void main(String[] args) {
+		new MainMenuView();
 	}
 }

@@ -1,3 +1,20 @@
+/**
+ * Lead Author(s):
+ * @author Full name: Johnny Thai
+ * @author Full name: Jacob Wiemann
+ * @author Full name: Daniel Soto
+ *
+ * Other Contributors: none
+ *
+ * References:
+ * Morelli, R., & Walde, R. (2016).
+ * Java, Java, Java: Object-Oriented Problem Solving
+ * https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+ *
+ * Version: 2024-10-16
+ * 
+ */
+
 package view;
 
 import java.awt.Color;
@@ -8,48 +25,33 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import model.Items;
-
-/**
- * Lead Author(s):
- * 
- * @author Full name: Johnny Thai
- * @author Full name: Jacob Wiemann
- * @author Full name: Daniel Soto
- *
- *         Other Contributors: none
- *
- *         References: Morelli, R., & Walde, R. (2016). Java, Java, Java:
- *         Object-Oriented Problem Solving
- *         https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
- *
- *         Version: 2024-10-16
- * 
- */
-
 public class InventoryView extends JFrame {
 
 	private JLabel[] itemSlots = new JLabel[20];
 	private JButton[] removeItemButton = new JButton[20];
 	private JButton[] addItemButtons = new JButton[20];
 	private JLabel[] itemSlotsText = new JLabel[20];
-	private JButton closeShopButton = new JButton("Exit");
+	private JButton closeInventoryButton = new JButton("Exit");
 
 	// Margins around the top and left side of screen, margins between each
 	// panel X,
 	// Y
 	private final int margins = 30, betweenMarginsY = 90, betweenmarginsX = 10;
 
-	// Changes lenght, width of the panels and the relating variables that
+	// Changes length, width of the panels and the relating variables that
 	// depend on
 	// it
 	private final int panelLengthWidth = 100;
 
-	// amount of Jpanels per row
+	// amount of JPanels per row
 	private final int amountPerRow = 9;
 
 	final int SCREEN_WIDTH = 1100, SCREEN_HEIGHT = 800;
 
+	/**
+	 * Constructor to create the inventory view for the player
+	 * 
+	 */
 	public InventoryView() {
 		super("Inventory/Equipment");
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,7 +65,11 @@ public class InventoryView extends JFrame {
 		setVisible(true);
 	}
 
-	// Sets the Inventory Panels
+	/**
+	 * Sets the Inventory Panels
+	 * 
+	 * @param theLabels
+	 */
 	private void setInventorySlots(JLabel[] theLabels) {
 		// offsets to be used later, DO NOT CHANGE
 		int yOffset = 0;
@@ -87,7 +93,13 @@ public class InventoryView extends JFrame {
 		}
 	}
 
-	// sets the Stock Buttons
+	/**
+	 * Sets the Stock Buttons
+	 * 
+	 * @param theButtons
+	 * @param theText
+	 * @param removeButtons
+	 */
 	private void setInventoryButtons(JButton[] theButtons, JLabel[] theText, JButton[] removeButtons) {
 		// offsets to be used later, DO NOT CHANGE
 		int yOffset = 100, xOffset = 0;
@@ -131,13 +143,10 @@ public class InventoryView extends JFrame {
 				yOffset = yOffset + panelLengthWidth + margins + betweenMarginsY;
 			}
 
-			if (i == 16 || i == 17 || i == 18 || i == 19)
-			{
-				
-			}
-			else
-			{
-			theButtons[i].addActionListener(new InventoryListenerEquipItems());
+			if (i == 16 || i == 17 || i == 18 || i == 19) {
+
+			} else {
+				theButtons[i].addActionListener(new InventoryListenerEquipItems());
 			}
 			removeButtons[i].addActionListener(new RemoveItemsButton());
 			theButtons[i].setBounds(xOffset + margins, yOffset + margins + 10, panelLengthWidth, 25);
@@ -150,12 +159,18 @@ public class InventoryView extends JFrame {
 		}
 	}
 
+	/**
+	 * Sets the close button for the inventory
+	 */
 	private void setCloseButton() {
-		closeShopButton.setBounds(450, 650, 100, 50);
-		closeShopButton.addActionListener(new CloseButtonListener());
-		add(closeShopButton);
+		closeInventoryButton.setBounds(450, 650, 100, 50);
+		closeInventoryButton.addActionListener(new CloseButtonListener());
+		add(closeInventoryButton);
 	}
 
+	/**
+	 * Updates the player inventory and equipment
+	 */
 	private void update() {
 		for (int i = 0; i < 16; i++) {
 			if (!CombatView.player.playerInventory.itemExist(i)) { // No item
@@ -187,7 +202,7 @@ public class InventoryView extends JFrame {
 				itemSlotsText[index].setText(CombatView.player.getEquippedItem(index - 16).getItemName());
 			}
 		}
-		
+
 		CharacterSelectionView.combatGUI.updateInfo();
 
 	}
@@ -213,11 +228,16 @@ public class InventoryView extends JFrame {
 
 	}
 
+	/**
+	 * Button to equip the item to the player's equipment slots accordingly to type
+	 * of gear
+	 * 
+	 */
 	private class InventoryListenerEquipItems implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// Integer removeItemLater = null;
+
 			Integer index = null;
 			for (int i = 0; i < addItemButtons.length; i++) {
 
@@ -227,52 +247,52 @@ public class InventoryView extends JFrame {
 					if (!CombatView.player.isItemEquipped(index)) {
 						boolean isEquipped = CombatView.player.equipEquipmentItem(i);
 						if (isEquipped) {
-						CombatView.player.playerInventory
-								.removeItemFromInventory(CombatView.player.playerInventory.getItem(i));
-						update();
-						}
-						else
-						{
+							CombatView.player.playerInventory
+									.removeItemFromInventory(CombatView.player.playerInventory.getItem(i));
+							update();
+						} else {
 							System.out.println("Reach Messagebox");
 							new MessageBox("Not Right Class To Equip");
 							update();
 						}
 						CombatView.player.resetPlayer();
-						update(); // this <----------
+						update();
 					}
 
-					// itemExists =
-					// CombatView.player.playerInventory.itemExist(i);
 				}
 
 			}
 		}
 
 	}
-	
-	private class UnequipEquipmentListener implements ActionListener
-	{
+
+	/**
+	 * Button to un-equip the player's equipped gear
+	 * 
+	 */
+	private class UnequipEquipmentListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
-			if (CombatView.player.playerInventory.roomExist())
-			{
-				for(int i = 0; i < addItemButtons.length; i++)
-				{
-					if (e.getSource() == addItemButtons[i])
-					{
-						CombatView.player.playerInventory.addItemToInventory(CombatView.player.getEquippedItem(i-16));
-						CombatView.player.removeEquippedItem(i-16);
+
+			if (CombatView.player.playerInventory.roomExist()) {
+				for (int i = 0; i < addItemButtons.length; i++) {
+					if (e.getSource() == addItemButtons[i]) {
+						CombatView.player.playerInventory.addItemToInventory(CombatView.player.getEquippedItem(i - 16));
+						CombatView.player.removeEquippedItem(i - 16);
 						CombatView.player.resetPlayer();
 						update();
 					}
 				}
 			}
 		}
-		
+
 	}
 
+	/**
+	 * Button to remove the items from the player's inventory
+	 * 
+	 */
 	private class RemoveItemsButton implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -282,15 +302,16 @@ public class InventoryView extends JFrame {
 				if (e.getSource() == removeItemButton[i]) {
 
 					if (i == 16 || i == 17 || i == 18 || i == 19) {
-						CombatView.player.removeEquippedItem(i-16);
+						CombatView.player.removeEquippedItem(i - 16);
 						System.out.println("item is removed from inventory.");
 						CombatView.player.resetPlayer();
 						update();
 					} else
 
-					CombatView.player.playerInventory.removeItemFromInventory(CombatView.player.playerInventory.getItem(i));
+						CombatView.player.playerInventory
+								.removeItemFromInventory(CombatView.player.playerInventory.getItem(i));
 					CombatView.player.resetPlayer();
-					update(); // this <----------
+					update();
 
 				}
 			}
@@ -298,6 +319,10 @@ public class InventoryView extends JFrame {
 
 	}
 
+	/**
+	 * Button to close the inventory view
+	 * 
+	 */
 	private class CloseButtonListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {

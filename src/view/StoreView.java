@@ -16,6 +16,7 @@
  */
 
 package view;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import model.Store;
@@ -45,13 +46,16 @@ public class StoreView extends JFrame {
 
 	final int SCREEN_WIDTH = 650, SCREEN_HEIGHT = 800;
 
-	StoreView() {
+	/**
+	 * Constructor to create the store for the game
+	 * 
+	 */
+	public StoreView() {
 		super("The Store");
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 		setResizable(false);
 		super.setLayout(null);
-
 
 		alreadyBoughtList = new ArrayList<Integer>();
 
@@ -62,7 +66,11 @@ public class StoreView extends JFrame {
 		setVisible(true);
 	}
 
-	// Sets the stock Panels
+	/**
+	 * Sets the stock labels
+	 * 
+	 * @param theLabels
+	 */
 	private void setStockSlots(JLabel[] theLabels) {
 		// offsets to be used later, DO NOT CHANGE
 		int yOffset = 0, xOffset = 0;
@@ -84,7 +92,11 @@ public class StoreView extends JFrame {
 		}
 	}
 
-	// sets the Stock Buttons
+	/**
+	 * Sets the Stock Buttons
+	 * 
+	 * @param theButtons
+	 */
 	private void setStockButtons(JButton[] theButtons) {
 		// offsets to be used later, DO NOT CHANGE
 		int yOffset = 100, xOffset = 0;
@@ -103,18 +115,26 @@ public class StoreView extends JFrame {
 		}
 	}
 
+	/**
+	 * Sets the close button for the shop
+	 * 
+	 */
 	private void setCloseButton() {
 		balance = new JLabel("Balance : " + CombatView.player.getBoneBalance());
 		balance.setBounds(200, 650, 100, 50);
 
-		// closeShopButton.setBounds((int)(panelLengthWidth * 4.5),(int)
-		// (panelLengthWidth * 4.5), (int) (panelLengthWidth * 1.5), 25);
 		closeShopButton.setBounds(500, 650, 100, 50);
 		closeShopButton.addActionListener(new CloseListener());
 		add(closeShopButton);
 		add(balance);
 	}
 
+	/**
+	 * Changes the text from buy to Sold! once the player purchase the item from the
+	 * store
+	 * 
+	 * @param itemButtonActivated
+	 */
 	private void updateInfo(int itemButtonActivated) {
 		balance.setText("Balance : " + CombatView.player.getBoneBalance());
 		itemButtons[itemButtonActivated].setText("Sold!");
@@ -130,26 +150,28 @@ public class StoreView extends JFrame {
 
 	}
 
-
-	//Readable Code, i swear
-	// Basically goes through the item button list, checks which one made the event, 
-	//then checks if the player has enough balance to buy the item, also prevents buying the same item multiple times
+	/**
+	 * Goes through the item button list, checks which one made the event, then
+	 * checks if the player has enough balance to buy the item, also prevents buying
+	 * the same item multiple times
+	 */
 	private class BuyListener implements ActionListener {
 
+		@Override
 		public void actionPerformed(ActionEvent e) {
 			for (int i = 0; i < itemButtons.length; i++) {
 				if (itemButtons[i] == e.getSource()) { // Sets index to the button that got clicked
-					if (CombatView.player.getBoneBalance() > myStore.getItem(i).getPrice()) { // makes sure player has enough balance
-						if(!alreadyBoughtList.contains(i)) { // makes sure the player hasnt already bought the item
+					if (CombatView.player.getBoneBalance() > myStore.getItem(i).getPrice()) { // makes sure player has
+																								// enough balance
+						if (!alreadyBoughtList.contains(i)) { // makes sure the player hasnt already bought the item
 							if (CombatView.player.playerInventory.roomExist()) // makes sure the inventory isnt full
 							{
-								CombatView.player.setBalance(CombatView.player.getBoneBalance() - myStore.getItem(i).getPrice());
-								updateInfo(i);	
-								alreadyBoughtList.add(i);	
+								CombatView.player
+										.setBalance(CombatView.player.getBoneBalance() - myStore.getItem(i).getPrice());
+								updateInfo(i);
+								alreadyBoughtList.add(i);
 								CombatView.player.playerInventory.addItemToInventory(myStore.getItem(i));
-							}
-							else
-							{
+							} else {
 								System.out.println("OUT OF INVENTORY ROOM");
 							}
 						}
