@@ -16,14 +16,17 @@
  */
 
 package view;
-
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import model.Items;
 
 public class InventoryView extends JFrame {
 
@@ -64,6 +67,7 @@ public class InventoryView extends JFrame {
 		update();
 		setVisible(true);
 	}
+	
 
 	/**
 	 * Sets the Inventory Panels
@@ -78,8 +82,8 @@ public class InventoryView extends JFrame {
 		// Populates the array with JLabels, Sets them blue, and aligns them
 		for (int i = 0; i < theLabels.length; i++) {
 			// For each "slot" in the array, create JPanel
-			theLabels[i] = new JLabel("Insert Icon");
-			theLabels[i].setBackground(Color.white);
+			theLabels[i] = new JLabel();
+			//theLabels[i].setBackground(Color.white);
 			theLabels[i].setOpaque(true);
 
 			// amountPerRow changes amountPerRow
@@ -177,6 +181,8 @@ public class InventoryView extends JFrame {
 				disable(i);
 			} else { // Found Item
 				enable(i);
+				showIcon(i);
+				
 				itemSlotsText[i].setText(CombatView.player.playerInventory.getItem(i).getItemName());
 			}
 		}
@@ -226,6 +232,52 @@ public class InventoryView extends JFrame {
 		addItemButtons[index].setEnabled(false);
 		removeItemButton[index].setEnabled(false);
 
+	}
+	
+	private void showIcon(int index)
+	{
+		int itemTier = CombatView.player.playerInventory.getItem(index).getItemTier();
+		int itemType = CombatView.player.playerInventory.getItem(index).getItemType();
+
+		
+		if(itemType == 0) //heart
+		{
+			System.out.println("bruh");
+			itemSlots[index].setIcon(MainMenuView.gameAssets[2]);
+			
+		}
+		else if(itemType == 1) // helmet
+		{
+			System.out.println("bruh2");
+			itemSlots[index].setIcon(MainMenuView.gameAssets[3]);
+		}
+		else if(itemType == 2) // chestplate
+		{
+			System.out.println("bruh");
+			if(itemTier == 0) // Shield
+			{
+				itemSlots[index].setIcon(MainMenuView.gameAssets[4]);
+			}
+			else
+			{
+				itemSlots[index].setIcon(MainMenuView.gameAssets[0]);
+			}
+		
+		}
+		else if(itemType == 3) // claw
+		{
+			System.out.println("bruh");
+			if(itemTier == 0) //staff
+			{
+				itemSlots[index].setIcon(MainMenuView.gameAssets[5]);
+			}
+			else
+			{
+				itemSlots[index].setIcon(MainMenuView.gameAssets[1]);
+			}
+		}
+		
+		
 	}
 
 	/**

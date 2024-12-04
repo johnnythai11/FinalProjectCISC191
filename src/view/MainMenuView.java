@@ -18,8 +18,7 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
+
 import model.SaveLoad;
 import javax.swing.*;
 
@@ -30,6 +29,7 @@ public class MainMenuView extends JFrame {
 	private JButton loadButton;
 	private JPanel mainPanel;
 	final int SCREEN_WIDTH = 750, SCREEN_HEIGHT = 800;
+	protected static ImageIcon[] gameAssets = new ImageIcon[6];
 
 	/**
 	 * Constructor to create the main menu screen with the three buttons needed
@@ -44,8 +44,29 @@ public class MainMenuView extends JFrame {
 		mainPanel = new JPanel();
 		mainPanel.setLayout(null);
 		setPanels();
+		setIcons();
 		add(mainPanel);
 		setVisible(true);
+	}
+
+	private void setIcons()
+	{
+		try
+		{
+		gameAssets[0] = new ImageIcon("./Assets/Chestplate.png");
+		gameAssets[1] = new ImageIcon("./Assets/ClawIcon.png");
+		gameAssets[2] = new ImageIcon("./Assets/Heart.png");
+		gameAssets[3] = new ImageIcon("./Assets/Helmet.png");
+		gameAssets[4] = new ImageIcon("./Assets/Shield.png");
+		gameAssets[5] = new ImageIcon("./Assets/Staff.png");
+		}
+		catch (Exception e)
+		{
+			new MessageBox("Assets Not Found", true);
+			System.exit(100);
+		}
+										
+				
 	}
 
 	/**
@@ -82,7 +103,8 @@ public class MainMenuView extends JFrame {
 	}
 
 	/**
-	 * loads the character selection screen for the player to choose their 3 classes to play
+	 * loads the character selection screen for the player to choose their 3 classes
+	 * to play
 	 * 
 	 */
 	private class CharacterSelectListener implements ActionListener {
@@ -92,9 +114,9 @@ public class MainMenuView extends JFrame {
 			dispose();
 		}
 	}
-	
+
 	/**
-	 * loads the how to play screen for the player to read the instructions 
+	 * loads the how to play screen for the player to read the instructions
 	 * 
 	 */
 	private class HowToPlayListener implements ActionListener {

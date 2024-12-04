@@ -31,4 +31,13 @@ public class MessageBox extends JOptionPane {
 		super.showMessageDialog(null, messageString, "", JOptionPane.WARNING_MESSAGE);
 	}
 
+	/**
+	 * 
+	 * @param messageString Sets message of the MessageBox
+	 * @param i Has no purpose other than to access an overloaded constructor.
+	 */
+	public MessageBox(String messageString, boolean i) {
+		super(messageString);
+		super.showMessageDialog(null, messageString, "", JOptionPane.ERROR_MESSAGE);
+	}
 }

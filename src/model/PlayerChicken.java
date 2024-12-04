@@ -32,7 +32,7 @@ public abstract class PlayerChicken implements java.io.Serializable {
 
 	public abstract boolean isItemEquipped(int index);
 
-	public static int heartCounter;
+	public int heartCounter;
 
 	public Inventory playerInventory = new Inventory();
 

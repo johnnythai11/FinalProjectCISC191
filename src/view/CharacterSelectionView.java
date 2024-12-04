@@ -22,8 +22,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+import model.PlayerChicken;
+
 public class CharacterSelectionView extends JFrame {
-	public static CombatView combatGUI;
+	protected static CombatView combatGUI;
 	final int SCREEN_WIDTH = 650, SCREEN_HEIGHT = 750;
 	private JLabel characterIcon, statField;
 	private JButton mage, tank, melee, confirmButton;
@@ -108,6 +110,12 @@ public class CharacterSelectionView extends JFrame {
 				setSelection = 3;
 			}
 		}
+	}
+	
+	
+	public static void setCombatGui(PlayerChicken p)
+	{
+		combatGUI = new CombatView(p);
 	}
 
 	/**

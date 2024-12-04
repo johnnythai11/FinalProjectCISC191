@@ -62,7 +62,7 @@ public class StoreView extends JFrame {
 		setStockSlots(itemSlots);
 		setStockButtons(itemButtons);
 		setCloseButton();
-
+		showIconWork();
 		setVisible(true);
 	}
 
@@ -87,8 +87,7 @@ public class StoreView extends JFrame {
 				yOffset = yOffset + panelLengthWidth + margins + betweenMarginsY;
 			}
 			theLabels[i].setBounds(xOffset + margins, yOffset + margins, panelLengthWidth, panelLengthWidth);
-			add(theLabels[i]);
-			xOffset = xOffset + panelLengthWidth + margins + betweenmarginsX;
+			xOffset = xOffset + panelLengthWidth + margins + betweenmarginsX;	
 		}
 	}
 
@@ -113,6 +112,62 @@ public class StoreView extends JFrame {
 			add(theButtons[i]);
 			xOffset = xOffset + panelLengthWidth + margins + betweenmarginsX;
 		}
+	}
+	
+	private void showIconWork()
+	{
+		for (int i = 0; i < itemSlots.length; i++)
+		{
+			showIcon(i);
+			add(itemSlots[i]);
+		}
+	}
+	
+	
+	private void showIcon(int index)
+	{
+		int itemTier = myStore.getItem(index).getItemTier();
+		int itemType = myStore.getItem(index).getItemType();
+
+		
+		if(itemType == 0) //heart
+		{
+			System.out.println("bruh");
+			itemSlots[index].setIcon(MainMenuView.gameAssets[2]);
+			
+		}
+		else if(itemType == 1) // helmet
+		{
+			System.out.println("bruh2");
+			itemSlots[index].setIcon(MainMenuView.gameAssets[3]);
+		}
+		else if(itemType == 2) // chestplate
+		{
+			System.out.println("bruh");
+			if(itemTier == 0) // Shield
+			{
+				itemSlots[index].setIcon(MainMenuView.gameAssets[4]);
+			}
+			else
+			{
+				itemSlots[index].setIcon(MainMenuView.gameAssets[0]);
+			}
+		
+		}
+		else if(itemType == 3) // claw
+		{
+			System.out.println("bruh");
+			if(itemTier == 0) //staff
+			{
+				itemSlots[index].setIcon(MainMenuView.gameAssets[5]);
+			}
+			else
+			{
+				itemSlots[index].setIcon(MainMenuView.gameAssets[1]);
+			}
+		}
+		
+		
 	}
 
 	/**

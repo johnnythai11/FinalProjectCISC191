@@ -83,19 +83,19 @@ public class Items implements java.io.Serializable {
 			this.typeOfArmor = typeOfArmor;
 			this.defenseStat = itemTier;
 			if (itemTier == 1) {
-				itemName = "Wood ChestPlate";
+				itemName = "Wood Chestplate";
 			}
 			if (itemTier == 2) {
-				itemName = "Bronze ChestPlate";
+				itemName = "Bronze Chestplate";
 			}
 			if (itemTier == 3) {
-				itemName = "Copper ChestPlate";
+				itemName = "Copper Chestplate";
 			}
 			if (itemTier == 4) {
-				itemName = "Iron ChestPlate";
+				itemName = "Iron Chestplate";
 			}
 			if (itemTier == 5) {
-				itemName = "Diamond ChestPlate";
+				itemName = "Diamond Chestplate";
 			}
 
 		}
@@ -161,7 +161,7 @@ public class Items implements java.io.Serializable {
 		}
 		if (typeOfArmor == 2 && itemTier == 0) {
 			this.itemTier = 0;
-			itemName = "Sheild";
+			itemName = "Shield";
 			price = 100;
 		}
 		if (typeOfArmor == 3 && itemTier == 0) {
@@ -172,30 +172,30 @@ public class Items implements java.io.Serializable {
 
 		if (typeOfArmor == 2 && itemTier == 1) {
 			this.itemTier = 1;
-			itemName = "Wood ChestPlate";
+			itemName = "Wood Chestplate";
 			price = 3;
 		}
 		if (typeOfArmor == 2 && itemTier == 2) {
 			this.itemTier = 2;
-			itemName = "Bronze ChestPlate";
+			itemName = "Bronze Chestplate";
 			price = 5;
 		}
 
 		if (typeOfArmor == 2 && itemTier == 3) {
 			this.itemTier = 3;
-			itemName = "Copper ChestPlate";
+			itemName = "Copper Chestplate";
 			price = 8;
 		}
 
 		if (typeOfArmor == 2 && itemTier == 4) {
 			this.itemTier = 4;
-			itemName = "Iron ChestPlate";
+			itemName = "Iron Chestplate";
 			price = 12;
 		}
 
 		if (typeOfArmor == 2 && itemTier == 5) {
 			this.itemTier = 5;
-			itemName = "Diamond ChestPlate";
+			itemName = "Diamond Chestplate";
 			price = 17;
 		}
 
