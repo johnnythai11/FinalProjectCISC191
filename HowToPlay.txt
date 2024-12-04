@@ -3,7 +3,7 @@
 **Game Description:**
 You play as a chicken aiming to level up by winning battles against NPC chickens. NPC chickens range from levels 1-50, and each gives experience (EXP) based on its level (e.g., level 1 NPCs give 1 EXP, level 50 gives 50 EXP). To level up from level 1 to 2, you'll need 100 EXP; each subsequent level requires 50 more EXP than the last. 
 
-As you level up, a human character will assist you, boosting your attack and defense based on their level (1-5). After defeating NPC chickens, you’ll earn a random number of bones (3-6), which you can spend on items in the store.
+As you level up, a human character will assist you, boosting your attack and defense based on their level (1-5). After defeating NPC chickens, you’ll earn a random number of bones (1-10), which you can spend on items in the store.
 
 **Store Inventory:**
 The store offers armor and claws crafted from wood, bronze, copper, iron, and diamond. Additionally, special items like Helmets, Staffs, and Shields are available for specific classes:
@@ -39,18 +39,18 @@ The store generates 20 random items each refresh.
 
 **Items:**
 1. **Armor Tiers**:
-   - **Tier 1 (Wood)**: +1 Defense (Levels 1-10)
-   - **Tier 2 (Bronze)**: +2 Defense (Levels 11-20)
-   - **Tier 3 (Copper)**: +3 Defense (Levels 21-30)
-   - **Tier 4 (Iron)**: +4 Defense (Levels 31-40)
-   - **Tier 5 (Diamond)**: +5 Defense (Levels 41-50)
+   - **Tier 1 (Wood)**: +1 Defense 
+   - **Tier 2 (Bronze)**: +2 Defense 
+   - **Tier 3 (Copper)**: +3 Defense 
+   - **Tier 4 (Iron)**: +4 Defense 
+   - **Tier 5 (Diamond)**: +5 Defense 
 
 2. **Claw Tiers**:
-   - **Tier 1 (Wood)**: +1 Attack (Levels 1-10)
-   - **Tier 2 (Bronze)**: +2 Attack (Levels 11-20)
-   - **Tier 3 (Copper)**: +3 Attack (Levels 21-30)
-   - **Tier 4 (Iron)**: +4 Attack (Levels 31-40)
-   - **Tier 5 (Diamond)**: +5 Attack (Levels 41-50)
+   - **Tier 1 (Wood)**: +1 Attack 
+   - **Tier 2 (Bronze)**: +2 Attack 
+   - **Tier 3 (Copper)**: +3 Attack 
+   - **Tier 4 (Iron)**: +4 Attack 
+   - **Tier 5 (Diamond)**: +5 Attack 
 
 3. **Special Items (No Tiers)**:
    - **Helmet (Tank Only)** - Requires level 10: +10 Health and **Headbutt** ability (increases enemy miss chance). Gains +5 Health per 10 levels.

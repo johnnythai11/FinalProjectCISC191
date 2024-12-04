@@ -49,7 +49,7 @@ public class Human implements java.io.Serializable {
 	}
 
 	/**
-	 * gets the level of the human for the PlayerChicken
+	 * Gets the level of the human for the PlayerChicken
 	 * 
 	 * @return Level
 	 */

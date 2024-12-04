@@ -33,10 +33,10 @@ public class Store extends Items {
 
 	}
 
-	/*
+	/**
 	 * Prints out the item in the store
 	 * 
-	 * @Return String itemName, integer randInt1
+	 * @return String itemName, integer randInt1
 	 */
 	@Override
 	public String toString() {
@@ -49,8 +49,9 @@ public class Store extends Items {
 
 	}
 
-	/*
+	/**
 	 * Create the store with randomly generated 20 items
+	 * 
 	 */
 	public void generateStock() {
 		Random rand = new Random();

@@ -46,6 +46,7 @@ public class EnemyChicken {
 
 	/**
 	 * Constructs a chicken with random level
+	 * 
 	 */
 	public EnemyChicken() {
 		level = ((int) (Math.random() * 49)) + 1;
@@ -59,7 +60,7 @@ public class EnemyChicken {
 	}
 
 	/**
-	 * setter for maxHealth of enemy chicken
+	 * Setter for maxHealth of enemy chicken
 	 * 
 	 * @param int health
 	 */
@@ -68,7 +69,7 @@ public class EnemyChicken {
 	}
 
 	/**
-	 * setter for level of enemy chicken
+	 * Setter for level of enemy chicken
 	 * 
 	 * @param int level
 	 */
@@ -77,16 +78,16 @@ public class EnemyChicken {
 	}
 
 	/**
-	 * gets the attack stat of the enemy
+	 * Gets the attack stat of the enemy
 	 * 
-	 * @return int attack stat
+	 * @return int attack
 	 */
 	public int getAttack() {
 		return attack;
 	}
 
 	/**
-	 * returns the amount of exp given when the enemy is killed
+	 * Returns the amount of exp given when the enemy is killed
 	 * 
 	 * @return int of expGiven
 	 */
@@ -95,7 +96,7 @@ public class EnemyChicken {
 	}
 
 	/**
-	 * gets the amount of bone tokens given when the enemy is killed
+	 * Gets the amount of bone tokens given when the enemy is killed
 	 * 
 	 * @return int of boneToken
 	 */
@@ -104,7 +105,7 @@ public class EnemyChicken {
 	}
 
 	/**
-	 * gets the defense stat of the enemy
+	 * Gets the defense stat of the enemy
 	 * 
 	 * @return int defense
 	 */
@@ -113,7 +114,7 @@ public class EnemyChicken {
 	}
 
 	/**
-	 * gets the level of enemy chicken
+	 * Gets the level of enemy chicken
 	 * 
 	 * @return int levelOfChicken
 	 */
@@ -122,7 +123,7 @@ public class EnemyChicken {
 	}
 
 	/**
-	 * returns the max health of the enemy
+	 * Returns the max health of the enemy
 	 * 
 	 * @return int max health
 	 */

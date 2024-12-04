@@ -49,24 +49,23 @@ public class MainMenuView extends JFrame {
 		setVisible(true);
 	}
 
-	private void setIcons()
-	{
-		try
-		{
-		gameAssets[0] = new ImageIcon("./Assets/Chestplate.png");
-		gameAssets[1] = new ImageIcon("./Assets/ClawIcon.png");
-		gameAssets[2] = new ImageIcon("./Assets/Heart.png");
-		gameAssets[3] = new ImageIcon("./Assets/Helmet.png");
-		gameAssets[4] = new ImageIcon("./Assets/Shield.png");
-		gameAssets[5] = new ImageIcon("./Assets/Staff.png");
-		}
-		catch (Exception e)
-		{
+	/**
+	 * Method to set the images of the game
+	 * 
+	 */
+	private void setIcons() {
+		try {
+			gameAssets[0] = new ImageIcon("./Assets/Chestplate.png");
+			gameAssets[1] = new ImageIcon("./Assets/ClawIcon.png");
+			gameAssets[2] = new ImageIcon("./Assets/Heart.png");
+			gameAssets[3] = new ImageIcon("./Assets/Helmet.png");
+			gameAssets[4] = new ImageIcon("./Assets/Shield.png");
+			gameAssets[5] = new ImageIcon("./Assets/Staff.png");
+		} catch (Exception e) {
 			new MessageBox("Assets Not Found", true);
 			System.exit(100);
 		}
-										
-				
+
 	}
 
 	/**
@@ -85,7 +84,7 @@ public class MainMenuView extends JFrame {
 
 		int offsetHeightLoad = ((SCREEN_HEIGHT - BUTTON_HEIGHT) / 2) + verticalOffset / 18;
 
-		charecterSelectScreenButton = new JButton("Charecter Selection");
+		charecterSelectScreenButton = new JButton("Character Selection");
 		howToPlayButton = new JButton("How To Play");
 		loadButton = new JButton("Load Game");
 

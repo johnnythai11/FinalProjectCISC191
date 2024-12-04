@@ -34,7 +34,7 @@ public class MeleeChicken extends PlayerChicken {
 	private int experienceCounter;
 	private Equipment playerEquipment;
 	private Human humanBoost;
-	public PlayerChicken player;
+
 
 	/**
 	 * Constructor to create the MeleeChicken with its base stats of Attack,
@@ -102,7 +102,7 @@ public class MeleeChicken extends PlayerChicken {
 	 */
 	@Override
 	public boolean equipEquipmentItem(int index) {
-		Items inputItem = CombatView.player.playerInventory.getItem(index);
+		Items inputItem = CombatView.getPlayer().playerInventory.getItem(index);
 		switch (inputItem.getItemType()) {
 
 		case 0:
@@ -129,7 +129,7 @@ public class MeleeChicken extends PlayerChicken {
 	}
 
 	/**
-	 * removes the item from the equipment from one of the 4 slots of the equipment
+	 * Removes the item from the equipment from one of the 4 slots of the equipment
 	 * array
 	 * 
 	 * @param int index
@@ -177,7 +177,7 @@ public class MeleeChicken extends PlayerChicken {
 	}
 
 	/**
-	 * sets the bone balance to the given balance
+	 * Sets the bone balance to the given balance
 	 * 
 	 * @param int newBalance
 	 */
@@ -187,7 +187,8 @@ public class MeleeChicken extends PlayerChicken {
 	}
 
 	/**
-	 * updates the player's stats to new ones
+	 * Updates the player's stats to new ones
+	 * 
 	 */
 	@Override
 	public void resetPlayer() {
@@ -199,6 +200,7 @@ public class MeleeChicken extends PlayerChicken {
 
 	/**
 	 * Makes the chicken take damage
+	 * 
 	 */
 	@Override
 	public int dealDamage() {
@@ -208,6 +210,7 @@ public class MeleeChicken extends PlayerChicken {
 
 	/**
 	 * Updates the chickens health
+	 * 
 	 */
 	@Override
 	public void updateHealth() {
@@ -217,6 +220,7 @@ public class MeleeChicken extends PlayerChicken {
 
 	/**
 	 * Updates the chickens defense
+	 * 
 	 */
 	@Override
 	public void updateDefense() {
@@ -225,6 +229,7 @@ public class MeleeChicken extends PlayerChicken {
 
 	/**
 	 * Updates the chickens damage
+	 * 
 	 */
 	@Override
 	public void updateDamage() {
@@ -233,6 +238,7 @@ public class MeleeChicken extends PlayerChicken {
 
 	/**
 	 * Updates the amount of exp needed to go to the next level
+	 * 
 	 */
 	@Override
 	public void updateExpNeeded() {
@@ -240,7 +246,7 @@ public class MeleeChicken extends PlayerChicken {
 	}
 
 	/**
-	 * checks if an is equipped at the given index
+	 * Checks if an is equipped at the given index
 	 * 
 	 * @param index
 	 * @return boolean
@@ -251,7 +257,7 @@ public class MeleeChicken extends PlayerChicken {
 	}
 
 	/**
-	 * gets the level of the player chicken
+	 * Gets the level of the player chicken
 	 * 
 	 * @return int levelOfChicken
 	 */
@@ -262,7 +268,7 @@ public class MeleeChicken extends PlayerChicken {
 	}
 
 	/**
-	 * sets the base health of the player chicken
+	 * Sets the base health of the player chicken
 	 * 
 	 * @param int health
 	 */
@@ -272,7 +278,7 @@ public class MeleeChicken extends PlayerChicken {
 	}
 
 	/**
-	 * gets the current health of the player
+	 * Gets the current health of the player
 	 * 
 	 * @return int currentHealth
 	 */
@@ -354,7 +360,7 @@ public class MeleeChicken extends PlayerChicken {
 	}
 
 	/**
-	 * levels up the player
+	 * Levels up the player
 	 *
 	 */
 	@Override

@@ -21,11 +21,12 @@ import view.CombatView;
 
 public class Equipment implements java.io.Serializable {
 
-	public Items[] equippedItemArray = new Items[4];
+	protected Items[] equippedItemArray = new Items[4];
 
 	/**
 	 * Constructor for the equipment class. And it sets the indices of the equipment
 	 * array
+	 * 
 	 */
 	public Equipment() {
 
@@ -34,6 +35,7 @@ public class Equipment implements java.io.Serializable {
 	/**
 	 * Equipment for the player with 4 item slots 0 = Heart 1 = Head (Defence) 2 =
 	 * Body (Defence) 3 = Feet (Weapon)
+	 * 
 	 */
 	public Equipment(Items item1, Items item2, Items item3, Items item4) {
 		this.equippedItemArray[0] = item1;
@@ -60,8 +62,8 @@ public class Equipment implements java.io.Serializable {
 
 		if (item.getItemType() == 0) {
 
-			CombatView.player.heartCounter += 1;
-			CombatView.player.updateHealth();
+			CombatView.getPlayer().heartCounter += 1;
+			CombatView.getPlayer().updateHealth();
 		} else {
 
 			this.equippedItemArray[index] = item;
@@ -110,7 +112,7 @@ public class Equipment implements java.io.Serializable {
 	}
 
 	/**
-	 * returns the equipped item at the given index
+	 * Returns the equipped item at the given index
 	 * 
 	 * @param index
 	 * @return item

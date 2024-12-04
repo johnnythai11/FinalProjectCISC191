@@ -142,7 +142,7 @@ public class Items implements java.io.Serializable {
 	}
 
 	/**
-	 * checks if tier of the item is between 1-5, then sets price = to tier tier 1 =
+	 * Checks if tier of the item is between 1-5, then sets price = to tier tier 1 =
 	 * 3 bones tier 2 = 5 bones tier 3 = 8 bones tier 4 = 12 bones tier 5 = 17 bones
 	 * 
 	 * @param int typeOfArmor, int itemTier
@@ -231,7 +231,7 @@ public class Items implements java.io.Serializable {
 	}
 
 	/**
-	 * gets the tier of the item
+	 * Gets the tier of the item
 	 * 
 	 * @return int itemTier
 	 */
@@ -240,7 +240,7 @@ public class Items implements java.io.Serializable {
 	}
 
 	/**
-	 * gets the name of the item
+	 * Gets the name of the item
 	 * 
 	 * @return String itemName
 	 */
@@ -249,7 +249,7 @@ public class Items implements java.io.Serializable {
 	}
 
 	/**
-	 * sets the name of the item
+	 * Sets the name of the item
 	 * 
 	 * @param String itemName
 	 */
@@ -267,7 +267,7 @@ public class Items implements java.io.Serializable {
 	}
 
 	/**
-	 * sets the type of armor
+	 * Sets the type of armor
 	 * 
 	 * @param typeOfArmor
 	 */
@@ -276,7 +276,7 @@ public class Items implements java.io.Serializable {
 	}
 
 	/**
-	 * gets the attack stat of the item
+	 * Gets the attack stat of the item
 	 * 
 	 * @return int attackStat
 	 */
@@ -285,7 +285,7 @@ public class Items implements java.io.Serializable {
 	}
 
 	/**
-	 * sets the attack stat
+	 * Sets the attack stat
 	 * 
 	 * @param attackStat
 	 */
@@ -294,7 +294,7 @@ public class Items implements java.io.Serializable {
 	}
 
 	/**
-	 * gets the defense stat
+	 * Gets the defense stat
 	 * 
 	 * @return int defenseStat
 	 */
@@ -303,7 +303,7 @@ public class Items implements java.io.Serializable {
 	}
 
 	/**
-	 * sets the defense stat
+	 * Sets the defense stat
 	 * 
 	 * @param defenseStat
 	 */
@@ -312,7 +312,7 @@ public class Items implements java.io.Serializable {
 	}
 
 	/**
-	 * gets the health stat
+	 * Gets the health stat
 	 * 
 	 * @return int healthStat
 	 */
@@ -321,7 +321,7 @@ public class Items implements java.io.Serializable {
 	}
 
 	/**
-	 * sets the health stat
+	 * Sets the health stat
 	 * 
 	 * @param healthStat
 	 */
@@ -330,7 +330,7 @@ public class Items implements java.io.Serializable {
 	}
 
 	/**
-	 * gets the price of the item
+	 * Gets the price of the item
 	 * 
 	 * @return int price
 	 */

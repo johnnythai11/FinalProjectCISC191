@@ -37,7 +37,7 @@ public class TankChicken extends PlayerChicken
 	private int attackBoost;
 	private int defenseBoost;
 	private int experienceCounter;
-	public PlayerChicken player;
+	
 
 	/**
 	 * Constructor to create the TankChicken with its base status of Attack,
@@ -89,7 +89,7 @@ public class TankChicken extends PlayerChicken
 	}
 
 	/**
-	 * removes item from one of the four slots of equipment
+	 * Removes item from one of the four slots of equipment
 	 * 
 	 * @param int index
 	 */
@@ -99,7 +99,7 @@ public class TankChicken extends PlayerChicken
 	}
 
 	/**
-	 * checks if the player has the item equipped
+	 * Checks if the player has the item equipped
 	 * 
 	 * @param index
 	 */
@@ -126,7 +126,7 @@ public class TankChicken extends PlayerChicken
 	 */
 	@Override
 	public boolean equipEquipmentItem(int index) {
-		Items inputItem = CombatView.player.playerInventory.getItem(index);
+		Items inputItem = CombatView.getPlayer().playerInventory.getItem(index);
 		switch (inputItem.getItemType()) {
 
 		case 0:
@@ -159,7 +159,7 @@ public class TankChicken extends PlayerChicken
 	}
 
 	/**
-	 * gets the item from the player equipment
+	 * Gets the item from the player equipment
 	 * 
 	 * @param int index
 	 * @return Items
@@ -367,7 +367,7 @@ public class TankChicken extends PlayerChicken
 	}
 
 	/**
-	 * levels up the player
+	 * Levels up the player
 	 *
 	 */
 	@Override

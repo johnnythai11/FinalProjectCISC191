@@ -80,7 +80,7 @@ public class MageChicken extends PlayerChicken {
 	}
 
 	/**
-	 * gets the equipped item at the given index
+	 * Gets the equipped item at the given index
 	 * 
 	 * @param index
 	 * @return item
@@ -91,7 +91,7 @@ public class MageChicken extends PlayerChicken {
 	}
 
 	/**
-	 * gets the exp bar
+	 * Gets the exp bar
 	 * 
 	 * @return int
 	 */
@@ -108,7 +108,7 @@ public class MageChicken extends PlayerChicken {
 	 */
 	@Override
 	public boolean equipEquipmentItem(int index) {
-		Items inputItem = CombatView.player.playerInventory.getItem(index);
+		Items inputItem = CombatView.getPlayer().playerInventory.getItem(index);
 		switch (inputItem.getItemType()) {
 
 		case 0:
@@ -136,7 +136,7 @@ public class MageChicken extends PlayerChicken {
 	}
 
 	/**
-	 * checks if an is equipped at the given index
+	 * Checks if an is equipped at the given index
 	 * 
 	 * @param index
 	 * @return boolean
@@ -147,7 +147,8 @@ public class MageChicken extends PlayerChicken {
 	}
 
 	/**
-	 * updates the player's stats to new ones
+	 * Updates the player's stats to new ones
+	 * 
 	 */
 	@Override
 	public void resetPlayer() {
@@ -158,7 +159,8 @@ public class MageChicken extends PlayerChicken {
 	}
 
 	/**
-	 * removes the Item from the player's equipment
+	 * Removes the Item from the player's equipment
+	 * 
 	 */
 	@Override
 	public void removeEquippedItem(int index) {
@@ -167,7 +169,7 @@ public class MageChicken extends PlayerChicken {
 	}
 
 	/**
-	 * sets the bone balance to the given balance
+	 * Sets the bone balance to the given balance
 	 * 
 	 * @param int newBalance
 	 */
@@ -202,7 +204,8 @@ public class MageChicken extends PlayerChicken {
 	}
 
 	/**
-	 * updates the chickens health
+	 * Updates the chickens health
+	 * 
 	 */
 	@Override
 	public void updateHealth() {
@@ -212,6 +215,7 @@ public class MageChicken extends PlayerChicken {
 
 	/**
 	 * Makes the chicken take damage
+	 * 
 	 */
 	@Override
 	public int dealDamage() {
@@ -221,6 +225,7 @@ public class MageChicken extends PlayerChicken {
 
 	/**
 	 * Updates the chickens defense
+	 * 
 	 */
 	@Override
 	public void updateDefense() {
@@ -229,6 +234,7 @@ public class MageChicken extends PlayerChicken {
 
 	/**
 	 * Updates the chickens damage
+	 * 
 	 */
 	@Override
 	public void updateDamage() {
@@ -237,6 +243,7 @@ public class MageChicken extends PlayerChicken {
 
 	/**
 	 * Updates the amount of exp needed to go to the next level
+	 * 
 	 */
 	@Override
 	public void updateExpNeeded() {
@@ -244,7 +251,7 @@ public class MageChicken extends PlayerChicken {
 	}
 
 	/**
-	 * gets the level of the player chicken
+	 * Gets the level of the player chicken
 	 * 
 	 * @return int levelOfChicken
 	 */
@@ -255,7 +262,7 @@ public class MageChicken extends PlayerChicken {
 	}
 
 	/**
-	 * gets the base health of the player chicken
+	 * Gets the base health of the player chicken
 	 * 
 	 * @return int baseHealth
 	 */
@@ -326,6 +333,8 @@ public class MageChicken extends PlayerChicken {
 	}
 
 	/**
+	 * Gets the currentExp of the player
+	 * 
 	 * @return int currentExp
 	 */
 	@Override
@@ -334,7 +343,7 @@ public class MageChicken extends PlayerChicken {
 	}
 
 	/**
-	 * gets the exp bars
+	 * Gets the exp bars need to level up
 	 * 
 	 * @return int expBar
 	 */
@@ -345,7 +354,8 @@ public class MageChicken extends PlayerChicken {
 	}
 
 	/**
-	 * increase the level of chicken by one
+	 * Increase the level of chicken by one
+	 * 
 	 */
 	@Override
 	public void levelUp() {
@@ -356,7 +366,7 @@ public class MageChicken extends PlayerChicken {
 	}
 
 	/**
-	 * gets the experienceCounter
+	 * Gets the experienceCounter
 	 * 
 	 * @return int experienceCounter
 	 */
@@ -366,7 +376,7 @@ public class MageChicken extends PlayerChicken {
 	}
 
 	/**
-	 * adds exp to the counter
+	 * Adds exp to the counter
 	 * 
 	 * @param int add
 	 */
@@ -376,7 +386,7 @@ public class MageChicken extends PlayerChicken {
 	}
 
 	/**
-	 * sets the exp counter
+	 * Sets the exp counter
 	 * 
 	 * @param int add
 	 */

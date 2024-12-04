@@ -22,9 +22,9 @@ public abstract class PlayerChicken implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	public PlayerChicken player;
 
-	public PlayerChicken() {
-
-	}
+//	public PlayerChicken() {
+//
+//	}
 
 	public abstract Items getEquippedItem(int index);
 

@@ -16,6 +16,7 @@
  */
 
 package view;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -67,7 +68,6 @@ public class InventoryView extends JFrame {
 		update();
 		setVisible(true);
 	}
-	
 
 	/**
 	 * Sets the Inventory Panels
@@ -83,7 +83,7 @@ public class InventoryView extends JFrame {
 		for (int i = 0; i < theLabels.length; i++) {
 			// For each "slot" in the array, create JPanel
 			theLabels[i] = new JLabel();
-			//theLabels[i].setBackground(Color.white);
+			// theLabels[i].setBackground(Color.white);
 			theLabels[i].setOpaque(true);
 
 			// amountPerRow changes amountPerRow
@@ -165,6 +165,7 @@ public class InventoryView extends JFrame {
 
 	/**
 	 * Sets the close button for the inventory
+	 * 
 	 */
 	private void setCloseButton() {
 		closeInventoryButton.setBounds(450, 650, 100, 50);
@@ -174,21 +175,22 @@ public class InventoryView extends JFrame {
 
 	/**
 	 * Updates the player inventory and equipment
+	 * 
 	 */
 	private void update() {
 		for (int i = 0; i < 16; i++) {
-			if (!CombatView.player.playerInventory.itemExist(i)) { // No item
+			if (!CombatView.getPlayer().playerInventory.itemExist(i)) { // No item
 				disable(i);
 			} else { // Found Item
 				enable(i);
 				showIcon(i);
-				
-				itemSlotsText[i].setText(CombatView.player.playerInventory.getItem(i).getItemName());
+				itemSlotsText[i].setText(CombatView.getPlayer().playerInventory.getItem(i).getItemName());
 			}
+		
 		}
 		for (int index = 16; index < 20; index++)// Equipment Stuff
 		{
-			if (!CombatView.player.isItemEquipped(index - 16)) // offsets index
+			if (!CombatView.getPlayer().isItemEquipped(index - 16)) // offsets index
 			// to pull
 			// correctly
 			// from
@@ -199,13 +201,13 @@ public class InventoryView extends JFrame {
 				if (index == 16) // special case for hearts
 				{
 					enable(index);
-					itemSlotsText[index].setText("Hearts : " + CombatView.player.heartCounter);
+					itemSlotsText[index].setText("Hearts : " + CombatView.getPlayer().heartCounter);
 
 				}
 			} else { // Found Equipped Item!
 				enable(index);
 
-				itemSlotsText[index].setText(CombatView.player.getEquippedItem(index - 16).getItemName());
+				itemSlotsText[index].setText(CombatView.getPlayer().getEquippedItem(index - 16).getItemName());
 			}
 		}
 
@@ -213,6 +215,11 @@ public class InventoryView extends JFrame {
 
 	}
 
+	/**
+	 * Method to set the Buttons and Texts visible when needed
+	 * 
+	 * @param index
+	 */
 	private void enable(int index) {
 		itemSlotsText[index].setVisible(true);
 		addItemButtons[index].setVisible(true);
@@ -224,6 +231,11 @@ public class InventoryView extends JFrame {
 		removeItemButton[16].setVisible(false);
 	}
 
+	/**
+	 * Method to set the Buttons and Texts not visible when needed
+	 * 
+	 * @param index
+	 */
 	private void disable(int index) {
 		itemSlotsText[index].setVisible(false);
 		addItemButtons[index].setVisible(false);
@@ -233,51 +245,46 @@ public class InventoryView extends JFrame {
 		removeItemButton[index].setEnabled(false);
 
 	}
-	
-	private void showIcon(int index)
-	{
-		int itemTier = CombatView.player.playerInventory.getItem(index).getItemTier();
-		int itemType = CombatView.player.playerInventory.getItem(index).getItemType();
 
-		
-		if(itemType == 0) //heart
+	/**
+	 * Method to show the game images in a certain slot as needed
+	 * 
+	 * @param index
+	 */
+	private void showIcon(int index) {
+		int itemTier = CombatView.getPlayer().playerInventory.getItem(index).getItemTier();
+		int itemType = CombatView.getPlayer().playerInventory.getItem(index).getItemType();
+
+		if (itemType == 0) // heart
 		{
-			System.out.println("bruh");
-			itemSlots[index].setIcon(MainMenuView.gameAssets[2]);
 			
-		}
-		else if(itemType == 1) // helmet
+			itemSlots[index].setIcon(MainMenuView.gameAssets[2]);
+
+		} else if (itemType == 1) // helmet
 		{
-			System.out.println("bruh2");
+			
 			itemSlots[index].setIcon(MainMenuView.gameAssets[3]);
-		}
-		else if(itemType == 2) // chestplate
+		} else if (itemType == 2) // chestPlate
 		{
-			System.out.println("bruh");
-			if(itemTier == 0) // Shield
+			
+			if (itemTier == 0) // Shield
 			{
 				itemSlots[index].setIcon(MainMenuView.gameAssets[4]);
-			}
-			else
-			{
+			} else {
 				itemSlots[index].setIcon(MainMenuView.gameAssets[0]);
 			}
-		
-		}
-		else if(itemType == 3) // claw
+
+		} else if (itemType == 3) // claw
 		{
-			System.out.println("bruh");
-			if(itemTier == 0) //staff
+		
+			if (itemTier == 0) // staff
 			{
 				itemSlots[index].setIcon(MainMenuView.gameAssets[5]);
-			}
-			else
-			{
+			} else {
 				itemSlots[index].setIcon(MainMenuView.gameAssets[1]);
 			}
 		}
-		
-		
+
 	}
 
 	/**
@@ -294,20 +301,20 @@ public class InventoryView extends JFrame {
 			for (int i = 0; i < addItemButtons.length; i++) {
 
 				if (e.getSource() == addItemButtons[i]) {
-					index = CombatView.player.playerInventory.getItem(i).getItemType();
+					index = CombatView.getPlayer().playerInventory.getItem(i).getItemType();
 
-					if (!CombatView.player.isItemEquipped(index)) {
-						boolean isEquipped = CombatView.player.equipEquipmentItem(i);
+					if (!CombatView.getPlayer().isItemEquipped(index)) {
+						boolean isEquipped = CombatView.getPlayer().equipEquipmentItem(i);
 						if (isEquipped) {
-							CombatView.player.playerInventory
-									.removeItemFromInventory(CombatView.player.playerInventory.getItem(i));
+							CombatView.getPlayer().playerInventory
+									.removeItemFromInventory(CombatView.getPlayer().playerInventory.getItem(i));
 							update();
 						} else {
 							System.out.println("Reach Messagebox");
 							new MessageBox("Not Right Class To Equip");
 							update();
 						}
-						CombatView.player.resetPlayer();
+						CombatView.getPlayer().resetPlayer();
 						update();
 					}
 
@@ -327,12 +334,12 @@ public class InventoryView extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
-			if (CombatView.player.playerInventory.roomExist()) {
+			if (CombatView.getPlayer().playerInventory.roomExist()) {
 				for (int i = 0; i < addItemButtons.length; i++) {
 					if (e.getSource() == addItemButtons[i]) {
-						CombatView.player.playerInventory.addItemToInventory(CombatView.player.getEquippedItem(i - 16));
-						CombatView.player.removeEquippedItem(i - 16);
-						CombatView.player.resetPlayer();
+						CombatView.getPlayer().playerInventory.addItemToInventory(CombatView.getPlayer().getEquippedItem(i - 16));
+						CombatView.getPlayer().removeEquippedItem(i - 16);
+						CombatView.getPlayer().resetPlayer();
 						update();
 					}
 				}
@@ -354,15 +361,15 @@ public class InventoryView extends JFrame {
 				if (e.getSource() == removeItemButton[i]) {
 
 					if (i == 16 || i == 17 || i == 18 || i == 19) {
-						CombatView.player.removeEquippedItem(i - 16);
+						CombatView.getPlayer().removeEquippedItem(i - 16);
 						System.out.println("item is removed from inventory.");
-						CombatView.player.resetPlayer();
+						CombatView.getPlayer().resetPlayer();
 						update();
 					} else
 
-						CombatView.player.playerInventory
-								.removeItemFromInventory(CombatView.player.playerInventory.getItem(i));
-					CombatView.player.resetPlayer();
+						CombatView.getPlayer().playerInventory
+								.removeItemFromInventory(CombatView.getPlayer().playerInventory.getItem(i));
+					CombatView.getPlayer().resetPlayer();
 					update();
 
 				}

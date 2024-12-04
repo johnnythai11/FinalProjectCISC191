@@ -19,11 +19,9 @@ package model;
 
 public class Combat {
 
-	PlayerChicken player;
-	EnemyChicken enemy;
 
 	/**
-	 * sets the attack damage of the type of the player dependent on the item worn
+	 * Sets the attack damage of the type of the player dependent on the item worn
 	 * 
 	 * @param PlayerChicken, Items
 	 * @return attackDamage of the player

@@ -41,7 +41,7 @@ public class CombatView extends JFrame {
 	private JPanel mainPanel;
 
 	private StoreView myStore;
-	public InventoryView playerInventory;
+	private InventoryView playerInventory;
 
 	private JButton inventory;
 	private JButton attack;
@@ -56,7 +56,7 @@ public class CombatView extends JFrame {
 	private JTextArea characterInfo;
 	private JTextArea enemyInfo;
 
-	public static PlayerChicken player;
+	private static PlayerChicken player;
 
 	private static EnemyChicken enemy;
 
@@ -70,6 +70,42 @@ public class CombatView extends JFrame {
 	private int ItemTierOfFeet;
 
 	/**
+	 * Gets the player's inventory
+	 * 
+	 * @return InventoryView
+	 */
+	public InventoryView getPlayerInventory() {
+		return playerInventory;
+	}
+
+	/**
+	 * Sets the player's inventory
+	 * 
+	 * @param playerInventory
+	 */
+	public void setPlayerInventory(InventoryView playerInventory) {
+		this.playerInventory = playerInventory;
+	}
+
+	/**
+	 * Gets the PlayerChicken of the game
+	 * 
+	 * @return player
+	 */
+	public static PlayerChicken getPlayer() {
+		return player;
+	}
+
+	/**
+	 * Sets the PlayerChicken of the game
+	 * 
+	 * @param player
+	 */
+	public static void setPlayer(PlayerChicken player) {
+		CombatView.player = player;
+	}
+
+	/**
 	 * Constructor for the combat Screen to load the player
 	 * 
 	 * @param player
@@ -77,7 +113,7 @@ public class CombatView extends JFrame {
 	public CombatView(PlayerChicken player) {
 		super("Chicken Fighter");
 		super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.player = player;
+		CombatView.setPlayer(player);
 		setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 		setResizable(false);
 		enemy = new EnemyChicken();
@@ -104,11 +140,11 @@ public class CombatView extends JFrame {
 		setResizable(false);
 
 		if (selection == 1) {
-			player = new MageChicken(1);
+			setPlayer(new MageChicken(1));
 		} else if (selection == 2) {
-			player = new TankChicken(1);
+			setPlayer(new TankChicken(1));
 		} else if (selection == 3) {
-			player = new MeleeChicken(1);
+			setPlayer(new MeleeChicken(1));
 		}
 
 		enemy = new EnemyChicken();
@@ -123,6 +159,7 @@ public class CombatView extends JFrame {
 
 	/**
 	 * Sets all the buttons needed for the combat screen
+	 * 
 	 */
 	private void setButtons() {
 		final int BUTTON_WIDTH = 150;
@@ -187,7 +224,7 @@ public class CombatView extends JFrame {
 		characterPanel.setSize(660, 400);
 		characterPanel.setLocation(0, 10);
 
-		if (player instanceof MageChicken) {
+		if (getPlayer() instanceof MageChicken) {
 			info = new Font("Times New Roman", Font.BOLD, 45);
 			characterPanel.setBackground(Color.blue);
 			characterPanelText = new JTextArea();
@@ -195,7 +232,7 @@ public class CombatView extends JFrame {
 			characterPanelText.setEditable(false);
 			characterPanelText.setFont(info);
 			characterPanel.add(characterPanelText);
-		} else if (player instanceof TankChicken) {
+		} else if (getPlayer() instanceof TankChicken) {
 			info = new Font("Times New Roman", Font.BOLD, 45);
 			characterPanel.setBackground(Color.green);
 			characterPanelText = new JTextArea();
@@ -203,7 +240,7 @@ public class CombatView extends JFrame {
 			characterPanelText.setEditable(false);
 			characterPanelText.setFont(info);
 			characterPanel.add(characterPanelText);
-		} else if (player instanceof MeleeChicken) {
+		} else if (getPlayer() instanceof MeleeChicken) {
 			info = new Font("Times New Roman", Font.BOLD, 45);
 			characterPanel.setBackground(Color.red);
 			characterPanelText = new JTextArea();
@@ -221,13 +258,13 @@ public class CombatView extends JFrame {
 		characterInfo = new JTextArea(1, 5);
 		info = new Font("Times New Roman", Font.BOLD, 45);
 		characterInfo.setFont(info);
-		characterInfo.append("Health: " + player.getCurrentHealth() + "\n");
-		characterInfo.append("Defense: " + player.getBaseDefense() + "\n");
-		characterInfo.append("Attack: " + player.getBaseDamage() + "\n");
-		characterInfo.append("Balance: " + player.getBoneBalance() + "\n");
-		characterInfo.append("Level: " + player.getLevel() + "\n");
-		characterInfo.append("Exp gained: " + player.getExperienceCounter() + "\n");
-		characterInfo.append("Exp needed to levelup: " + player.expBar());
+		characterInfo.append("Health: " + getPlayer().getCurrentHealth() + "\n");
+		characterInfo.append("Defense: " + getPlayer().getBaseDefense() + "\n");
+		characterInfo.append("Attack: " + getPlayer().getBaseDamage() + "\n");
+		characterInfo.append("Balance: " + getPlayer().getBoneBalance() + "\n");
+		characterInfo.append("Level: " + getPlayer().getLevel() + "\n");
+		characterInfo.append("Exp gained: " + getPlayer().getExperienceCounter() + "\n");
+		characterInfo.append("Exp needed to levelup: " + getPlayer().expBar());
 		characterInfo.setEditable(false);
 		characterInfo.setSize(660, 400);
 		characterInfo.setLocation(0, 440);
@@ -262,10 +299,10 @@ public class CombatView extends JFrame {
 				+ "Exp Given when killed: " + enemy.getExpGiven());
 
 		characterInfo.setText("");
-		characterInfo.setText("Health: " + player.getCurrentHealth() + "\n" + "Defense: " + player.getBaseDefense()
-				+ "\n" + "Attack: " + player.getBaseDamage() + "\n" + "Balance: " + player.getBoneBalance() + "\n"
-				+ "Level: " + player.getLevel() + "\n" + "Exp gained: " + player.getExperienceCounter() + "\n"
-				+ "Exp needed to levelup: " + player.expBar());
+		characterInfo.setText("Health: " + getPlayer().getCurrentHealth() + "\n" + "Defense: "
+				+ getPlayer().getBaseDefense() + "\n" + "Attack: " + getPlayer().getBaseDamage() + "\n" + "Balance: "
+				+ getPlayer().getBoneBalance() + "\n" + "Level: " + getPlayer().getLevel() + "\n" + "Exp gained: "
+				+ getPlayer().getExperienceCounter() + "\n" + "Exp needed to levelup: " + getPlayer().expBar());
 	}
 
 	/**
@@ -277,8 +314,8 @@ public class CombatView extends JFrame {
 			myStore.dispose();
 		}
 
-		if (playerInventory != null) {
-			playerInventory.dispose();
+		if (getPlayerInventory() != null) {
+			getPlayerInventory().dispose();
 		}
 	}
 
@@ -294,7 +331,7 @@ public class CombatView extends JFrame {
 			enemy = null;
 			enemy = new EnemyChicken();
 
-			player.resetPlayer();
+			getPlayer().resetPlayer();
 			updateInfo();
 		}
 
@@ -310,21 +347,21 @@ public class CombatView extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == attack) {
 				closeGui();
-				int result = Combat.attackCombatRound(player, enemy);
+				int result = Combat.attackCombatRound(getPlayer(), enemy);
 				System.out.println(result);
 				if (result == 1) { // WHAT HAPPENS WHEN YOU DIE
 					new MessageBox("You Died!");
 					new MainMenuView();
 					dispose();
 				} else if (result == 2) { // WHAT YOU WANT TO HAPPEN WHEN THE ENEMY IS KILLED
-					player.addExperienceCounter(enemy.getExpGiven());
+					getPlayer().addExperienceCounter(enemy.getExpGiven());
 					enemy = null;
 					enemy = new EnemyChicken();
-					System.out.println("when enemy dies:" + player.getExperienceCounter());
-					player.setBalance(player.getBoneBalance() + enemy.getBoneToken());
-					player.getExperienceCounter();
-					if (player.getExp() <= player.getExperienceCounter()) {
-						player.levelUp(); // Checks if you can level up
+					System.out.println("when enemy dies:" + getPlayer().getExperienceCounter());
+					getPlayer().setBalance(getPlayer().getBoneBalance() + enemy.getBoneToken());
+					getPlayer().getExperienceCounter();
+					if (getPlayer().getExp() <= getPlayer().getExperienceCounter()) {
+						getPlayer().levelUp(); // Checks if you can level up
 						System.out.println("levelup");
 					}
 				}
@@ -333,22 +370,20 @@ public class CombatView extends JFrame {
 
 			else if (e.getSource() == specialAttack) {
 				// Checks if the player has equipped the special item
-				// this does not work for some reason
-				if (player.getEquippedItem(1) != null) {
-					ItemTierOfHead = player.getEquippedItem(1).getItemTier();
-					System.out.println("this is when helemet is equipped." + ItemTierOfHead);
+				if (getPlayer().getEquippedItem(1) != null) {
+					ItemTierOfHead = getPlayer().getEquippedItem(1).getItemTier();
 				} else {
 					ItemTierOfHead = -1;
 				}
 				// Checks if the player has equipped the special item
-				if (player.getEquippedItem(2) != null) {
-					ItemTierOfBody = player.getEquippedItem(2).getItemTier();
+				if (getPlayer().getEquippedItem(2) != null) {
+					ItemTierOfBody = getPlayer().getEquippedItem(2).getItemTier();
 				} else {
 					ItemTierOfBody = -1;
 				}
 				// Checks if the player has equipped the special item
-				if (player.getEquippedItem(3) != null) {
-					ItemTierOfFeet = player.getEquippedItem(3).getItemTier();
+				if (getPlayer().getEquippedItem(3) != null) {
+					ItemTierOfFeet = getPlayer().getEquippedItem(3).getItemTier();
 
 				} else {
 					ItemTierOfFeet = -1;
@@ -356,20 +391,20 @@ public class CombatView extends JFrame {
 				if (ItemTierOfBody == 0 || ItemTierOfFeet == 0 || ItemTierOfHead == 2 || ItemTierOfHead == 4
 						|| ItemTierOfHead == 0 || ItemTierOfHead == 3 || ItemTierOfHead == 1) {
 					closeGui();
-					int result = Combat.attackCombatRound(player, enemy);
+					int result = Combat.attackCombatRound(getPlayer(), enemy);
 					if (result == 1) { // WHAT HAPPENS WHEN YOU DIE
 						new MessageBox("You Died!");
 						new MainMenuView();
 						dispose();
 					} else if (result == 2) { // WHAT YOU WANT TO HAPPEN WHEN THE ENEMY IS KILLED
-						player.addExperienceCounter(enemy.getExpGiven());
+						getPlayer().addExperienceCounter(enemy.getExpGiven());
 						enemy = null;
 						enemy = new EnemyChicken();
-						System.out.println("when enemy dies:" + player.getExperienceCounter());
-						player.setBalance(player.getBoneBalance() + enemy.getBoneToken());
-						player.getExperienceCounter();
-						if (player.getExp() <= player.getExperienceCounter()) {
-							player.levelUp(); // Checks if you can level up
+						System.out.println("when enemy dies:" + getPlayer().getExperienceCounter());
+						getPlayer().setBalance(getPlayer().getBoneBalance() + enemy.getBoneToken());
+						getPlayer().getExperienceCounter();
+						if (getPlayer().getExp() <= getPlayer().getExperienceCounter()) {
+							getPlayer().levelUp(); // Checks if you can level up
 							System.out.println("levelup");
 						}
 					}
@@ -411,7 +446,7 @@ public class CombatView extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			closeGui();
-			playerInventory = new InventoryView();
+			setPlayerInventory(new InventoryView());
 		}
 
 	}
@@ -425,7 +460,7 @@ public class CombatView extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			SaveLoad saveLoad = new SaveLoad();
-			saveLoad.binarySave(player);
+			saveLoad.binarySave(getPlayer());
 
 		}
 
