@@ -44,8 +44,8 @@ public class StoreView extends JFrame {
 	// amount of Jpanels per row
 	private final int amountPerRow = 5;
 
-	//final int SCREEN_WIDTH = 650, SCREEN_HEIGHT = 800;
-	final int SCREEN_WIDTH = 850, SCREEN_HEIGHT = 1000;
+	final int SCREEN_WIDTH = 650, SCREEN_HEIGHT = 800;
+
 
 	/**
 	 * Constructor to create the store for the game
@@ -119,8 +119,9 @@ public class StoreView extends JFrame {
 	{
 		for (int i = 0; i < itemSlots.length; i++)
 		{
-			showIcon(i);
 			add(itemSlots[i]);
+			showIcon(i);
+			
 		}
 	}
 	
