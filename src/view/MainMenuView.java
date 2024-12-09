@@ -5,11 +5,16 @@
  * @author Full name: Daniel Soto
  *
  * Other Contributors: none
+ * 
  *
  * References:
  * Morelli, R., & Walde, R. (2016).
  * Java, Java, Java: Object-Oriented Problem Solving
  * https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
+ * 
+ * 7Soul1
+ * https://www.deviantart.com/7soul1/art/420-Pixel-Art-Icons-for-RPG-129892453
+ * Used for item visuals
  *
  * Version: 2024-10-16
  * 
