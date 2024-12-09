@@ -35,7 +35,6 @@ public class MeleeChicken extends PlayerChicken {
 	private Equipment playerEquipment;
 	private Human humanBoost;
 
-
 	/**
 	 * Constructor to create the MeleeChicken with its base stats of Attack,
 	 * Defense, Health, BoneBalance, and hungerBar
@@ -75,7 +74,7 @@ public class MeleeChicken extends PlayerChicken {
 		currentHealth = (levelOfChicken - 1) * 2 + 20;
 		baseHealth = (levelOfChicken - 1) * 2 + 20;
 		baseDefense = (levelOfChicken - 1) * 2 + 10 + defenseBoost;
-		boneBalance = 1000;
+		boneBalance = 100;
 		expBar = 100 + (levelOfChicken - 1) * 50;
 		currentExp = 0;
 	}
@@ -109,7 +108,7 @@ public class MeleeChicken extends PlayerChicken {
 			playerEquipment.equipEquipmentItem(inputItem, 0);
 			return true;
 		case 1:
-			System.out.println("Can't equip, not right class");
+			//System.out.println("Can't equip, not right class");
 			return false;
 		case 2:
 			playerEquipment.equipEquipmentItem(inputItem, 2);
@@ -119,7 +118,7 @@ public class MeleeChicken extends PlayerChicken {
 				playerEquipment.equipEquipmentItem(inputItem, 3);
 				return true;
 			} else {
-				System.out.println("Can't equip, not right class");
+				//System.out.println("Can't equip, not right class");
 				return false;
 			}
 		default:

@@ -74,7 +74,7 @@ public class MageChicken extends PlayerChicken {
 		currentHealth = (levelOfChicken - 1) * 2 + 15;
 		baseHealth = (levelOfChicken - 1) * 2 + 15;
 		baseDefense = (levelOfChicken - 1) * 2 + 5 + defenseBoost;
-		boneBalance = 1000;
+		boneBalance = 100;
 		expBar = 100 + (levelOfChicken - 1) * 50;
 
 	}
@@ -115,14 +115,14 @@ public class MageChicken extends PlayerChicken {
 			playerEquipment.equipEquipmentItem(inputItem, 0);
 			return true;
 		case 1:
-			System.out.println("Can't equip, not right class");
+			//System.out.println("Can't equip, not right class");
 			return false;
 		case 2:
 			if (inputItem.getItemTier() != 0) {
 				playerEquipment.equipEquipmentItem(inputItem, 2);
 				return true;
 			} else {
-				System.out.println("Can't equip, not right class");
+				//System.out.println("Can't equip, not right class");
 				return false;
 			}
 		case 3:

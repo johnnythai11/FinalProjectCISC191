@@ -32,9 +32,11 @@ public class MessageBox extends JOptionPane {
 	}
 
 	/**
+	 * Constructor to create the JOptionPane with a message
 	 * 
 	 * @param messageString Sets message of the MessageBox
-	 * @param i Has no purpose other than to access an overloaded constructor.
+	 * @param i             Has no purpose other than to access an overloaded
+	 *                      constructor.
 	 */
 	public MessageBox(String messageString, boolean i) {
 		super(messageString);

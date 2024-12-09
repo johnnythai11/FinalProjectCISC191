@@ -57,6 +57,7 @@ public class EnemyChicken {
 		expGiven = level;
 		Random r = new Random();
 		boneToken = r.nextInt(10) + 1;
+
 	}
 
 	/**

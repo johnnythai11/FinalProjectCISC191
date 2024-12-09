@@ -23,6 +23,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import model.Combat;
@@ -50,8 +51,8 @@ public class CombatView extends JFrame {
 	private JButton store;
 	private JButton save;
 
-	private JPanel characterPanel;
-	private JPanel enemyPanel;
+	private JLabel characterPanel;
+	private JLabel enemyPanel;
 
 	private JTextArea characterInfo;
 	private JTextArea enemyInfo;
@@ -220,7 +221,7 @@ public class CombatView extends JFrame {
 	 */
 	private void setPanels() {
 
-		characterPanel = new JPanel();
+		characterPanel = new JLabel();
 		characterPanel.setSize(660, 400);
 		characterPanel.setLocation(0, 10);
 
@@ -232,6 +233,7 @@ public class CombatView extends JFrame {
 			characterPanelText.setEditable(false);
 			characterPanelText.setFont(info);
 			characterPanel.add(characterPanelText);
+			characterPanel.setIcon(MainMenuView.gameAssets[8]);
 		} else if (getPlayer() instanceof TankChicken) {
 			info = new Font("Times New Roman", Font.BOLD, 45);
 			characterPanel.setBackground(Color.green);
@@ -240,6 +242,7 @@ public class CombatView extends JFrame {
 			characterPanelText.setEditable(false);
 			characterPanelText.setFont(info);
 			characterPanel.add(characterPanelText);
+			characterPanel.setIcon(MainMenuView.gameAssets[9]);
 		} else if (getPlayer() instanceof MeleeChicken) {
 			info = new Font("Times New Roman", Font.BOLD, 45);
 			characterPanel.setBackground(Color.red);
@@ -248,12 +251,13 @@ public class CombatView extends JFrame {
 			characterPanelText.setEditable(false);
 			characterPanelText.setFont(info);
 			characterPanel.add(characterPanelText);
+			characterPanel.setIcon(MainMenuView.gameAssets[10]);
 		}
 
-		enemyPanel = new JPanel();
+		enemyPanel = new JLabel();
 		enemyPanel.setSize(660, 400);
 		enemyPanel.setLocation(840, 10);
-		enemyPanel.setBackground(Color.cyan);
+		enemyPanel.setIcon(MainMenuView.gameAssets[7]);
 
 		characterInfo = new JTextArea(1, 5);
 		info = new Font("Times New Roman", Font.BOLD, 45);
@@ -348,7 +352,7 @@ public class CombatView extends JFrame {
 			if (e.getSource() == attack) {
 				closeGui();
 				int result = Combat.attackCombatRound(getPlayer(), enemy);
-				System.out.println(result);
+				// System.out.println(result);
 				if (result == 1) { // WHAT HAPPENS WHEN YOU DIE
 					new MessageBox("You Died!");
 					new MainMenuView();
@@ -357,12 +361,12 @@ public class CombatView extends JFrame {
 					getPlayer().addExperienceCounter(enemy.getExpGiven());
 					enemy = null;
 					enemy = new EnemyChicken();
-					System.out.println("when enemy dies:" + getPlayer().getExperienceCounter());
+					// System.out.println("when enemy dies:" + getPlayer().getExperienceCounter());
 					getPlayer().setBalance(getPlayer().getBoneBalance() + enemy.getBoneToken());
 					getPlayer().getExperienceCounter();
 					if (getPlayer().getExp() <= getPlayer().getExperienceCounter()) {
 						getPlayer().levelUp(); // Checks if you can level up
-						System.out.println("levelup");
+						new MessageBox("Level up!");
 					}
 				}
 				updateInfo();

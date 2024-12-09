@@ -22,7 +22,6 @@ public abstract class PlayerChicken implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	public PlayerChicken player;
 
-
 	public abstract Items getEquippedItem(int index);
 
 	public abstract void removeEquippedItem(int index);

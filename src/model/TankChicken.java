@@ -19,7 +19,6 @@ package model;
 
 import view.CombatView;
 
-
 public class TankChicken extends PlayerChicken
 
 {
@@ -37,7 +36,6 @@ public class TankChicken extends PlayerChicken
 	private int attackBoost;
 	private int defenseBoost;
 	private int experienceCounter;
-	
 
 	/**
 	 * Constructor to create the TankChicken with its base status of Attack,
@@ -83,7 +81,7 @@ public class TankChicken extends PlayerChicken
 		currentHealth = (levelOfChicken - 1) * 2 + 35;
 		baseHealth = (levelOfChicken - 1) * 2 + 35;
 		baseDefense = (levelOfChicken - 1) * 2 + 15 + defenseBoost;
-		boneBalance = 1000;
+		boneBalance = 100;
 		expBar = 100 + (levelOfChicken - 1) * 50;
 
 	}
@@ -140,7 +138,7 @@ public class TankChicken extends PlayerChicken
 				playerEquipment.equipEquipmentItem(inputItem, 2);
 				return true;
 			} else {
-				System.out.println("Can't equip, not right class");
+				//System.out.println("Can't equip, not right class");
 				return false;
 			}
 
@@ -149,7 +147,7 @@ public class TankChicken extends PlayerChicken
 				playerEquipment.equipEquipmentItem(inputItem, 3);
 				return true;
 			} else {
-				System.out.println("Can't equip, not right class");
+				//System.out.println("Can't equip, not right class");
 				return false;
 			}
 		default:

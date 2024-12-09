@@ -21,6 +21,7 @@ import java.io.*;
 
 import view.CharacterSelectionView;
 import view.CombatView;
+import view.MessageBox;
 
 public class SaveLoad {
 
@@ -56,6 +57,9 @@ public class SaveLoad {
 			CharacterSelectionView.setCombatGui(p);
 		} catch (IOException | ClassNotFoundException e) {
 
+			new MessageBox("Save data not found.", true);
+			
+			
 		}
 	}
 }

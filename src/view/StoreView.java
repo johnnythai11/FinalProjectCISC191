@@ -30,12 +30,13 @@ public class StoreView extends JFrame {
 	private JLabel[] itemSlots = new JLabel[20];
 	private JButton[] itemButtons = new JButton[20];
 	private JButton closeShopButton = new JButton("Exit");
+	private JLabel[] itemNames = new JLabel[20];
 	private Store myStore = new Store();
 	private ArrayList<Integer> alreadyBoughtList;
 	private JLabel balance;
 	// Margins around the top and left side of screen, margins between each panel X,
 	// Y
-	private final int margins = 15, betweenMarginsY = 30, betweenmarginsX = 10;
+	private final int margins = 15, betweenMarginsY = 50, betweenmarginsX = 10;
 
 	// Changes lenght, width of the panels and the relating variables that depend on
 	// it
@@ -45,7 +46,6 @@ public class StoreView extends JFrame {
 	private final int amountPerRow = 5;
 
 	final int SCREEN_WIDTH = 650, SCREEN_HEIGHT = 800;
-
 
 	/**
 	 * Constructor to create the store for the game
@@ -80,6 +80,7 @@ public class StoreView extends JFrame {
 		for (int i = 0; i < theLabels.length; i++) {
 			// For each "slot" in the array, create JPanel
 			theLabels[i] = new JLabel(" " + String.valueOf(myStore.getItem(i).getItemName()));
+			itemNames[i] = new JLabel(myStore.getItem(i).getItemName());
 			theLabels[i].setBackground(Color.white);
 			theLabels[i].setOpaque(true);
 			// amountPerRow changes amountPerRow
@@ -87,8 +88,10 @@ public class StoreView extends JFrame {
 				xOffset = 0;
 				yOffset = yOffset + panelLengthWidth + margins + betweenMarginsY;
 			}
+			itemNames[i].setBounds(xOffset + margins, yOffset - 45, panelLengthWidth, panelLengthWidth);
+			add(itemNames[i]);
 			theLabels[i].setBounds(xOffset + margins, yOffset + margins, panelLengthWidth, panelLengthWidth);
-			xOffset = xOffset + panelLengthWidth + margins + betweenmarginsX;	
+			xOffset = xOffset + panelLengthWidth + margins + betweenmarginsX;
 		}
 	}
 
@@ -114,62 +117,50 @@ public class StoreView extends JFrame {
 			xOffset = xOffset + panelLengthWidth + margins + betweenmarginsX;
 		}
 	}
-	
-	private void showIconWork()
-	{
-		for (int i = 0; i < itemSlots.length; i++)
-		{
+
+	private void showIconWork() {
+		for (int i = 0; i < itemSlots.length; i++) {
 			add(itemSlots[i]);
 			showIcon(i);
-			
+
 		}
 	}
-	
-	
-	private void showIcon(int index)
-	{
+
+	private void showIcon(int index) {
 		int itemTier = myStore.getItem(index).getItemTier();
 		int itemType = myStore.getItem(index).getItemType();
 
-		
-		if(itemType == 0) //heart
+		if (itemType == 0) // heart
 		{
-		
+
 			itemSlots[index].setIcon(MainMenuView.gameAssets[2]);
-			
-		}
-		else if(itemType == 1) // helmet
+
+		} else if (itemType == 1) // helmet
 		{
-			
+
 			itemSlots[index].setIcon(MainMenuView.gameAssets[3]);
-		}
-		else if(itemType == 2) // chestPlate
+		} else if (itemType == 2) // chestPlate
 		{
-			
-			if(itemTier == 0) // shield
+
+			if (itemTier == 0) // shield
 			{
 				itemSlots[index].setIcon(MainMenuView.gameAssets[4]);
-			}
-			else
-			{
+			} else {
 				itemSlots[index].setIcon(MainMenuView.gameAssets[0]);
 			}
-		
-		}
-		else if(itemType == 3) // claw
+
+		} else if (itemType == 3) // claw
 		{
-			
-			if(itemTier == 0) //staff
+
+			if (itemTier == 0) // staff
 			{
 				itemSlots[index].setIcon(MainMenuView.gameAssets[5]);
-			}
-			else//claw
+			} else// claw
 			{
 				itemSlots[index].setIcon(MainMenuView.gameAssets[1]);
 			}
 		}
-		
-		
+
 	}
 
 	/**
@@ -180,7 +171,7 @@ public class StoreView extends JFrame {
 		balance = new JLabel("Balance : " + CombatView.getPlayer().getBoneBalance());
 		balance.setBounds(200, 650, 100, 50);
 
-		closeShopButton.setBounds(500, 650, 100, 50);
+		closeShopButton.setBounds(515, 650, 100, 50);
 		closeShopButton.addActionListener(new CloseListener());
 		add(closeShopButton);
 		add(balance);
@@ -218,18 +209,20 @@ public class StoreView extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			for (int i = 0; i < itemButtons.length; i++) {
 				if (itemButtons[i] == e.getSource()) { // Sets index to the button that got clicked
-					if (CombatView.getPlayer().getBoneBalance() > myStore.getItem(i).getPrice()) { // makes sure player has
-																								// enough balance
+					if (CombatView.getPlayer().getBoneBalance() > myStore.getItem(i).getPrice()) { // makes sure player
+																									// has
+																									// enough balance
 						if (!alreadyBoughtList.contains(i)) { // makes sure the player hasn't already bought the item
-							if (CombatView.getPlayer().playerInventory.roomExist()) // makes sure the inventory isn't full
+							if (CombatView.getPlayer().playerInventory.roomExist()) // makes sure the inventory isn't
+																					// full
 							{
-								CombatView.getPlayer()
-										.setBalance(CombatView.getPlayer().getBoneBalance() - myStore.getItem(i).getPrice());
+								CombatView.getPlayer().setBalance(
+										CombatView.getPlayer().getBoneBalance() - myStore.getItem(i).getPrice());
 								updateInfo(i);
 								alreadyBoughtList.add(i);
 								CombatView.getPlayer().playerInventory.addItemToInventory(myStore.getItem(i));
 							} else {
-								System.out.println("OUT OF INVENTORY ROOM");
+								new MessageBox("Out of inventory room");
 							}
 						}
 					}

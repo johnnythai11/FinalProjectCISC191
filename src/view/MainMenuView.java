@@ -29,7 +29,7 @@ public class MainMenuView extends JFrame {
 	private JButton loadButton;
 	private JPanel mainPanel;
 	final int SCREEN_WIDTH = 750, SCREEN_HEIGHT = 800;
-	protected static ImageIcon[] gameAssets = new ImageIcon[6];
+	protected static ImageIcon[] gameAssets = new ImageIcon[11];
 
 	/**
 	 * Constructor to create the main menu screen with the three buttons needed
@@ -61,6 +61,11 @@ public class MainMenuView extends JFrame {
 			gameAssets[3] = new ImageIcon("./Assets/Helmet.png");
 			gameAssets[4] = new ImageIcon("./Assets/Shield.png");
 			gameAssets[5] = new ImageIcon("./Assets/Staff.png");
+			gameAssets[6] = new ImageIcon("./Assets/Chicken.png");
+			gameAssets[7] = new ImageIcon("./Assets/EnemyChicken.png");
+			gameAssets[8] = new ImageIcon("./Assets/MageChicken.png");
+			gameAssets[9] = new ImageIcon("./Assets/TankChicken.png");
+			gameAssets[10] = new ImageIcon("./Assets/MeleeChicken.png");
 		} catch (Exception e) {
 			new MessageBox("Assets Not Found", true);
 			System.exit(100);
@@ -135,6 +140,7 @@ public class MainMenuView extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			SaveLoad.binaryLoad();
+			dispose();
 		}
 	}
 

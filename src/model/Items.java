@@ -71,7 +71,7 @@ public class Items implements java.io.Serializable {
 			itemName = "Heart";
 		}
 		// for the Helmet special item
-		if (typeOfArmor == 1 ) {
+		if (typeOfArmor == 1) {
 			this.typeOfArmor = typeOfArmor;
 			this.healthStat = 10;
 			this.itemTier = 0;

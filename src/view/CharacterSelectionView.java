@@ -59,13 +59,14 @@ public class CharacterSelectionView extends JFrame {
 		confirmButton = new JButton("Confirm");
 		statField = new JLabel();
 
-		statField.setText("Loras ipsum dolar set amri, i speak latin so good");
-		statField.setOpaque(true);
+		// statField.setText("Loras ipsum dolar set amri, i speak latin so good");
+		// statField.setOpaque(true);
 		statField.setBackground(Color.RED);
 		characterIcon.setBackground(Color.black);
 		characterIcon.setOpaque(true);
 
 		characterIcon.setBounds(25, 25, 250, 250);
+		characterIcon.setIcon(MainMenuView.gameAssets[6]);
 		mage.setBounds(25, 290, 250, 50);
 		tank.setBounds(25, 355, 250, 50);
 		melee.setBounds(25, 420, 250, 50);
@@ -95,26 +96,27 @@ public class CharacterSelectionView extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == mage) {
 
-				statField.setText("I'm A-Maging ba dum tiss");
+				// statField.setText("I'm A-Maging ba dum tiss");
 				characterIcon.setBackground(Color.blue);
+				characterIcon.setIcon(MainMenuView.gameAssets[8]);
 				setSelection = 1;
 			} else if (e.getSource() == tank) {
 
-				statField.setText("M1A2 Abrams");
+				// statField.setText("M1A2 Abrams");
 				characterIcon.setBackground(Color.green);
+				characterIcon.setIcon(MainMenuView.gameAssets[9]);
 				setSelection = 2;
 			} else if (e.getSource() == melee) {
 
-				statField.setText("Oi there you got a lisence for that stabbin?");
+				// statField.setText("Oi there you got a lisence for that stabbin?");
 				characterIcon.setBackground(Color.red);
+				characterIcon.setIcon(MainMenuView.gameAssets[10]);
 				setSelection = 3;
 			}
 		}
 	}
-	
-	
-	public static void setCombatGui(PlayerChicken p)
-	{
+
+	public static void setCombatGui(PlayerChicken p) {
 		combatGUI = new CombatView(p);
 	}
 

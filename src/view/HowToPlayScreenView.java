@@ -86,7 +86,7 @@ public class HowToPlayScreenView extends JFrame {
 
 		{
 
-			System.out.println("File Found");
+			//System.out.println("File Found");
 
 			while (reading.hasNext()) {
 				String line = reading.nextLine();
@@ -103,6 +103,7 @@ public class HowToPlayScreenView extends JFrame {
 		catch (FileNotFoundException e) {
 			System.out.println("not Found");
 			e.printStackTrace();
+			new MessageBox("Instructions Not Found.", true);
 		}
 
 		mainPanel.add(instructionScroll);

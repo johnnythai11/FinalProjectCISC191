@@ -203,12 +203,14 @@ public class InventoryView extends JFrame {
 				{
 					enable(index);
 					itemSlotsText[index].setText("Hearts : " + CombatView.getPlayer().heartCounter);
+					itemSlots[index].setIcon(MainMenuView.gameAssets[2]);
 
 				}
 			} else { // Found Equipped Item!
 				enable(index);
 				// showIcon(index);
 				itemSlotsText[index].setText(CombatView.getPlayer().getEquippedItem(index - 16).getItemName());
+				showEquippedIcon(index);
 
 			}
 		}
@@ -290,6 +292,46 @@ public class InventoryView extends JFrame {
 	}
 
 	/**
+	 * 
+	 * @param index Index of of the array, minus 16 to access equipped item.
+	 */
+	private void showEquippedIcon(int index) {
+		int itemTier = CombatView.getPlayer().getEquippedItem(index - 16).getItemTier();
+		int itemType = CombatView.getPlayer().getEquippedItem(index - 16).getItemType();
+
+		if (itemType == 0) // heart
+		{
+
+			itemSlots[index].setIcon(MainMenuView.gameAssets[2]);
+
+		} else if (itemType == 1) // helmet
+		{
+
+			itemSlots[index].setIcon(MainMenuView.gameAssets[3]);
+		} else if (itemType == 2) // chestPlate
+		{
+
+			if (itemTier == 0) // Shield
+			{
+				itemSlots[index].setIcon(MainMenuView.gameAssets[4]);
+			} else {
+				itemSlots[index].setIcon(MainMenuView.gameAssets[0]);
+			}
+
+		} else if (itemType == 3) // claw
+		{
+
+			if (itemTier == 0) // staff
+			{
+				itemSlots[index].setIcon(MainMenuView.gameAssets[5]);
+			} else {
+				itemSlots[index].setIcon(MainMenuView.gameAssets[1]);
+			}
+		}
+
+	}
+
+	/**
 	 * Button to equip the item to the player's equipment slots accordingly to type
 	 * of gear
 	 * 
@@ -312,7 +354,7 @@ public class InventoryView extends JFrame {
 									.removeItemFromInventory(CombatView.getPlayer().playerInventory.getItem(i));
 							update();
 						} else {
-							System.out.println("Reach Messagebox");
+							// System.out.println("Reach Messagebox");
 							new MessageBox("Not Right Class To Equip");
 							update();
 						}
@@ -365,7 +407,7 @@ public class InventoryView extends JFrame {
 
 					if (i == 16 || i == 17 || i == 18 || i == 19) {
 						CombatView.getPlayer().removeEquippedItem(i - 16);
-						System.out.println("item is removed from inventory.");
+						// System.out.println("item is removed from inventory.");
 						CombatView.getPlayer().resetPlayer();
 						update();
 					} else

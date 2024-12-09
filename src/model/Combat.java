@@ -19,7 +19,6 @@ package model;
 
 public class Combat {
 
-
 	/**
 	 * Sets the attack damage of the type of the player dependent on the item worn
 	 * 
